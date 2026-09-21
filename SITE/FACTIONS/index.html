@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body {
+			margin: 0;v
+			padding: 0;
+
+			font-family: "Miranda Sans", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 14px;
+			background: black;
+		}
+
+		img {
+			max-width: 100%;
+		}
+		.outer {
+			width: 1200px;
+			height: 800px;
+			background: white;
+			position: relative;
+			margin: auto;
+			margin-top: 20px;
+			box-sizing: border-box;
+			background-image: url('https://wallpaperaccess.com/full/4464419.jpg');
+			background-size: cover;
+			box-shadow: 0px 0px 80px #ffffff78;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.wandow {
+			background: grey;
+			position: absolute;
+			border: 1px solid black;
+			box-sizing: border-box;
+			padding: 4px;
+			border-radius: 2px;
+			box-shadow: 2px 2px 14px #00000094;
+		}
+
+		.wandow::after {
+			content: '';
+			position: absolute;
+			border-radius: 2px;
+			inset: 0px;
+			border-top: 2px solid #aeaeae;
+			border-left: 2px solid #aeaeae;
+			border-bottom: 2px solid #575757;
+			border-right: 2px solid #575757;
+			pointer-events: none;
+		}
+
+		.wandow.little {
+			height: 100px;
+			width: 250px;
+			top: 410px;
+			left: 330px;
+		}
+
+		.wandow.little .content {
+			overflow-y: auto;
+		}
+
+		.header {
+			background: black;
+			color: #848484;
+			padding: 6px 12px;
+			border: 1px solid black;
+			box-sizing: border-box;
+			margin-bottom: 4px;
+			font-family: monospace;
+			font-size: 12px;
+			letter-spacing: 1px;
+			border-radius: 4px;
+			cursor: move;
+			position: relative;
+			padding-right: 32px;
+		}
+
+		.close {
+			position: absolute;
+			right: 6px;
+			top: 4px;
+			color: #848484;
+			cursor: pointer;
+			font-family: monospace;
+			font-size: 14px;
+			line-height: 14px;
+			z-index: 20;
+		}
+
+		.close:hover {
+			color: white;
+		}
+
+		.content {
+			height: calc(100% - 34px);
+			width: 100%;
+			background: white;
+			box-sizing: border-box;
+			border: 1px solid black;
+			border-radius: 4px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.content iframe {
+			border: 0;
+			width: 100%;
+			height: 100%;
+		} 
+
+		.title {
+			font-family: "Special Elite", system-ui;
+			font-weight: 400;
+			font-style: normal;
+			color: white;
+			text-shadow: 0px 0px 16px black;
+			font-size: 36px;
+			position: absolute;
+			left: 42px;
+			top: 40px;
+		}
+
+		.menu {
+			height: 480px;
+			position: absolute;
+			width: 60px;
+			left: 40px;
+			top: 120px;
+			text-align: center;
+			z-index: 2;
+		}
+
+		.menu a {
+			display: block;
+			margin-bottom: 20px;
+			padding: 6px;
+			background: transparent;
+			border: 1px dashed transparent;
+			border-radius: 6px;
+			font-size: 9px;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		.menu a:hover {
+			background: #ffffff42;
+			border: 1px dashed black;
+		}
+
+		.menu img {
+			display: block;
+			margin: auto;
+			margin-bottom: 4px;
+		}
+
+		.menu-label {
+			background: black;
+			color: white;
+			padding: 3px 6px;
+			display: inline-block;
+		}
+		
+		
+		.menu2 {
+	left: 120px;
+}
+
+.menu2 a {
+	cursor: default;
+}
+
+.menu2 a:hover {
+	background: #ffffff42;
+	border: 1px dashed black;
+}
+
+	</style>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Miranda+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+
+	<script>
+	$(function() {
+
+		let windowCount = 0;
+
+		$(".wandow.little").draggable({
+			handle: ".header",
+			containment: ".outer",
+			scroll: false
+		});
+
+		$(document).on("mousedown", ".wandow", function() {
+			windowCount++;
+			$(this).css("z-index", windowCount + 10);
+		});
+
+		$(".open-page").on("click", function(e) {
+			e.preventDefault();
+
+			const url = $(this).data("url");
+			const title = $(this).data("title");
+
+			/* NOUVEAU : récupère la taille indiquée sur le lien */
+			const width = $(this).data("width");
+			const height = $(this).data("height");
+
+			windowCount++;
+
+			const offset = (windowCount * 25) % 150;
+
+			const newWindow = $(`
+				<div class="wandow page"
+					style="
+						left:${300 + offset}px;
+						top:${60 + offset}px;
+						width:${width}px;
+						height:${height}px;
+						z-index:${windowCount + 10};
+					">
+
+					<div class="header">
+						${title}
+						<span class="close">×</span>
+					</div>
+
+					<div class="content">
+						<iframe src="${url}"></iframe>
+					</div>
+
+				</div>
+			`);
+
+			$(".outer").append(newWindow);
+
+			newWindow.draggable({
+				handle: ".header",
+				containment: ".outer",
+				scroll: false
+			});
+
+			newWindow.find(".close").on("click", function() {
+				newWindow.remove();
+			});
+		});
+	});
+	</script>
+</head>
+
+<body>
+
+<div class="outer">
+
+	<div class="title">REMINDER TO FEED THE CAT</div>
+
+	<div class="menu">
+
+		<a href="inga.html"
+		   class="open-page"
+		   data-url="inga.html"
+		   data-title="STEAM"
+		   data-width="750"
+		   data-height="650">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/960px-Steam_icon_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail">
+			<span class="menu-label">Steam</span>
+		</a>
+
+		<a href="ANARCH/baron.html"
+		   class="open-page"
+		   data-url="ANARCH/baron.html"
+		   data-title="ANARCH"
+		   data-width="930"
+		   data-height="700">
+			<img src="folder.png">
+			<span class="menu-label">Anarch</span>
+		</a>
+
+		<a href="stuff.html"
+		   class="open-page"
+		   data-url="stuff.html"
+		   data-title="notepad++"
+		   data-width="400"
+		   data-height="500">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Notepad_plus_plus.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original">
+			<span class="menu-label">notepad++</span>
+		</a>
+
+		<a href="vermine.html"
+		   class="open-page"
+		   data-url="vermine.html"
+		   data-title="VERMINE"
+		   data-width="590"
+		   data-height="410">
+			<img src="https://s3.amazonaws.com/cloud.kumu.io/accounts/608519/1283709/2e7c5ff1-ed8a-4c6a-b0a4-84616fd52861.png">
+			<span class="menu-label">vermine.exe</span>
+		</a>
+
+	</div>
+	
+	<div class="menu menu2">
+
+	<a>
+		<img src="https://cdn.simpleicons.org/osu">
+		<span class="menu-label">osu!</span>
+	</a>
+
+	<a>
+		<img src="https://cdn2.steamgriddb.com/icon/bc573864331a9e42e4511de6f678aa83.ico">
+		<span class="menu-label">Isaac</span>
+	</a>
+
+	<a>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/WoW_icon.svg/3840px-WoW_icon.svg.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail">
+		<span class="menu-label">WoW</span>
+	</a>
+
+</div>
+
+	<div class="wandow little">
+		<div class="header">  ପ(๑•ᴗ•๑)ଓ ♡ </div>
+		<div class="content">
+
+12-289-8208-[date_de_parution] <br>
+280 en ligne
+9832 en pause<br>
+sujet 23 not outside
+
+		</div>
+	</div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

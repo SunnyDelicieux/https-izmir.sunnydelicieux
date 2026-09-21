@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inga</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        iframe {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: none;
+        }
+
+
+        #start-screen {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            cursor: pointer;
+            transition: opacity 1s ease;
+        }
+
+
+        #start-screen span {
+            color: #777;
+            font: 14px Georgia, serif;
+            letter-spacing: 6px;
+            animation: enterPulse 2s infinite;
+        }
+
+
+        #start-screen span:hover {
+            color: #fff;
+        }
+
+
+        #start-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        @keyframes enterPulse {
+            0%,
+            100% {
+                opacity: .3;
+            }
+            50% {
+                opacity: 1;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+<iframe
+    id="room-frame"
+    src="inga2.html">
+</iframe>
+
+
+
+<audio
+    id="bg-music"
+    src="bg.mp3"
+    loop>
+</audio>
+
+
+
+<div id="start-screen">
+    <span>ENTER</span>
+</div>
+
+
+<script>
+
+const startScreen = document.getElementById("start-screen");
+const music = document.getElementById("bg-music");
+
+
+startScreen.addEventListener("click", () => {
+
+    music.volume = 0.25;
+
+    music.play().catch(() => {});
+
+    startScreen.classList.add("hidden");
+
+});
+
+
+</script>
+
+
+</body>
+</html>
+```
+

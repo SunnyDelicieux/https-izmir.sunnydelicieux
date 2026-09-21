@@ -1,0 +1,235 @@
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+
+#game{
+    position:relative;
+    width:min(100vw,1200px);
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:#000
+}
+
+.scene{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none
+}
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto
+}
+
+#background{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+
+#characters{
+    position:absolute;
+    inset:0;
+    z-index:10
+}
+
+.character-slot{
+    position:absolute;
+    bottom:0;
+    width:20%;
+    height:78%;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:2
+}
+
+.character-slot img{
+    display:block;
+    width:auto;
+    height:90%
+}
+
+.character-slot[data-slot="0"]{left:0}
+.character-slot[data-slot="1"]{left:20%}
+.character-slot[data-slot="2"]{left:60%}
+.character-slot[data-slot="3"]{left:80%}
+.character-slot[data-slot="4"]{display:none}
+
+#nebetta-slot{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:22%;
+    height:69%;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    transform:translateX(-50%);
+    z-index:10;
+    cursor:pointer
+}
+
+#nebetta{
+    display:block;
+    width:auto;
+    height:100%
+}
+
+#nebetta:hover{filter:brightness(1.12)}
+
+/* DISCUSSION */
+
+#characters.talking .character-slot{
+    display:none
+}
+
+#characters.talking .conversation-npc{
+    display:flex;
+    left:auto;
+    bottom:0;
+    width:22%;
+    height:69%;
+    z-index:120;
+    
+    transform:none
+}
+#characters.talking .conversation-npc{
+    bottom:-18%;
+        left:10%;
+}
+
+#characters.talking .conversation-npc img{
+    height:100%;
+    width:auto;
+    transform:scale(1.5);
+    transform-origin:center bottom
+}
+
+#characters.talking #nebetta-slot{
+    z-index:10;
+    bottom:-18%;
+    transform:translateX(-50%) scale(1.5);
+    transform-origin:center bottom
+}
+
+#characters.talking #nebetta{
+    filter:brightness(1.08)
+}
+#elysium-overlay{
+    position:absolute;
+    inset:0;
+    z-index:20;
+    pointer-events:none
+}
+
+#elysium-overlay>img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    pointer-events:none
+}
+
+#title-card{
+    position:absolute;
+    top:11.8%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:#f8ebef;
+    font-family:Georgia,serif;
+    pointer-events:none;
+    animation:titleCard 1.2s ease forwards
+}
+
+.title-main{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:5px
+}
+
+.title-sub{
+    margin-top:4px;
+    font-size:13px;
+    font-style:italic;
+    letter-spacing:2px
+}
+
+@keyframes titleCard{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+#dialogue-box{
+    position:absolute;
+    left:5%;
+    right:5%;
+    bottom:4%;
+    min-height:18%;
+    padding:22px 30px;
+    background:rgba(25,18,13,.94);
+    border:1px solid rgba(205,170,95,.75);
+    color:#f1e5d0;
+    font-family:Georgia,serif;
+    cursor:pointer;
+    z-index:50;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    box-shadow:0 0 25px rgba(0,0,0,.45)
+}
+
+#dialogue-box.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto
+}
+
+#speaker{
+    margin-bottom:10px;
+    color:#d6b36a;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase
+}
+
+#dialogue-text{
+    color:#f3eadb;
+    font-size:18px;
+    line-height:1.5
+}
+
+#continue{
+    position:absolute;
+    right:18px;
+    bottom:10px;
+    color:#d6b36a;
+    animation:blink 1s infinite
+}
+
+@keyframes blink{
+    50%{opacity:.2}
+}
+
+@media(max-width:700px){
+    #game{
+        width:100vw;
+        height:100vh;
+        aspect-ratio:auto
+    }
+
+    #dialogue-box{
+        left:3%;
+        right:3%;
+        bottom:3%;
+        padding:15px 20px
+    }
+
+    #speaker,#dialogue-text{font-size:16px}
+}

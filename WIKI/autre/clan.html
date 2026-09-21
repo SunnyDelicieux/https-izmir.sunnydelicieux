@@ -1,0 +1,147 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Character Wiki Template</title>
+  <link rel="stylesheet" href="../wikitemplate.css">
+  <meta name="description" content="">
+  <link rel="icon" href="../../img/wiki/icon/no-icon.png" sizes="any">
+  <script src="../nav.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+
+<header-component></header-component>
+
+    <header id="header" style="background-image: url'https://cdna.artstation.com/p/assets/images/images/098/718/060/4k/quentin-hofmann-screan-finalimage-0000.jpg?1777887529)"></header>
+<main>
+        <div id="container"><main>
+        <h1>Les clans d'Izmir</h1>
+
+<div id="toc"></div>
+            
+<div id="contents">     
+<p>
+
+</P><br>
+
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/6/68/Gangrel_icon.png" alt="Ventrue icon">
+    <h2>Gangrel</h2></div> 
+<p> Les Gangrel arrivèrent à Smyrne avec Kushi. Contrairement à la majorité des lignées Gangrel, ceux qui le suivaient descendaient principalement 
+    des Anda et conservaient une organisation très hiérarchique. 
+Cependant, moins d'une décennie après leur arrivée, le clan commença à se fragmenter. Une grande partie des Gangrel quitta Smyrne pour suivre 
+l'avancée mongole vers l'ouest, tandis que ceux restés sur place se divisèrent progressivement. Les rivalités internes et les guerres entre 
+différentes factions provoquèrent l'effondrement de la structure du clan, qui ne fonctionnait réellement qu'en temps de guerre constant.
+<BR>
+Les gangrel restant s'étant allié avec la pyramide et les ventrue lors de la guerre des sorciers, affronttant leur propre clan, ils ont été considéré commé des anti-tribu
+par le reste du clan, et rare sont les gangrel qui osent s'avancer dans ces terres. 
+</p>
+
+
+<p>Liste des membres : <a href="./kushi.html"> Kushi </a>,<a href="./camil.html"> Camil </a>, </p>
+
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/5/53/Ventrue_icon.png" alt="Ventrue icon">
+    <h2>Ventrue</h2></div> <br>
+
+
+
+<p>Liste des membres : <a href="../brujah/pnj/baran.html"> Membre 1 </a>,<a href="../brujah/pnj/baran.html"> Membre 2 </a>,
+
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/8/87/Brujah_icon.png" alt="Ventrue icon">
+    <h2>Brujah</h2></div> <br>
+
+<p>Liste des membres : <a href="../brujah/pnj/baran.html"> Baran </a>,<a href="../brujah/pnj/henri.html"> Henri </a>,<a href="../brujah/pnj/kaadir.html"> Kaadir </a>,
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/f/fa/Tremere_icon.png" alt="Ventrue icon">
+    <h2>Tremere</h2></div> <br>
+      
+<a href="../tremere/index.html"> Voir la page de l'histoire Tremere Moderne </a>
+
+<p>Liste des membres : <a href="../brujah/pnj/baran.html"> Membre 1 </a>,<a href="../brujah/pnj/baran.html"> Membre 2 </a>,
+
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/4/47/Toreador_icon.png" alt="Ventrue icon">
+    <h2>Toreador</h2></div> <br>
+    <p>
+        <a href="../toreador/info/soteria.html"> Mythe fondateur des toreador </a> <br>
+        <a href="../toreador/info/index.html"> Voir la page de l'histoire Toreador </a>
+    </p>
+
+<div class="title-container">
+    <h2>Autres clans</h2></div> <br>
+    <p>bleeeh</p>
+
+
+<div class="title-container">
+    <img src="https://vtm.paradoxwikis.com/images/7/7c/Thinblood_icon.png" alt="Ventrue icon">
+    <h2>Sang clair</h2></div> <br>
+  <p>bleeeh</p>
+    
+
+<br>
+
+</main>
+
+        </div>
+</main>
+<footer id="footer"></footer>
+</body>
+
+
+<!-- Don't touch this, it makes the table of contents work, as per: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page </-->
+<script>
+window.onload = function () {
+    var toc = "";
+    var level = 0;
+
+    document.getElementById("contents").innerHTML =
+        document.getElementById("contents").innerHTML.replace(
+            /<h([/d])>([/s/S]*?)<//h/1>/gi,
+            function (str, openLevel, innerHtml) {
+                openLevel = parseInt(openLevel);
+
+                if (openLevel > level) {
+                    toc += (new Array(openLevel - level + 1)).join("<ol>");
+                } else if (openLevel < level) {
+                    toc += (new Array(level - openLevel + 1)).join("</ol>");
+                }
+
+                level = openLevel;
+
+                var tempDiv = document.createElement("div");
+                tempDiv.innerHTML = innerHtml;
+                var plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+                var anchor = plainText.trim()
+                    .replace(//s+/g, "_")
+                    .replace(/[^/w/-]/g, "");
+
+                toc += "<li><a href=/"#" + anchor + "/">" + plainText + "</a></li>";
+
+                return "<h" + openLevel + " id=/"" + anchor + "/">" + innerHtml + "</h" + openLevel + ">";
+            }
+        );
+
+    if (level) {
+        toc += (new Array(level + 1)).join("</ol>");
+    }
+
+    document.getElementById("toc").innerHTML += toc;
+};
+</script>
+</html>
+
+
+
+

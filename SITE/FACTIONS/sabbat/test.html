@@ -1,0 +1,450 @@
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+
+			font-family: "Miranda Sans", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 14px;
+			background: black;
+		}
+
+		img {
+			max-width: 100%;
+		}
+		.outer {
+			width: 1200px;
+			height: 800px;
+			background: rgb(0, 0, 0);
+			position: relative;
+			margin: auto;
+			margin-top: 20px;
+			box-sizing: border-box;
+			background-image: url('img/bg_black2.jpg');
+			background-size: cover;
+			box-shadow: 0px 0px 80px #ffffff78;
+			border-radius: 8px;
+		}
+		.wandow {
+			background: grey;
+			position: absolute;
+			border: 1px solid black;
+			box-sizing: border-box;
+			padding: 4px;
+			border-radius: 2px;
+			box-shadow: 2px 2px 14px #00000094;
+		}
+
+		.wandow::after {
+			content: '';
+			position: absolute;
+			border-radius: 2px;
+			inset: 0px;
+			border-top: 2px solid #aeaeae;
+			border-left: 2px solid #aeaeae;
+			border-bottom: 2px solid #575757;
+			border-right: 2px solid #575757;
+			pointer-events: none;
+		}
+
+		.wandow.main {
+			height: 700px;
+			width: 550px;
+			top: 40px;
+			left: 560px;
+		}
+
+		.wandow.little {
+			height: 250px;
+			width: 250px;
+			top: 410px;
+			left: 330px;
+		}
+
+		/* MAKE THE LITTLE WINDOW SCROLL*/
+		.wandow.little .content {
+			overflow-y: auto;
+		}
+
+		.header	{
+			background: black;
+			color: #848484;
+			padding: 6px 12px;
+			border: 1px solid black;
+			box-sizing: border-box;
+			margin-bottom: 4px;
+			font-family: monospace;
+			font-size: 12px;
+			letter-spacing: 1px;
+			border-radius: 4px;
+			cursor: move;
+		}
+
+		.content {
+			height: calc(100% - 34px);
+			width: 100%;
+			background: white;
+			box-sizing: border-box;
+			border: 1px solid black;
+			border-radius: 4px;
+			position: relative;
+		}
+
+		.menu {
+			height: 580px;
+			position: absolute;
+			width: 80px;
+			left: 40px;
+			top: 120px;
+			text-align: center;
+		}
+
+		.menu a {
+			display: block;
+			margin-bottom: 20px;
+			padding: 6px;
+			background: transparent;
+			border: 1px dashed transparent;
+			border-radius: 6px;
+			font-size: 14px;
+		}
+
+		.menu a:hover {
+			display: block;
+			margin-bottom: 20px;
+			padding: 6px;
+			background: #ffffff42;
+			border: 1px dashed black;
+			border-radius: 6px;
+			font-size: 14px;
+		}
+
+		.menu img {
+			display: block;
+			margin: auto;
+			margin-bottom: 4px;
+		}
+
+		.content iframe {
+			border: 0;
+			width: 100%;
+			height: 100%;
+		} 
+
+		.title {
+			font-family: "Special Elite", system-ui;
+			font-weight: 400;
+			font-style: normal;
+			color: white;
+			text-shadow: 0px 0px 16px black;
+			font-size: 36px;
+			position: absolute;
+			left: 42px;
+			top: 40px;
+		}
+
+		.menu-label {
+			background: black;
+            background-image: "https://images.unsplash.com/photo-1484387436194-cf7cb70800ce?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGFyayUyMHNlYXxlbnwwfHwwfHx8MA%3D%3D";
+			color: white;
+			padding: 3px 6px;
+			display: inline-block;
+		}
+
+		.statusbar {
+			border: 2px solid #333;
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			background: black;
+			color: #868686;
+			bottom: 0;
+			font-size: 12px;
+			line-height: 26px;
+			padding: 0 6px;
+			box-sizing: border-box;
+
+			box-shadow: 3px 3px 16px black;
+
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+		}
+
+		.statusbar a {
+			color: #868686;
+		}
+
+		.statusbar-left {
+			display: inline-block;
+			float: left;
+		}
+
+		.statusbar-right {
+			display: inline-block;
+			float: right;
+		}
+
+		.statusbar-right a {
+			text-decoration: none;
+		}
+
+		.statusbar-right svg {
+			margin-left: 6px;
+			margin-top: 3px;
+			height: 20px;
+		}
+
+#storyText{
+
+    padding:10px;
+
+    min-height:90px;
+
+    line-height:1.7;
+
+    font-size:13px;
+}
+
+#storyButton{
+    display:block;
+    margin:10px auto;
+    padding:6px 12px;
+    background:#2d1111;
+    color:#ddd;
+    cursor:pointer;
+    border:2px solid;
+}
+
+
+
+.w1{
+    top:20%;
+    left:80%;
+    width:260px;
+    transform:rotate(-0.6deg);
+}
+
+.w2{
+    top:20%;
+    left:420px;
+    width:220px;
+    transform:rotate(0.5deg);
+}
+
+.w3{
+    top:10%;
+    left:40%;
+    width:380px;
+    transform:rotate(-0.4deg);
+}
+
+.w4{
+    top:520px;
+    left:140px;
+    width:220px;
+    transform:rotate(0.8deg);
+}
+
+.w7{
+    top:60%;
+    left:64%;
+    width:300px;
+    transform:rotate(0.8deg);
+}
+
+.w8{
+    top:60%;
+    left:34%;
+    width:300px;
+    transform:rotate(0.8deg);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+	</style>
+
+	<!-- Google Font Stuff (optional) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	<link href="https://fonts.googleapis.com/css2?family=Miranda+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap" rel="stylesheet">
+
+	<!-- Drag window using jquery -->
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+	<script>
+	$( function() {
+		$( ".wandow" ).draggable({ handle: ".header", containment: ".outer", scroll: false });
+	} );
+	</script>
+<body>
+
+<div id="enterScreen">
+    <span>ENTER</span>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music/ambiance.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<div class="overlay">
+    <video autoplay loop muted playsinline>
+    </video>
+</div>
+
+<div class="outer">
+	<div class="menu">
+		<a href="sabbat.html" target="contentzone">
+			<img src="https://static.wikia.nocookie.net/v__/images/5/53/Sabbat.png/revision/latest?cb=20190807093609&path-prefix=vtmb" style="height: 90px;">
+			<span class="menu-label">Sabbat</span>
+		</a>
+		<a href="anarch.html" target="contentzone">
+			<img src="https://static.wikia.nocookie.net/v__/images/7/7f/Anarch.png/revision/latest?cb=20190807094921&path-prefix=vtmb" style="height: 90px;">
+			<span class="menu-label">Anarchs</span>
+		</a>
+		<a href="inqui.html" target="contentzone">
+			<img src="https://i.postimg.cc/yx1W2CPF/in-UI.png" style="height: 90px;">
+			<span class="menu-label">Chasseurs</span>
+		</a>
+
+		<a href="camarilla.html" target="contentzone">
+			<img src="https://static.wikia.nocookie.net/v__/images/c/c7/Camarilla.png/revision/latest/scale-to-width-down/200?cb=20160715163032&path-prefix=vtmb" style="height: 90px;">
+			<span class="menu-label">Camarilla</span>
+		</a>
+
+
+	</div>
+
+	<div class="wandow w1">
+		<div class="header ui-draggable-handle">Nothing to see</div>
+		<div class="content" style="background: #000;">
+		<img src="https://i.pinimg.com/736x/b8/20/39/b82039675d8cc237a6b410d13b6a96be.jpg"; style="height:200px";>
+		</div></div>
+
+			<div class="wandow w2">
+		<div class="header ui-draggable-handle">Get closer, get closer</div>
+		<div class="content" style="background: #000;">
+		<img src="https://i.pinimg.com/736x/74/88/2f/74882f99e17258787fe7449071ca39c6.jpg"; style="height:200px";>
+		</div></div>
+
+				<div class="wandow little w3">
+		<div class="header ui-draggable-handle">Un poème à la mer-</div>
+		<div class="content" style="background: #000;">
+		<div class="description" style="font-size: 12px; color:#aeaeae">
+		La marée, immuable et hurlante, bascule,<br>
+Balance l’océan dans l’affreux crépuscule ;<br>
+Et la création n’est qu’un noir tremblement.<br>
+On ne sait quelle vie émeut lugubrement<br>
+L’homme, l’esquif, le mât, l’onde, l’écueil, le havre ;<br>
+Et la lune répand sa lueur de cadavre.<br>
+
+— Victor Hugo		</div></div></div>
+
+
+
+<div class="wandow w4">
+    <div class="header">
+        Murmures du père
+    </div>
+
+    <div class="content">
+        <div id="storyText"></div>
+        <br>
+        <button id="storyButton">
+            Regarder
+        </button>
+    </div>
+</div>
+
+	<div class="wandow main ui-draggable">
+		<div class="header ui-draggable-handle">OUVRE TOI AUX VAGUES.</div>
+		<div class="content">
+			<iframe src="sabbat.html" name="contentzone"></iframe>
+		</div>
+	</div>
+
+	<div class="statusbar">
+		<div class="statusbar-left">♬ Currently Listening To: <a href="https://www.youtube.com/watch?v=sfG0ZV-IRhU" target="_blank">Ocean Death - Baths</a></div>
+		<div class="statusbar-right">
+
+			<!-- Teppy layout credit link (optional) -->
+			<a href="https://teppyslayouts.neocities.org/" target="_blank">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-code"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M7 8l-4 4l4 4"></path><path d="M17 8l4 4l-4 4"></path><path d="M14 4l-4 16"></path></svg>
+			</a>
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+const texts=[
+"Ton reflet dans l'eau est celui du père sombre, observe le.",
+"Au fond de l'océan, il y a de cela des millénaires, il est parti. Trahis par ceux qui devaient l'épauler. Il nous observe, et nous le lui rendons.",
+"Le sang et l’eau ne font qu’un ; Le Père est l’océan lui-même. Rendons-lui ce qu’ils ont volé, Que les flots referment leurs noms.",
+"Qu’ils s’enfoncent, qu’ils se taisent, Que la mer les prenne et les efface. Il a besoin de sang, et nous sommes son bras armé, l'épée de Cain."
+
+];
+const buttonTexts=[
+"Ecouter",
+"Regarder",
+"Accepter",
+"Rejoindre",
+"J'ai compris."
+];
+
+let current=0;
+const textDiv=
+document.getElementById("storyText");
+const button=
+document.getElementById("storyButton");
+function typeText(text){
+textDiv.innerHTML="";
+let i=0;
+const typing=setInterval(()=>{
+textDiv.innerHTML+=text.charAt(i);
+i++;
+if(i>=text.length){
+clearInterval(typing);
+}
+},40);
+}
+
+button.addEventListener("click",()=>{
+typeText(texts[current]);
+current++;
+if(current<buttonTexts.length){
+button.innerText=
+buttonTexts[current];
+}
+else{
+button.style.display="none";
+}});});
+</script>
+
+
+</body></html>

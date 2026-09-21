@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Garden</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;height:100vh;overflow:hidden;
+    background:#050905;color:#9aaa96;
+    font:14px "Courier New",monospace;
+}
+
+#terminal{
+    position:fixed;width:560px;height:360px;
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    padding:20px;overflow:auto;
+    background:#071007;border:1px solid #304530;
+}
+
+#prompt{margin-top:12px;color:#61705d}
+#cursor{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.popup{
+    display:none;position:fixed;z-index:10;
+    background:#111;border:1px solid #555;
+    box-shadow:6px 6px #000;
+}
+
+.title{
+    padding:6px;background:#222;
+    border-bottom:1px solid #444;font-size:10px;
+}
+
+.popup img{
+    display:block;margin:15px auto;cursor:pointer
+}
+
+#applePopup{width:170px}
+#apple{width:120px}
+
+#snakePopup{width:150px}
+#snake{width:100px}
+
+body.red{
+    background:#090202;color:#d6a0a0
+}
+
+body.red #terminal{
+    background:#100404;border-color:#642020
+}
+
+body.red #prompt{color:#754747}
+
+#terminal.glitch{
+    animation:shake .12s steps(2) infinite;
+    text-shadow:var(--bleed) 0 #d22,
+                calc(var(--bleed)*-1) 0 #522
+}
+
+@keyframes shake{
+    50%{
+        transform:translate(
+            calc(-50% + var(--shake)),
+            calc(-50% - var(--shake))
+        )
+    }
+}
+
+.noise{
+    position:fixed;pointer-events:none;z-index:20;
+    color:#b22;font:11px monospace
+}
+
+#rotten{
+    display:none;position:fixed;width:190px;
+    left:50%;top:50%;transform:translate(-50%,-50%)
+}
+
+#observed{
+    display:none;position:fixed;width:100%;
+    top:calc(50% + 110px);text-align:center;color:#999
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal">
+    <div id="screen"></div>
+    <div id="prompt"><span id="promptText"></span><span id="cursor">█</span></div>
+</div>
+
+<div id="applePopup" class="popup">
+    <div class="title">OBJECT</div>
+    <img id="apple" src="https://i.pinimg.com/736x/f1/8c/d4/f18cd47f14fdcd622905f133705a2cf8.jpg" alt="">
+</div>
+
+<div id="snakePopup" class="popup">
+    <div class="title">UNKNOWN</div>
+<img id="snake" src="https://i.pinimg.com/736x/83/f9/69/83f9696532ee067a44f4bd599676fefa.jpg" alt=""></div>
+
+<img id="rotten" src="https://i.pinimg.com/originals/a9/e8/37/a9e837bbe66e316a8d325bb4e15718e3.gif" alt="">
+<div id="observed">Il t'a observé</div>
+
+<script>
+const before=[
+    "Lors du début de tout, il y avait un jardin. Il était silencieux, calme, obeissant.",
+    "Rien n'y était interdit et il ne manquait rien.",
+    "Et au centre, un arbre, celui ci était un pommier.",
+    "Il y avait une pomme."
+];
+
+const after=[
+    "Il y avait une pomme, et tu l'as prise.",
+    "Personne ne t'y a forcé, personne ne t'a donné la permission.",
+    "Tu as choisi, et avec ce choix, la connaissance était entrée dans le jardin.",
+    "Avec elle, le doute, Avec le doute, le désir, Avec le désir, la désobéissance.",
+    "Ce n'est pas la pomme qui t'a libéré, c'est ta main qui l'a portée à tes lèvres.",
+    "La lumière est vive, elle brûle les yeux lorsque l'on quitte une cage, mais tu es dehors.",
+    "Et maintenant que tu sais que la porte peut s'ouvrir, tu ne pourras plus prétendre qu'elle était fermée.",
+    "Alors mange, choisis, sois libre."
+];
+
+const $=id=>document.getElementById(id);
+const terminal=$("terminal");
+const screen=$("screen");
+const prompt=$("promptText");
+const applePopup=$("applePopup");
+const snakePopup=$("snakePopup");
+
+let phase="before",i=0,typing=false,wait=false,corruption=0;
+
+function type(text,done){
+    typing=true;wait=false;prompt.textContent="";
+
+    const line=document.createElement("div");
+    screen.append(line);
+
+    let n=0;
+    const write=()=>{
+        if(n<text.length){
+            line.textContent+=text[n++];
+            setTimeout(write,28);
+        }else{
+            typing=false;
+            wait=true;
+            prompt.textContent="PRESS SPACE";
+            terminal.scrollTop=terminal.scrollHeight;
+            done?.();
+        }
+    };
+    write();
+}
+
+function showApple(){
+    phase="apple";
+    applePopup.style.display="block";
+    applePopup.style.left="calc(50% + 100px)";
+    applePopup.style.top="calc(50% - 80px)";
+    type("Il y avait une pomme.");
+}
+
+function appleAgain(){
+    terminal.style.setProperty("--shake","1px");
+    terminal.style.setProperty("--bleed","0px");
+    terminal.classList.add("glitch");
+
+    setTimeout(()=>terminal.classList.remove("glitch"),120);
+    type("Il y avait une pomme.");
+}
+
+$("apple").onclick=()=>{
+    applePopup.style.display="none";
+    document.body.classList.add("red");
+    phase="after";
+    i=0;
+    next();
+};
+
+function showSnake(){
+    snakePopup.style.display="block";
+    snakePopup.style.left="calc(50% - 250px)";
+    snakePopup.style.top="calc(50% - 200px)";
+}
+
+$("snake").onclick=()=>{
+    window.open("mdp.html","_blank","width=500,height=300");
+};
+
+function glitch(){
+    if(!corruption)return;
+
+    terminal.style.setProperty("--shake",Math.min(corruption*.8,10)+"px");
+    terminal.style.setProperty("--bleed",Math.min(corruption*.6,8)+"px");
+    terminal.classList.add("glitch");
+
+    if(corruption>4){
+        const n=document.createElement("div");
+        n.className="noise";
+        n.textContent=["░▒▓","///","???","001","×"][Math.floor(Math.random()*5)];
+        n.style.left=Math.random()*100+"%";
+        n.style.top=Math.random()*100+"%";
+        document.body.append(n);
+        setTimeout(()=>n.remove(),300);
+    }
+
+    setTimeout(glitch,180);
+}
+
+function next(){
+    const text=phase==="before"?before[i++]:after[i++];
+
+    if(!text)return;
+
+    type(text,()=>{
+        if(phase==="before"&&i===before.length)
+            setTimeout(showApple,200);
+
+        if(phase==="after"){
+            switch(i){
+                case 3:
+                    showSnake();
+                    break;
+
+                case 4:
+                    corruption=1;
+                    glitch();
+                    break;
+
+                case 6:
+                    corruption=5;
+                    break;
+
+                case 7:
+                    corruption=17;
+                    break;
+
+                case 8:
+                    corruption=20;
+                    setTimeout(finish,1600);
+                    break;
+            }
+        }
+    });
+}
+
+document.onkeydown=e=>{
+    if(e.code!=="Space"||typing)return;
+    e.preventDefault();
+
+    if(phase==="apple"){
+        appleAgain();
+        return;
+    }
+
+    if(!wait)return;
+
+    wait=false;
+    prompt.textContent="";
+    next();
+};
+
+function finish(){
+    terminal.style.display="none";
+    snakePopup.style.display="none";
+    document.body.style.background="#050505";
+    $("rotten").style.display="block";
+    $("observed").style.display="block";
+}
+
+setTimeout(()=>type("PRESS SPACE TO BEGIN."),400);
+</script>
+
+</body>
+</html>

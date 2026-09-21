@@ -1,0 +1,78 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="page-arrow right">
+    <a href="inga2.html">→</a>
+</div>
+
+
+<div id="room">
+
+    <img src="1.png" usemap="#image-map">
+
+
+    <map name="image-map">
+
+        <area
+            coords="361,159,456,262"
+            shape="rect"
+            onclick="talk('chair')"
+        >
+
+        <area
+            coords="712,14,805,126"
+            shape="rect"
+            onclick="talk('window')"
+        >
+
+        <area
+            coords="1020,510,1126,594"
+            shape="rect"
+            onclick="talk('chat')"
+        >
+
+        <area
+            coords="1216,15,1322,178"
+            shape="rect"
+            onclick="talk('poster')"
+        >
+
+    </map>
+
+
+    <div id="dialog">
+
+        <img
+            id="speaker"
+            src="https://i.postimg.cc/Zn8ZdS2Q/image-2026-09-03-100531968.png"
+        >
+
+        <div id="dialog-content">
+
+            <div id="text"></div>
+
+            <span>suite</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="dialogues.js"></script>
+<script src="room.js"></script>
+
+</body>
+</html>
+```
+

@@ -1,0 +1,293 @@
+/* these are the main colors and header image
+   replace them with anything you want! */
+:root {
+  --link-color: #6452e8;
+  --link-bg-color: #9ae7ff;
+  --clicked-color: #808080;
+  --site-bg: #BFBFBF; /*or url('images/bgfilename.png') for an image*/
+  --border-color: #80808080;
+  --paper: white;
+  --text-color: #404040;
+  /*these next two colors are for when you highlight text on the page*/
+  --selected-bg: #fffabd;
+  --selected-text: #f7649c;
+}
+
+/*the noto serif font is a google font, available here: 
+ * https://fonts.google.com/noto/specimen/Noto+Serif
+ * 
+ * if you don't include these files in a "fonts" folder on your website, your browser will try to substitute the next closest thing...
+*/
+@font-face {
+    font-family: Noto Serif;
+    src: url('/fonts/NotoSerif-SemiBold.ttf');
+}
+@font-face {
+    font-family: Noto Serif;
+    src: url('/fonts/NotoSerif-Black.ttf');
+    font-weight: bold;
+}
+
+html {scroll-behavior: smooth;}
+::selection {
+  background: var(--selected-bg);
+  color: var(--selected-text);
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--site-bg);
+  color: var(--text-color);
+  /*change the font here if you want*/
+  font-family: 'Noto Serif', Times, serif;
+  /*16px is a good default web font size but i went a bit smaller for the cute newspaper styling*/
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+header {
+  background-color: var(--article-bg); padding-top:16px;
+  /*i put a black line at the top of the page but you can remove it here*/
+  border-top: 4px solid var(--text-color);
+}
+/*this is where i put the icon*/
+header img {
+  /*it can be on the left or right*/
+  float:left;
+  /*change the image size here*/
+  max-width:100px;
+  /*and the spacing around the sides with margin-inline*/
+  margin-inline: 20px;
+}
+header p {
+  margin-block:12px;
+  padding-left:1em;
+}
+
+/*page title*/
+h1 {
+  font-size:4em;
+  margin:0;
+  padding:10px;
+}
+/*section title*/
+h2 {font-size:2.5em;
+  margin-block:12px;
+  padding:10px;
+  border-bottom: 2px solid var(--text-color);
+}
+/*column titles*/
+h3 { font-size:1.5em;
+  border-bottom: 2px solid var(--text-color);
+}
+/*and a smaller heading for within a column, this one has no underline*/
+h4 {
+  font-size:1.2em;
+  margin-bottom:8px;
+  margin-top:14px;
+}
+
+/*this is the page divider, hr means horizontal rule*/
+hr {
+  border: 1px solid var(--border-color);
+  margin-block: 2em;
+}
+
+/*uncomment this line for sharper images
+ img {image-rendering: pixelated;} */
+
+/*use this class to make the heading font a certain size, it's meant to be styled as like a newspaper headline*/
+.feature {
+  font-size: 2em;
+  margin-top:0;
+}
+/*this just puts a grey box around your content*/
+.banner {
+  border: 2px solid var(--border-color);
+  padding: 8px;
+}
+
+/*the bg of the "newspaper" part, i used an exact width for it but you can change that*/
+.container {
+  background-color: var(--paper);
+  margin: auto;
+  width: 960px;
+  padding: .5em;
+}
+/*if you change the width, make sure you change it for the footer too*/
+footer {
+  width:960px;
+  margin:auto;
+}
+
+/*link styling! they're bold and match the text color until you hover them*/
+nav a,
+main a {
+  font-weight: bold;
+  color: var(--text-color);
+}
+/*visited links in the newspaper section turn grey instead of black*/
+main a:visited {
+  color: var(--clicked-color);
+}
+/*and hovering a link gives it a highlighted background*/
+nav a:hover,
+main a:hover {
+  background-color:var(--link-bg-color)
+}
+
+/*all the dates are bolded by default*/
+time {font-weight: bold;}
+/*and this is for the in-article styling, which i already explained on the html side*/
+article time::after {
+  content: "•";
+  margin-left:.3em;
+}
+/*justify text and hyphenate words automatically! wait this was pretty self-explanatory when you look at it... guess i didn't need to explain...*/
+article {
+  text-align: justify;
+  hyphens: auto;
+}
+/*oh but if you don't use the article tags, you can change it to a class and use that instead? there we go, i had something helpful to say.*/
+
+/*for white-on-black sections*/
+.inverted {
+  color: var(--paper);
+  background-color: var(--text-color);
+  padding:.4em 1em;
+}
+/*no underline for the links in these blocks...*/
+.inverted a {
+  font-weight: bold;
+  color: var(--paper);
+  text-decoration: none;
+}
+/*...unless you hover over them*/
+.inverted a:hover {
+  background-color: var(--link-color);
+  text-decoration: underline;
+}
+
+/*page navigation, these are the links at the top that scroll to different parts of the page.*/
+nav {
+  border-block: 2px solid var(--text-color);
+  padding-block: 6px;
+  margin-block: 4px;
+}
+/*the list wraps around if it gets too long*/
+nav ul {
+  display: flex; flex-direction: row; flex-wrap: wrap; 
+  margin: 0;
+  padding: 0;
+  list-style-type: none;}
+/*automatically add | dividers between list items*/
+nav li::after {content: "|"; padding-inline:6px;}
+/*except for on the last one*/
+nav li:last-child::after {content: "";}
+
+/*regular list styling on the page needed a bit of spacing between items*/
+main li {padding-bottom:1em;}
+
+/*images!!!!! "photo" takes up the width of the column.*/
+.photo {
+  max-width:100%;
+  display:block;
+  margin:auto;
+}
+/*the small version takes up half of the column, with text to the left and right*/
+.small-photo {
+  max-width:50%;
+  float:left;
+  margin-right: 1em;
+}
+.small-photo-right {
+  max-width:50%;
+  float:right;
+  margin-left: 1em;
+}
+/*since we're using floats, it's good to have a clearfix class*/
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/*just realized i didn't have a class for centered images... this will work.*/
+.center {
+  /*change the max-width to whatever you want, having it at 80% just makes sure if it's too wide it will be scaled down and look centered in the div*/
+  max-width:80%;
+  display:block;
+  margin:auto;
+}
+
+/*you don't even need to use this pic class, i honestly just needed it for my page and left it in here. it's just a guaranteed-small version of small-photo since that one can be as wide as half the column, i wanted to limit that more.*/
+.pic img {
+  float: left;
+  max-width:112px;
+  margin-right:12px;
+}
+
+/*here we go, columns time!!! it's a grid layout, baby!!!!*/
+.columns {
+  width: 100%;
+  display: grid;
+  /*4 total columns, "fr" just means fraction... so width of 1/4th of the page!*/
+  grid-template-columns: repeat(4, 1fr);
+}
+/*i used this guide to help me understand css grids lol:
+ * https://css-tricks.com/snippets/css/complete-guide-grid/
+ * */
+
+.fullwidth,
+.col {width: 100%;}
+/*give each column some padding... make sure to use section tags in the html for each column tho!*/
+.fullwidth,
+.columns section {
+  margin: 0;
+  padding: 8px 12px;
+}
+/*this puts a vertical grey line between the sections*/
+.bordered section {
+  border-right: 2px solid var(--border-color);
+}
+/*except for the last one*/
+.bordered section:last-child {border-right: none;}
+
+/*these all place the wider columns in the right sections of the grid*/
+.left-2col {grid-column: 1/span 2;}
+.middle-2col {grid-column: 2/span 2;}
+.right-2col {grid-column: 3/span 2;}
+.left-3col {grid-column: 1/span 3;}
+.right-3col {grid-column: 2/span 3;}
+/*the syntax is like start at column x, go for y columns*/
+
+/*for the "return to top" link at the bottom of the page*/
+.end-nav {
+  margin:1em;
+  text-align:center;
+}
+
+/*footer style... you can remove this if you want, i just liked being able to scroll down a little farther on the page cuz i feel like it helps people actually read what's down there*/
+#footer {padding-bottom: 32px;}
+
+/*the responsive section!*/
+@media only screen and (max-width: 800px) {
+  /*my original header was too wide for mobile and wasn't hyphenating, you might not need to make your top heading that much smaller but idk i think it looks better like this probably*/
+  h1 {font-size:2.5em;}
+  
+  /*instead of 960px, make sure the content is exactly 100% of the screen*/
+  footer,
+  .container {max-width:100%;}
+  /*and turn all the columns into one big long column instead*/
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  /*make the small photos smaller.......*/
+  .small-photo,
+  .small-photo-right {max-width:25%;}
+  /*and get rid of the borders between columns since we don't need em anymore*/
+  .bordered section {border-right: none;}
+}

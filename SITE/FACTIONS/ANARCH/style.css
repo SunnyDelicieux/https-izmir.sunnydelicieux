@@ -1,0 +1,421 @@
+body, html {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	font-family: Calibri, sans-serif;
+	font-size: 13px;
+	background-color: #364874;
+	color: #252547;
+	background-repeat: repeat;
+}
+
+::-webkit-scrollbar {
+	width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+	background: #91B291; 
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #2D345B; 
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}
+
+
+* {
+	scrollbar-width: thin; 
+	scrollbar-color: #2D345B #91B291; 
+}
+
+.outer {
+	background-color: #364874;
+	border: 1px solid #252547;
+	border-radius: 4px;
+	width: 900px;
+	height: 600px;
+	margin: auto;
+	top: 50px;
+	position: relative;
+	box-shadow: 2px 2px 5px #252547;
+}
+
+.header {
+	background-color: #2D345B;
+	color: #DBE1B6;
+	padding: 10px 16px;
+	border-bottom: 1px solid #252547;
+}
+
+.subtitle {
+	display: inline-block;
+	opacity: 0.5;
+	margin-left: 6px;
+}
+
+.sidebar {
+	margin: 12px 16px;
+	height: 494px;
+	width: 200px;
+	background-color: #2D345B;
+	box-sizing: border-box;
+	border-radius: 4px;
+	display: inline-block;
+	position: absolute;
+	border: 1px solid #252547;
+}
+
+.menu {
+	border-bottom: 1px solid #4C638F;
+}
+
+.menu a {
+	color: #DBE1B6;
+	text-decoration: none;
+	margin-left: 8px;
+	display: inline-block;
+	padding: 8px 8px;
+}
+
+.menu a:hover {
+	background-color: #4C638F;
+	color: #DBE1B6;
+}
+
+.menu::after {
+	content: " ";
+	display: block;
+	border-bottom: 1px solid #252547;
+}
+
+.content {
+	background-color: #6793A3;
+	height: 494px;
+	width: 653px;
+	margin: 12px 16px;
+	position: absolute;
+	left: 216px;
+	border-radius: 4px;
+	padding: 12px 16px;
+	box-sizing: border-box;
+	overflow: auto;
+	line-height: 1.4rem;
+	border: 1px solid #2D345B;
+}
+
+.main {
+	position: relative;
+}
+
+h1 {
+	color: #DBE1B6;
+	font-size: 24px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	padding: 6px 12px;
+	border-bottom: 3px double #91b291;
+	padding: 0;
+	padding-bottom: 6px;
+	margin: 0;
+	margin-top: 6px;
+	margin-bottom: 12px;
+	text-shadow: 1px 1px 1px #2d345b;
+}
+
+h1::before {
+	content: '\25C6';
+	color: #91b291;
+	margin-right: 5px;
+}
+
+h2 {
+	background: #4c638f;
+	color: #dbe1b6;
+	font-size: 14px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	border-bottom: 2px solid #364874;
+	letter-spacing: 0.5px;
+	border-left: 3px solid #91b291;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+h3 {
+	margin-top: 24px;
+	margin-bottom: 8px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #252547;
+}
+
+h3::before {
+	content: '\25C6';
+	color: #91b291;
+	margin-right: 5px;
+}
+
+.message {
+	background-color: #91B291;
+	border-radius: 6px;
+	padding: 12px 12px;
+	display: inline-block;
+	width: 85%;
+	margin-left: 10px;
+	box-sizing: border-box;
+	min-height: 60px;
+	position: relative;
+	z-index: 2;
+	border: 1px solid #364874;
+}
+
+.chat-me .message {
+	background-color: #C3C89B;
+}
+
+/*.chat-me::after {
+content: " ";
+display: block;
+height: 20px;
+width: 20px;
+background-color: #C3C89B;
+position: absolute;
+left: 70px;
+top: 12px;
+transform: rotate(45deg);
+z-index: 1;
+}
+*/
+.avatar {
+	height: 60px;
+	width: 60px;
+	background-color: #364874;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 4px;
+	border: 1px solid #2D345B;
+	background-image: url('pfp2.png');
+}
+
+.chat-lil .avatar {
+	height: 60px;
+	width: 60px;
+	background-color: #364874;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 4px;
+	border: 1px solid #2D345B;
+	background-image: url('pfp.png');
+}
+
+.chat-sun .avatar {
+	height: 60px;
+	width: 60px;
+	background-color: #364874;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 4px;
+	border: 1px solid #2D345B;
+	background-image: url('sun.png');
+}
+
+.chat-snail .avatar {
+	height: 60px;
+	width: 60px;
+	background-color: #364874;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 4px;
+	border: 1px solid #2D345B;
+	background-image: url('fire.png');
+}
+
+
+.chat-doll .avatar {
+	height: 60px;
+	width: 60px;
+	background-color: #364874;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 4px;
+	border: 1px solid #2D345B;
+	background-image: url('doll.png');
+}
+
+
+.chat {
+	margin: 12px 0;
+	position: relative;
+}
+
+.title {
+	color: #C3C89B;
+	border-bottom: 1px solid #C3C89B;
+	display: inline-block;
+	padding: 3px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin: 12px auto;
+}
+
+img {
+	max-width: 100%;
+}
+
+.sepia {
+	filter: sepia(1) hue-rotate(25deg);
+	transition: 0.3s all;
+}
+
+.sepia:hover {
+	filter: unset;
+}
+
+.rounded {
+	border-radius: 4px;
+}
+
+iframe.updates {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: 3px;
+}
+
+.width-50 {
+	max-width: 50%;
+}
+
+h1 + i {
+	color: #364874;
+}
+
+a.button {
+	display: inline-block;
+	background: #4c638f;
+	border-bottom: 4px solid #364874;
+	border-right: 4px solid #364874;
+	border-top: 4px solid #6793a3;
+	border-left: 4px solid #6793a3;
+	padding: 3px 6px;
+	color: #dbe1b6;
+	text-decoration: none;
+	border-radius: 2px;
+	outline: 1px solid #364874;
+}
+
+a.button:hover {
+	border-bottom: 4px solid #6793a3;
+	border-right: 4px solid #6793a3;
+	border-top: 4px solid #364874;
+	border-left: 4px solid #364874;
+}
+
+.disabled {
+	opacity: 0.5;
+}
+
+
+ul {
+	margin: 0.5rem 0;
+}
+
+.photo-card {
+	height: 120px;
+	width: 120px;
+	background-size: cover;
+	display: inline-block;
+	border-radius: 6px;
+	border: 1px solid #364874;
+	margin-right: 6px;
+	opacity: 0.6;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%; 
+}
+
+.border-0 td {
+	border: 0;
+}
+
+table, th, td {
+	border: 1px solid #2d345b;
+}
+
+th, td {
+	padding: 8px 10px; 
+	text-align: left; 
+	background: #c3c89b;
+	vertical-align: top;
+}
+
+th {
+	background: #364874;
+	color: #dbe1b6;
+}
+
+.margin {
+	margin-left: 75px;
+}
+
+.card {
+	background: #c3c89b;
+	display: inline-block;
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #364874;
+	padding: 12px;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+	padding-left: 12px;
+}
+
+li {
+	padding-left: 20px;
+	position: relative;
+}
+
+li::before {
+	content: "â†’";
+	color: #6793a3;
+	font-weight: bold;
+	position: absolute;
+	left: 0;
+}
+
+.w-50 {
+	max-width: 50%;
+}
+
+.rounded {
+	border-radius: 4px;
+}
+
+.border {
+	border: 1px solid #252547;
+}
+
+.border-0 {
+	border: 0;
+}
+
+.light {
+	background: #91b291;
+	padding: 12px 8px;
+	border-radius: 4px;
+}

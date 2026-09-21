@@ -1,0 +1,660 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color: #c7d5e0;
+	background: #0e141b url('img/carbon_fibre.webp');
+}
+
+body {
+	padding: 15px 0;
+}
+
+a {
+	color: #66c0f4;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+
+/* =========================
+   MAIN STEAM PROFILE
+   ========================= */
+
+.steam-page {
+	position: relative;
+	width: 720px;
+	margin: auto;
+	background: #171a21;
+	border: 1px solid #000;
+	box-shadow: 0 0 25px #000;
+}
+
+
+/* =========================
+   PROFILE HEADER
+   ========================= */
+
+.profile-header {
+	display: flex;
+	gap: 12px;
+	padding: 12px;
+	background: linear-gradient(
+		to bottom,
+		#1b2838,
+		#172331
+	);
+	border-bottom: 1px solid #000;
+}
+
+.profile-avatar {
+	width: 110px;
+	height: 110px;
+	flex-shrink: 0;
+}
+
+.profile-avatar img {
+	width: 110px;
+	height: 110px;
+	object-fit: cover;
+	border-radius: 2px;
+	border: 1px solid #3d4d5b;
+}
+
+.profile-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.profile-name {
+	color: #fff;
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: normal;
+	margin-bottom: 3px;
+}
+
+.profile-status {
+	color: #8bc53f;
+	font-size: 11px;
+	margin-bottom: 12px;
+}
+
+.online {
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	margin-right: 4px;
+	background: #75b022;
+	border-radius: 50%;
+}
+
+.profile-location {
+	color: #8f98a0;
+	margin-bottom: 14px;
+}
+
+.profile-link {
+	font-size: 11px;
+}
+
+.currently-playing {
+	width: 190px;
+	align-self: flex-start;
+	padding: 9px;
+	background: #16202d;
+	border: 1px solid #2a475e;
+}
+
+.playing-title {
+	color: #67c1f5;
+	font-size: 9px;
+	margin-bottom: 5px;
+}
+
+.playing-game {
+	color: #fff;
+	font-size: 12px;
+}
+
+.playing-time {
+	color: #7a8b99;
+	font-size: 10px;
+	margin-top: 3px;
+}
+
+
+/* =========================
+   PROFILE CONTENT
+   ========================= */
+
+.profile-content {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 10px;
+}
+
+.profile-main {
+	width: 455px;
+}
+
+.profile-side {
+	width: 235px;
+}
+
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+.steam-section {
+	margin-bottom: 10px;
+	background: #1b2838;
+	border: 1px solid #2a475e;
+}
+
+.steam-title {
+	padding: 6px 8px;
+	background: #19242d;
+	border-bottom: 1px solid #2a475e;
+	color: #66c0f4;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.steam-title span {
+	float: right;
+	color: #6d8290;
+	font-size: 9px;
+	font-weight: normal;
+}
+
+
+/* =========================
+   FAVORITE GAMES
+   ========================= */
+
+.games {
+	padding: 4px;
+}
+
+.game {
+	display: flex;
+	align-items: center;
+	height: 34px;
+	margin-bottom: 3px;
+	padding: 3px;
+	background: #16202d;
+}
+
+.game:last-child {
+	margin-bottom: 0;
+}
+
+.game:hover {
+	background: #22394d;
+}
+
+.game img {
+	width: 72px;
+	height: 27px;
+	object-fit: cover;
+	flex-shrink: 0;
+	margin-right: 7px;
+	border-radius: 1px;
+}
+
+.game-name {
+	flex: 1;
+	min-width: 0;
+	color: #d6d7d8;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.game-hours {
+	color: #66c0f4;
+	font-size: 10px;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about {
+	padding: 9px 10px;
+	color: #acb2b8;
+	line-height: 1.45;
+}
+
+.about p {
+	margin: 0 0 8px;
+}
+
+.about p:last-child {
+	margin-bottom: 0;
+}
+
+.quote {
+	color: #7a8b99;
+	font-style: italic;
+}
+
+
+/* =========================
+   RECENTLY PLAYED
+   ========================= */
+
+.recent-game {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 5px;
+	border-bottom: 1px solid #202d3a;
+}
+
+.recent-game:last-child {
+	border-bottom: 0;
+}
+
+.recent-game img {
+	width: 72px;
+	height: 27px;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.recent-game div {
+	flex: 1;
+	min-width: 0;
+}
+
+.recent-game strong {
+	display: block;
+	color: #d6d7d8;
+	font-size: 11px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.recent-game small {
+	display: block;
+	color: #6d8290;
+	font-size: 9px;
+	margin-top: 2px;
+}
+
+.recent-game > span {
+	color: #66c0f4;
+	font-size: 9px;
+}
+
+
+/* =========================
+   FRIENDS
+   ========================= */
+
+.friend {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 5px;
+	border-bottom: 1px solid #202d3a;
+}
+
+.friend:last-child {
+	border-bottom: 0;
+}
+
+.friend img {
+	width: 38px;
+	height: 38px;
+	object-fit: cover;
+	border-radius: 2px;
+}
+
+.friend div {
+	min-width: 0;
+}
+
+.friend a {
+	display: block;
+	font-size: 11px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.friend a:hover {
+	text-decoration: underline;
+}
+
+.friend small {
+	display: block;
+	margin-top: 2px;
+	color: #6d8290;
+	font-size: 9px;
+}
+
+
+/* =========================
+   PROFILE STATS
+   ========================= */
+
+.profile-stat {
+	display: flex;
+	justify-content: space-between;
+	padding: 6px 9px;
+	border-bottom: 1px solid #202d3a;
+}
+
+.profile-stat:last-child {
+	border-bottom: 0;
+}
+
+.profile-stat span {
+	color: #8f98a0;
+}
+
+.profile-stat strong {
+	color: #d6d7d8;
+	font-weight: normal;
+}
+
+
+/* =========================
+   MUSIC
+   ========================= */
+
+.music {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px;
+}
+
+.music-note {
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	background: #16202d;
+	color: #66c0f4;
+	font-size: 17px;
+}
+
+.music strong {
+	display: block;
+	color: #d6d7d8;
+	font-size: 10px;
+}
+
+.music small {
+	display: block;
+	color: #6d8290;
+	font-size: 9px;
+	margin-top: 2px;
+}
+
+
+/* =========================
+   FAKE STEAM CHAT
+   ========================= */
+
+.chat-window {
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+
+	width: 320px;
+	height: 410px;
+
+	display: flex;
+	flex-direction: column;
+
+	background: #1b2838;
+	color: #d6d7d8;
+
+	border: 1px solid #000;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+
+	z-index: 9999;
+
+	opacity: 0;
+	transform: translateY(15px);
+	pointer-events: none;
+
+	transition:
+		opacity 0.18s ease,
+		transform 0.18s ease;
+}
+
+.chat-window.open {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+
+/* =========================
+   CHAT HEADER
+   ========================= */
+
+.chat-header {
+	height: 52px;
+	min-height: 52px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 0 10px;
+
+	background: #171d25;
+	border-bottom: 1px solid #000;
+}
+
+.chat-user {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.chat-user img {
+	width: 34px;
+	height: 34px;
+	object-fit: cover;
+	border-radius: 2px;
+}
+
+.chat-user strong {
+	display: block;
+	color: #fff;
+	font-size: 12px;
+}
+
+.chat-user small {
+	display: block;
+	margin-top: 2px;
+	color: #67c1f5;
+	font-size: 9px;
+}
+
+.chat-online {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	margin-right: 3px;
+	border-radius: 50%;
+	background: #57cbde;
+}
+
+#chat-close {
+	padding: 2px 6px;
+	border: 0;
+	background: transparent;
+	color: #777;
+	font-size: 20px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+#chat-close:hover {
+	color: #fff;
+}
+
+
+/* =========================
+   CHAT MESSAGES
+   ========================= */
+
+.chat-messages {
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	padding: 10px;
+
+	overflow-y: auto;
+
+	background: #1b2838;
+}
+
+.chat-message {
+	max-width: 78%;
+	padding: 6px 9px;
+
+	font-size: 11px;
+	line-height: 1.35;
+
+	border-radius: 2px;
+
+	word-wrap: break-word;
+}
+
+.chat-message.them {
+	align-self: flex-start;
+	background: #2a475e;
+	color: #d6d7d8;
+}
+
+.chat-message.me {
+	align-self: flex-end;
+	background: #1a9fff;
+	color: #fff;
+}
+
+
+/* =========================
+   CHAT INPUT
+   ========================= */
+
+.chat-input {
+	display: flex;
+	padding: 7px;
+
+	background: #171d25;
+	border-top: 1px solid #000;
+}
+
+.chat-input input {
+	flex: 1;
+	min-width: 0;
+
+	padding: 7px;
+
+	border: 1px solid #000;
+	outline: none;
+
+	background: #101822;
+	color: #fff;
+
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+}
+
+.chat-input input::placeholder {
+	color: #687786;
+}
+
+.chat-input input:focus {
+	border-color: #66c0f4;
+}
+
+.chat-input button {
+	margin-left: 5px;
+	padding: 0 10px;
+
+	border: 0;
+
+	background: #5c7e10;
+	color: #d6e8a8;
+
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+
+	cursor: pointer;
+}
+
+.chat-input button:hover {
+	background: #75a313;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 760px) {
+
+	body {
+		padding: 0;
+	}
+
+	.steam-page {
+		width: 100%;
+		border-left: 0;
+		border-right: 0;
+	}
+
+	.profile-content {
+		flex-direction: column;
+	}
+
+	.profile-main,
+	.profile-side {
+		width: 100%;
+	}
+
+	.currently-playing {
+		display: none;
+	}
+
+	.chat-window {
+		position: fixed;
+		right: 10px;
+		bottom: 10px;
+		width: calc(100% - 20px);
+		height: 450px;
+	}
+
+}

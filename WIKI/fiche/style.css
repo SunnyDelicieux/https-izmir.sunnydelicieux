@@ -1,0 +1,515 @@
+:root {
+  /*change these colors to suit your site's aesthetic!*/
+  --text-color: #e8dcc0;
+  --main-bg-color: #1c1208;
+
+  /*background for the top header and page footer*/
+  --banner-color: #161008;
+  --banner-text-color: #e8dfc8;
+
+  /*for the main border around main and the bio table*/
+  --border-color: #3a2810;
+
+  /*for h4 headings*/
+  --subsection-border-color: #5a4020;
+  --comment-border-color: #2c1d0d;
+
+  /*used in various places for more than just headings... sorry lol*/
+  --heading-color: #2e1e0e;
+
+  --link-color: #c09050;
+
+  /*an alternate link color used in various places*/
+  --subtle: #a07840;
+
+  /*for the spoiler tag in the gallery*/
+  --tag-color: #2b1b0d;
+
+  /*hovering the spoiler tag, and the bg for "spoiler"-class blocks*/
+  --highlight: #2a1d0f;
+
+  /*bio table colors*/
+  --th-color: #24170b;
+  --td-odd-color: #2a1b0d;
+  --td-even-color: #332010;
+
+  /*nice pastels for your convenience*/
+  --red: #c09050;
+  --orange: #c09050;
+  --gold: #c09050;
+  --green: #c09050;
+  --blue: #c09050;
+  --purple: #c09050;
+  --pink: #c09050;
+}
+
+body {
+  /*change the page font here*/
+  font-family: Verdana, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  color: var(--text-color);
+  }
+
+/*some quality-of-life styles*/
+html {scroll-behavior: smooth;}
+details > summary {cursor: pointer;}
+* {box-sizing: border-box;}
+
+/*highlighted text styles*/
+::selection {background:#ceb38f;
+  color: #130000;}
+
+/*links*/
+main a {color: var(--link-color);}
+main a:visited {color: var(--subtle);}
+main a:hover {color: var(--link-color);}
+a:hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+header, footer {
+  background: var(--banner-color);
+  color: var(--banner-text-color);
+}
+header h1 {
+  margin: 0;
+  padding: 12px 24px;
+  /*making the max width match <main>*/
+  max-width: 900px;
+  /*uncomment this line if you want to center your top header*/
+  /*text-align: center;*/
+}
+header a {
+  text-decoration: none;
+  color: var(--banner-text-color);
+}
+header a:visited, 
+header a:hover {color: var(--banner-text-color);}
+
+main {
+  width: 900px;
+  max-width: 100%;
+  background: var(--main-bg-color);
+  border: 3px solid var(--border-color);
+  border-radius: .25em;
+  margin: 20px auto;
+  padding: 12px 48px;
+}
+/*some spacing for list elements*/
+li {margin-bottom: 4px;}
+
+/*for the 32x32 character icon*/
+.icon {
+  height: 32px;
+  width: 32px;
+  border-radius: .2em;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-right: 8px;
+  /*remove this if you're not using pixel art*/
+  image-rendering: pixelated;
+}
+/*the page heading at the top of main*/
+.character-name {
+  background-color: var(--heading-color);
+  padding: .5em;
+  font-size: 24px;
+}
+
+/*all the section headings*/
+main h2,
+main h3 {
+  background-color: var(--heading-color);
+  padding: .4em .5em;
+}
+/*and subsections*/
+main h4 {border-bottom: 2px dashed var(--subsection-border-color);}
+
+/*detailed list elements (for listing other characters under "relationships"*/
+dt {font-weight: bold;}
+dd {margin-bottom: 8px;}
+
+/*make sure images don't go out of our container*/
+main img,
+/*might as well limit the portrait image too actually*/
+.bio img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+/*character bio floats to the right!*/
+.bio {
+  float: right;
+  border: 2px solid var(--border-color);
+  margin-left: 16px;
+  max-width: 280px;
+  /*bg color isnt shown unless your portrait image is transparent*/
+  background: var(--main-bg-color);
+}
+/*clearfix, if you don't know what that means don't worry about it*/
+.bio::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/*for the table, overflow makes it scrollable in case you write a lot*/
+.bio table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+.bio th,
+.bio td {
+  padding: 0.4em;
+  /*uhhhh i think i added this in case you write multi-line answers*/
+  vertical-align: top;
+}
+/*i didn't use table headings, but you might!*/
+.bio th {
+  background: var(--th-color);
+  color: white;
+}
+.bio td {
+  font-size: small;
+  /*if your entries get cut off, itll show the text with a "..." at the end*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.bio td:first-of-type {
+  font-weight: bold;
+  /*can change this to be 50% if you want the columns to be even*/
+  width: 35%;
+}
+/*alternate the colors~*/
+.bio tr:nth-child(odd) {background: var(--td-odd-color);}
+.bio tr:nth-child(even) {background: var(--td-even-color);}
+
+/*this is shown in the info section, but you don't have to use it*/
+.quote {
+  border-left: 6px solid var(--heading-color);
+  padding: .5em 1em;
+  font-style: italic;
+}
+
+/*for the spoiler <details> elements to hide story sections*/
+.spoilers {
+  background: var(--highlight);
+  border: dashed 2px var(--link-color);
+  margin: .5em 2px;
+  padding: .5em;
+}
+.spoilers summary {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/*tabbed gallery pages tutorial*/
+/*https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/*/
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--pages), minmax(150px, 1fr));
+  grid-template-rows: auto 1fr;
+  column-gap: 1rem;
+}
+
+.gallery-page {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-column: 1 / -1;
+  grid-row: 1 / span 3;
+}
+.gallery-page::details-content {
+  grid-row: 2; /* position in the second row */
+  grid-column: 1 / -1; /* cover all three columns */
+  padding: 1rem;
+}
+.gallery-page:not([open])::details-content {display: none;}
+
+.gallery-page > summary {
+  grid-column: var(--n) / span 1;
+  grid-row: 1; /* position in the first row */
+  display: grid;
+  padding: .5rem;
+  border: 2px solid var(--heading-color);
+  text-align: center;
+  /*uncomment to add animation*/
+  /*transition: .2s all;*/
+}
+.gallery-page[open] > summary {
+  background: var(--tag-color);
+  font-weight: bold;
+}
+.gallery-page > summary:hover {
+  background: var(--highlight);
+  border: 2px solid var(--subtle);
+  /*uncomment to add animation*/
+  /*transition: .2s all;*/
+}
+/*these make sure you can click everything inside all pages*/
+.gallery-page a,
+.gallery-page details,
+.gallery-page summary {z-index: 1;}
+
+/*for the image buttons*/
+/*we want them to be inside a flex grid so they display nicely*/
+.img-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/*individual button styles*/
+.img-gallery details > summary,
+.img-gallery figure {
+  margin: 10px;
+  max-width: 200px;
+  border: 2px solid var(--border-color);
+  background: white;
+}
+.img-gallery details > summary:hover,
+.img-gallery figure:hover {
+  border: 2px solid var(--link-color);
+}
+/*limit the size on these things*/
+.img-gallery img {
+  max-height: 200px;
+  max-width: 196px;
+}
+/*and the caption style*/
+.img-gallery figcaption {
+  font-size: small;
+  text-align: center;
+  margin: auto;
+  padding: 4px 20px;
+  background: var(--heading-color);
+  color: var(--text-color);
+}
+/*the whole element is wrapped in a link to view the full image, but we don't want to style the text like one*/
+.img-gallery a {text-decoration: none;}
+.img-gallery details > summary {
+  background: var(--heading-color);
+  padding: 40px;
+  list-style-type: none;
+  text-align: center;
+  font-weight: bold;
+}
+/*hide the spoiler tag once it's clicked*/
+.img-gallery details[open] > summary {display:none;}
+
+/*fake comments section!!!!*/
+.comment {
+  border: 2px solid var(--comment-border-color);
+  border-radius: .3em;
+  padding: .5em 1em;
+  margin-bottom: 10px;
+}
+/*indent replies to differentiate them from the original comment*/
+.reply {margin-left: 20px;}
+/*for the "view replies" button*/
+.reply summary {
+  text-decoration: underline;
+  list-style-type: none;
+  color: var(--subtle);
+}
+/*make it act like a link/button*/
+.reply summary:hover {
+  color: var(--subtle);
+  text-decoration: none;
+}
+/*hide the "view replies" text after it's clicked*/
+.reply[open] summary {display:none;}
+
+/*username styles*/
+.user {font-weight:bold;}
+.user small {font-weight: normal; margin-left: 8px;}
+
+/*this is an easy way to replace the background colors on the headings, i just use the color classes like this*/
+.red {background: var(--red)!important;}
+.orange {background: var(--orange)!important;}
+.gold {background: var(--gold)!important;}
+.green {background:  var(--green)!important;}
+.blue {background:  var(--blue)!important;}
+.purple {background:  var(--purple)!important;}
+.pink {background: var(--pink)!important;}
+/*!important means it will take priority over whatever existing color there is*/
+
+/*nav is at the bottom of the page as a list of links...*/
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+/*link colors*/
+nav a {color: var(--subtle);}
+nav a:hover {color: var(--subtle);}
+
+nav li {padding-left: 4px;}
+/*remove this if you don't want the slashes between list items*/
+nav li:after {content: " /"}
+
+/*i wanted the footer to be locked to the bottom of the page, even if your page is really short... it covers up a small section of the screen, so i changed it to 50% opacity for that reason*/
+footer {
+  width: 100%;
+  /*these two styles lock it in place*/
+  position: fixed;
+  bottom: 0;
+  /*and the rest is whatever you want*/
+  font-size: 12px;
+  opacity: 50%;
+  padding: 6px;
+  text-align: center;
+  /*make sure it shows over the gallery elements that had their z-index raised*/
+  z-index: 2;
+}
+footer a {
+  color: var(--link-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+footer a:visited {
+  color: var(--subtle);
+}
+footer a:hover {
+  color: var(--banner-text-color);
+  text-decoration: none;
+}
+
+/*now to make the page responsive!*/
+@media only screen and (max-width: 800px) {
+  /*i think this one was for if your header text was kinda long...*/
+  h1 {font-size: 24px; padding-inline: 12px;}
+  main {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-inline: 1.5em;
+  }
+  /*center the bio, there's no room to have it float*/
+  .bio {
+    float:none;
+    max-width: 100%;
+    width: 280px;
+    margin: 0 auto;
+  }
+  /*change the max size of grid items so they still get laid out nicely*/
+  .gallery-grid {grid-template-columns: repeat(var(--pages), minmax(60px, 1fr));}
+}
+
+h4{
+    margin-bottom:15px;
+    padding-bottom:6px;
+    border-bottom:1px solid #ecc500;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 12px;
+
+    text-decoration:none;
+    color:inherit;
+
+    border:1px solid #f3e6a500;
+    border-radius:8px;
+
+    transition:all .2s ease;
+}
+
+.card:hover{
+    border-color:#e7d05f00;
+    transform:translateY(-2px);
+}
+
+.icon{
+    width:42px;
+    height:42px;
+
+    border-radius:6px;
+    object-fit:cover;
+
+    flex-shrink:0;
+}
+
+.content{
+    flex:1;
+    text-align:center;
+}
+
+.content h5{
+    margin:0;
+    font-size:14px;
+    font-weight:600;
+}
+
+.content p{
+    margin:3px 0 0;
+    font-size:12px;
+    color:#777;
+    line-height:1.3;
+}
+
+@media (max-width:900px){
+    .card-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/*"read more" button for long posts*/
+.readmore {
+  border: 2px solid var(--border-color);
+  border-radius: .3em;
+  padding: .5em 1em;
+  margin-bottom: 10px;
+}
+.readmore summary {
+  font-weight: bold;
+  color: var(--post-header-text);
+  /*this gets rid of the arrow*/
+  list-style-type: none;
+}
+/*optional border to denote a border was there before*/
+.readmore[open] {
+  border-top: 2px;
+  padding-top:0.5em;
+}
+
+
+ /*for the collapsible sections at the top (status and tag filters)*/
+.pinned {
+  background: var(--pinned-bg);
+  font-size: smaller;
+  padding: .5em;
+  border-radius: 1em;
+  margin: 1em 0;
+  border: 2px solid var(--border-color);
+  outline: 2px solid var(--post-bg);
+  box-shadow: 2px 2px 6px var(--border-shadow);
+}
+/*the heading for those blocks*/
+.pinned summary {
+  color: var(--sidebar-text);
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 2px dashed var(--border-color);
+  margin: .5em;
+}
+/*since the summary uses the special font, switch back to the other one for the timestamp*/
+.pinned time {
+  font-family: 'Atkinson Hyperlegible', Verdana, Tahoma, sans-serif;
+  float: right;
+  font-weight: normal;
+  font-size: small;
+}

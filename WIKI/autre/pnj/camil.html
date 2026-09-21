@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>My Character Gallery</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link href="/WIKI/fiche/style.css" rel="stylesheet" type="text/css" media="all">
+      <style>
+html {
+    background: var(--main-bg-color);
+    background: linear-gradient(180deg,rgb(32, 16, 1) 0%, rgb(63, 36, 6) 100%);
+    background-attachment: fixed;
+}
+</style>
+  </head>
+    
+  <body>
+      
+      <header>
+        <a href="/WIKI/index.html"><h1>Izmir Character build</h1></a>
+      </header>
+      
+      <main>
+      <!--at the top we have your OC's name-->
+          <h2 class="character-name">
+              <img src="https://i.postimg.cc/sx9Rrw6v/image.png" class="icon">Camil</h2>
+          
+      <!--this is the little biography table, it floats to the right!-->
+          <aside class="bio">
+            <img src="/img/wiki/icon/camil.png">
+              
+              <table>
+              <!--replace these with whatever info you want-->
+              <tr>
+                  <td>Nom</td>
+                  <td>Camil</td>
+              </tr>
+              <tr>
+                  <td>Pronoms</td>
+                  <td>Elle</td>
+              </tr>
+              <tr>
+                  <td>Âge apparent</td>
+                  <td> 31 </td>
+              </tr>
+              <tr>
+                  <td>Clan</td>
+                  <td>Gangrel</td>
+              </tr>
+              <tr>
+                  <td>Etreinte</td>
+                  <td>2005</td>
+              </tr>
+              <tr>
+                  <td>Sire</td>
+                  <td>Kushi</td>
+              </tr>
+
+                  
+              </table>
+          
+          </aside>
+          <section id="info">
+          <p class="quote"> Peu importe ce qu'on dit sur toi, si ton branding est plus fort, ce n'est que de la fumée.  </p>
+          </section>
+          
+          <section id="personality">
+          <h3 class="purple">Information connue</h3>
+          <p>
+              <h4>Un chat à la mer</h4>
+Contrairement à ce que beaucoup attendaient d'une descendante du Prince Nomade, elle ne l'accompagne pas dans ses voyages ou ses conquêtes. Elle habite à Izmir, et il lui rends parfois visite. <BR><BR>
+
+Elle est connue pour sa carrure imposante, sa proximité avec les animaux et son goût pour l'équitation. Malgré son clan et sa lignée, elle possède une réputation étonnamment bienveillante.
+
+Certains pensent que Kushi voyait en elle une future dirigeante, mais la majorité des autres considèrent son Étreinte comme une simple excentricité du Prince.          </p>
+          
+<h4>Se battre ou mourir</h4>
+Peu d'informations circulent au sujet de sa vie mortelle. <br>
+Ce qui est connu est qu'elle fut Étreinte en 2005, après n'avoir été présenté à la cour qu'à deux reprises.<br><br>
+Le prince n'est pas revenu en ville depuis, en attendant elle découvre la non vie dans une coterie de neonate.
+
+</section>
+          
+          
+    <section id="relationships">
+          <h3 class="red">Relations</h3>
+          <!--i did categories for family, friends, and enemies, but you can come up with whatever categories make sense for your oc-->
+              
+          <h4>LIGNEE</h4>
+          <!--i used the detailed list element <dl> so i can write descriptions for each relationship-->
+          <dl>
+              
+              <dt><img src="https://i.postimg.cc/90QR9cFc/image.png" class="icon">Kushi</dt><dd>
+Mine de rien, Kushi semble profondément apprécier son infante. L'abandonner afin de voyager fait simplement parti du processus d'apprentissage. Elle reste tout de meme entre de bonne mains.            </dd>
+
+
+          </dl>
+              
+          <h4>AMIS</h4>
+            <dl>
+              <dt><img src="https://i.postimg.cc/cHhKLM5P/image.png" class="icon">Ines</dt>
+              <dd>
+Ines est une amie proche, mais il est clair que leur relation est entachée par la lignée de Camil, qui pèse sur la coterie. Est-ce qu'on les a placé là par hasard, ou est-ce que Ines à été choisie pour influencer la gangrel dans une direction ? Camil semble avoir conscience de cette situation, et étant plus bavardre que sa camarade toreador, en discute parfois aux Elysiums. 
+</dd>
+          </dl>
+
+          <section id="trivia">
+          <h3 class="green">trivia</h3>
+          <ul>
+              <li>Elle tient un refuge pour s'occuper des chats de la ville</li>
+              <li>Elle à déjà participé à des compétitions de powerlift</li>
+          </ul>
+          </section>
+          
+          <section id="gallery">
+          <h3 class="orange">gallery</h3>
+              
+              
+<!--tabs tutorial-->
+<!--https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/-->
+              
+    <!--change the number of pages your gallery uses in the style here-->
+    <div class="gallery-grid" style="--pages:3;">
+              
+        <!--each gallery page goes under a <details> tag-->
+        <details class="gallery-page" name="g-page" style="--n:1;" open>
+        <!--the first page should say "open" at the end, since we want it open by default-->
+            
+          <!--page name goes here-->
+          <summary>Canon</summary>
+            
+          <!--a quick example gallery!-->
+          <div class="img-gallery">
+           
+             
+                  <figure>
+                    <img src="/GALLERIE/dessin/camil.png" loading="lazy">
+                    <figcaption>Outfit exploration</figcaption>
+                  </figure>
+               
+          <figure>
+                    <img src="/GALLERIE/dessin/camil2.png" loading="lazy">
+                    <figcaption>Concept art</figcaption>
+                  </figure>
+              
+            </div>
+        </details>
+        
+        <!--let's make more pages!-->
+        
+        <!--make sure to change the style to "--n:2;", since that updates the variable (telling it where to put the button in the grid)-->
+        <details class="gallery-page" name="g-page" style="--n:2;" open>
+          <summary>Non canon</summary>
+          <div class="img-gallery">
+              
+     
+          
+            
+                
+          <!--add more images here-->
+              
+            </div>
+        </details>
+        
+        
+    </div>
+            
+          
+          <hr>
+          
+          
+      </main>
+      <footer>© 2026 [Izmir by Night] · <a href="/WIKI/fiche/index.html">Retour au wiki</a></footer>
+    
+  </body>
+</html>
+
+

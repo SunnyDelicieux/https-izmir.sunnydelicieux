@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="page-arrow left">
+    <a href="inga.html">←</a>
+</div>
+
+
+<div id="room">
+
+    <img src="2.png" usemap="#image-map">
+
+
+    <map name="image-map">
+
+        <!-- SABBAT -->
+
+        <area
+            alt="sabbat"
+            title="sabbat"
+            href="#"
+            coords="682,193,842,340"
+            shape="rect"
+            onclick="openPage('/FACTIONS/sabbat/test'); return false;"
+        >
+
+
+        <!-- PUTER -->
+
+        <area
+            alt="puter"
+            title="puter"
+            href="#"
+            coords="439,176,582,279,689,279"
+            shape="rect"
+            onclick="openPage('/FACTIONS/'); return false;"
+        >
+
+
+        <!-- TRAVAIL -->
+
+        <area
+            alt="work"
+            title="work"
+            href="#"
+            coords="46,399,208,681,1068,33,1336,291"
+            shape="rect"
+            onclick="talk('travail'); return false;"
+        >
+
+
+        <!-- CODE -->
+
+        <area
+            alt="code"
+            title="code"
+            href="#"
+            coords="998,30,1094,131"
+            shape="rect"
+            onclick="talk('code'); return false;"
+        >
+
+
+        <!-- CHAIR -->
+
+        <area
+            alt="chaire"
+            title="chaire"
+            href="#"
+            coords="1047,552,1201,700"
+            shape="rect"
+            onclick="talk('flesh'); return false;"
+        >
+
+
+        <!-- DIVIN -->
+
+        <area
+            alt="divin"
+            title="divin"
+            href="#"
+            coords="1257,282,1341,414"
+            shape="rect"
+            onclick="talk('holy'); return false;"
+        >
+
+    </map>
+
+
+    <!-- DIALOGUE -->
+
+    <div id="dialog">
+
+        <img
+            id="speaker"
+            src="https://i.postimg.cc/Zn8ZdS2Q/image-2026-09-03-100531968.png"
+        >
+
+        <div id="dialog-content">
+
+            <div id="text"></div>
+
+            <span>suite</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAGE INTERNE -->
+
+    <div id="page-viewer">
+
+        <button
+            id="page-close"
+            onclick="closePage()"
+        >
+            CLOSE
+        </button>
+
+        <iframe
+            id="page-frame"
+            src="about:blank"
+        ></iframe>
+
+    </div>
+
+</div>
+
+
+<script src="dialogues.js"></script>
+<script src="room.js"></script>
+
+</body>
+</html>
+

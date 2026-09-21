@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastille CSS template</title>
+    <meta name="author" content="[your name here]">
+    <meta name="description" content="[write about your site here]">
+  <!--you can change this to "simplified-style.css" if changing all the individual colors is too overwhelming-->
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    
+    <!--keep everything inside a container so we can change the layout for mobile easily-->
+    <div id="container">
+
+    <aside id="sidebar">
+        <!--another container for layout purposes-->
+        <div class="flex">
+            
+            <div id="icon">
+                <!--replace this with the page url so people can refresh the page easily... at least that's what i always click on people's icons to do.-->
+                <a href="#">
+                    <img src="/GALLERIE/dessin/nafissa.png" alt="icon">
+                </a>
+            </div>
+            
+            <section id="profile">
+                <h1>
+                <!--same here, link to your page (if you want)-->
+                    <a href="#">Izmir</a>
+                </h1>
+  
+                <div id="bio">
+                       <p>Les infos et les updates du projet.</p>     
+                            <p class="center small-text">site template by <a href="https://nomnomnami.com">NomnomNami</a></p>
+   </div>
+
+                
+            </section>
+        </div>
+        
+        <!--add links to other pages on your site, or other sites you're on!-->
+        <nav>
+        <ul>
+            <li><a href="/index.html">Site Izmir</a></li>
+        </ul>
+        </nav>
+        
+        <!--i made it so the stamps section here only shows up on desktop-->
+        <section id="stamps" class="center pc-only">
+            <a href="/">
+            <!--swap this with your site button if you have one!-->
+                <img src="/img/blog/site-button.gif" alt="site button">
+            <!--you can have it link to your site profile if you want people to follow it too :)-->
+            </a>
+        </section>
+        
+    </aside>
+    
+    <!--now for the POSTS! the "tagged" class makes sure the tag filters do what they're supposed to-->
+    <main class="tagged">
+        
+        <!--first is a deviantart inspired "current status" section where you can list things you're currently up to-->
+        <section id="status" class="pinned">
+            <!--remove the "open" part to have this closed by default-->
+            <details>
+                <!--i like to include a last updated date for this part-->
+                <summary>Dernier articles <time>6/10/2025</time></summary>
+                <ul>
+                    <!--i don't think this is reeeally how you're supposed to use html lists, but we're just having fun here so it's ok-->
+                    <li>Personnages par clan :</li>
+                    <li>[lien] / [lien] /  [lien] /  [lien] /  [lien]</li> 
+                    
+                    <li>Articles de journaux :</li>
+                    <li> [date] /  [date] /  [date]</li>
+                    
+                    <li> Updates générales :</li>
+                    <li>  [update] /  [update] /  [update]</li>
+                </ul>
+            </details>
+        </section>
+        
+        <section id="tag-filters" class="pinned">
+            <details open>
+                <summary>tag filters</summary>
+                <!--when you add new tags here, make sure to add them to your css as well so that the filters will work properly. careful not to make any typos...!-->
+                <label><input type="radio" id="all" name="tag" checked>all</label>
+                <label><input type="radio" id="personnage" name="tag">#personnage</label>
+                <label><input type="radio" id="journal" name="tag">#journal</label>
+                <label><input type="radio" id="update" name="tag">#update</label>
+                <label><input type="radio" id="autre" name="tag">#autre</label>
+            </details>
+        </section>
+        
+<!--BEGIN POSTING!!!!!!!!-->
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>08/09/2026, 15:34</time></div>
+             <h3>Damn</h3> 
+            <P>
+                Je crois que je ne poste jamais ici a par pour me plaindre, mais je suppose que c'est pour ça que j'ai fait ce bordel.<BR><BR>
+                On est à moins d'un mois du coup d'envoi de la campagne. Je le sens dans mes putains d'os, le grondement que je vais devoir tenir. Je me connais,
+                je sais comment je fonctionne, ça va etre l'enfer sur terre pendant quelques jours. Je risque d'y perdre quelques cheveux, et soit ça va passer, soit ça va casser. <BR>
+                On ne dirait pas forcément en me cotoyant (ou j'espère le penser) mais je suis quelqu'un d'assez intense, et un rien me motive ou me casse. <BR>
+               Je sais que je suis capable de tenir le projet, la question c'est la pression psychologique, et savoir si cette fois ci,
+                    c'est le projet qui me ferra m'envoler en cendre.<br><br>
+
+
+<details class="readmore">
+ <summary>I WILL PREVAIL </summary><br>
+Il me reste plein de truc à faire, mais tant que je me persuade que les gens apprécient le projet, alors tout ira bien. <br><br>
+ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠴⣠⡀⡀⠀<br>
+⠀⢀⡔⠲⢄⡠⠖⠢⡀⠀⠈⠠⣖⠄<br>
+⠀⠘⢇⠀⠀⠀⠀⡠⠃⠀⠀⠀⠀⠀<br>
+⠀⠀⠈⠙⢄⡠⢋⣁⡀⠀⣀⣀⠀⠀<br>
+⢘⡀⠀⠀⠀⠀⡏⠀⠈⠚⠁⠀⡏⠀<br>
+⠈⠚⡀⢄⡀⠀⠘⠦⣀⢀⣠⠔⠁⠀<br>
+⠀⠀⠀⠑⠊⠀⠀⠀⠀⠑⠁⠀⠀⠀<br>
+
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#autre">#autre</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>25/08/2026, 17:34</time></div>
+             <h3>Shit, shit, shit</h3> 
+            <p>
+               
+J'ai pu rien update pendant ce qui était à la fois mes vacances, et la période la plus intense de création aha</p>
+<p>
+J'aimerai pouvoir rattrapper un peu, but what can a girl do ? Là, tout est en train de clic, j'ai une montagne de truc, et ça fonctionne bien.
+Tout clic, et tous le monde à de bonnes idées, qui me donnent des idées (que je qualifierai aussi de bonnes, mais eh!) et c'est vraiment super cool.
+</p>
+
+<details class="readmore">
+ <summary>JE FAIS PUTAIN DE QUOI MAINTENANT </summary>
+<p>
+    Avancer me permet de voir les faiblesses du projet, et de voir ou je devrais m'en sortir au final. Le séquencage des séances est probablement le pire,
+    en l'état des choses, certains clan (coughtremerecough) ont un système qui rends les séances de clan assez inutiles, là ou ça risque d'etre assez capital 
+    pour les ventrue. <BR>
+        Je me retrouve un peu stuck, parce que je ne veux pas donner l'impression de favoritiser un truc ou l'autre, mais je ne suis
+        pas non plus une sorte d'ange purement impartial et capable de justesse absolue. Donc je suis en train de voir pour retaper tout le système de séance
+        de clans, yeay! <br><br>
+
+    Je pourrais théoriquement essayer d'en faire des séances solo, en prennant un joueur ou deux à chaque fois, et faire des séances de clan si besoin ? Genre, 
+    séance de clan au besoin, sinon séance à coté ? Je pourrais tenir un petit chanel, ou chacun peut demander de faire un petit truc avec d'autres joueurs, genre changer
+    les séances de clan en séances libre, avec possibilité de bouffer sur ma séance de pause au besoin. <BR><BR>
+        JE NE ME SURMENE PAS. AAAH. J'ai mis la séance de pause et je m'y tiendrais ! Mais parfois j'ai vraiment envie de MJ, et je vais pas m'empecher de le faire par pur besoin
+        de ne pas me surmener, c'est un peu contre productif ? Enfin, je verrai, comme toutes les entrée du blog, c'est des "je verrais" jusqu'à ce qu'on me pose assez la
+        question en vocal pour que je donne une réponse définitive en paniquant. Pouaha. ;w;
+</p>
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#journal">#journal</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>08/07/2026, 15:29</time></div>
+             <h3>Le vrai début</h3> 
+            <p>
+               
+Ca y est, on commence à créer pour de vrai. Je reçoit plein de pdf, d'info, c'est le coup d'envoi de la période de création <br>
+Tous le monde à de super idées, et je sens que ça va vraiment etre vivant. <BR><BR>
+    Je ne veux pas que quelqu'un se sente laissé de coté, ou que je ne mette pas avant ses idées. Je suis un peu
+    un pushover et je le sais, je stresse beaucoup pour les gens, je veux qu'ils s'amusent ! Et je m'en sens un peu
+    responsable, mais là, je ne controle meme pas toute les pièces. <BR><BR>
+
+Ca reste un jeu de role, et pas un jeu vidéo, j'ai envie de pouvoir m'amuser aussi, mais dans l'état des choses, j'ai peur
+de me retrouver coincé à bouger des pièces qui ne m'appartiennent pas. <br><br>
+
+Je pense que c'est parce que je parle à tous le monde séparement, on devrait organiser une sorte de team building activity. Je commence
+à comprendre les RH, qu'est ce qui m'arrive.
+</p>
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#journal">#journal</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+<!--a simple art post! check my periwinkle template for making photo-set style posts...-->
+        <article class="post art">
+            <div class="post-header">@sunny <time>08/07/2026, 10:37</time></div>
+            <img src="/img/wiki/icon/DEVOURME.png" alt="Idia" style="height:300px;">
+             <img src="https://s3.amazonaws.com/cloud.kumu.io/accounts/608519/1283709/c0d7b494-dbc6-4d65-bae9-965f0031bf85.png" alt="Nafissa" style="height:300px;">
+             <p>Elles sont les dernier pnj que j'ai pu deign, et je les aime tellement, i'm such a women kisser</p>
+             <ul>
+                 <li> <p> <a href="/WIKI/toreador/pnj/aylin.html">Aylin, porn writer</a></p>
+                 <li> <p> <a href="/WIKI/autre/pnj/nebetta.html">Nebetta, petty liar</a> </p>
+</li>
+            <section class="tags">
+                <a href="#autre">#autre</a>
+            </section>
+            
+        </article>
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>29/06/2026, 13:29</time></div>
+             <h3>Les autres clans ?</h3> 
+            <p>
+Les 4 clan majeur de la ville sont Ventrue/Tremere/Brujah/Toreador <BR>
+Sont également présent les lasombra (2) les gangrel (2) les nofe (2/3) et une malkavian (choquant).
+Si on estime à environ 8 vampire par clans majeur (dont 2 PJ) cela fait 34 Pnj uniquement vampire. <BR>
+    A ca, ajoutons une marge de maneuvre de 10 sabbatique et 10 anarchs (54) et 10 ghoules, <br>
+Cela nous fait donc 64 pnj probable, sans compter les humains de vos background. 
+
+
+<details class="readmore">
+                <summary>Comment gérer la ménagerie </summary>
+
+<BR><BR> Dans une campagne classique j'en aurait flesh out 10, et crée le concept de 10 autres, mais ici
+    vu que vous etes beaucoup à faire plein de truc à la fois, il m'en faut plus. Vous etes basiquement 3 groupes avec des entourages différents. <BR><BR>
+    Il va vraiment falloir que je trouve un système et que je demande des archétype à chaque clan. Il y aura probablement 3 grade de PNJ <br>
+    
+    <ul>
+                 <li> Les PNJ de relations </li>  
+Ceux crée par les joueurs, ils seront les plus dévelloppé, avec une histoire, des buts, et tout le tralala.                
+<br><br><li> Les PNJ majeur </li>  
+Ceux qui remplissent un role capital, le sheriff, le prince, ou les PNJ important d'un clan auront un lore, une personalité, et un but à long terme.
+<br><br><li> Les autres PNJ </li>  
+Seront beaucoup plus libre, avec un concept, et un lore dans les grandes lignes, peut etre meme pas de design au début de la campagne. Ils sont là pour remplir des besoin
+au fur et a mesure.                
+
+</p>
+
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#journal">#journal</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>29/06/2026, 13:29</time></div>
+             <h3>Les Anarchs</h3> 
+            <p>
+               
+Il y a peu que je puisse dire sur les anarchs. <BR>
+Ils sont arrivé recemment en ville, et sont rapidement devenu un sacré problème. Ils s'approche des néonate, des isolés, des ghoules, afin de les rallier à leur causes. 
+Leur baron semble ne pas proner la violence directe, mais plutot les actes de sabotages. <BR><BR>
+    La campagne débute sur une grandepremière, la camarilla à enfin réussit à trouver des forums sur lequels ils communiquent. Si les conversations semblent anodines, 
+    il faudra faire avec, afin de décider quel sera le sort de cette jeune secte dans votre ville. <br><br>
+    <A HREF="/SITE/FACTIONS/ANARCH/nightcore.html"> La page web des Anarchs</A>
+</p>
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#autre">#autre</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>23/06/2026, 12:50</time></div>
+             <h3>Le Sabbat</h3> 
+            <p>
+
+J'ai enfin commencé à écrire ce que vous savez sur le sabbat. Ces monstres des mers, inspiré du mythe grec de Scylla. <BR>
+Ils sont purement monstrueux, vivant dans l'océan, si proche et pourtant si loin de vous. Historiquement, ils ne vous ont jamais attaqué.
+La camarilla avant vous à eu peur des eaux dormante, et attaqué de pleins fouet le Sabbat, tuant leur évèque, et si les pertes sont lourde de votre coté, vous avez gagné
+<br><br>                 <A HREF="/SITE/FACTIONS/sabbat/test.html"> La page web du Sabbat</A>
+
+<details class="readmore">
+                <summary>Un peu plus sur eux </summary>
+Ce sont des monstres dans le sens premier du terme, tellement loin de l'humanité qu'ils ne respirent pas leur air, ne marchent pas sur leur sol. 
+Ils sont terrifiant, des monstres qui rodent sous les vagues, attaquent et massacrent les humains. Ils sont invisible, ne vous rapellant leur présence que lorsque vous
+trouvez un bras échoué sur le rivage.<BR>
+    <BR>
+L'on raconte que lorsqu'on entends une fois le chant des sirènes, il continue à vous hanter, tentant de vous faire marcher dans les vagues. Succomber à ce chant 
+signifie la mort, mais comment résister. Le pouvoir, l'amour, la gloire, elles vous promettent tout. 
+           
+            </p>
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#autre">#autre</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>19/06/2026, 13:50</time></div>
+             <h3>Timeline fin juin</h3> 
+            <p>
+                
+            J'ai pas mal avancé depuis l'annonce d'Izmir, mais il reste tant à faire. Pour la fin juin, je vais me concentrer sur la timeline, afin d'essayer de m'organiser
+            jusqu'à octobre sans surprise.
+    
+            <ul>
+                 <li> Le wiki <3 </li>  
+Le but c'est de commencer à centraliser les infos sur les PNJ majeur, et que vous ayiez une base de la structure de pouvoir à Izmir. 
+                <br><br><li> Les factions adverses </li>  
+Pour vous aider dans la création de clan, je vais flesh out un peu les anarchs et le sabbat, pour que vous comprenniez en quoi ils sont des menaces et ce qui à été fait jusqu'à présent
+<br><br><li> Les loi </li>  
+Parce que le prince à ses petits qwirks, il faut que vous soyez au courant de ce qui est autorisé ou non. Je ferrai un ptit doc :3
+                
+
+            </p>
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#update">#update</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+  <article class="post art">
+            <div class="post-header">@sunny <time>19/06/2026, 08:36</time></div>
+             
+            <p>
+                
+            Je veux essayer de design les PNJ de la campagne, mais j'arrive rapidement au problème qu'ils ont tous une 
+            esthétique avec une base similaire. C'est pas simple de faire du character design, eeeeh. <br>
+            
+  <details class="readmore">
+                <summary>quelques exemples de test de design </summary>
+
+                <img src="https://i.postimg.cc/WznzhTHn/DESIGN-TEST.png" alt="Design Test 1">
+                <p> L'infante du prince, une gangrel neonate qui bosse dans un shelter pour animaux et qui décide de dédier le début
+                    de sa non vie à faire toute les choses qu'elle n'a pas fait de sa vie par "manque de temps" </p>
+                <img src="https://i.postimg.cc/zvjvV8cL/TESTDESIGN2.png" alt="Design Test 2">
+                <p> L'infante de Idia, une lasombra qui à beaucoup de contact avec le clan Toreador. </p>
+                <P> Un duo d'influenceur en couple, deux toreador qui sont régulièrement au coeur de drama parce qu'ils promouvoient des régime
+                    à 450 calories et des produits de beauté douteux.
+                </P>
+
+
+            
+            </p>
+             
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#autre">#autre</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+
+
+
+   <!--a simple art post! check my periwinkle template for making photo-set style posts...-->
+        <article class="post art">
+            <div class="post-header">@sunny <time>18/06/2026, 15:37</time></div>
+            <img src="/GALLERIE/dessin/makeup.png" alt="Idia" style="width:220px;">
+             <img src="/GALLERIE/dessin/nafissa.png" alt="Nafissa" style="width:223px;">
+             <p>Quelques arts du mois du Juin pour la campagne que j'aime bien</p>
+             <ul>
+                 <li> <p> Idia, i love me a pretty lassombra</p>
+                 <li> <p> Nafissa, still the prettiest in the land </p>
+</li>
+            <section class="tags">
+                <a href="#autre">#autre</a>
+            </section>
+            
+        </article>
+
+        <!--each post should use the "article" element. set its class to "post", and add any tags that you use with spaces separating them. this is how it knows which posts to filter when you click the buttons above!-->
+        <article class="post intro">
+            <!--you can put your name at the top here, using a fake social media handle or just typing it normally. up to you!-->
+            <div class="post-header">@sunny <time>18/06/2026, 15h30</time></div>
+            <!--remember to change the timestamp... i always forget to lol....-->
+            
+            <h2>Update de mi-juin !</h2>
+            
+            <p>J'vous balance une ptite update de mi-juin, ça avance bien ! <br></p>
+            <p>Il y a pas mal de truc à faire encore, mais j'ai vraiment essayé de commencer par imaginer les bases de chaque truc pour gagner du temps par la suite</p> 
+            <p>J'ai réduis de fou mon temps de codage en trouvant les super template de nomnommani pour le wiki et le journal, elles sont free to use et je peux les modifier autant que je veux ce qui est beaucoup plus simple </p>
+            <h3>Les trucs nouveaux</h3>
+
+  <details class="readmore">
+                <summary>read more</summary>
+        
+                
+
+            <ul>
+                 <li><p> <b>J'ai fini de mettre les méchaniques de base de chaque groupe sur le site ! </b> Les ressources poussés (primo) les entreprises (ghoule) et la pression (limier), si vous avez des questions hésitez pas ! Je vais surement demander un peu d'aide à un moment si quelqu'un se sent de m'aider à réécrire plus clairement hihi. </p>
+Il y a aussi le guide de création de perso dans l'onglet création qui est finit a 70%<br><br>
+</li>
+                <li> <a href="/JOURNAL/"> la template du journal </a> je vais pas mal modifier la DA mais ça vous donner l'idée. J'en sortirais un par mois, et qui vous permettra de voir les impact que vous avez sur le monde humain. Il y aura des trucs purement humain, et les conséquences des actions solo des gens ou des clans, donc ça peut créer du rp d'essayer de voir qui à causé quoi :3 </b> </p>
+</li>
+                <li><a href="/WIKI/toreador/pnj/nafissa"> les bases du wiki des PNJ.</a> Ils auront tous une ptite page comme ça, qui sera lié à leur profil sur le kumu pour lier les deux. Certaines auront plus d'info que d'autres car des pnj sont assez mystérieux hihi, mais ça vous permet de rapidement avoir toute les info centralisé quelque part, vu le setup de la campagne vous pouvez tomber sur quelqu'un qu'un autre groupe vois à toute les séance et pas trop savoir qui il est. </b> </p>
+</li>
+                <li><p> <a href="/SITE/CALENDAR/calendar.html"> le gros morceau que je prépare depuis un moment, le calendrier.</a>  Vu qu'on a une timeline commune, il sera utilisé pour vous repérer dans le temps. Chacun aura un mot de passe pour pouvoir voir les évènements auquel il participe, mais sans savoir qui d'autre fait quoi et quand, mystèèère. 
+</li>
+            </ul>
+            
+            <section class="tags">
+                <!--the tag section is optional, and you should put each tag inside of an <a> or <span> element! (that way they get styled correctly...)-->
+                <a href="#update">#update</a>
+                <!--using an id you made a tag for above will make it scroll up to the tag filter section so people can filter posts that way!-->
+            </section>
+        </article>
+        
+     
+  
+        
+        <!--this button brings you back to the top of the page, like it says-->
+        <section id="page-nav">
+            <p class="center"><a href="#">back to top</a></p>
+        </section>
+        
+    </main>
+
+    <footer>
+      © 2025 [your name here]
+    </footer>      
+    </div>
+  </body>
+</html>

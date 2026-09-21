@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galerie</title>
+<link rel="shortcut icon" href="/GALLERIE/favicon.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<style>
+#gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+#gallery img.spice-blur{filter:blur(15px);transition:filter .2s}
+#character-filters{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 16px;padding:8px 10px;background:#221608;border:1px dashed #4a3018;border-radius:4px}
+#character-filters:empty{display:none}
+#character-filters .tag-btn{font-size:10px}
+.gallery-pagination{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px;padding:10px 12px;border-radius:4px;background:#221608;border:1px dashed #4a3018;width:100%}
+.gallery-pagination button{border:none;border-radius:3px;padding:5px 9px;background:#2e1e0e;color:#ecdfc8;cursor:pointer;font-size:10.5px;letter-spacing:1px;text-transform:lowercase;transition:.2s}
+.gallery-pagination button:hover{color:#d4aa72;background:#1e1208}
+.gallery-pagination button:disabled{opacity:.4;cursor:not-allowed}
+.gallery-pagination button.active{color:#c09050;background:#1e1208;border:1px solid #4a3018}
+.gallery-page-list{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
+.gallery-card{position:relative;cursor:pointer;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.05);box-shadow:0 4px 10px rgba(0,0,0,.15);transition:.2s}
+.gallery-card:hover{transform:translateY(-1px)}
+.gallery-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.gallery-comic-badge{position:absolute;right:8px;bottom:8px;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.75);color:#fff;font-size:.75rem}
+#zoom{display:none}
+#zoom.open{display:flex;align-items:center;justify-content:center;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999}
+.zoom-media{max-width:min(90vw,900px);text-align:center}
+#zoom-img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px}
+.zoom-nav{display:flex;justify-content:center;align-items:center;gap:20px;margin:12px 0}
+.zoom-nav button{background:none;border:none;color:white;font-size:24px;cursor:pointer;opacity:.75}
+.zoom-nav button:hover{opacity:1}
+.zoom-nav button:disabled{opacity:0;pointer-events:none}
+#zoom-counter{min-width:70px;color:white}
+#zoom-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.zoom-tag{padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.12);color:white;font-size:.75rem}
+#zoom-desc{color:white;max-width:700px;margin:auto}
+body.light .gallery-pagination{background:#ead8c0;border-color:#c8906a}
+body.light .gallery-pagination button{background:#dfc0a0;color:#2a1a0e}
+body.light .gallery-pagination button:hover{color:#150d05;background:#cfaa88}
+body.light .gallery-pagination button.active{color:#8b4a18;background:#ead8c0;border-color:#8b4a18}
+body.light .gallery-card{background:rgba(255,248,238,.7);box-shadow:0 4px 10px rgba(90,45,15,.12)}
+body.light .gallery-comic-badge{background:rgba(80,35,10,.75);color:#fff}
+body.light #zoom.open{background:rgba(45,20,5,.88)}
+body.light .zoom-nav button{color:#fff}
+body.light #zoom-counter,body.light #zoom-desc,body.light .zoom-tag{color:#fff}
+body.light .zoom-tag{background:rgba(255,255,255,.16)}
+</style>
+</head>
+
+<body>
+<div class="page-wrap">
+    <aside class="sidebar">
+        <button id="theme-toggle">☀ jour</button>
+
+        <div class="now">
+            <div class="title">— thème —</div>
+            <div class="filter-group">
+                <button class="tag-btn" data-tag="official">Officiel</button>
+                <button class="tag-btn" data-tag="canon">Canon</button>
+                <button class="tag-btn" data-tag="noncanon">Non-canon</button>
+                <button class="tag-btn" data-tag="spice">Spice</button>
+                <button class="tag-btn" data-tag="emote">Emote</button>
+                <button class="tag-btn" data-tag="calendrier">Calendrier</button>
+            </div>
+        </div>
+
+        <div class="now">
+            <div class="title">— clan —</div>
+            <div class="filter-group">
+                <button class="tag-btn" data-tag="brujah">Brujah</button>
+                <button class="tag-btn" data-tag="ventrue">Ventrue</button>
+                <button class="tag-btn" data-tag="tremere">Tremere</button>
+                <button class="tag-btn" data-tag="nosferatu">Nosfe</button>
+                <button class="tag-btn" data-tag="toreador">Toreador</button>
+                <button class="tag-btn" data-tag="autre">Autre</button>
+                <button class="tag-btn" data-tag="lasombra">Lasombra</button>
+            </div>
+        </div>
+        
+        <div class="now">
+            <div class="title">— auteur —</div>
+            <div class="filter-group">
+                <button class="tag-btn" data-tag="yolnir">Yolnir</button>
+                <button class="tag-btn" data-tag="sunny">Sunny</button>
+                <button class="tag-btn" data-tag="ashita">Ashita</button>
+                <button class="tag-btn" data-tag="autriche">Autriche</button>
+                <button class="tag-btn" data-tag="shiva">Shiva</button>
+            </div>
+        </div>
+
+        <button id="reset-btn">Tout afficher</button>
+    </aside>
+
+    <main class="container">
+        <div id="site-header"></div>
+
+        <div class="box">
+<div class="title" id="gallery-title">Galerie</div>           
+<div id="character-filters"></div>
+            <div id="gallery"></div>
+
+            <div id="gallery-pagination" class="gallery-pagination" aria-label="Pagination de la galerie">
+                <button id="gallery-prev" type="button">← Précédent</button>
+                <div id="gallery-page-list" class="gallery-page-list"></div>
+                <button id="gallery-next" type="button">Suivant →</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="zoom">
+    <div class="zoom-media">
+        <img id="zoom-img" alt="">
+        <div class="zoom-nav">
+            <button id="zoom-prev" aria-label="Image précédente">←</button>
+            <span id="zoom-counter"></span>
+            <button id="zoom-next" aria-label="Image suivante">→</button>
+        </div>
+        <div id="zoom-tags"></div>
+        <div id="zoom-desc"></div>
+    </div>
+</div>
+
+<script src="/DATA/izmir.js"></script>
+<script src="/GALLERIE/gallery-data.js"></script>
+<script src="/GALLERIE/gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>My Character Gallery</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link href="/WIKI/fiche/style.css" rel="stylesheet" type="text/css" media="all">
+      <style>
+html {
+    background: var(--main-bg-color);
+    background: linear-gradient(180deg,rgb(32, 16, 1) 0%, rgb(63, 36, 6) 100%);
+    background-attachment: fixed;
+}
+</style>
+  </head>
+    
+  <body>
+      
+      <header>
+        <a href="/WIKI/index.html"><h1>Izmir Character build</h1></a>
+      </header>
+      
+      <main>
+      <!--at the top we have your OC's name-->
+          <h2 class="character-name">
+              <img src="/img/wiki/icon/max.png" class="icon">Max (Maximilienne)</h2>
+          
+      <!--this is the little biography table, it floats to the right!-->
+          <aside class="bio">
+            <img src="/img/wiki/icon/max.png">
+              
+              <table>
+              <!--replace these with whatever info you want-->
+              <tr>
+                  <td>Nom</td>
+                  <td>Maximilienne</td>
+              </tr>
+              <tr>
+                  <td>Pronoms</td>
+                  <td>Elle</td>
+              </tr>
+              <tr>
+                  <td>Âge apparent</td>
+                  <td> 34 </td>
+              </tr>
+              <tr>
+                  <td>Clan</td>
+                  <td>Toreador</td>
+              </tr>
+              <tr>
+                  <td>Etreinte</td>
+                  <td>1913</td>
+              </tr>
+              <tr>
+                  <td>Sire</td>
+                  <td>Ajit Atif</td>
+              </tr>
+  <tr>
+                  <td>Infant</td>
+                  <td><a href="ines.html">Ines</a></td>
+              </tr>
+                  
+              </table>
+          
+          </aside>
+          <section id="info">
+          <p class="quote"> Le prestige est une commodité comme une autre.</p>
+          </section>
+          
+          <section id="personality">
+          <h3 class="purple">Information connue</h3>
+          <p>
+              <h4>Les débuts de la gloire</h4>
+Max' est née à grandit en turquie au tournant du 20ème siècle, une période de troube qu'elle à observé avec l'appetit
+d'un loup. Elle n'a jamais eu la prétention d'etre l'architecte du changement, et n'a pas l'ame d'un entrepreneur, non, mais elle reste fasciné par les grands esprits de ce monde et souhaite comprendre leur motivations. <BR>
+Qui sont ces gens qui faconnent Izmir, qu'est-ce qui leur passe par la tete ? Elle savait qu'il s'agissait de questions que se posait le commun
+des mortels, et elle serait leur oeil dans ce monde. A mesure que sa place dans les sphères Toreador gagnait en importance, plus elle avait les moyens. Avec le nouvel age de la télévision elle eu meme les moyens de lancer
+un talkshow nocturne.
+    <h4>Un vortex d'information</h4>
+Car Max avait ce talent, celui de rendre les discutions de salon crédibles. Elle n'a jamais souhaité que son public soit majoritairement masculin, mais elle comprends
+que dans son contexte social, la masculinité est plus écouté qu'autre chose. Dans son talkshow, elle invite des politiciens, des artistes, des comédiens, afin qu'ils
+puissent promouvoir leur prochain grand projet. C'est un jeu d'équilibre, ou ils essayent de se faire voir d'un bon jour, et de faire leur publicité, et ou Max tente de leur arracher leur
+secrets, informations, ou d'ammener au grand public leur véritable visage. Car voilà son art, voila sa passion ; découvrir et mettre lumière sur les secrets.
+  <h4>Une infante brillante</h4>
+Elle est la sire de Ines, recemment étreinte. Celle ci est fabuleuse, et gagne en influence de manière rapide dans le clan, peut etre meme un peu trop. L'on raconte dans les Elysium que d'ici à peine 20 ans, celle ci aura dépassé sa sire en influence.         </p>
+          </section>
+          
+          
+    <section id="relationships">
+          <h3 class="red">Relations</h3>
+          <!--i did categories for family, friends, and enemies, but you can come up with whatever categories make sense for your oc-->
+              
+          <h4>LIGNEE</h4>
+          <!--i used the detailed list element <dl> so i can write descriptions for each relationship-->
+          <dl>
+              
+              <dt><img src="/img/wiki/icon/no-icon.png" class="icon">Ajit Atif</dt><dd>
+Atif est un Toreador ayant séjourné à Izmir de 1820 a 1999, il à quitté la ville pour retourner auprès de son sire en Inde après la semaine des cauchemards. Il était actif dans le cinéma.</dd>
+            
+<dt><img src="/CHARA/images/pomme.png" class="icon">Ines</dt><dd>
+Elle est son infante, et Max la garde encore sous son influence, si celle ci commence à prendre son indépendance, Max continue à dire dans les Elysium qu'elle n'est pas prète.
+          </dl>
+              
+         
+              
+          </section>
+
+
+          <section id="trivia">
+          <h3 class="green">trivia</h3>
+          <ul>
+              <li>Elle peut légèrement altérer son apparence, un don que possède certains toreador</li>
+              <li>Malgrès son succés, son talkshow est déficitaire et l'on raconte qu'il est soutenu par son clan.</li>
+          </ul>
+          </section>
+          
+          <section id="gallery">
+          <h3 class="orange">gallery</h3>
+              
+              
+<!--tabs tutorial-->
+<!--https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/-->
+              
+    <!--change the number of pages your gallery uses in the style here-->
+    <div class="gallery-grid" style="--pages:3;">
+              
+        <!--each gallery page goes under a <details> tag-->
+        <details class="gallery-page" name="g-page" style="--n:1;" open>
+        <!--the first page should say "open" at the end, since we want it open by default-->
+            
+          <!--page name goes here-->
+          <summary>Canon</summary>
+            
+          <!--a quick example gallery!-->
+          <div class="img-gallery">
+              
+        
+              
+            </div>
+        </details>
+        
+        <!--let's make more pages!-->
+        
+        <!--make sure to change the style to "--n:2;", since that updates the variable (telling it where to put the button in the grid)-->
+        <details class="gallery-page" name="g-page" style="--n:2;" open>
+          <summary>Non canon</summary>
+          <div class="img-gallery">
+              
+     
+          
+            
+                
+          <!--add more images here-->
+              
+            </div>
+        </details>
+        
+        
+    </div>
+            
+          
+          <hr>
+          
+          
+      </main>
+    <footer>© 2026 [Izmir by Night] · <a href="/WIKI/fiche/index.html">Retour au wiki</a></footer>
+    
+  </body>
+</html>
+
+

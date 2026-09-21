@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nougat CSS template</title>
+    <meta name="author" content="[your name here!]">
+    <meta name="description" content="[write about your site here!]">
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+      
+<!--this container makes the columns display correctly on mobile vs desktop-->
+<div class="container">
+    
+    <header id="top">
+        
+        <a href="/index.html"><img src="https://i.postimg.cc/mDd0WcDh/image.png" alt="my icon"></a>
+        <h1>A VERY COOL NEWSPAPER</h1>
+
+        <p>WOW! SUNNY IS MAKING A NEWSPAPER FOR IZMIR? WHADAHELL SHE'S SO COOL AND PRODUCTIVE  <time>18/06/2026</time></p>
+        <!--i like to include a last-updated date on my pages, but you don't have to...-->
+
+        <!--this bit is the white-on-black section-->
+        <p class="inverted">
+            La genre super date de sortie du journal, c'est genre une fois par mois, genre. - 
+            <a href="/index.html">[lien vers le site]</a>
+        </p>
+        <!--link optional... well everything is optional, it's your website-->
+        
+    </header>
+        
+    <nav id="navigation">
+        <span>T'as la flemme de lire ? Scroll jusqu'à la bonne section :</span>
+        <ul>
+            <li><a href="#issue3">Gros titre wow</a></li>
+            <li><a href="#issue2">Super articles secondaires</a></li>
+            <li><a href="#issue1">Trucs aditionnels</a></li>
+            <li>etc...</li>
+            <li>Ca va etre damn cool !</li>
+        </ul>
+    </nav>
+      
+    <main>
+        
+        <!--each "issue" is made as its own article... you can link to them from the navigation above, then people can click to scroll down to earlier sections (i ordered this reverse-chronologically since it's for the web haha)-->
+        <article id="issue3">
+        <!--make sure to write the id without the #, you only need the # in the href part of the navigation cuz it's a link.. this tripped me up when i first started so i wanted to explain it here.-->
+        <h2>BREAKING NEWS BIG TITLE WOW</h2>
+            
+        <div class="columns bordered">
+        <!--the "columns" class splits it into a grid with four columns. you can have sections span different columns by using these classes:
+
+        "col" - ■□□□ (can go anywhere)
+        "left-2col" - ■■□□
+        "middle-2col" - □■■□
+        "right-2col" - □□■■
+        "left-3col" - ■■■□
+        "right-3col" - □■■■
+        "fullwidth" - ■■■■
+
+        i hope this doesn't give people too much trouble, i'm sure there's a way to make it figure out the placement automatically (like flexbox instead of grid) but this is how i made it on my page and i'm too lazy to try to streamline it more than this haha-->
+            
+            <section class="col">
+                <h3>Article 1, super info</h3>
+                
+                <p>
+
+
+İzmir is the third most populous city in Turkey, after Istanbul and Ankara, and the largest metropolitan area on the Aegean Sea. <br>
+ It is on the Aegean coast of Anatolia, and is the capital of İzmir Province. As of 2025 end of year estimate, İzmir Province has a total population of 4,504,184 while İzmir city is home to around 3.5 million inhabitants. <br>
+<h4>inline title</h4>
+ It extends along the outlying waters of the Gulf of İzmir and inland to the north across the Gediz River Delta; to the east along an alluvial plain created by several small streams; and to slightly more rugged terrain in the south. <br>
+                </p>
+                
+                <h4>inline title</h4>
+                <!--tip: put your "small-photo" class images inside a clearfix div, it keeps the float to just that block... basically it just prevents weird page layout problems-->
+                <div class="clearfix">
+                    <img src="https://i.postimg.cc/mDd0WcDh/image.png" class="small-photo" alt="">
+                    <p>Lying on an advantageous location at the head of a gulf running down in a deep indentation, midway along the western Anatolian coast, İzmir has been one of the principal mercantile cities of the Mediterranean Sea for much of its history</p>
+                </div>
+
+                
+            </section>
+            
+            <section class="middle-2col">
+                <h3>Article principal, wow</h3>
+
+                <h4 class="feature">Sous titre gros, turboooo</h4>
+                <img src="https://i.postimg.cc/2j9fPtbH/image.png" class="photo" alt="">
+                <p>
+                    <!--i style the time element to look bold with a bullet point, as a preface for the updates i was posting... but you don't need the time element at all, you can change the css to make it a class and put whatever text you want there. maybe i should've done that for you. WELL IT'S TOO LATE NOW i'm sure you can handle it if you really want.-->
+In ancient Anatolia, the name of a locality called Ti-smurna is mentioned in some of the Level II tablets from the Assyrian colony in Kültepe (first half of the 2nd millennium BC), with the prefix ti- identifying a proper name, although it is not established with certainty that this name refers to modern-day İzmir.
+<br><br>
+The modern name İzmir is the Turkish rendering of the Greek name Smyrna ( SMUR-nə; Greek: Σμύρνη, romanized: Smýrni/Smýrnē). In medieval times, Westerners used forms like Smire, Zmirra, Esmira, Ismira, which was rendered as İzmir into Turkish, originally written as ازمير with the Ottoman Turkish alphabet.
+            </p>
+                
+                
+                <p class="banner">wow du context aditionnel ? Damn tellement de contenu tellement de truc,ça c'est pas du journalisme de merde hein, bref, à méditer.</p>      
+            </section> 
+            
+            <!--i put instructions for the image filter i used here in case other people wanna do the same thing-->
+            <section class="col">
+
+                <h3>Petit truc et autre</h3>
+              <h4>inline title</h4>
+                <div class="clearfix"> 
+                    <p>The region of İzmir was situated on the southern fringes of the Yortan culture in Anatolia's prehistory, knowledge of which is almost entirely drawn from its cemeteries. In the second half of the 2nd millennium BC;</p>
+                </div>
+
+              <h4>inline title</h4>
+                <div class="clearfix"> 
+                    <p> That the realm of the 13th century BC local Luwian ruler, who is depicted in the Kemalpaşa Karabel rock carving at a distance of only 50 km (31 mi) from İzmir was called the Kingdom of Myra may also leave grounds for association with the city's name.</p>
+                </div>
+              <h4>inline title</h4>
+                <div class="clearfix"> 
+                    <p>The city is one of the oldest settlements of the Mediterranean basin. The 2004 discovery of Yeşilova Höyük and the neighboring Yassıtepe, in the small delta of Meles River, now the Bornova plain.</p>
+                </div>
+                
+            </section>
+        </div>
+        </article>
+    
+        <!--this marks a divider between the sections-->
+        <hr>
+
+        <article id="issue1" class="fullwidth">
+            <h2>Updates pour le jeu de role</h2>
+            <!--hehe, the secret fullwidth class preview...-->
+            <div>
+                <p>
+
+Si il y a besoin, il y a une section pour ajouter les news, les update, et les changement pour le jeu de role dans son ensemble. C'est pas dingue ça ? Je prévois
+déjà des updates, genre je sais que j'aurais pas tout fait à temps. La turbo loose.
+
+                </p>
+            </div>
+        </article>
+        
+        <!--this link scrolls back up to the top of the page-->
+        <section class="banner end-nav"><a href="#top">return to top</a></section>
+        
+        </main>
+            
+  </div>
+
+    <!--finally we made it to the footer! remove whatever links you don't use, or fill this section with links to other pages on your site-->
+    <footer id="footer" class="inverted">
+        <p>site template by <a href="https://nomnomnami.com/" rel="nofollow">NomnomNami (je te dois ma vie)</a></p>
+    <a href="/index.html">[Izmir by Night]</a>
+    </footer>    
+    
+  </body>
+  
+</html>

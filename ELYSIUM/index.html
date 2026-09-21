@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main id="game">
+
+    <section id="room" class="scene active">
+
+        <img id="background" src="/img/elysium/elysium.png" alt="Elysium Background">
+
+        <div id="characters">
+
+            <div class="character-slot" data-slot="0"></div>
+            <div class="character-slot" data-slot="1"></div>
+            <div class="character-slot" data-slot="2"></div>
+            <div class="character-slot" data-slot="3"></div>
+            <div class="character-slot" data-slot="4"></div>
+
+            <div id="nebetta-slot">
+                <img id="nebetta" src="/img/elysium/nebetta.png" alt="Nebetta">
+            </div>
+
+        </div>
+
+        <div id="elysium-overlay">
+            <img src="/img/elysium/elysium-overlay.png" alt="">
+
+            <div id="title-card">
+                <div class="title-main">ELYSIUM</div>
+            </div>
+        </div>
+
+        <div id="dialogue-box">
+            <div id="speaker"></div>
+            <div id="dialogue-text"></div>
+            <div id="continue">▼</div>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

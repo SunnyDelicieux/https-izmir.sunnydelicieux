@@ -1,0 +1,261 @@
+<style>
+
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#050506;
+    color:#d6d6d6;
+    overflow-x:hidden;
+}
+
+/* ─── ambient contamination + bottom abyss layer ─── */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        /* subtle blood / salt contamination */
+        radial-gradient(circle at 50% 30%, rgba(120,0,0,0.08), transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03), transparent 55%),
+
+        /* bottom 25% submerged ocean layer */
+        url("https://i.pinimg.com/originals/76/6d/78/766d780bb1040ebdd0535ae75326796.gif");
+
+    background-repeat:no-repeat;
+    background-size:100% 100%, 100% 25vh;
+    background-position:top left, bottom center;
+
+    mix-blend-mode:overlay;
+    opacity:0.95;
+}
+
+/* ─── grain / film noise ─── */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+    opacity:.04;
+    pointer-events:none;
+}
+
+/* ─── MAIN LAYOUT ─── */
+
+.sabbat-sea{
+    min-height:100vh;
+    position:relative;
+    background:linear-gradient(to bottom,#050506,#0a0a0b,#070708);
+}
+
+/* subtle living drift */
+.content{
+    max-width:1100px;
+    margin:auto;
+    padding:140px 40px;
+    position:relative;
+    z-index:2;
+
+    animation:drift 14s ease-in-out infinite;
+}
+
+@keyframes drift{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-6px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* ─── TEXT STYLING ─── */
+
+.subtitle{
+    letter-spacing:6px;
+    text-transform:uppercase;
+    opacity:.35;
+    font-size:.85rem;
+}
+
+h1{
+    font-weight:300;
+    font-size:clamp(2.8rem,6vw,4.8rem);
+    margin:20px 0 50px;
+    letter-spacing:1px;
+    color:#e0e0e0;
+}
+
+.description{
+    max-width:720px;
+    line-height:1.95;
+    opacity:.78;
+    margin-bottom:40px;
+    color:#cfcfcf;
+}
+
+/* slight instability of perception */
+.subtitle,
+h1,
+.description,
+.known-info li{
+    animation:flicker 8s infinite;
+}
+
+@keyframes flicker{
+    0%   { opacity:0.78; }
+    7%   { opacity:0.74; }
+    8%   { opacity:0.62; }
+    9%   { opacity:0.80; }
+    55%  { opacity:0.77; }
+    56%  { opacity:0.60; }
+    57%  { opacity:0.82; }
+    100% { opacity:0.78; }
+}
+
+/* ─── GALLERY ─── */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:18px;
+    margin:90px 0;
+}
+
+.image-card{
+    aspect-ratio:1;
+    overflow:hidden;
+    background:#0c0c0d;
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.image-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:grayscale(1) contrast(1.05) brightness(.55);
+    transform:scale(1.02);
+    transition:2s ease;
+}
+
+.image-card:hover img{
+    transform:scale(1.08);
+    filter:grayscale(1) contrast(1.2) brightness(.65);
+}
+
+/* ─── INFO BLOCK ─── */
+
+.known-info{
+    max-width:720px;
+    margin-top:60px;
+    padding-left:18px;
+    border-left:1px solid rgba(255,255,255,0.08);
+    opacity:.75;
+}
+
+.known-info li{
+    margin-bottom:14px;
+    line-height:1.7;
+}
+
+
+body {
+  --sb-track-color: #000000;
+  --sb-thumb-color: #c9d2cd;
+  --sb-size: 5px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 9px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 9px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+</style>
+
+<section class="sabbat-sea">
+
+<div class="content">
+
+<span class="subtitle">
+LES INFANTS DE SCYLLA
+</span>
+
+<h1>
+Le chant des profondeurs
+</h1>
+
+
+<div class="gallery" style="img-width: 100px;">
+
+<div class="image-card">
+<img src="https://i.pinimg.com/736x/7b/fb/90/7bfb906c413a06bae7ff88aac5435fab.jpg">
+</div>
+
+<div class="image-card">
+<img src="https://i.pinimg.com/736x/b8/72/43/b8724356a84cf5bf00b35305ae91c1e7.jpg">
+</div>
+
+
+<div class="image-card">
+<img src="https://i.pinimg.com/736x/b2/23/0e/b2230e6a21c04dce2005439bf8c8db25.jpg">
+</div>
+
+</div>
+
+<p class="description">
+
+Le Sabbat est violent, agressif, incapable de raison.
+
+C'est ce que le reste de la camarilla nous a toujours dit.
+
+Qu'ils ne sont capables que d'arracher, voler, détruire et saccager.
+
+Pourtant, ici, ils ne nous ont jamais attaqué de front.
+
+Les seules preuves de leur présence sont les cadavres rejetés sur les plages, et les récits de vieilles femmes parlant de monstres sous les vagues.
+
+Même après les avoir frappés de plein fouet, massacré leurs rangs et tué leur évêque, ils sont restés.
+
+Toujours sous l'eau.
+
+Toujours à reconstruire.
+
+</p>
+
+<p class="description">
+
+Ils semblent vivre sous la mer, ou près de ses rivages.
+
+Nous ne connaissons que peu de leur organisation, mais il est correct de parler de deux groupes :
+
+Les Sirènes, qui attirent les mortels vers l'eau.
+
+Les Monstres, qui les déchirent ensuite dans les profondeurs.
+
+On raconte également que ceux qui entendent leurs chants une fois, continuent à les entendre pendant des années.
+
+Même loin du rivage.
+
+Même lorsque la mer est calme.
+
+</p>
+
+</div>
+</section>

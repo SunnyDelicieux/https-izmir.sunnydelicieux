@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calendrier qui casse les couilles</title>
+
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<link rel="stylesheet" href="calendar.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/DATA/izmir.js"></script>
+</head>
+
+<body>
+
+<div class="page-wrap">
+
+  <div class="sidebar">
+
+    <button id="theme-toggle">☾ nuit</button>
+
+    <div class="box">
+      <div class="title">Calendrier</div>
+      Normalement, je vous donnerai tous un login qui vous permet de voir les évenements de votre clan et groupe. Les évenement public
+        sont visibles par tous le monde. <BR>
+        <br> Vous pouvez tester quelques uns ! sunny pour la vision générale, kaadir pour brujah+limier et henri pour brujah+primogene.
+    </div>
+
+
+    <div id="event-viewer"></div>
+    <div id="login-status"></div>
+  </div>
+
+  <div class="container">
+<div id="site-header"></div>
+    <div id="calendar-header">Calendrier 2014</div>
+
+
+    <div class="now">
+      <div class="title">Connexion</div>
+
+      <input id="usernameInput" type="text" autocomplete="username" placeholder="identifiant..." />
+      <input id="passwordInput" type="password" autocomplete="current-password" placeholder="mot de passe..." />
+      <button id="loginBtn">Connexion</button>
+      <button id="logoutBtn" hidden>Déconnexion</button>
+    </div>
+
+    <div class="nav">
+      <button id="prevMonth">◀</button>
+      <button id="nextMonth">▶</button>
+    </div>
+
+
+    <div id="grid"></div>
+
+  </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script src="calendar.js"></script>
+
+</body>
+</html>

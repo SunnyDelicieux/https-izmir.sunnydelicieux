@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Character Wiki Template</title>
+  <link rel="stylesheet" href="../wikitemplate.css">
+  <meta name="Description de la page" content="contenu dans la page :3">
+  <link rel="icon" href="../../img/wiki/icon/no-icon.png'icon" sizes="any">
+  <script src="../nav.js" type="text/javascript" defer></script>
+</head>
+<body>
+<header-component></header-component>
+
+<!--DEBUT DU CONTENU, CE QUI APPARAIT DANS LE FICHIER-->
+<main>
+        <div id="container"><main>
+
+
+
+<!--LE TITRE PRINCIPAL DE LA PAGE-->
+        <h1>Le titre de la page</h1>
+
+<!--LE BLOC POUR LA NAVIGATION, AUTOMATIQUEMENT LES GRAND TITRE SE METTENT DEDANS, PAS BESOIN D'Y TOUCHER-->
+
+<div id="toc"></div>
+<div id="contents">     
+
+
+    <!--LE PREMIER TITRE DE LA PAGE, QUI APPARAIT DANS LA NAVIGATION-->
+
+<h2>Titre majeur</h2>
+
+<p>
+    C'est toujours mieux de mettre les textes entre deux tags "p" qui définissent un paragraphe. 
+</p>
+<p>
+    On utilise un second si on veut changer de paragraphe sous le meme titre.
+</p>
+
+
+<h3>Un sous titre</h3>
+<p>
+Un autre paragraphe
+</p>
+
+<h2>Titre majeur</h2>
+<p>
+Un autre paragraphe
+</p>
+
+
+<!-- LES TRUCS QUI FERMENT LA PAGE/-->
+
+</div>
+</main>
+</body>
+
+<!-- PAS TOUCHE, CA FONCTIONNE GRACE A : https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page </-->
+<script>
+window.onload = function () {
+    var toc = "";
+    var level = 0;
+
+    document.getElementById("contents").innerHTML =
+        document.getElementById("contents").innerHTML.replace(
+            /<h([/d])>([/s/S]*?)<//h/1>/gi,
+            function (str, openLevel, innerHtml) {
+                openLevel = parseInt(openLevel);
+
+                if (openLevel > level) {
+                    toc += (new Array(openLevel - level + 1)).join("<ol>");
+                } else if (openLevel < level) {
+                    toc += (new Array(level - openLevel + 1)).join("</ol>");
+                }
+
+                level = openLevel;
+
+                var tempDiv = document.createElement("div");
+                tempDiv.innerHTML = innerHtml;
+                var plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+                var anchor = plainText.trim()
+                    .replace(//s+/g, "_")
+                    .replace(/[^/w/-]/g, "");
+
+                toc += "<li><a href=/"#" + anchor + "/">" + plainText + "</a></li>";
+
+                return "<h" + openLevel + " id=/"" + anchor + "/">" + innerHtml + "</h" + openLevel + ">";
+            }
+        );
+
+    if (level) {
+        toc += (new Array(level + 1)).join("</ol>");
+    }
+
+    document.getElementById("toc").innerHTML += toc;
+};
+</script>
+</html>
+
+
