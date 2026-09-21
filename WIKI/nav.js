@@ -1,3 +1,4 @@
+```js
 class Header extends HTMLElement {
   constructor() {
     super();
@@ -25,7 +26,7 @@ class Header extends HTMLElement {
   width: 170px;
   height: 120px;
   margin: 0 auto 15px auto;
-  background-image: url('/img/wiki/wikilogo.png');
+  background-image: url('/img/wiki/icon/wikilogo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -91,13 +92,14 @@ class Header extends HTMLElement {
       <div class="sidenav">
         <div class="imagehere"></div>
         <h2>WIKI IZMIR</h2>
-        <a href="index.html">Izmir</a>
-        <a href="/WIKI/autre/clan.html">Clans</a>
-        <a href="/WIKI/autre/chrono.html">Chronologie</a>
-        <a href="/WIKI/fiche/index.html">Personnages</a>
+        <a href="/index.html">Izmir</a>
+        <a href="/WIKI/autre/clan">Clans</a>
+        <a href="/WIKI/autre/chrono">Chronologie</a>
+        <a href="/WIKI/fiche/index">Personnages</a>
       </div>
     `;
   }
 }
 
 customElements.define('header-component', Header);
+```
