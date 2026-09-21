@@ -1,5 +1,18 @@
 const galleryData=[
 
+{
+src:"dessin/sunny/sabbat.png",
+alt:"Sabbat.",
+tags:["sunny","canon","asset"],
+  desc:"Asset du sabbat."
+},
+
+{
+src:"/img/wiki/icon/wikilogo.png",
+alt:"Logo.",
+tags:["autriche","canon","asset"],
+  desc:"Icon Izmir."
+},
 
 {
 src:"dessin/deneb/chae.jpg",
@@ -12,7 +25,7 @@ tags:["deneb","canon","ventrue","Chae-yeong"],
 {
 src:"dessin/sunny/ingagraph.png",
 alt:"Trois.",
-tags:["sunny","nosferatu","inga"],
+tags:["sunny","nosferatu","inga","asset"],
   desc:"La chaire, le Divin et la Machine."
 },
 

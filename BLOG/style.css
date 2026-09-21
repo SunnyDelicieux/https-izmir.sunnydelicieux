@@ -1,37 +1,36 @@
 /* these are the site colors, replace them with anything you want!
  * this version is highly customizable... use simple-style.css for quicker editing if you don't care too much about the specifics!*/
-:root {
-  --site-bg: #fff4b8;
-  
-  --post-bg: white;
-  --post-text: #4E223D;
-  --post-header-text: #DA587E;
-  --border-color: #FB8AAB;
-  --border-shadow: #DA587E80;
-  
-  --sidebar-text: #4E223D;
-  --sidebar-bg: #FB8AAB;
-  --sidebar-button-bg: #FFD2E0;
-  --sidebar-button-bg-hover: #FFE1C6;
-  --sidebar-button-text: #4E223D;
-  --sidebar-button-text-hover: #DA587E;
-  --sidebar-border-color: #DA587E;
-  
- /*this is for the collapsible sections at the top (status and tag filters)*/
-  --pinned-text: #4E223D;
-  --pinned-bg: #FFD2E0;
-  /*tag filter button colors*/
-  --button-bg: #FFD2E0;
-  --button-bg-hover: #FFE1C6;
-  --button-bg-selected: #FB8AAB;
-  --button-text: #4E223D;
-  --button-border-color: #DA587E;
-  
-  /*these next two colors are for when you highlight text on the page*/
-  --selected-bg: #bde0ff;
-  --selected-text: #5244c8;
-}
+:root {--site-bg: #E8DED3;
 
+--post-bg: #F4EEE7;
+--post-text: #292331;
+--post-header-text: #7A263F;
+--border-color: #B99F93;
+--border-shadow: #7A263F55;
+
+--sidebar-text: #292331;
+--sidebar-bg: #D1B4A5;
+--sidebar-button-bg: #E8D9CE;
+--sidebar-button-bg-hover: #F0CFC3;
+--sidebar-button-text: #292331;
+--sidebar-button-text-hover: #7A263F;
+--sidebar-border-color: #7A263F;
+
+/*this is for the collapsible sections at the top (status and tag filters)*/
+--pinned-text: #292331;
+--pinned-bg: #E8D9CE;
+
+/*tag filter button colors*/
+--button-bg: #E8D9CE;
+--button-bg-hover: #F0CFC3;
+--button-bg-selected: #B76A76;
+--button-text: #292331;
+--button-border-color: #7A263F;
+
+/*these next two colors are for when you highlight text on the page*/
+--selected-bg: #D1B4A5;
+--selected-text: #292331;
+}
 /*the fonts used for this template are available here: 
  * https://fonts.google.com/specimen/Atkinson+Hyperlegible
  * https://fonts.google.com/specimen/Nunito
@@ -78,6 +77,31 @@ body {
   background-attachment: fixed;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60vh;
+  opacity: .65;
+  background: url('../img/elysium/sophia.png') no-repeat right bottom;
+  background-size: auto 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .2;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /*use a special font for certain headings/buttons*/
 h1,
 nav,
@@ -108,6 +132,8 @@ details > summary,
 #container {
   max-width:1200px;
   margin:auto;
+  position: relative;
+  z-index: 2;
 }
 
 main {
@@ -417,6 +443,8 @@ footer {
 }
 
 @media only screen and (max-width: 800px) {
+  body::before {display: none;}
+  #background-video {display: none;}
   .mobile-only {display: block;}
   .pc-only {display: none;}
   #container {
