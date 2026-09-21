@@ -1,6 +1,28 @@
 const galleryData=[
 
 
+{
+src:"dessin/deneb/chae.jpg",
+alt:"Chae.",
+tags:["deneb","canon","ventrue","Chae-yeong"],
+  desc:"Portrait de Chae-yeong."
+},
+
+
+{
+src:"dessin/sunny/ingagraph.png",
+alt:"Trois.",
+tags:["sunny","nosferatu","inga"],
+  desc:"La chaire, le Divin et la Machine."
+},
+
+
+{
+src:"dessin/sunny/aylinref.png",
+alt:"Aylin.",
+tags:["sunny","canon","toreador","aylin"],
+  desc:"Character ref de Aylin."
+},
 
   
 {
@@ -25,6 +47,12 @@ tags:["autriche","canon","autre","meryem"],
   desc:"Meryem, Notre Dame des Chagrins."
 },
 
+{
+src:"dessin/vincent/smoke.jpg",
+alt:"Trois.",
+tags:["vincent","noncanon","ventre","dimitri"],
+  desc:"Fumer, c'est etre l'esclave du tabac."
+},
 
 {
 src:"dessin/sunny/zayaa.png",
