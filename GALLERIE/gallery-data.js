@@ -1,6 +1,13 @@
 const galleryData=[
 
 {
+src:"dessin/sunny/arc.png",
+alt:"Sophia.",
+tags:["sunny","noncanon","tremere","sophia"],
+  desc:"Short hair sophia supremacy."
+},
+
+{
 src:"dessin/sunny/sabbat.png",
 alt:"Sabbat.",
 tags:["sunny","canon","asset"],
