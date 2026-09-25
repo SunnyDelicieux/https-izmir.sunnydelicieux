@@ -1,5 +1,28 @@
 const galleryData=[
 
+
+  
+{
+src:"dessin/deneb/esen.jpg",
+alt:"Esen.",
+tags:["deneb","canon","tremere","esen"],
+  desc:"Esen token."
+},
+
+{
+src:"dessin/deneb/arslan.jpg",
+alt:"Arslan.",
+tags:["deneb","canon","ventrue","arslan"],
+  desc:"Arslan token."
+},
+
+{
+src:"dessin/deneb/dimitri.jpg",
+alt:"Dimitri.",
+tags:["deneb","canon","ventrue","dimitri"],
+  desc:"Dimitri token."
+},
+
 {
 src:"dessin/sunny/arc.png",
 alt:"Sophia.",
