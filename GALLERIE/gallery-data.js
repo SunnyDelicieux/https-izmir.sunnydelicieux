@@ -19,7 +19,9 @@ tags:["sunny","noncanon","tremere","ismini"],
 src:"dessin/deneb/mariko.jpg",
 alt:"Mariko.",
 tags:["deneb","canon","tremere","mariko"],
-  desc:"Mariko token."h
+  desc:"Mariko token."
+},
+
 {
 src:"dessin/deneb/esen.jpg",
 alt:"Esen.",
