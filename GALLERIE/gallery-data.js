@@ -1,7 +1,25 @@
 const galleryData=[
 
-
   
+{
+src:"dessin/deneb/duimitrios.png",
+alt:"Mariko.",
+tags:["sunny","noncanon","tremere","dimitrios"],
+  desc:"sunny larp avoir lu monster."
+},
+
+{
+src:"dessin/sunny/sugarune.png",
+alt:"Mariko.",
+tags:["sunny","noncanon","tremere","ismini"],
+  desc:"Sugar sugar rune !."
+},
+
+{
+src:"dessin/deneb/mariko.jpg",
+alt:"Mariko.",
+tags:["deneb","canon","tremere","mariko"],
+  desc:"Mariko token."h
 {
 src:"dessin/deneb/esen.jpg",
 alt:"Esen.",
