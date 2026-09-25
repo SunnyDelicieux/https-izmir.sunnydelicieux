@@ -2,15 +2,15 @@ const galleryData=[
 
   
 {
-src:"dessin/deneb/duimitrios.png",
-alt:"Mariko.",
+src:"dessin/sunny/duimitrios.png",
+alt:"dimitrios.",
 tags:["sunny","noncanon","tremere","dimitrios"],
   desc:"sunny larp avoir lu monster."
 },
 
 {
 src:"dessin/sunny/sugarune.png",
-alt:"Mariko.",
+alt:"ismini.",
 tags:["sunny","noncanon","tremere","ismini"],
   desc:"Sugar sugar rune !."
 },
