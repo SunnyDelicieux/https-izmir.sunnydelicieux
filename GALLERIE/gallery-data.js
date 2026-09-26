@@ -1,7 +1,7 @@
 const galleryData=[
 
   {
-src:"dessin/autriche/iphigenie.png",
+src:"dessin/autriche/Iphigenie.png",
 alt:"iphigenie.",
 tags:["autriche","canon","bruajah","iphigenie"],
   desc:"Le Sacrifice d'Iphigénie"
@@ -38,7 +38,7 @@ tags:["sunny","noncanon","lasombra","idia"],
 },
 
   {
-src:"dessin/sunny/gabou.png",
+src:"dessin/sunny/GABOU.png",
 alt:"gab.",
 tags:["sunny","noncanon","brujah","gabriel"],
   desc:"gabriel (vous pouvez pas voir le stand vous en avez pas)."
