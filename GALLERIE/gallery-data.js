@@ -1,5 +1,48 @@
 const galleryData=[
 
+  {
+src:"dessin/autriche/iphigenie.png",
+alt:"iphigenie.",
+tags:["autriche","canon","bruajah","iphigenie"],
+  desc:"Le Sacrifice d'Iphigénie"
+},
+
+
+  {
+src:"dessin/sunny/eminecr.png",
+alt:"nafissa.",
+tags:["sunny","canon","bruajah","emine"],
+  desc:"And one day, you will discover something about yourself."
+},
+
+  {
+src:"dessin/sunny/nafissacr.png",
+alt:"nafissa.",
+tags:["sunny","noncanon","toreador","nafissa"],
+  desc:"Warm, is the embrace of death."
+},
+
+
+  {
+src:"dessin/sunny/atamed.png",
+alt:"atam.",
+tags:["sunny","noncanon","nosferatu","atam"],
+  desc:"20 fucking century boys."
+},
+
+  {
+src:"dessin/sunny/idiamg.png",
+alt:"idia.",
+tags:["sunny","noncanon","lasombra","idia"],
+  desc:"the guardian of shadow, idia."
+},
+
+  {
+src:"dessin/sunny/gabou.png",
+alt:"gab.",
+tags:["sunny","noncanon","brujah","gabriel"],
+  desc:"gabriel (vous pouvez pas voir le stand vous en avez pas)."
+},
   
 {
 src:"dessin/sunny/duimitrios.png",
