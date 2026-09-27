@@ -1,9 +1,17 @@
 const galleryData=[
 
   {
+src:"dessin/deneb/tarikk.png",
+alt:"tarik.",
+tags:["deneb","canon","tremere","tarik"],
+  desc:"Tarik token"
+},
+
+
+  {
 src:"dessin/autriche/Iphigenie.png",
 alt:"iphigenie.",
-tags:["autriche","canon","bruajah","iphigenie"],
+tags:["autriche","canon","brujah","iphigenie"],
   desc:"Le Sacrifice d'Iphigénie"
 },
 
