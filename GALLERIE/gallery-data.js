@@ -1,7 +1,7 @@
 const galleryData=[
 
   {
-src:"dessin/deneb/tarikk.png",
+src:"dessin/deneb/tarikk.jpg",
 alt:"tarik.",
 tags:["deneb","canon","tremere","tarik"],
   desc:"Tarik token"
