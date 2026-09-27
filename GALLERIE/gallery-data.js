@@ -1,6 +1,13 @@
 const galleryData=[
 
     {
+src:"dessin/sunny/gambling.png",
+alt:"Nour.",
+tags:["sunny","canon","lasombra","nour"],
+  desc:"You lost"
+},
+
+    {
 src:"dessin/deneb/enryr.jpg",
 alt:"Enry.",
 tags:["deneb","canon","brujah","enry"],
