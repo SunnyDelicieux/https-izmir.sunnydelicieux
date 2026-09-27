@@ -1,8 +1,8 @@
 body {
-    background: #5e80b2;
+    background: #17151a;
     font-family: Verdana;
     font-size: 12px;
-    color: #313131;
+    color: #2b2522;
 }
 
 .title {
@@ -10,9 +10,9 @@ body {
     font-weight: 400;
     font-style: normal;
     float: left;
-    color: white;
+    color: #e8dcc0;
     font-size: 32px;
-    text-shadow: 2px 2px 1px #c33846;
+    text-shadow: 2px 2px 1px #7a2633;
 }
 
 .wrapper {
@@ -24,7 +24,7 @@ body {
 
 .sidebar {
     width: 100px;
-    background: #e78c5b;
+    background: #321b20;
     height: 500px;
     float: left;
 }
@@ -34,7 +34,7 @@ body {
 }
 
 .menu {
-    background: white;
+    background: #e8dcc0;
     height: 50px;
     width: 400px;
     float: right;
@@ -47,12 +47,12 @@ body {
 }
 
 .menu a:hover {
-    background: #f7f7f7;
+    background: #d8c9a8;
 }
 
 .title {
     float: left;
-    color: white;
+    color: #e8dcc0;
 }
 
 .header {
@@ -60,11 +60,11 @@ body {
 }
 
 .footer {
-    color: white;
+    color: #e8dcc0;
 }
 
 .menu a {
-    border: 1px dotted #000;
+    border: 1px dotted #76545a;
     display: inline-block;
     height: 50px;
     width: 55px;
@@ -76,7 +76,7 @@ body {
 
 .content {
     width: 700px;
-    background: #f7f7f7;
+    background: #ded3bb;
     float: right;
     height: 100%;
     padding: 12px 12px;
@@ -120,7 +120,7 @@ body {
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-    border: 1px solid #CCC;
+    border: 1px solid #92747a;
     margin-bottom: 12px;
 }
 
@@ -134,21 +134,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #CCC;
+    background: #b8aa92;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #73535a;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #52363c;
 }
 
 * {
     scrollbar-width: thin;
-    scrollbar-color: #888 #CCC;
+    scrollbar-color: #73535a #b8aa92;
 }
 
 body {
@@ -156,9 +156,9 @@ body {
 }
 
 .box {
-    background: #FFF;
+    background: #f0e7d2;
     padding: 0px 12px;
-    border: 1px solid #CCC;
+    border: 1px solid #a89982;
     margin-bottom: 24px;
     position: relative;
     padding-top: 14px;
@@ -167,8 +167,8 @@ body {
 
 .box-title {
     position: absolute;
-    background: #c33846;
-    color: white;
+    background: #7a2633;
+    color: #e8dcc0;
     top: -10px;
     left: 12px;
     padding: 3px 6px;
@@ -183,15 +183,15 @@ body {
 
 h2 {
     font-size: 12px;
-    border-bottom: 2px dotted #c33846;
+    border-bottom: 2px dotted #7a2633;
     padding-bottom: 6px;
 }
 
 .empty-box {
     margin-top: 12px;
-    background: #FFF;
+    background: #f0e7d2;
     padding: 0px 12px;
-    border: 1px solid #CCC;
+    border: 1px solid #a89982;
 }
 
 .side-icon {
@@ -212,4 +212,23 @@ h2 {
 
 .footer {
     float: right;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #7a2633;
+    font-size: 10px;
+}
+
+.menu a:hover {
+    background: #d8c9a8;
+    color: #4f1822;
+}
+
+.content a {
+    color: #7a2633;
+}
+
+.content a:hover {
+    color: #4f1822;
 }
