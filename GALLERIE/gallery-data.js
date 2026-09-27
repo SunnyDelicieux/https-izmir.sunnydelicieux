@@ -1,12 +1,17 @@
 const galleryData=[
 
+    {
+src:"dessin/deneb/enryr.jpg",
+alt:"Enry.",
+tags:["deneb","canon","brujah","enry"],
+  desc:"Enry token"
+},
   {
 src:"dessin/deneb/tarikk.jpg",
 alt:"tarik.",
 tags:["deneb","canon","tremere","tarik"],
   desc:"Tarik token"
 },
-
 
   {
 src:"dessin/autriche/Iphigenie.png",
