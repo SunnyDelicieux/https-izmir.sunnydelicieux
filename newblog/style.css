@@ -1,131 +1,299 @@
+/* =========================
+   BASE
+   ========================= */
+
 body {
-    background: #17151a;
-    font-family: Verdana;
-    font-size: 12px;
-    color: #2b2522;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: hsla(0, 41%, 32%, 0.769);
+    background-image: url("/legacy/hub/star-08.png");
+    background-repeat: repeat;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    color: #240303be;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-.title {
-    font-family: "Cherry Bomb One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    float: left;
-    color: #e8dcc0;
-    font-size: 32px;
-    text-shadow: 2px 2px 1px #7a2633;
+h2 {
+    font-size: 12px;
+    border-bottom: 2px dotted #7a2633;
+    padding-bottom: 6px;
 }
+
+/* =========================
+   STRUCTURE
+   ========================= */
 
 .wrapper {
-    height: 600px;
     width: 800px;
-    margin: auto;
-    margin-top: 40px;
-}
-
-.sidebar {
-    width: 100px;
-    background: #321b20;
-    height: 500px;
-    float: left;
-}
-
-.main {
-    height: 500px;
-}
-
-.menu {
-    background: #e8dcc0;
-    height: 50px;
-    width: 400px;
-    float: right;
-}
-
-.menu a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 10px;
-}
-
-.menu a:hover {
-    background: #d8c9a8;
-}
-
-.title {
-    float: left;
-    color: #e8dcc0;
+    height: 600px;
+    margin: 40px auto 0;
 }
 
 .header {
     height: 50px;
 }
 
+.main {
+    position: relative; /* le bouton se place par rapport à .main */
+    height: 500px;
+}
+
 .footer {
+    float: right;
     color: #e8dcc0;
 }
 
-.menu a {
-    border: 1px dotted #76545a;
-    display: inline-block;
-    height: 50px;
-    width: 55px;
-    box-sizing: border-box;
+/* =========================
+   EN-TÊTE
+   ========================= */
+
+.title {
     float: left;
-    margin-left: -1px;
-    text-align: center;
+    font-family: "Cherry Bomb One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    color: #e8dcc0;
+    text-shadow: 2px 2px 1px #7a2633;
 }
+
+.menu {
+    float: right;
+    width: 400px;
+    height: 50px;
+    background: #e8dcc0;
+}
+
+.menu a {
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
+    width: 55px;
+    height: 50px;
+    margin-left: -1px;
+    border: 1px dotted #76545a;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    color: #7a2633;
+}
+
+.menu a:hover {
+    background: #d8c9a8;
+    color: #4f1822;
+}
+
+/* =========================
+   BARRE LATÉRALE
+   ========================= */
+
+.sidebar {
+    float: left;
+    width: 100px;
+    height: 500px;
+    background: #321b20;
+}
+
+.sidebar img {
+    max-width: 100%;
+}
+
+/* =========================
+   CONTENU : DEUX COLONNES
+   ========================= */
 
 .content {
-    width: 700px;
-    background: #ded3bb;
     float: right;
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 700px;
     height: 100%;
-    padding: 12px 12px;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-.left {
-    width: 320px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 12px;
-}
-
-.right {
-    width: 320px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.blog-left {
-    width: 520px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 12px;
-}
-
-.blog-right {
-    width: 100px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 12px;
-}
-
-.blog-right img {
-    width: 100px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    border: 1px solid #92747a;
-    margin-bottom: 12px;
+    padding: 12px;
+    background: #ded3bb;
+    overflow: hidden; /* ce sont les colonnes qui défilent */
 }
 
 .content img {
     max-width: 100%;
+}
+
+.content a {
+    color: #7a2633;
+}
+
+.content a:hover {
+    color: #4f1822;
+}
+
+/* Colonne gauche : prend toute la place disponible */
+.left {
+    flex: 1 1 0;
+    min-width: 0;
+    box-sizing: border-box;
+    padding-right: 6px;
+    overflow-y: auto;
+    container-type: inline-size; /* permet à la galerie de suivre la largeur de la colonne */
+}
+
+/* Colonne droite : 320px, ou 0 quand elle est fermée */
+.right {
+    flex: 0 0 320px;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-left: 12px;
+    overflow-y: auto;
+    transition: flex-basis 0.35s ease, margin-left 0.35s ease, opacity 0.25s ease;
+}
+
+.content.right-closed .right {
+    flex-basis: 0;
+    margin-left: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Bouton : accroché au bord droit du contenu, hors du panneau */
+.column-toggle {
+    position: absolute;
+    top: 50%;
+    right: -28px;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    width: 28px;
+    height: 60px;
+    border: 1px solid #a89982;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    background: #321b20;
+    color: #e8dcc0;
+    font-family: Verdana, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.column-toggle:hover {
+    background: #7a2633;
+}
+
+/* =========================
+   GALERIE : HAUTEUR FIXE,
+   LE NOMBRE D'IMAGES PAR LIGNE S'ADAPTE
+   ========================= */
+
+.gallery {
+    /* Hauteur des images = % de la largeur de la colonne gauche (cqw).
+       Elles rétrécissent donc quand le panneau droit s'ouvre.
+       Plus la valeur est grande, moins il y a d'images par ligne. */
+    --gallery-height: 40cqw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    margin: 1em 0;
+}
+
+.gallery img {
+    display: block;
+    height: var(--gallery-height);
+    width: auto;
+    max-width: 100%;        /* une image très large ne dépasse jamais la colonne */
+    object-fit: contain;    /* pas de déformation si elle est réduite */
+}
+
+/* =========================
+   BOÎTES
+   ========================= */
+
+.box {
+    position: relative;
+    display: flow-root; /* contient les images flottantes */
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding: 14px 12px 12px;
+    background: #f0e7d2;
+    border: 1px solid #a89982;
+}
+
+.box-title {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    padding: 3px 6px;
+    background: #7a2633;
+    color: #e8dcc0;
+    letter-spacing: 1px;
+}
+
+.empty-box {
+    margin-top: 12px;
+    padding: 0 12px;
+    background: #f0e7d2;
+    border: 1px solid #a89982;
+}
+
+.review-link {
+    padding: 6px 0;
+    text-align: right;
+}
+
+.side-icon {
+    float: left;
+    display: inline-block;
+    width: 60px;
+    padding-right: 6px;
+}
+
+.small-icon {
+    width: 90px;
+}
+
+.date-label {
+    display: inline-block;
+    width: 65px;
+    font-family: monospace;
+}
+
+/* =========================
+   AUTRES PAGES (blog)
+   ========================= */
+
+.blog-left {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 520px;
+    margin-right: 12px;
+}
+
+.blog-right {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 100px;
+    margin-top: 12px;
+}
+
+.blog-right img {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 100px;
+    margin-bottom: 12px;
+    border: 1px solid #92747a;
+}
+
+/* =========================
+   BARRE DE DÉFILEMENT
+   ========================= */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #73535a #b8aa92;
 }
 
 ::-webkit-scrollbar {
@@ -144,91 +312,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #52363c;
-}
-
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #73535a #b8aa92;
-}
-
-body {
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-}
-
-.box {
-    background: #f0e7d2;
-    padding: 0px 12px;
-    border: 1px solid #a89982;
-    margin-bottom: 24px;
-    position: relative;
-    padding-top: 14px;
-    margin-top: 12px;
-}
-
-.box-title {
-    position: absolute;
-    background: #7a2633;
-    color: #e8dcc0;
-    top: -10px;
-    left: 12px;
-    padding: 3px 6px;
-    letter-spacing: 1px;
-}
-
-.date-label {
-    display: inline-block;
-    width: 65px;
-    font-family: monospace;
-}
-
-h2 {
-    font-size: 12px;
-    border-bottom: 2px dotted #7a2633;
-    padding-bottom: 6px;
-}
-
-.empty-box {
-    margin-top: 12px;
-    background: #f0e7d2;
-    padding: 0px 12px;
-    border: 1px solid #a89982;
-}
-
-.side-icon {
-    float: left;
-    display: inline-block;
-    width: 60px;
-    padding-right: 6px;
-}
-
-.review-link {
-    padding: 6px 0;
-    text-align: right;
-}
-
-.small-icon {
-    width: 90px;
-}
-
-.footer {
-    float: right;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #7a2633;
-    font-size: 10px;
-}
-
-.menu a:hover {
-    background: #d8c9a8;
-    color: #4f1822;
-}
-
-.content a {
-    color: #7a2633;
-}
-
-.content a:hover {
-    color: #4f1822;
 }
