@@ -5,6 +5,7 @@
 body {
     display: flex;
     align-items: center;
+    margin: 0;              /* sinon les 8px par défaut s'ajoutent à min-height et créent un scroll */
     min-height: 100vh;
     background: hsla(0, 41%, 32%, 0.769);
     background-image: url("/legacy/hub/star-08.png");
@@ -28,7 +29,7 @@ h2 {
 .wrapper {
     width: 800px;
     height: 600px;
-    margin: 40px auto 0;
+    margin: 0 auto;
 }
 
 .header {
