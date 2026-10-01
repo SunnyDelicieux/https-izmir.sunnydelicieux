@@ -81,6 +81,11 @@ h2 {
     color: #7a2633;
 }
 
+.menu a img {
+    display: block;         /* le libellé passe toujours sous l'icône */
+    margin: 0 auto;
+}
+
 .menu a:hover {
     background: #d8c9a8;
     color: #4f1822;
@@ -255,7 +260,8 @@ h2 {
 
 .date-label {
     display: inline-block;
-    width: 65px;
+    width: 75px;
+    white-space: nowrap;    /* « 21 Sep 26 » sur une seule ligne */
     font-family: monospace;
 }
 
