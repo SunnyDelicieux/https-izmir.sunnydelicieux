@@ -1,5 +1,63 @@
 const galleryData=[
 
+
+    {
+src:"dessin/sunny/arrow.png",
+alt:"Sophia.",
+tags:["sunny","noncanon","tremere","sophia"],
+  desc:"The debt is paid."
+},
+
+    {
+src:"dessin/sunny/alitafancy.png",
+alt:"Alita.",
+tags:["sunny","canon","ventrue","Alita"],
+  desc:"Elysium ready"
+},
+
+    {
+src:"dessin/sunny/fire.png",
+alt:"Fire.",
+tags:["sunny","noncanon","tremere","dimitrios"],
+  desc:"Fire and ashes"
+},
+
+    {
+src:"dessin/yolnir/dog.png",
+alt:"Dog tremere.",
+tags:["yolnir","noncanon","dog"],
+  desc:"wif wif"
+},
+
+    {
+src:"dessin/sunny/uyanik.png",
+alt:"Nour.",
+tags:["sunny","canon","uyanik","Emre Yilmaz"],
+  desc:"Water downed stare"
+},
+
+    {
+src:"dessin/sunny/YELLOW.png",
+alt:"Nour.",
+tags:["sunny","noncanon","brujah","eudokia"],
+  desc:"Blessed be the blade that cut."
+},
+    {
+src:"dessin/sunny/ingated.png",
+alt:"Inga.",
+tags:["sunny","canon","inga","nosferatu"],
+  desc:"Have you seen."
+},
+
+    {
+src:"dessin/sunny/baeria.png",
+alt:"Soteria.",
+tags:["sunny","canon","toreador","soteria"],
+  desc:"Don't cry, the sun is kind."
+},
+
+
+
     {
 src:"dessin/sunny/gambling.png",
 alt:"Nour.",
