@@ -27,6 +27,7 @@ h2 {
    ========================= */
 
 .wrapper {
+    flex-shrink: 0;         /* body est en flex : sans ça le cadre rétrécit sous 800px et le contenu passe sous la barre latérale */
     width: 800px;
     height: 600px;
     margin: 0 auto;
