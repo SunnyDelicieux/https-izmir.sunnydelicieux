@@ -1,17 +1,11 @@
 const galleryData=[
 
 
-    {
-src:"dessin/sunny/arrow.png",
-alt:"Sophia.",
-tags:["sunny","noncanon","tremere","sophia"],
-  desc:"The debt is paid."
-},
 
     {
 src:"dessin/sunny/alitafancy.png",
 alt:"Alita.",
-tags:["sunny","canon","ventrue","Alita"],
+tags:["sunny","canon","ventrue","alita"],
   desc:"Elysium ready"
 },
 
@@ -32,7 +26,7 @@ tags:["yolnir","noncanon","dog"],
     {
 src:"dessin/sunny/uyanik.png",
 alt:"Nour.",
-tags:["sunny","canon","uyanik","Emre Yilmaz"],
+tags:["sunny","canon","uyanik","emre yilmaz"],
   desc:"Water downed stare"
 },
 
@@ -68,7 +62,7 @@ tags:["sunny","canon","lasombra","nour"],
     {
 src:"dessin/deneb/enryr.jpg",
 alt:"Enry.",
-tags:["deneb","canon","brujah","enry"],
+tags:["deneb","canon","brujah","enri"],
   desc:"Enry token"
 },
   {
@@ -89,7 +83,7 @@ tags:["autriche","canon","brujah","iphigenie"],
   {
 src:"dessin/sunny/eminecr.png",
 alt:"nafissa.",
-tags:["sunny","canon","bruajah","emine"],
+tags:["sunny","canon","brujah","emine"],
   desc:"And one day, you will discover something about yourself."
 },
 
@@ -188,7 +182,7 @@ tags:["autriche","canon","asset"],
 {
 src:"dessin/deneb/chae.jpg",
 alt:"Chae.",
-tags:["deneb","canon","ventrue","Chae-yeong"],
+tags:["deneb","canon","ventrue","chae-yeong"],
   desc:"Portrait de Chae-yeong."
 },
 
@@ -234,7 +228,7 @@ tags:["autriche","canon","autre","meryem"],
 {
 src:"dessin/vincent/smoke.jpg",
 alt:"Trois.",
-tags:["vincent","noncanon","ventre","dimitri"],
+tags:["vincent","noncanon","ventrue","dimitri"],
   desc:"Fumer, c'est etre l'esclave du tabac."
 },
 
@@ -302,7 +296,7 @@ tags:["autriche","canon","sabbat"],
 {
 src:"dessin/sunny/PRIMOGENANTT.png",
 alt:"Trio.",
-tags:["sunny","canon","ventrue","brujah","tremere","enry","esen","arslan"],
+tags:["sunny","canon","ventrue","brujah","tremere","enri","esen","arslan"],
   desc:"Primo-sexiste."
 },
 
@@ -485,7 +479,7 @@ tags:["sunny","ventrue","toreador","louiza","angelos","canon"],
 {
 src:"dessin/sunny/DECEMBRE.png",
 alt:"Idia magic.",
-tags:["sunny","ventrue","calendar"],
+tags:["sunny","ventrue","calendrier"],
   desc:"Calendrier Decembre."
 },
 
@@ -550,7 +544,7 @@ pages:[
 {
 src:"dessin/sunny/idia.png",
 alt:"Idia magic.",
-tags:["sunny","lasombra","Idia","canon"],
+tags:["sunny","lasombra","idia","canon"],
 desc:"Idia Outfit."
 },
 
@@ -689,7 +683,7 @@ desc:"Lignée du clan tremere."
 {
 src:"dessin/ashita/dimitri2.jpg",
 alt:"Dimitri rework.",
-tags:["ashita","official","ventrue","ghoul","canon","dimitri"],
+tags:["ashita","official","ventrue","ghoule","canon","dimitri"],
 desc:"Official art Dimitri."
 },
 
@@ -698,13 +692,13 @@ desc:"Official art Dimitri."
 src:"dessin/sunny/essil.png",
 alt:"emote essil.",
 tags:["sunny","emote","brujah","essil"],
-desc:"Emote Emine looking disrepectfully."
+desc:"Emote Emine looking disrespectfully."
 },
 
 {
 src:"dessin/sunny/issmini.png",
 alt:"emote issmini.",
-tags:["sunny","tremere","issmini","emote"],
+tags:["sunny","tremere","ismini","emote"],
 desc:"emote issmini tired sip."
 },
 
@@ -739,7 +733,7 @@ desc:"They won't harm my children."
 {
 src:"dessin/sunny/NOVEMBRE.png",
 alt:"tremere calendrier.",
-tags:["calendrier","sunny","brujah","lasombra","idia","henry"],
+tags:["calendrier","sunny","brujah","lasombra","idia","enri"],
 desc:"Calendrier duo novembre 2026."
 },
 
@@ -802,21 +796,21 @@ desc:"Parce que c'était lui, parce que c'était moi."
 {
 src:"dessin/sunny/ship.png",
 alt:"Lignée.",
-tags:["noncanon","sunny","tremere","Eylem","toreador","calliope"],
+tags:["noncanon","sunny","tremere","eylem","toreador","calliope"],
 desc:"My moon, my sunshine."
 },
 
 {
 src:"dessin/sunny/wtf.png",
 alt:"Lignée.",
-tags:["emote","sunny","tremere","Eleni"],
+tags:["emote","sunny","tremere","eleni"],
 desc:"WTF."
 },
 
 {
 src:"dessin/sunny/soundoff.png",
 alt:"Lignée.",
-tags:["emote","sunny","lasombra","Ketevan "],
+tags:["emote","sunny","lasombra","ketevan"],
 desc:"SoundOff."
 },
 
@@ -824,14 +818,14 @@ desc:"SoundOff."
 {
 src:"dessin/sunny/cozyy.png",
 alt:"Lignée.",
-tags:["emote","sunny","nosferatu","Atam "],
+tags:["emote","sunny","nosferatu","atam"],
 desc:"Cozy."
 },
 
 {
 src:"dessin/sunny/search.png",
 alt:"Lignée.",
-tags:["emote","sunny","tremere","Eylem "],
+tags:["emote","sunny","tremere","eylem"],
 desc:"Search."
 },
 
@@ -845,7 +839,7 @@ desc:"Angry."
 {
 src:"dessin/sunny/lovers.png",
 alt:"Lignée.",
-tags:["canon","sunny","ventrue","toreador", "louiza","angelos"],
+tags:["canon","sunny","ventrue","toreador","louiza","angelos"],
 desc:"Lovers."
 },
 
@@ -853,7 +847,7 @@ desc:"Lovers."
 {
 src:"dessin/sunny/Ketevan.png",
 alt:"Lignée.",
-tags:["officiel","sunny","lasombra","ghoule","Ketevan"],
+tags:["official","sunny","lasombra","ghoule","ketevan"],
 desc:"Ketevan, ghoule Lasombra."
 },
 
@@ -882,14 +876,14 @@ desc:"Enluminure conseil des primogene."
   {
 src:"dessin/sunny/coteried.png",
 alt:"Lignée.",
-tags:["canon","sunny","toreador","lasombra","tremere","Nour","Kejal","Elini"],
+tags:["canon","sunny","toreador","lasombra","tremere","nour","kejal","eleni"],
 desc:"Nafissa et Kejal. "
 },
 
   {
 src:"dessin/sunny/lignee.png",
 alt:"Lignée.",
-tags:["canon","sunny","toredor","primogene","kejal","nafissa",],
+tags:["canon","sunny","toreador","primogene","kejal","nafissa"],
 desc:"Nafissa et Kejal. "
 },
 
@@ -982,7 +976,7 @@ desc:"Radiohost "
   {
 src:"dessin/yolnir/KAmode.png",
 alt:"CamMode",
-tags:["noncanon","Yolnir","primogene","ventrue","arslan"],
+tags:["noncanon","yolnir","primogene","ventrue","arslan"],
 desc:"CamMode "
 },
 
@@ -1032,9 +1026,9 @@ pages:[
 {src:"dessin/yolnir/gab1.png", alt:"Page 1 du comic", desc:"Page 1 du comic."},
 {src:"dessin/yolnir/gab2.png", alt:"Page 2 du comic", desc:"Page 2 du comic."},
 {src:"dessin/yolnir/gab3.png", alt:"Page 3 du comic", desc:"Page 3 du comic."},
-{src:"dessin/yolnir/gab4.png", alt:"Page 4 du comic", desc:"Page 3 du comic."},
-{src:"dessin/yolnir/gab4bis.png", alt:"Page 5 du comic", desc:"Page 4 du comic."},
-{src:"dessin/yolnir/gab5.png", alt:"Page 6 du comic", desc:"Page 4 du comic."}
+{src:"dessin/yolnir/gab4.png", alt:"Page 4 du comic", desc:"Page 4 du comic."},
+{src:"dessin/yolnir/gab4bis.png", alt:"Page 5 du comic", desc:"Page 5 du comic."},
+{src:"dessin/yolnir/gab5.png", alt:"Page 6 du comic", desc:"Page 6 du comic."}
 ]
 },
 
@@ -1149,15 +1143,15 @@ desc:"Emote Kaadir smoke."
 
  {
 src:"dessin/+1.png",
-alt:"Emote Essil aprove",
+alt:"Emote Essil approve",
 tags:["emote","sunny","brujah","essil"],
-desc:"Emote Essil aprove."
+desc:"Emote Essil approve."
 },
 
  {
 src:"dessin/aha.png",
 alt:"Emote Nafissa happy",
-tags:["emote","sunny","toreador","naifssa"],
+tags:["emote","sunny","toreador","nafissa"],
 desc:"Emote Nafissa happy."
 },
 
@@ -1404,7 +1398,7 @@ desc:"makeup artist."
 src:"dessin/sunny/jace.png",
 alt:"jace",
 tags:["toreador","mtg","sunny","nafissa"],
-desc:"Jace proxy, Nafisa."
+desc:"Jace proxy, Nafissa."
 },
 
 {
@@ -1450,7 +1444,7 @@ type:"comic",
 title:"Concept art",
 alt:"Comic en 4 pages",
 tags:["canon","sunny","toreador","nafissa"],
-desc:"Concept art Nafisa.",
+desc:"Concept art Nafissa.",
 pages:[
 {src:"dessin/sunny/protonafissa.png", alt:"Nafissa, primogène Toreador", desc:"Nafissa, primogène Toreador."},
 {src:"dessin/sunny/nafissaconcept2.png", alt:"Infection aux yeux de Nafissa", desc:"Infection aux yeux de Nafissa."},
@@ -1467,7 +1461,7 @@ desc:"Oh i love being a turkish girl."
 {
 src:"dessin/sunny/domainebrujah.png",
 alt:"Brujah & co",
-tags:["brujah","noncanon","primogene","limier","lasombra","sunny","henri","idia"],
+tags:["brujah","noncanon","primogene","limier","lasombra","sunny","enri","idia"],
 desc:"Brujah & co."
 },
 

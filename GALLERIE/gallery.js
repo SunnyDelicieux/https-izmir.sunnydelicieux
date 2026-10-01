@@ -73,7 +73,8 @@ const characters={
         ["aylin","Aylin"],
         ["kejal","Kejal"],
         ["max","Max"],
-        ["calliope","Calliope","callioppe","calioppe"]
+        ["calliope","Calliope","callioppe","calioppe"],
+        ["alejandro","Alejandro"],
     ],
 
     autre:[
@@ -84,8 +85,8 @@ const characters={
 
     lasombra:[
         ["idia","Idia"],
-        ["nour","Nour"]
-    ]
+        ["nour","Nour"],
+        ["ketevan","Ketevan"]    ]
 };
 
 const clean=t=>String(t||"").trim().toLowerCase();
