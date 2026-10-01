@@ -1,6 +1,13 @@
 const galleryData=[
 
 
+    {
+src:"dessin/sunny/dude.gif",
+alt:"Sophia.",
+tags:["sunny","noncanon","nosferatu","ventrue","autre","kushi","atam","zaya"],
+  desc:"The debt is paid."
+},
+
 
     {
 src:"dessin/sunny/alitafancy.png",
