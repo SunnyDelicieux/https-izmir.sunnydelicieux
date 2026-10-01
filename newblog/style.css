@@ -269,17 +269,26 @@ h2 {
    AUTRES PAGES (blog)
    ========================= */
 
+/* Le blog n'a pas deux colonnes : les articles s'empilent et défilent */
+.content.blog-content {
+    display: block;
+    overflow-y: auto;
+}
+
+.blog-post {
+    display: flex;
+    align-items: flex-start;
+}
+
 .blog-left {
-    display: inline-block;
-    vertical-align: top;
+    flex: 1 1 0;
+    min-width: 0;
     box-sizing: border-box;
-    width: 520px;
     margin-right: 12px;
 }
 
 .blog-right {
-    display: inline-block;
-    vertical-align: top;
+    flex: 0 0 100px;
     box-sizing: border-box;
     width: 100px;
     margin-top: 12px;
