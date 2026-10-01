@@ -7,7 +7,7 @@
 	<base target="_top">
 	<title>yap session</title>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css?v=2">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,28 @@
 			font-size: 13px;
 			background-image: url("/legacy/hub/star-08.png");
 			background-repeat: repeat;
+		}
+
+		/* Mise en page du blog, ici pour ne pas dépendre d'un style.css en cache :
+		   les articles défilent de haut en bas, texte à gauche, image à droite */
+		.content.blog-content {
+			display: block;
+			overflow-y: auto;
+		}
+		.blog-post {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+		}
+		.blog-post .blog-left {
+			flex: 1 1 0;
+			min-width: 0;
+			width: auto;
+			margin-right: 0;
+		}
+		.blog-post .blog-right {
+			flex: 0 0 100px;
+			width: 100px;
 		}
 </style>
 
