@@ -81,6 +81,11 @@ h2 {
     color: #7a2633;
 }
 
+.menu a img {
+    display: block;         /* le libellé passe toujours sous l'icône */
+    margin: 0 auto;
+}
+
 .menu a:hover {
     background: #d8c9a8;
     color: #4f1822;
@@ -255,7 +260,8 @@ h2 {
 
 .date-label {
     display: inline-block;
-    width: 65px;
+    width: 75px;
+    white-space: nowrap;    /* « 21 Sep 26 » sur une seule ligne */
     font-family: monospace;
 }
 
@@ -263,17 +269,26 @@ h2 {
    AUTRES PAGES (blog)
    ========================= */
 
+/* Le blog n'a pas deux colonnes : les articles s'empilent et défilent */
+.content.blog-content {
+    display: block;
+    overflow-y: auto;
+}
+
+.blog-post {
+    display: flex;
+    align-items: flex-start;
+}
+
 .blog-left {
-    display: inline-block;
-    vertical-align: top;
+    flex: 1 1 0;
+    min-width: 0;
     box-sizing: border-box;
-    width: 520px;
     margin-right: 12px;
 }
 
 .blog-right {
-    display: inline-block;
-    vertical-align: top;
+    flex: 0 0 100px;
     box-sizing: border-box;
     width: 100px;
     margin-top: 12px;
