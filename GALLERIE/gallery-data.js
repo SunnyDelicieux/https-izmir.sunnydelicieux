@@ -15,7 +15,7 @@ pages:[
     {
 src:"dessin/autriche/Batards.png",
 alt:"Trois fois bâtards.",
-tags:["autriche","canon","tremere","handout"],
+tags:["autriche","canon","tremere","asset"],
   desc:"Trois fois bâtards."
 },
 
