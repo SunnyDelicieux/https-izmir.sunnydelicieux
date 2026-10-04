@@ -1,7 +1,6 @@
 const galleryData=[
 
     {
-<<<<<<< HEAD
 src:"dessin/sun/MARIKO.png",
 alt:"Mariko.",
 tags:["sunny","canon","mariko","tremere"],
@@ -31,8 +30,6 @@ tags:["autriche","canon","baba ishak","ventrue"],
 },
 
     {
-=======
->>>>>>> 329f2ea1a4156c14574ee64f1a076be2d7346a01
 src:"dessin/autriche/baba.png",
 alt:"Baba ishak.",
 tags:["autriche","canon","baba ishak","ventrue"],
@@ -178,6 +175,8 @@ tags:["sunny","noncanon","tremere","lasombra","nour","esen","video"],
 },
 
 
+=======
+>>>>>>> c2f68ae (yipee)
 {
 type:"comic",
 title:"Nour",
@@ -191,10 +190,17 @@ pages:[
 },
 
     {
+<<<<<<< HEAD
 src:"dessin/autriche/Batards.png",
 alt:"Trois fois bÃ¢tards.",
 tags:["autriche","canon","tremere","asset"],
   desc:"Trois fois bÃ¢tards."
+=======
+src:"dessin/autriche/batards.png",
+alt:"Trois fois bâtards.",
+tags:["autriche","canon","tremere","handout"],
+  desc:"Trois fois bâtards."
+>>>>>>> c2f68ae (yipee)
 },
 
     {
