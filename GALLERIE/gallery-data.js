@@ -1,5 +1,31 @@
 const galleryData=[
 
+{
+type:"comic",
+title:"Nour",
+alt:"Nour",
+tags:["sunny","noncanon","lasombra","nour"],
+  desc:"WIP du projet d'animation pour Nour.",
+pages:[
+{src:"dessin/sunny/image.png"},
+{src:"dessin/sunny/image2.png"},
+]
+},
+
+    {
+src:"dessin/autriche/batards.png",
+alt:"Trois fois bâtards.",
+tags:["autriche","canon","tremere","handout"],
+  desc:"Trois fois bâtards."
+},
+
+    {
+src:"dessin/deneb/kaadirr.jpg",
+alt:"Kaadir.",
+tags:["deneb","canon","brujah","kaadir"],
+  desc:"Kaadir icon."
+},
+
 
     {
 src:"dessin/sunny/dude.gif",
