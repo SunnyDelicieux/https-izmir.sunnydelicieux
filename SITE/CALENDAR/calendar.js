@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 // GERER LES EVENTS
   const grid = document.getElementById("grid");
   const loginBtn = document.getElementById("loginBtn");
-  const emailInput = document.getElementById("emailInput");
+  const usernameInput = document.getElementById("usernameInput");
   const passwordInput = document.getElementById("passwordInput");
   const logoutBtn = document.getElementById("logoutBtn");
   const header = document.getElementById("calendar-header");
@@ -22,7 +22,11 @@ window.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  // domaine des emails des comptes Supabase (ex : "kaadir" -> "kaadir@<domaine>")
+  const LOGIN_DOMAIN = "izmir.local";
+
   let events = [];
+  let selectedKey = null;
   let player = null;
 
   let viewYear = 2014;
@@ -33,6 +37,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   function toKey(dateStr) {
   if (!dateStr) return null;
+
+  const iso = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
 
   const d = new Date(dateStr);
   if (isNaN(d)) return null;
@@ -105,7 +112,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   const playerTags = [
     "public",
     player.clan,
-    player.role
+    player.role,
+    ...player.extra_tags
   ].map(norm);
 
 
@@ -123,7 +131,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   viewer.innerHTML = "";
 
   if (!dayEvents.length) {
-    viewer.innerHTML = `<div class="note">No events</div>`;
+    viewer.innerHTML = `<div class="note">Aucun événement</div>`;
     return;
   }
 
@@ -159,6 +167,20 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
 
+    for (const name of ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"]) {
+      const head = document.createElement("div");
+      head.className = "weekday";
+      head.textContent = name;
+      grid.appendChild(head);
+    }
+
+    const offset = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7;
+    for (let i = 0; i < offset; i++) {
+      const empty = document.createElement("div");
+      empty.className = "day empty";
+      grid.appendChild(empty);
+    }
+
     for (let day = 1; day <= daysInMonth; day++) {
 
       const key = `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
@@ -167,6 +189,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       const cell = document.createElement("div");
       cell.className = "day";
+      if (key === selectedKey) cell.classList.add("selected");
 
       const num = document.createElement("div");
       num.textContent = day;
@@ -179,6 +202,9 @@ window.addEventListener("DOMContentLoaded", async () => {
       }
 
       cell.addEventListener("click", () => {
+        selectedKey = key;
+        grid.querySelector(".day.selected")?.classList.remove("selected");
+        cell.classList.add("selected");
         renderSidebar(dayEvents);
       });
 
@@ -201,11 +227,10 @@ window.addEventListener("DOMContentLoaded", async () => {
       viewYear--;
     }
 
-    const filtered = player
-      ? events.filter(e => canSee(e, player))
-      : events.filter(e => canSee(e, null));
+    selectedKey = null;
+    if (viewer) viewer.innerHTML = "";
 
-    render(filtered);
+    render(events.filter(e => canSee(e, player)));
   }
 
   prevBtn?.addEventListener("click", () => changeMonth(-1));
@@ -215,7 +240,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   events = await loadEvents();
 
-console.log("ALL EVENTS RAW:", events);
   render(events.filter(e => canSee(e, null)));
 
   async function applySession(session) {
@@ -229,13 +253,13 @@ console.log("ALL EVENTS RAW:", events);
     if (player) {
       loginStatus.textContent = `✔ ${player.username || session.user.email} (${player.clan})`;
       loginBtn.hidden = true;
-      emailInput.hidden = true;
+      usernameInput.hidden = true;
       passwordInput.hidden = true;
       logoutBtn.hidden = false;
     } else {
       loginStatus.textContent = "Visiteur : événements publics";
       loginBtn.hidden = false;
-      emailInput.hidden = false;
+      usernameInput.hidden = false;
       passwordInput.hidden = false;
       logoutBtn.hidden = true;
     }
@@ -244,8 +268,11 @@ console.log("ALL EVENTS RAW:", events);
   }
 
   loginBtn?.addEventListener("click", async () => {
-    const email = emailInput.value.trim();
+    const login = usernameInput.value.trim();
     const password = passwordInput.value;
+
+    // Supabase Auth veut un email : un identifiant sans "@" est complété avec LOGIN_DOMAIN
+    const email = login.includes("@") ? login : `${login}@${LOGIN_DOMAIN}`;
 
     loginStatus.textContent = "Connexion...";
 
@@ -257,6 +284,10 @@ console.log("ALL EVENTS RAW:", events);
     }
 
     await applySession(data.session);
+  });
+
+  passwordInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") loginBtn.click();
   });
 
   logoutBtn?.addEventListener("click", async () => {
