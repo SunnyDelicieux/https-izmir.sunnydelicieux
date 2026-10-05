@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-# Régénère DATA/search-index.js (la liste des pages pour la barre de recherche)
-# et ajoute le script de recherche aux pages qui ne l'ont pas encore.
+# Régénère DATA/search-index.js (la liste des pages et de leurs titres h1/h2
+# pour la barre de recherche) et ajoute le script de recherche aux pages qui
+# ne l'ont pas encore.
 #
-# À relancer après avoir ajouté, renommé ou supprimé une page :
+# Lancé automatiquement par GitHub à chaque envoi sur main
+# (.github/workflows/search-index.yml). À la main :
 #   python3 DATA/build-search-index.py
 
+import html as htmllib
 import json
 import re
 from pathlib import Path
@@ -29,6 +32,18 @@ def excluded(rel):
     return any(rel == e or rel.startswith(e) for e in EXCLUDE)
 
 
+def headings(page_html):
+    # texte des <h1> et <h2>, sans balises ni doublons, hors commentaires
+    page_html = re.sub(r"<!--.*?-->", "", page_html, flags=re.DOTALL)
+    found = []
+    for m in re.finditer(r"<h([12])\b[^>]*>(.*?)</h\1\s*>", page_html, flags=re.IGNORECASE | re.DOTALL):
+        text = re.sub(r"<[^>]+>", " ", m.group(2))
+        text = " ".join(htmllib.unescape(text).split())
+        if text and text not in found:
+            found.append(text)
+    return found
+
+
 pages = []
 for path in sorted(ROOT.rglob("*.html")):
     rel = path.relative_to(ROOT).as_posix()
@@ -45,10 +60,10 @@ for path in sorted(ROOT.rglob("*.html")):
         url = "/" + rel
         folder = "/".join(parts[:-1])
 
-    pages.append({"name": name, "folder": folder, "url": url})
+    html = path.read_text(encoding="utf-8")
+    pages.append({"name": name, "folder": folder, "url": url, "headings": headings(html)})
 
     # ajoute la barre de recherche juste avant le premier </head>
-    html = path.read_text(encoding="utf-8")
     if SCRIPT_TAG not in html:
         new_html, count = re.subn(
             r"^([ \t]*)</head>",
@@ -66,4 +81,5 @@ out.write_text(
     + ";\n",
     encoding="utf-8",
 )
-print(f"{len(pages)} pages indexées dans {out.relative_to(ROOT)}")
+titles = sum(len(p["headings"]) for p in pages)
+print(f"{len(pages)} pages et {titles} titres indexés dans {out.relative_to(ROOT)}")

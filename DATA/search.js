@@ -1,34 +1,70 @@
-// Barre de recherche : cherche dans le nom des pages du site (liste dans search-index.js)
+// Barre de recherche : cherche dans le nom des pages du site et dans leurs titres h1/h2
+// (liste dans search-index.js, générée par build-search-index.py)
 (function () {
-  const MAX_RESULTS = 8;
+  const MAX_RESULTS = 10;
 
   // minuscules, sans accents, "ı" turc -> "i", tirets/underscores -> espaces
   const norm = (s) => (s || "")
     .toLowerCase()
     .replace(/ı/g, "i")
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[-_]+/g, " ")
     .trim();
 
-  function score(page, q) {
-    const name = norm(page.name);
-    const folder = norm(page.folder);
+  // "Structure de pouvoir" -> "structure-de-pouvoir" (pour le #titre dans l'adresse)
+  const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  // une entrée par page, puis une par titre
+  function entries(index) {
+    const list = [];
+    for (const page of index) {
+      list.push({ label: page.name, sub: page.folder || "accueil du site", url: page.url, page, heading: null });
+      for (const h of page.headings || []) {
+        list.push({
+          label: h,
+          sub: page.folder ? `${page.name} · ${page.folder}` : page.name,
+          url: `${page.url}#${slug(h)}`,
+          page,
+          heading: h,
+        });
+      }
+    }
+    return list;
+  }
+
+  // plus le score est petit, plus le résultat remonte ; les noms de pages passent avant les titres
+  function score(entry, q) {
+    if (entry.heading) {
+      const h = norm(entry.heading);
+      if (h.startsWith(q)) return 4;
+      if (h.includes(q)) return 5;
+      return -1;
+    }
+    const name = norm(entry.page.name);
     if (name === q) return 0;
     if (name.startsWith(q)) return 1;
     if (name.includes(q)) return 2;
-    if (folder.includes(q)) return 3;
+    if (norm(entry.page.folder).includes(q)) return 3;
     return -1;
   }
 
-  function search(index, query) {
+  function search(list, query) {
     const q = norm(query);
     if (!q) return [];
-    return index
-      .map((page) => ({ page, s: score(page, q) }))
+    return list
+      .map((entry) => ({ entry, s: score(entry, q) }))
       .filter((r) => r.s >= 0)
-      .sort((a, b) => a.s - b.s || a.page.name.localeCompare(b.page.name))
+      .sort((a, b) => a.s - b.s || a.entry.label.localeCompare(b.entry.label))
       .slice(0, MAX_RESULTS)
-      .map((r) => r.page);
+      .map((r) => r.entry);
+  }
+
+  // en arrivant via un résultat de titre : défile jusqu'au h1/h2 qui correspond au #titre
+  function scrollToHeading() {
+    const target = decodeURIComponent(location.hash.slice(1));
+    if (!target || document.getElementById(target)) return;
+    const heading = [...document.querySelectorAll("h1, h2")].find((h) => slug(h.textContent) === target);
+    if (heading) window.scrollTo({ top: heading.getBoundingClientRect().top + window.scrollY - 20 });
   }
 
   const CSS = `
@@ -95,7 +131,7 @@ body.light .izs-none { color: #8b6a4a; }
       return new Promise((resolve) => {
         const s = document.createElement("script");
         s.src = "/DATA/search-index.js";
-        s.onload = () => resolve(index = window.IZMIR_SEARCH_INDEX || []);
+        s.onload = () => resolve(index = entries(window.IZMIR_SEARCH_INDEX || []));
         s.onerror = () => resolve(index = []);
         document.head.appendChild(s);
       });
@@ -122,14 +158,14 @@ body.light .izs-none { color: #8b6a4a; }
         return;
       }
 
-      for (const page of results) {
+      for (const entry of results) {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.href = page.url;
-        a.textContent = page.name;
+        a.href = entry.url;
+        a.textContent = entry.label;
         const folder = document.createElement("span");
         folder.className = "izs-folder";
-        folder.textContent = page.folder || "accueil du site";
+        folder.textContent = entry.sub;
         a.appendChild(folder);
         li.appendChild(a);
         list.appendChild(li);
@@ -149,6 +185,9 @@ body.light .izs-none { color: #8b6a4a; }
       }
       else if (e.key === "Escape") { input.value = ""; render(); input.blur(); }
     });
+
+    window.addEventListener("hashchange", scrollToHeading);
+    scrollToHeading();
 
     // clic ailleurs : on referme la liste
     document.addEventListener("click", (e) => {
