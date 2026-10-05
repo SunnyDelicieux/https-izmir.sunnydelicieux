@@ -53,6 +53,31 @@ class Header extends HTMLElement {
   border-bottom: 0px;
 }
 
+/* ===== BARRE DE RECHERCHE (ordinateur) =====
+   Collée en bas de la barre latérale, les résultats s'ouvrent vers le haut. */
+header-component #search {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  bottom: 20px;
+  width: 230px;
+  max-width: none;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+header-component .search-champ {
+  border: 1px black solid;
+  background-color: white;
+}
+
+header-component .search-resultats {
+  top: auto;
+  bottom: 100%;
+  margin: 0 30px 4px;
+  border: 1px black solid;
+}
+
 @media screen and (max-width: 1350px) {
 
   .sidenav {
@@ -85,6 +110,23 @@ class Header extends HTMLElement {
     display: none;
   }
 
+  /* ===== BARRE DE RECHERCHE (téléphone / petit écran) =====
+     Sous le menu, sur toute la largeur, les résultats s'ouvrent vers le bas. */
+  header-component #search {
+    position: relative;
+    width: 100%;
+    bottom: auto;
+    padding: 8px 10px;
+    background-color: #E7E9EB;
+    border-bottom: 1px black solid;
+  }
+
+  header-component .search-resultats {
+    top: 100%;
+    bottom: auto;
+    margin: 0 10px;
+  }
+
 }
       </style>
 
@@ -96,7 +138,16 @@ class Header extends HTMLElement {
         <a href="/WIKI/autre/chrono">Chronologie</a>
         <a href="/WIKI/fiche/index">Personnages</a>
       </div>
+
+      <div id="search"></div>
     `;
+
+    // Charge la barre de recherche (une seule fois, même si la page l'a déjà)
+    if (!document.querySelector('script[src*="search.js"]')) {
+      var script = document.createElement("script");
+      script.src = "/WIKI/search.js";
+      document.head.appendChild(script);
+    }
   }
 }
 
