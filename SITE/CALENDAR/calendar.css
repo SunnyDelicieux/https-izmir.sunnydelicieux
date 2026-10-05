@@ -253,3 +253,23 @@ body.light #nextMonth:hover {
 body.light .event-image {
   border-color: #c8906a;
 }
+.weekday {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.day.empty {
+  visibility: hidden;
+  cursor: default;
+}
+
+.day.selected {
+  border-color: #c09050;
+}
+
+body.light .day.selected {
+  border-color: #8b4a18;
+}
