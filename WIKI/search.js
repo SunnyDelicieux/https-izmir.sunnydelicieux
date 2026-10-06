@@ -1,26 +1,16 @@
 /* =========================================================
-   BARRE DE RECHERCHE DU WIKI
-   ---------------------------------------------------------
-   1. Ajoute chaque nouvelle page dans la liste PAGES ci-dessous.
-   2. Mets <div id="search"></div> là où tu veux la barre.
-   3. Charge ce fichier dans la page :
-      <script src="/chemin/vers/search.js" defer></script>
+  <div id="search"></div> 
    ========================================================= */
 
-/* LA LISTE DES PAGES
-   Les chemins commencent par "/" = depuis la racine du site,
-   comme ça ils marchent depuis n'importe quelle page.
-   Adapte-les à tes vrais dossiers ! (attention aux majuscules : WIKI ≠ wiki) */
 var PAGES = [
   { titre: "Izmir",        url: "/index.html" },
   { titre: "Clans",        url: "/WIKI/autre/clan" },
   { titre: "Chronologie",  url: "/WIKI/autre/chrono" },
   { titre: "Personnages",  url: "/WIKI/fiche/index" },
-  { titre: "Uyanık Göz",   url: "/WIKI/autre/uyanik-goz.html" }, // ← vérifie ce chemin
+  { titre: "Uyanık Göz",   url: "/WIKI/autre/uyanik-goz.html" }, // 
   // { titre: "Autre page", url: "/WIKI/dossier/autre-page.html" },
 ];
 
-/* ---------- Pas besoin de toucher la suite ---------- */
 
 var textesDesPages = null; // rempli au premier essai de recherche
 
