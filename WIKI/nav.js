@@ -1,5 +1,16 @@
 // Barre de navigation du wiki, en haut de chaque page (<header-component>)
 // Couleurs : DATA/theme.css
+// Thème jour/nuit : même réglage que le bouton des pages du site (DATA/izmir.js)
+const THEME_KEY = "izmir-theme";
+
+function wikiThemeIsLight() {
+  try { return localStorage.getItem(THEME_KEY) === "light"; } catch (e) { return false; }
+}
+
+function wikiThemeLabel(button) {
+  button.textContent = document.body.classList.contains("light") ? "☾ nuit" : "☀ jour";
+}
+
 const WIKI_LINKS = [
   { href: "/WIKI/index.html", label: "Izmir" },
   { href: "/WIKI/autre/clan", label: "Clans" },
@@ -13,6 +24,8 @@ class Header extends HTMLElement {
   }
 
   connectedCallback() {
+    document.body.classList.toggle("light", wikiThemeIsLight());
+
     // l'onglet de la page en cours est souligné
     const here = location.pathname.replace(/(\.html|\/)$/, "").replace(/\/index$/, "");
     const links = WIKI_LINKS.map(function (l) {
@@ -81,6 +94,23 @@ class Header extends HTMLElement {
   border-bottom-color: var(--iz-accent);
 }
 
+#theme-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 5px 12px;
+  font: 13px var(--iz-font);
+  color: var(--iz-accent);
+  background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  color: var(--iz-accent-hover);
+  border-color: var(--iz-accent);
+}
+
 /* recherche de secours (WIKI/search.js), si la page n'a pas DATA/search.js */
 header-component #search {
   position: absolute;
@@ -113,6 +143,14 @@ header-component .search-champ {
     display: none;
   }
 
+  /* à côté du logo, à gauche de la recherche */
+  #theme-toggle {
+    position: absolute;
+    top: 12px;
+    left: 56px;
+    margin: 0;
+  }
+
   .wikinav .links {
     padding: 0 6px;
     border-top: 1px solid var(--iz-border);
@@ -131,9 +169,18 @@ header-component .search-champ {
           <span>Wiki Izmir</span>
         </a>
         <div class="links">${links}</div>
+        <button id="theme-toggle" type="button"></button>
         <div id="search"></div>
       </nav>
     `;
+
+    const button = this.querySelector("#theme-toggle");
+    wikiThemeLabel(button);
+    button.addEventListener("click", function () {
+      const light = document.body.classList.toggle("light");
+      try { localStorage.setItem(THEME_KEY, light ? "light" : "dark"); } catch (e) {}
+      wikiThemeLabel(button);
+    });
 
     // Charge la barre de recherche (une seule fois, même si la page l'a déjà)
     if (!document.querySelector('script[src*="search.js"]')) {
