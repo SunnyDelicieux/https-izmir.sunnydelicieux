@@ -1,267 +1,346 @@
-/* This thing is largely bashed together from SadGrl's layout template (at https://sadgrl.online/projects/layout-builder/) and https://www.w3schools.com/ and some StackOverflow threads */ 
+/* Pages du wiki (index, clans, chronologie, règles…)
+   Mise en page d'origine : SadGrl's layout template (https://sadgrl.online/projects/layout-builder/)
+   Couleurs et polices : thème commun d'Izmir by Night (DATA/theme.css) */
+@import url('/DATA/theme.css');
+
+html, body {margin: 0}
+
+* {
+    box-sizing: border-box;
+}
 
 body {
-                font-family: 'IBM Plex Sans',sans-serif;
-                margin: 0;
-                background: #af2121;
-                color: #000000;
-            }
+    font-family: var(--iz-font);
+    font-size: 14px;
+    line-height: 1.55;
+    letter-spacing: 0.3px;
+    background: var(--iz-bg);
+    color: var(--iz-text);
+}
 
-            /* Thanks to Xenafar and Coy @Osteophage on Pillowfort for pointing this out! */
-            html, body {margin: 0}
+::selection {
+    background: var(--iz-accent);
+    color: var(--iz-bg);
+}
 
-            * {
-                box-sizing: border-box;
-            }
+#container {
+    max-width: 1070px;
+    margin: 0 auto;
+}
 
-            #container {
-                max-width: 1070px;
-                margin: 0 auto;
-            }
-
-            a {
-                color: #cc0000;
-                font-weight: normal;
-                text-decoration:none;
-            }
-
-       h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a {
-    color: #cc0000;
+/* ── Liens ── */
+a {
+    color: var(--iz-accent);
+    font-weight: normal;
     text-decoration: none;
 }
-            a:hover {
-                color: #df3434;
-            }
 
+a:hover {
+    color: var(--iz-accent-hover);
+}
 
-            #header {
-                width: 100%;
-                background-repeat: no-repeat;
-                background-size: auto 100%;
-                background-position: center;
-                background-color: #d4d4d4;
-                height: 150px;
-            }
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: inherit;
+    text-decoration: none;
+}
 
-            main {
-                background-color: #fff;
-                padding: 20px 20px 20px 80px;
-                text-align: justify;
-            }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+    color: var(--iz-accent-hover);
+}
 
-            h1, h2 {
-                text-align: left;
-                border-bottom: 1px black solid;
-                width: 100%;
-            }
+/* ── Bandeau d'image en haut de page ── */
+#header {
+    width: 100%;
+    height: 150px;
+    background-color: var(--iz-deep);
+    background-image: radial-gradient(circle at center, rgba(180, 130, 60, 0.12), transparent 70%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--iz-border-strong);
+    box-shadow: inset 0 -40px 60px -30px rgba(0, 0, 0, 0.8);
+}
 
-            h4 {
-                text-align: left;
-                font-size: 19px;
-                margin: 0px;
-                width: 100%;
-            }
+/* ── Contenu ── */
+main {
+    padding: 20px 20px 20px 80px;
+    text-align: justify;
+}
 
-            footer {
-                background-color: #ad7575;
-                width: 100%;
-                height: 40px;
-                padding: 10px;
-                text-align: center;
-            }
+/* le cadre de lecture (les pages ont un <main> dans #container dans <main>) */
+#container {
+    margin-top: 10px;
+    padding: 10px 40px 30px;
+    background: var(--iz-panel);
+    border: 1px solid var(--iz-border);
+    border-radius: var(--iz-radius);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
+}
 
-            .imagehere {
-                height: 150px;
-                width: 150px;
-                margin-left:auto;
-                margin-right:auto;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: auto 100%;
-            }
+#container main {
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
 
-            .charactermain-image {
-                height: 350px;
-                width: 300px;
-                margin-left:auto;
-                background-repeat: no-repeat;
-                background-size: auto 100%;
-                background-position: center;
-                border: 1px black solid;
-            }
+/* le cadre englobe aussi le sommaire flottant */
+#container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-            .galleryimage {
-              float: left;
-              width: 170px;
-              height: 170px;
-              background-repeat: no-repeat;
-              background-size: auto 100%;
-              background-position: center;
-              margin: 10px;
-              border: 1px black solid;
-            }
+/* ── Titres ── */
+h1, h2, h3, h4 {
+    font-family: var(--iz-font-title);
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-align: left;
+}
 
-            h1,
-            h2,
-            h3 {
-                color: #000000;
-            }
+h1 {
+    font-size: 34px;
+    color: var(--iz-text);
+    border-bottom: 1px dashed var(--iz-border-strong);
+    padding-bottom: 6px;
+    width: 100%;
+}
 
-            h1 {
-                font-size: 40px;
-            }
+h2 {
+    font-size: 23px;
+    color: var(--iz-accent);
+    border-bottom: 1px dashed var(--iz-border-strong);
+    padding-bottom: 4px;
+    margin-top: 1.6em;
+    width: 100%;
+}
 
-            h2 {
-                font-size: 25px;
-            }
+h3 {
+    font-size: 19px;
+    color: var(--iz-accent);
+}
 
-            h4 {
-                font-weight: 100;
-            }
+h4 {
+    font-size: 18px;
+    color: var(--iz-accent-hover);
+    margin: 1.2em 0 0.3em;
+    width: 100%;
+}
 
+hr {
+    border: none;
+    border-top: 1px dashed var(--iz-border-strong);
+}
 
-            /* Thanks to LetoLeGaosaure on Pillowfort for pointing this out! */
-            h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
-                color: inherit;
-            } 
-            /* -------- */
+strong, b {
+    color: var(--iz-accent-hover);
+}
 
-            .box {
-                background-color: #E7E9EB;
-                border: 1px solid #000000;
-                padding: 10px;
-            }
+/* ── Pied de page ── */
+footer {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px;
+    text-align: center;
+    color: var(--iz-muted);
+    background: var(--iz-deep);
+    border-top: 1px solid var(--iz-border);
+}
 
-            .gallery {
-                background-color: none;
-                padding: 10px;
-                overflow: hidden;
-            }
+/* ── Images ── */
+.imagehere {
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
 
-            #toc {
-                float: left;
-                text-align:left;
-                width: 200px;
-                margin-right:auto;
-                margin: 0px 40px 10px 0px;
-                background-color: #E7E9EB;
-                border: 1px solid #000000;
-            }
+.charactermain-image {
+    height: 350px;
+    width: 300px;
+    margin-left: auto;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    border: 1px solid var(--iz-border-strong);
+}
 
-            ol {
-                padding-left: 8%;
-                list-style-type: circle;
-                }
+.gallery {
+    padding: 10px 0;
+    overflow: hidden;
+}
 
-            li {
-                padding-bottom: 3px;
-                }
+.galleryimage {
+    float: left;
+    width: 170px;
+    height: 170px;
+    background-color: var(--iz-box);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 10px;
+    border: 1px solid var(--iz-border-strong);
+    border-radius: var(--iz-radius);
+    opacity: 0.85;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
 
-            .characterprofile {
-              float: right;
-              width: 300px;
-              margin-left:auto;
-              margin: 0px 0px 30px 30px;
-              background-color: #E7E9EB;
-            }
+.galleryimage:hover {
+    opacity: 1;
+    border-color: var(--iz-accent);
+}
 
-            /* Clear floats after the columns */
-            .row:after {
-              content: "";
-              display: table;
-              clear: both;
-            }
+/* ── Encadrés ── */
+.box,
+.infobox {
+    background: var(--iz-box);
+    border: 1px dashed var(--iz-border-strong);
+    border-radius: var(--iz-radius);
+    padding: 10px 14px;
+}
 
+/* sommaire généré automatiquement en haut des pages */
+#toc {
+    float: left;
+    text-align: left;
+    width: 200px;
+    margin: 0 40px 10px 0;
+    padding: 8px 4px;
+    background: var(--iz-box);
+    border: 1px dashed var(--iz-border-strong);
+    border-radius: var(--iz-radius);
+    font-size: 13px;
+}
 
-            table {
-              border-collapse: collapse;
-              width: 300px;
-              background-color: #E7E9EB;
-              border-top: 1px solid black;
-              border-bottom: 1px solid black;
-            }
+#toc:empty {
+    display: none;
+}
 
-            tbody {
-              margin: 3px 10px;
-            }
+#toc a {
+    color: var(--iz-text-soft);
+}
 
-            td, th {
-              text-align: left;
-              padding: 3px 10px;
-              border-right: 1px solid black;
-              border-left: 1px solid black;
-            }
+#toc a:hover {
+    color: var(--iz-accent-hover);
+}
 
-            td:nth-child(odd) {
-              font-weight: 600;
-                text-align: right;
-            }
+ol {
+    padding-left: 8%;
+    list-style-type: circle;
+}
 
-            tr:nth-child(odd) {
-              background-color: #e0e2e4;
-            }
+li {
+    padding-bottom: 3px;
+}
 
+li::marker {
+    color: var(--iz-accent);
+}
 
-            /* MEDIA QUERY */
+/* ── Fiche et tableaux ── */
+.characterprofile {
+    float: right;
+    width: 300px;
+    margin: 0 0 30px 30px;
+    background: var(--iz-box);
+}
 
-            @media only screen and (max-width: 1350px) {
-              main {
-                float: left;
-                width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-                margin: 10px 0px 0px 00px;
-                padding: 0px;
-              }
-            }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-            @media only screen and (max-width: 1100px) {
-              table, .characterprofile {
-                float: left;
-                width: 100%;
-                margin: 10px 0px 0px 00px;
-              }
-                
-            .characterprofile {
-                float: left;
-                width: 100%;
-                margin: 0px 0px 30px 0px;
-              }
-                
-            main {
-                padding: 20px;
-            }
-                
-            .charactermain-image {
-                width: 100%;
-                margin: 0px 0px 10px 00px;
-              }
+table {
+    border-collapse: collapse;
+    width: 300px;
+    background: var(--iz-box);
+    border: 1px solid var(--iz-border-strong);
+}
 
-            }
+td, th {
+    text-align: left;
+    padding: 4px 10px;
+    border-right: 1px solid var(--iz-border);
+    border-left: 1px solid var(--iz-border);
+}
 
-            .title-container{
+th {
+    color: var(--iz-accent);
+    background: var(--iz-button);
+}
+
+td:nth-child(odd) {
+    font-weight: 600;
+    text-align: right;
+}
+
+tr:nth-child(odd) {
+    background: var(--iz-box-soft);
+}
+
+.title-container {
     display: flex;
-    align-items: center; /* vertically aligns icon with text */
-    gap: 10px; /* space between icon and title */
+    align-items: center;
+    gap: 10px;
 }
 
-.title-container img{
-    width: 32px; /* adjust icon size */
+.title-container img {
+    width: 32px;
     height: auto;
+    border-radius: var(--iz-radius);
 }
 
-.title-container h2{
-    margin: 0; /* removes default h2 spacing */
+.title-container h2 {
+    margin: 0;
 }
 
-.content {
-	height: 90%;
-	width: 90%;
-	position: absolute;
-	left: 230px;
-	background-color: azure;
+/* ── Écrans moyens et petits ── */
+@media only screen and (max-width: 1350px) {
+    main {
+        float: left;
+        width: 100%;
+        margin: 10px 0 0 0;
+        padding: 0;
+    }
+
+    #container {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    table, .characterprofile {
+        float: left;
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+    .characterprofile {
+        margin: 0 0 30px 0;
+    }
+
+    #container {
+        padding: 10px 20px 30px;
+    }
+
+    .charactermain-image {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #toc {
+        float: none;
+        width: 100%;
+        margin: 0 0 16px;
+    }
 }

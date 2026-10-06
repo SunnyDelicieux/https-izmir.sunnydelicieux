@@ -14,11 +14,10 @@ class Header extends HTMLElement {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #E7E9EB;
+  background-color: var(--iz-deep);
   overflow-x: hidden;
   padding-top: 20px;
-  border-bottom: none;
-  border-right: 1px black solid;
+  border-right: 1px solid var(--iz-border-strong);
 }
 
 .sidenav .imagehere {
@@ -32,12 +31,24 @@ class Header extends HTMLElement {
 }
 
 .sidenav a {
-  padding: 7px 0px 7px 20px;
-  margin: 0px 40px 5px 30px;
-  text-decoration: none;
+  padding: 6px 0 6px 16px;
+  margin: 0 30px 6px 30px;
   display: block;
-  border: 1px black solid;
-  background-color: white;
+  text-decoration: none;
+  text-transform: lowercase;
+  font: italic 15px var(--iz-font-title);
+  letter-spacing: 0.5px;
+  color: var(--iz-text);
+  background-color: var(--iz-button);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  transition: 0.2s ease;
+}
+
+.sidenav a:hover {
+  color: var(--iz-accent-hover);
+  background-color: var(--iz-bg);
+  border-color: var(--iz-accent);
 }
 
 .sidenav p {
@@ -47,10 +58,12 @@ class Header extends HTMLElement {
 
 .sidenav h2 {
   margin-top: 0px;
-  padding: 0px 40px;
-  text-decoration: none;
-  text-align: justify;
+  padding: 0px 30px;
+  text-align: center;
   border-bottom: 0px;
+  font: italic 18px var(--iz-font-title);
+  letter-spacing: 2px;
+  color: var(--iz-accent);
 }
 
 /* ===== BARRE DE RECHERCHE (ordinateur) =====
@@ -67,39 +80,36 @@ header-component #search {
 }
 
 header-component .search-champ {
-  border: 1px black solid;
-  background-color: white;
+  border: 1px solid var(--iz-border-strong);
+  background-color: var(--iz-box);
+  color: var(--iz-text);
 }
 
 header-component .search-resultats {
   top: auto;
   bottom: 100%;
   margin: 0 30px 4px;
-  border: 1px black solid;
+  border: 1px solid var(--iz-border-strong);
 }
 
 @media screen and (max-width: 1350px) {
 
   .sidenav {
-    height: 40px;
+    height: auto;
     width: 100%;
     position: static;
     overflow-x: scroll;
     scrollbar-width: none;
-    background-color: #E7E9EB;
     white-space: nowrap;
-    padding-top: 10px;
-    align-content: center;
-    border-bottom: 1px black solid;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--iz-border-strong);
     border-right: none;
   }
 
   .sidenav a {
-    padding: 3px 10px;
-    margin: 0px;
-    display: inline;
-    border: 0px;
-    background-color: #E7E9EB;
+    padding: 4px 12px;
+    margin: 0 4px 0 0;
+    display: inline-block;
   }
 
   .sidenav .imagehere,
@@ -117,8 +127,8 @@ header-component .search-resultats {
     width: 100%;
     bottom: auto;
     padding: 8px 10px;
-    background-color: #E7E9EB;
-    border-bottom: 1px black solid;
+    background-color: var(--iz-deep);
+    border-bottom: 1px solid var(--iz-border-strong);
   }
 
   header-component .search-resultats {
