@@ -25,6 +25,16 @@
   --iz-accent-hover: #d4aa72;
   --iz-accent-dim: #7a5028;
 
+  /* version papier (mode jour du site, pages du wiki) */
+  --iz-paper-bg: #e8d4bc;      /* fond autour de la feuille */
+  --iz-paper: #fbf5ec;         /* la feuille de lecture */
+  --iz-paper-box: #f0e0cc;     /* encadrés */
+  --iz-paper-line: #c8906a;    /* filets et bordures */
+  --iz-paper-text: #2a1a0e;
+  --iz-paper-muted: #7a5a3e;
+  --iz-paper-accent: #8b4a18;  /* liens et titres */
+  --iz-paper-accent-hover: #b86030;
+
   /* polices */
   --iz-font: Arial, Tahoma, Verdana, sans-serif;
   --iz-font-title: Georgia, "Times New Roman", serif;
