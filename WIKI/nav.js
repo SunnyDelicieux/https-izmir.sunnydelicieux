@@ -1,146 +1,187 @@
+// Barre de navigation du wiki, en haut de chaque page (<header-component>)
+// Couleurs : DATA/theme.css
+// Thème jour/nuit : même réglage que le bouton des pages du site (DATA/izmir.js)
+const THEME_KEY = "izmir-theme";
+
+function wikiThemeIsLight() {
+  try { return localStorage.getItem(THEME_KEY) === "light"; } catch (e) { return false; }
+}
+
+function wikiThemeLabel(button) {
+  button.textContent = document.body.classList.contains("light") ? "☾ nuit" : "☀ jour";
+}
+
+const WIKI_LINKS = [
+  { href: "/WIKI/index.html", label: "Izmir" },
+  { href: "/WIKI/liste.html", label: "Index" },
+  { href: "/WIKI/autre/clan", label: "Clans" },
+  { href: "/WIKI/autre/chrono", label: "Chronologie" },
+  { href: "/WIKI/fiche/index", label: "Personnages" },
+];
+
 class Header extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
+    document.body.classList.toggle("light", wikiThemeIsLight());
+
+    // l'onglet de la page en cours est souligné
+    const here = location.pathname.replace(/(\.html|\/)$/, "").replace(/\/index$/, "");
+    const links = WIKI_LINKS.map(function (l) {
+      const target = l.href.replace(/(\.html|\/)$/, "").replace(/\/index$/, "");
+      const active = here === target ? ' class="active"' : "";
+      return '<a href="' + l.href + '"' + active + ">" + l.label + "</a>";
+    }).join("");
+
     this.innerHTML = `
       <style>
 
-.sidenav {
-  height: 100%;
-  width: 230px;
-  position: fixed;
-  z-index: 1;
+.wikinav {
+  position: sticky;
   top: 0;
-  left: 0;
-  background-color: #E7E9EB;
-  overflow-x: hidden;
-  padding-top: 20px;
-  border-bottom: none;
-  border-right: 1px black solid;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 52px;
+  padding: 0 260px 0 20px;
+  background: var(--iz-deep);
+  border-bottom: 2px solid var(--iz-accent);
+  font-family: var(--iz-font);
 }
 
-.sidenav .imagehere {
-  width: 170px;
-  height: 120px;
-  margin: 0 auto 15px auto;
-  background-image: url('/img/wiki/icon/wikilogo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.sidenav a {
-  padding: 7px 0px 7px 20px;
-  margin: 0px 40px 5px 30px;
-  text-decoration: none;
-  display: block;
-  border: 1px black solid;
-  background-color: white;
-}
-
-.sidenav p {
-  padding: 0px 20px;
+.wikinav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: var(--iz-text);
+  font: 19px var(--iz-font-title);
+  letter-spacing: 1px;
   text-decoration: none;
 }
 
-.sidenav h2 {
-  margin-top: 0px;
-  padding: 0px 40px;
-  text-decoration: none;
-  text-align: justify;
-  border-bottom: 0px;
+.wikinav .brand img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-/* ===== BARRE DE RECHERCHE (ordinateur) =====
-   Collée en bas de la barre latérale, les résultats s'ouvrent vers le haut. */
+.wikinav .links {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.wikinav .links a {
+  padding: 14px 12px 12px;
+  color: var(--iz-text-soft);
+  font-size: 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+}
+
+.wikinav .links a:hover {
+  color: var(--iz-accent-hover);
+  border-bottom-color: var(--iz-accent-dim);
+}
+
+.wikinav .links a.active {
+  color: var(--iz-accent);
+  border-bottom-color: var(--iz-accent);
+}
+
+#theme-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 5px 12px;
+  font: 13px var(--iz-font);
+  color: var(--iz-accent);
+  background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  color: var(--iz-accent-hover);
+  border-color: var(--iz-accent);
+}
+
+/* recherche de secours (WIKI/search.js), si la page n'a pas DATA/search.js */
 header-component #search {
-  position: fixed;
-  z-index: 2;
-  left: 0;
-  bottom: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   width: 230px;
-  max-width: none;
-  padding: 0 30px;
-  box-sizing: border-box;
 }
 
 header-component .search-champ {
-  border: 1px black solid;
-  background-color: white;
+  border: 1px solid var(--iz-border-strong);
+  background-color: var(--iz-box);
+  color: var(--iz-text);
 }
 
-header-component .search-resultats {
-  top: auto;
-  bottom: 100%;
-  margin: 0 30px 4px;
-  border: 1px black solid;
-}
-
-@media screen and (max-width: 1350px) {
-
-  .sidenav {
-    height: 40px;
-    width: 100%;
-    position: static;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    background-color: #E7E9EB;
-    white-space: nowrap;
-    padding-top: 10px;
-    align-content: center;
-    border-bottom: 1px black solid;
-    border-right: none;
+/* téléphone : le nom à gauche de la recherche, les onglets en dessous */
+@media screen and (max-width: 700px) {
+  .wikinav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
   }
 
-  .sidenav a {
-    padding: 3px 10px;
-    margin: 0px;
-    display: inline;
-    border: 0px;
-    background-color: #E7E9EB;
+  .wikinav .brand {
+    min-height: 52px;
+    padding: 0 12px;
   }
 
-  .sidenav .imagehere,
-  .sidenav br,
-  .sidenav p,
-  .sidenav h2,
-  .sidenav hr {
+  .wikinav .brand span {
     display: none;
   }
 
-  /* ===== BARRE DE RECHERCHE (téléphone / petit écran) =====
-     Sous le menu, sur toute la largeur, les résultats s'ouvrent vers le bas. */
-  header-component #search {
-    position: relative;
-    width: 100%;
-    bottom: auto;
-    padding: 8px 10px;
-    background-color: #E7E9EB;
-    border-bottom: 1px black solid;
+  /* à côté du logo, à gauche de la recherche */
+  #theme-toggle {
+    position: absolute;
+    top: 12px;
+    left: 56px;
+    margin: 0;
   }
 
-  header-component .search-resultats {
-    top: 100%;
-    bottom: auto;
-    margin: 0 10px;
+  .wikinav .links {
+    padding: 0 6px;
+    border-top: 1px solid var(--iz-border);
   }
 
+  .wikinav .links a {
+    padding: 10px 10px 8px;
+  }
 }
+
       </style>
 
-      <div class="sidenav">
-        <div class="imagehere"></div>
-        <h2>WIKI IZMIR</h2>
-        <a href="/index.html">Izmir</a>
-        <a href="/WIKI/autre/clan">Clans</a>
-        <a href="/WIKI/autre/chrono">Chronologie</a>
-        <a href="/WIKI/fiche/index">Personnages</a>
-      </div>
-
-      <div id="search"></div>
+      <nav class="wikinav">
+        <a class="brand" href="/WIKI/index.html">
+          <img src="/img/wiki/icon/wikilogo.png" alt="">
+          <span>Wiki Izmir</span>
+        </a>
+        <div class="links">${links}</div>
+        <button id="theme-toggle" type="button"></button>
+        <div id="search"></div>
+      </nav>
     `;
+
+    const button = this.querySelector("#theme-toggle");
+    wikiThemeLabel(button);
+    button.addEventListener("click", function () {
+      const light = document.body.classList.toggle("light");
+      try { localStorage.setItem(THEME_KEY, light ? "light" : "dark"); } catch (e) {}
+      wikiThemeLabel(button);
+    });
 
     // Charge la barre de recherche (une seule fois, même si la page l'a déjà)
     if (!document.querySelector('script[src*="search.js"]')) {

@@ -13,7 +13,7 @@
 
   <meta name="Description de la page" content="Chronologie de l'histoire vampirique de Smyrne">
 
-  <link rel="icon" href="../../img/wiki/icon/no-icon.png'icon" sizes="any">
+  <link rel="icon" href="/img/wiki/icon/no-icon.png" sizes="any">
 
   <script src="../nav.js" type="text/javascript" defer></script>
 
@@ -68,8 +68,9 @@
     font-weight: bold;
     font-size: 17px;
     line-height: 1.3;
+    color: var(--wiki-accent);
 
-    border-right: 1px solid #000000;
+    border-right: 1px dashed var(--wiki-line);
 }
 
 .chrono-contenu {
@@ -78,6 +79,7 @@
 }
 
 .chrono-titre {
+    color: var(--wiki-text);
     font-size: 19px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -97,7 +99,7 @@
 
     .chrono-evenement {
         display: block;
-        border-left: 2px solid #000000;
+        border-left: 2px solid var(--wiki-line);
         padding-left: 15px;
     }
 
