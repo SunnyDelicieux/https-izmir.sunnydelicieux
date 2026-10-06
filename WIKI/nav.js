@@ -13,6 +13,7 @@ function wikiThemeLabel(button) {
 
 const WIKI_LINKS = [
   { href: "/WIKI/index.html", label: "Izmir" },
+  { href: "/WIKI/liste.html", label: "Index" },
   { href: "/WIKI/autre/clan", label: "Clans" },
   { href: "/WIKI/autre/chrono", label: "Chronologie" },
   { href: "/WIKI/fiche/index", label: "Personnages" },
