@@ -1,0 +1,164 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uyanık Göz</title>
+  <link rel="stylesheet" href="../wikitemplate.css">
+  <meta name="description" content="">
+  <link rel="icon" href="../../img/wiki/icon/uyanik.png" sizes="any">
+  <script src="../nav.js" type="text/javascript" defer></script>
+  <style>
+    /* Encadré à droite du texte, façon Wikipédia */
+    .infobox {
+      float: right;
+      width: 220px;
+      margin: 0 0 1em 1.5em;
+      padding: 8px;
+      border: 1px solid var(--wiki-line);
+      background: var(--wiki-box);
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .infobox img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .infobox figcaption {
+      margin-top: 6px;
+    }
+    /* Sur téléphone, l'encadré passe au-dessus du texte */
+    @media (max-width: 600px) {
+      .infobox {
+        float: none;
+        margin: 0 auto 1em;
+      }
+    }
+  </style>
+  <script src="/DATA/search.js" defer></script>
+</head>
+
+<body>
+
+<header-component></header-component>
+
+<header id="header" style="background-image: url('header image for this page goes here')"></header>
+
+<main>
+  <div id="container">
+    <h1>Uyanık Göz</h1>
+
+
+    <div id="toc"></div>
+
+    <div id="contents">
+    
+      <h2>Histoire</h2>
+      <p>
+        Uyanık Göz, « l’Œil éveillé », est la plus ancienne mafia d’Izmir. Arménienne à l’origine, elle possède à ce jour une grande influence turque chez ses membres. 
+        Le clan Brujah possède des liens avec eux depuis 1810, perdus un temps puis retrouvés au milieu du siècle dernier. Le nom de Uyanik Goz revient frequemment dans les jounaux,
+        et ils sont un groupe connu des forces de l'ordre.
+      </p>
+
+      <h3>Artoun Atchk</h3>
+      <p>
+        À l’origine, Uyanık Göz n’a rien de l’organisation criminelle que décrivent aujourd’hui les journaux : c'est principalement une affaire de familles. De puissantes familles arméniennes de Smyrne,
+        que la ville cantonne à des postes administratifs sans éclat, s’en servent pour
+        accéder aux comptes et aux marchés de la ville et en liquider les fonds. Ce réseau, qui tient le port et Bayraklı, prend le nom d’Artoun Atchk (Արթուն Աչք), « l’œil
+        éveillé ». Dès 1810, les Brujah possèdent des liens avec la famille, et l'utilisent pour organiser leurs affaires et
+        obtenir un poids dans la société criminelle. C'est à la seconde moitié du 19ème siècle que Sélim, le sheriff de la ville, étreint Narek, un héritier
+        d'une des familles. Il lui donne alors le contrôle du clan sur le groupe, souhaitant laisser plus de liberté à Artoun Atchk dans ses affaires.
+      </p>
+
+  <!-- Logo à droite du texte -->
+      <figure class="infobox">
+        <img src="../../img/wiki/icon/uyanik.png" alt="Logo d'Uyanık Goz">
+        <figcaption>Emblème d'Uyanık Göz</figcaption>
+      </figure>
+
+
+      <h3>L’incendie, puis un nouveau nom</h3>
+      <p>
+        En 1919, la mort de Narek aux mains du Sabbat fait perdre aux Brujah leurs liens avec la mafia. En 1922, durant l’incendie de Smyrne,
+        elle subit de lourdes pertes. On parle peu des années qui ont
+        suivi car la mafia se retranche. Les rares articles de presse qui les évoquent restent
+        vagues : certains parlent d’une dérive religieuse et sectaire. On n’en retrouve aucune trace aujourd’hui, mais le sujet revient
+        routinement dans les médias lorsque leur nom est mentionné.
+      </p>
+
+      <p>
+        En 1950, les Brujah retrouvent leurs liens avec la mafia via Anna et l’associent officiellement à leur Clan. Elle est
+        rebaptisée d’un nom plus turc, Uyanık Göz, qui n’est que la traduction de l’ancien, mais qui permet de se distancer
+        des accusations. Depuis, les Arméniens y
+        perdent du terrain génération après génération au profit de nouveaux venus turcs. De mafia de familles suivant ses propres codes,
+        elle devient un danger grandissant, et les forces de l'ordre qualifient leurs actions de « trop aléatoires ».
+      </p>
+
+      <h2>Ce que dit la presse</h2>
+      <p>
+        Les journaux d’Izmir décrivent un réseau qui dépasse largement Bayraklı et la ville : drogue et armes y
+        circulent « sans frontière ». Les saisies n’aboutissent jamais à rien, et les dealers pris en flagrant
+        délit sont relâchés au bout de quelques jours. Au fil des décennies, la presse a aussi signalé des
+        disparitions et des corps repêchés dans la baie, dont les affaires sont classées, parfois en quelques
+        semaines. Les quartiers où la mafia siège sont décrits comme des zones où les patrouilles ne passent plus et où
+        les plaintes ne sont pas enregistrées.
+      </p>
+
+      <p>
+        La mafia est aujourd’hui divisée. D’un côté, de jeunes Turcs souvent pauvres et peu instruits, de l’autre, les descendants des
+        familles arméniennes, qui prennent leurs distances avec un héritage devenu encombrant. Des règlements de
+        comptes éclatent régulièrement entre les deux camps.
+      </p>
+    </div>
+  </div>
+</main>
+
+<!-- Pied de page : si rien ne s'affiche, vérifier le nom du composant dans nav.js -->
+<footer-component></footer-component>
+
+<!-- Don't touch this, it makes the table of contents work, as per: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page -->
+<script>
+window.onload = function () {
+    var toc = "";
+    var level = 0;
+    var contents = document.getElementById("contents");
+
+    contents.innerHTML = contents.innerHTML.replace(
+        /<h(\d)>([\s\S]*?)<\/h\1>/gi,
+        function (str, openLevel, innerHtml) {
+            openLevel = parseInt(openLevel);
+
+            if (openLevel > level) {
+                toc += (new Array(openLevel - level + 1)).join("<ol>");
+            } else if (openLevel < level) {
+                toc += (new Array(level - openLevel + 1)).join("</ol>");
+            }
+
+            level = openLevel;
+
+            var tempDiv = document.createElement("div");
+            tempDiv.innerHTML = innerHtml;
+            var plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+            var anchor = plainText.trim()
+                .replace(/\s+/g, "_")
+                .replace(/[^\w\-]/g, "");
+
+            toc += '<li><a href="#' + anchor + '">' + plainText + '</a></li>';
+
+            return "<h" + openLevel + ' id="' + anchor + '">' + innerHtml + "</h" + openLevel + ">";
+        }
+    );
+
+    if (level) {
+        toc += (new Array(level + 1)).join("</ol>");
+    }
+
+    document.getElementById("toc").innerHTML += toc;
+};
+</script>
+</body>
+
+</html>
