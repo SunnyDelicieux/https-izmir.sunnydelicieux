@@ -427,6 +427,19 @@ window.IZMIR_SEARCH_INDEX = [
   ]
  },
  {
+  "name": "liste",
+  "folder": "WIKI",
+  "url": "/WIKI/liste.html",
+  "headings": [
+   "Index du wiki",
+   "Izmir",
+   "Brujah",
+   "Toreador",
+   "Tremere",
+   "Ventrue"
+  ]
+ },
+ {
   "name": "info",
   "folder": "WIKI/toreador",
   "url": "/WIKI/toreador/info/",
