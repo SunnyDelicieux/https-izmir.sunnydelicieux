@@ -310,10 +310,8 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI",
   "url": "/WIKI/brujah/",
   "headings": [
-   "Le sacre ou le sépulcre",
-   "Mythologie",
-   "Antiquité",
-   "Modern Nights"
+   "Le clan Brujah",
+   "Le sacre ou le sépulcre"
   ]
  },
  {
