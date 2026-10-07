@@ -1,5 +1,55 @@
 const galleryData=[
 
+      {
+src:"dessin/autriche/carthage.png",
+alt:"Fils de Carthage.",
+tags:["autriche","asset","brujah"],
+  desc:"Fils de Carthage."
+},
+
+      {
+src:"dessin/sunny/green.png",
+alt:"Green if for brujah.",
+tags:["sunny","canon","brujah","emine","enry"],
+  desc:"Green if for brujah."
+},
+
+      {
+src:"dessin/sunny/bd.png",
+alt:"Did i not deserve you ?",
+tags:["sunny","canon","ventrue","dimitri","hadla"],
+  desc:"Did i not deserve you ?"
+},
+
+      {
+src:"dessin/sunny/die.png",
+alt:"If we don't win, they die.",
+tags:["sunny","noncanon","lasombra","brujah","nosferatu","gabriel","nour","inga"],
+  desc:"If we don't win, they die."
+},
+
+   {
+src:"dessin/deneb/idia.jpg",
+alt:"Icon idia.",
+tags:["deneb","canon","lasombra","idia"],
+  desc:"Icon idia."
+},
+
+      {
+src:"dessin/sunny/tremeretrio.png",
+alt:"Before the fire",
+tags:["sunny","noncanon","alkinoos","tremere"],
+  desc:"Red is for tremere."
+},
+
+    {
+src:"dessin/sunny/arrow.png",
+alt:"You have beaten truth.",
+tags:["sophia","canon","tremere","sunny"],
+  desc:"You have beaten truth."
+},
+
+
 {
 type:"comic",
 title:"Nour",
