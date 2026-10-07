@@ -15,7 +15,7 @@ tags:["sunny","canon","brujah","emine","enry"],
 },
 
       {
-src:"dessin/sunny/bd.png",
+src:"dessin/sunny/BD.png",
 alt:"Did i not deserve you ?",
 tags:["sunny","canon","ventrue","dimitri","hadla"],
   desc:"Did i not deserve you ?"
