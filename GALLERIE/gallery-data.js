@@ -7,6 +7,13 @@ tags:["autriche","asset","brujah"],
   desc:"Fils de Carthage."
 },
 
+{
+src:"dessin/yolnir/ARR.mp4",
+alt:"Animation Nour",
+tags:["video","yolnir","canon","brujah","tremere","toreador","ventrue","esen","arslan","enry","nafissa","gabriel","tarik","chae-yeong","kaadir"],
+desc:"Animation de Nour."
+},
+
       {
 src:"dessin/sunny/green.png",
 alt:"Green if for brujah.",
@@ -49,6 +56,13 @@ tags:["sophia","canon","tremere","sunny"],
   desc:"You have beaten truth."
 },
 
+    {
+src:"dessin/sun/test2.mp4",
+alt:"test anim.",
+tags:["sunny","noncanon","tremere","lasombra","nour","esen"],
+  desc:"Test animation nour."
+},
+
 
 {
 type:"comic",
@@ -76,12 +90,11 @@ tags:["deneb","canon","brujah","kaadir"],
   desc:"Kaadir icon."
 },
 
-
     {
-src:"dessin/sunny/dude.gif",
-alt:"Sophia.",
-tags:["sunny","noncanon","nosferatu","ventrue","autre","kushi","atam","zaya"],
-  desc:"The debt is paid."
+src:"dessin/sunny/Dude.mp4",
+alt:"DUDE.",
+tags:["sunny","noncanon","video","ventrue","nosferatu","atam","kushi","zaya"],
+  desc:"Dude."
 },
 
 
@@ -98,6 +111,7 @@ alt:"Fire.",
 tags:["sunny","noncanon","tremere","dimitrios"],
   desc:"Fire and ashes"
 },
+
 
     {
 src:"dessin/yolnir/dog.png",
