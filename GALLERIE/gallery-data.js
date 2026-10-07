@@ -59,7 +59,7 @@ tags:["sophia","canon","tremere","sunny"],
     {
 src:"dessin/sun/test2.mp4",
 alt:"test anim.",
-tags:["sunny","noncanon","tremere","lasombra","nour","esen"],
+tags:["sunny","noncanon","tremere","lasombra","nour","esen","video"],
   desc:"Test animation nour."
 },
 
@@ -91,7 +91,7 @@ tags:["deneb","canon","brujah","kaadir"],
 },
 
     {
-src:"dessin/sunny/Dude.mp4",
+src:"dessin/sun/Dude.mp4",
 alt:"DUDE.",
 tags:["sunny","noncanon","video","ventrue","nosferatu","atam","kushi","zaya"],
   desc:"Dude."
