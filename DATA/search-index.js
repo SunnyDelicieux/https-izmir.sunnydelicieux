@@ -264,10 +264,7 @@ window.IZMIR_SEARCH_INDEX = [
   "name": "kushi",
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/kushi.html",
-  "headings": [
-   "Izmir Character build",
-   "Kushi"
-  ]
+  "headings": []
  },
  {
   "name": "meryem",
