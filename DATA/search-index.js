@@ -264,7 +264,10 @@ window.IZMIR_SEARCH_INDEX = [
   "name": "kushi",
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/kushi.html",
-  "headings": []
+  "headings": [
+   "Izmir Character build",
+   "Kushi"
+  ]
  },
  {
   "name": "meryem",
@@ -307,8 +310,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI",
   "url": "/WIKI/brujah/",
   "headings": [
-   "Le titre de la page",
-   "Titre majeur"
+   "Le sacre ou le sépulcre",
+   "Mythologie",
+   "Antiquité",
+   "Modern Nights"
   ]
  },
  {
