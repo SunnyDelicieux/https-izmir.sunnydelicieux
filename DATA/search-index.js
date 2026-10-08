@@ -749,6 +749,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "newblog",
   "url": "/newblog/blog.html",
   "headings": [
+   "GRAAAAAA",
    "putain de rollercoaster",
    "Yipee Yipee",
    "Damn",
@@ -762,6 +763,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "newblog",
   "url": "/newblog/gallerie.html",
   "headings": [
+   "Color root",
    "go back to your roots, white girl",
    "Trying things",
    "Drawing takes patiente",
@@ -775,7 +777,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "newblog",
   "url": "/newblog/project.html",
   "headings": [
-   "Le lore sans trop écrire"
+   "idk man"
   ]
  }
 ];
