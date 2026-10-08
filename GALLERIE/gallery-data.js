@@ -1,5 +1,26 @@
 const galleryData=[
 
+        {
+src:"dessin/sun/sophiaed.png",
+alt:"Soul keeper.",
+tags:["sunny","noncanon","tremere","sophia"],
+  desc:"Soul keeper."
+},
+
+      {
+src:"dessin/sun/prophete.png",
+alt:"The whispers.",
+tags:["sunny","canon","autre","toreador","soteria","le prophète"],
+  desc:"The whispers."
+},
+
+      {
+src:"dessin/vincent/izmail.jpg",
+alt:"22 décembre 1790, Izmaïl.",
+tags:["vincent","canon","ventrue","thouros"],
+  desc:"22 décembre 1790, Izmaïl."
+},
+
       {
 src:"dessin/autriche/carthage.png",
 alt:"Fils de Carthage.",
