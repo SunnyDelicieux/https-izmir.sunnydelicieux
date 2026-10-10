@@ -1,0 +1,229 @@
+/* ==========================================================
+   BASE
+   ========================================================== */
+
+body {
+	background: #0f1222;
+	color: #e7ecff;
+	font-size: 12px;
+	font-family: monospace;
+}
+
+a {
+	color: #5b87cc;
+}
+
+.blue {
+	color: #5b87cc;
+}
+
+* {
+	scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+
+/* ==========================================================
+   MISE EN PAGE
+   ========================================================== */
+
+.outer {
+	width: 685px;
+	height: 650px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.left {
+	width: 160px;
+	height: 100%;
+	display: inline-block;
+	float: left;
+	padding-right: 16px;
+}
+
+.right {
+	display: inline-block;
+	background: #2a589f;
+	border: 1px solid black;
+	width: 500px;
+	float: left;
+	box-sizing: border-box;
+	height: 100%;
+	position: relative;
+	border-radius: 4px;
+}
+
+.header {
+	height: 16px;
+	background: #17296f;
+	width: 100%;
+	border-bottom: 1px solid #0f1222;
+	border-top: 1px solid #2a589f;
+	border-left: 1px solid #2a589f;
+}
+
+.content {
+	background: #0b1640;
+	position: absolute;
+	top: 22px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	overflow-y: auto;
+	padding: 12px;
+}
+
+
+/* ==========================================================
+   COLONNE DE GAUCHE
+   ========================================================== */
+
+.avatar {
+	width: 100%;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 18px;
+}
+
+.avatar img {
+	width: 88px;
+	margin-left: auto;
+	display: block;
+	border-radius: 6px;
+}
+
+.bio {
+	text-align: right;
+	line-height: 1.5rem;
+}
+
+h1 {
+	font-size: 18px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 6px;
+	letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   POSTS ET COMMENTAIRES
+   ========================================================== */
+
+h2 {
+	font-size: 12px;
+	color: #5b87cc;
+	border-bottom: 1px dotted;
+	margin-top: 42px;
+}
+
+.post > i {
+	color: #5b87cc;
+	font-style: normal;
+}
+
+.reply {
+	margin: 8px 0 0 14px;
+	padding: 6px 8px;
+	background: #12215a;
+	border-left: 2px solid #2a589f;
+}
+
+.reply i {
+	color: #5b87cc;
+	font-style: normal;
+}
+
+.reply p {
+	margin: 4px 0 0;
+}
+
+.green {
+	color: #8fbf5a;
+}
+
+.deleted {
+	color: #3c5590;
+	font-style: italic;
+}
+
+
+/* ==========================================================
+   MESSAGERIE
+   ========================================================== */
+
+#chat-btn {
+	position: fixed;
+	right: 0;
+	top: 50%;
+	background: #17296f;
+	color: #e7ecff;
+	border: 1px solid #2a589f;
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+	padding: 10px 6px;
+	cursor: pointer;
+}
+
+#chat-btn:hover {
+	background: #2a589f;
+}
+
+#chat {
+	display: none;
+	position: fixed;
+	right: 34px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 320px;
+	height: 240px;
+	background: #0b1640;
+	border: 1px solid #2a589f;
+	border-radius: 4px;
+}
+
+#chat.open {
+	display: flex;
+}
+
+#chat-contacts {
+	width: 90px;
+	border-right: 1px solid #2a589f;
+	overflow-y: auto;
+}
+
+#chat-contacts div {
+	padding: 5px;
+	cursor: pointer;
+	color: #5b87cc;
+}
+
+#chat-contacts div:hover,
+#chat-contacts div.active {
+	color: #e7ecff;
+}
+
+#chat-contacts div.active {
+	background: #17296f;
+}
+
+#chat-log {
+	flex: 1;
+	padding: 5px 8px;
+	overflow-y: auto;
+}
+
+#chat-log p {
+	margin: 4px 0;
+	word-wrap: break-word;
+}
+
+#chat-log .me {
+	text-align: right;
+	color: #5b87cc;
+}
