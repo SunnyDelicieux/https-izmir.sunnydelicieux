@@ -1,87 +1,45 @@
 const galleryData=[
 
-        {
-src:"dessin/sun/sophiaed.png",
-alt:"Soul keeper.",
-tags:["sunny","noncanon","tremere","sophia"],
-  desc:"Soul keeper."
-},
-
-      {
-src:"dessin/sun/prophete.png",
-alt:"The whispers.",
-tags:["sunny","canon","autre","toreador","soteria","le prophète"],
-  desc:"The whispers."
-},
-
-      {
-src:"dessin/vincent/izmail.jpg",
-alt:"22 décembre 1790, Izmaïl.",
-tags:["vincent","canon","ventrue","thouros"],
-  desc:"22 décembre 1790, Izmaïl."
-},
-
-      {
-src:"dessin/autriche/carthage.png",
-alt:"Fils de Carthage.",
-tags:["autriche","asset","brujah"],
-  desc:"Fils de Carthage."
-},
-
-{
-src:"dessin/yolnir/ARR.mp4",
-alt:"Animation Nour",
-tags:["video","yolnir","canon","brujah","tremere","toreador","ventrue","esen","arslan","enry","nafissa","gabriel","tarik","chae-yeong","kaadir"],
-desc:"Animation de Nour."
-},
-
-      {
-src:"dessin/sunny/green.png",
-alt:"Green if for brujah.",
-tags:["sunny","canon","brujah","emine","enry"],
-  desc:"Green if for brujah."
-},
-
-      {
-src:"dessin/sunny/BD.png",
-alt:"Did i not deserve you ?",
-tags:["sunny","canon","ventrue","dimitri","hadla"],
-  desc:"Did i not deserve you ?"
-},
-
-      {
-src:"dessin/sunny/die.png",
-alt:"If we don't win, they die.",
-tags:["sunny","noncanon","lasombra","brujah","nosferatu","gabriel","nour","inga"],
-  desc:"If we don't win, they die."
-},
-
-   {
-src:"dessin/deneb/idia.jpg",
-alt:"Icon idia.",
-tags:["deneb","canon","lasombra","idia"],
-  desc:"Icon idia."
-},
-
-      {
-src:"dessin/sunny/tremeretrio.png",
-alt:"Before the fire",
-tags:["sunny","noncanon","alkinoos","tremere"],
-  desc:"Red is for tremere."
+    {
+src:"dessin/sun/aylin.png",
+alt:"Aylin d'halloween.",
+tags:["sunny","canon","aylin","toreador"],
+  desc:"Aylin d'halloween."
 },
 
     {
-src:"dessin/sunny/arrow.png",
-alt:"You have beaten truth.",
-tags:["sophia","canon","tremere","sunny"],
-  desc:"You have beaten truth."
+src:"dessin/sun/baran.png",
+alt:"Baran d'halloween.",
+tags:["sunny","canon","baran","brujah"],
+  desc:"Baran d'halloween."
 },
 
     {
-src:"dessin/sun/test2.mp4",
-alt:"test anim.",
-tags:["sunny","noncanon","tremere","lasombra","nour","esen","video"],
-  desc:"Test animation nour."
+src:"dessin/sun/duo.png",
+alt:"Duo Idia Enry d'halloween.",
+tags:["sunny","canon","brujah","lasombra","enry","idia"],
+  desc:"Duo Idia Enry d'halloween."
+},
+
+    {
+src:"dessin/sun/emine.png",
+alt:"Emine d'halloween.",
+tags:["sunny","canon","emine","brujah"],
+  desc:"Emine d'halloween."
+},
+  
+    {
+src:"dessin/sun/nafissa.png",
+alt:"Nafissa d'halloween.",
+tags:["sunny","canon","nafissa","toreador"],
+  desc:"Nafissa d'halloween."
+},
+
+    {
+src:"dessin/sun/poster.png",
+alt:"Elysium d'halloween.",
+tags:["sunny","canon","asset","nebetta","nosferatu"],
+  desc:"Elysium d'halloween."
 },
 
 
@@ -102,7 +60,7 @@ src:"dessin/autriche/Batards.png",
 alt:"Trois fois bâtards.",
 tags:["autriche","canon","tremere","asset"],
   desc:"Trois fois bâtards."
-},
+},git
 
     {
 src:"dessin/deneb/kaadirr.jpg",
@@ -111,11 +69,12 @@ tags:["deneb","canon","brujah","kaadir"],
   desc:"Kaadir icon."
 },
 
+
     {
-src:"dessin/sun/Dude.mp4",
-alt:"DUDE.",
-tags:["sunny","noncanon","video","ventrue","nosferatu","atam","kushi","zaya"],
-  desc:"Dude."
+src:"dessin/sunny/dude.gif",
+alt:"Sophia.",
+tags:["sunny","noncanon","nosferatu","ventrue","autre","kushi","atam","zaya"],
+  desc:"The debt is paid."
 },
 
 
@@ -132,7 +91,6 @@ alt:"Fire.",
 tags:["sunny","noncanon","tremere","dimitrios"],
   desc:"Fire and ashes"
 },
-
 
     {
 src:"dessin/yolnir/dog.png",
