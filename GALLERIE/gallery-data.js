@@ -43,6 +43,91 @@ tags:["sunny","canon","asset","nebetta","nosferatu"],
 },
 
 
+        {
+src:"dessin/sun/sophiaed.png",
+alt:"Soul keeper.",
+tags:["sunny","noncanon","tremere","sophia"],
+  desc:"Soul keeper."
+},
+
+      {
+src:"dessin/sun/prophete.png",
+alt:"The whispers.",
+tags:["sunny","canon","autre","toreador","soteria","le prophète"],
+  desc:"The whispers."
+},
+
+      {
+src:"dessin/vincent/izmail.jpg",
+alt:"22 décembre 1790, izmail.",
+tags:["vincent","canon","ventrue","thouros"],
+  desc:"22 décembre 1790, izmail."
+},
+
+      {
+src:"dessin/autriche/carthage.png",
+alt:"Fils de Carthage.",
+tags:["autriche","asset","brujah"],
+  desc:"Fils de Carthage."
+},
+
+{
+src:"dessin/yolnir/ARR.mp4",
+alt:"Animation Nour",
+tags:["video","yolnir","canon","brujah","tremere","toreador","ventrue","esen","arslan","enry","nafissa","gabriel","tarik","chae-yeong","kaadir"],
+desc:"Animation de Nour."
+},
+
+      {
+src:"dessin/sunny/green.png",
+alt:"Green if for brujah.",
+tags:["sunny","canon","brujah","emine","enry"],
+  desc:"Green if for brujah."
+},
+
+      {
+src:"dessin/sunny/BD.png",
+alt:"Did i not deserve you ?",
+tags:["sunny","canon","ventrue","dimitri","hadla"],
+  desc:"Did i not deserve you ?"
+},
+
+      {
+src:"dessin/sunny/die.png",
+alt:"If we don't win, they die.",
+tags:["sunny","noncanon","lasombra","brujah","nosferatu","gabriel","nour","inga"],
+  desc:"If we don't win, they die."
+},
+
+   {
+src:"dessin/deneb/idia.jpg",
+alt:"Icon idia.",
+tags:["deneb","canon","lasombra","idia"],
+  desc:"Icon idia."
+},
+
+      {
+src:"dessin/sunny/tremeretrio.png",
+alt:"Before the fire",
+tags:["sunny","noncanon","alkinoos","tremere"],
+  desc:"Red is for tremere."
+},
+
+    {
+src:"dessin/sunny/arrow.png",
+alt:"You have beaten truth.",
+tags:["sophia","canon","tremere","sunny"],
+  desc:"You have beaten truth."
+},
+
+    {
+src:"dessin/sun/test2.mp4",
+alt:"test anim.",
+tags:["sunny","noncanon","tremere","lasombra","nour","esen","video"],
+  desc:"Test animation nour."
+},
+
+
 {
 type:"comic",
 title:"Nour",
@@ -60,7 +145,7 @@ src:"dessin/autriche/Batards.png",
 alt:"Trois fois bâtards.",
 tags:["autriche","canon","tremere","asset"],
   desc:"Trois fois bâtards."
-},git
+},
 
     {
 src:"dessin/deneb/kaadirr.jpg",
