@@ -383,7 +383,7 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/WIKI/brujah/pnj/henri.html",
   "headings": [
    "Izmir Character build",
-   "Henri"
+   "Enrico Alessandro Pisani, dit Enry"
   ]
  },
  {
