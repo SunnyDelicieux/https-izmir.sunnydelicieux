@@ -779,5 +779,11 @@ window.IZMIR_SEARCH_INDEX = [
   "headings": [
    "idk man"
   ]
+ },
+ {
+  "name": "test",
+  "folder": "salebail",
+  "url": "/salebail/test.html",
+  "headings": []
  }
 ];
