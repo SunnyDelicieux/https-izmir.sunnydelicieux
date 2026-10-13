@@ -90,25 +90,15 @@ tags:["sunny","noncanon","tremere","sophia"],
       {
 src:"dessin/sun/prophete.png",
 alt:"The whispers.",
-<<<<<<< HEAD
 tags:["sunny","canon","autre","toreador","soteria","le prophète"],
-=======
-tags:["sunny","canon","autre","toreador","soteria","le prophÃ¨te"],
->>>>>>> 329f2ea1a4156c14574ee64f1a076be2d7346a01
   desc:"The whispers."
 },
 
       {
 src:"dessin/vincent/izmail.jpg",
-<<<<<<< HEAD
 alt:"22 décembre 1790, izmail.",
 tags:["vincent","canon","ventrue","thouros"],
   desc:"22 décembre 1790, izmail."
-=======
-alt:"22 dÃ©cembre 1790, izmail.",
-tags:["vincent","canon","ventrue","thouros"],
-  desc:"22 dÃ©cembre 1790, izmail."
->>>>>>> 329f2ea1a4156c14574ee64f1a076be2d7346a01
 },
 
       {
@@ -175,8 +165,6 @@ tags:["sunny","noncanon","tremere","lasombra","nour","esen","video"],
 },
 
 
-=======
->>>>>>> c2f68ae (yipee)
 {
 type:"comic",
 title:"Nour",
@@ -190,17 +178,10 @@ pages:[
 },
 
     {
-<<<<<<< HEAD
-src:"dessin/autriche/Batards.png",
-alt:"Trois fois bÃ¢tards.",
-tags:["autriche","canon","tremere","asset"],
-  desc:"Trois fois bÃ¢tards."
-=======
 src:"dessin/autriche/batards.png",
 alt:"Trois fois bâtards.",
 tags:["autriche","canon","tremere","handout"],
   desc:"Trois fois bâtards."
->>>>>>> c2f68ae (yipee)
 },
 
     {
@@ -293,7 +274,7 @@ tags:["deneb","canon","tremere","tarik"],
 src:"dessin/autriche/Iphigenie.png",
 alt:"iphigenie.",
 tags:["autriche","canon","brujah","iphigenie"],
-  desc:"Le Sacrifice d'IphigÃ©nie"
+  desc:"Le Sacrifice d'Iphigénie"
 },
 
 
@@ -467,7 +448,7 @@ tags:["sunny","spice","ventrue","louiza"],
 src:"dessin/autriche/exterior.png",
 alt:"Trois.",
 tags:["autriche","canon","tremere","eleni","sophia","tarik"],
-  desc:"Les Songes de la Pyramide ExtÃ©rieure."
+  desc:"Les Songes de la Pyramide Extérieure."
 },
 
 
@@ -475,7 +456,7 @@ tags:["autriche","canon","tremere","eleni","sophia","tarik"],
 src:"dessin/autriche/interior.png",
 alt:"Trois.",
 tags:["autriche","canon","tremere","zacharias","eylem","dimitrios","ismini","mariko","calliope","arslan"],
-  desc:"Les RÃªveries de la Pyramide IntÃ©rieure."
+  desc:"Les Rêveries de la Pyramide Intérieure."
 },
 
 
@@ -483,7 +464,7 @@ tags:["autriche","canon","tremere","zacharias","eylem","dimitrios","ismini","mar
 src:"dessin/sunny/shadow.png",
 alt:"Shadow.",
 tags:["sunny","canon","lasombra","nour","idia"],
-  desc:"Avec le temps passÃ© dans la coterie et au jardin, les ombres de Nour s'approchent plus de racines que de tentacules."
+  desc:"Avec le temps passé dans la coterie et au jardin, les ombres de Nour s'approchent plus de racines que de tentacules."
 },
 
 
@@ -580,7 +561,7 @@ pages:[
 src:"dessin/sunny/prayer.jpg",
 alt:"Prayer.",
 tags:["sunny","canon","toreador","calliope"],
-  desc:"PriÃ¨re Ã  Soteria."
+  desc:"Prière à Soteria."
 },
 
 {
@@ -607,9 +588,9 @@ tags:["sunny","lasombra","canon","nour"],
 
 {
 src:"dessin/sunny/camillll.png",
-alt:"FrÃ©nÃ©sie.",
+alt:"Frénésie.",
 tags:["sunny","autre","canon","camil"],
-  desc:"PremiÃ¨re frÃ©nÃ©sie."
+  desc:"Première frénésie."
 },
 
 
@@ -638,9 +619,9 @@ tags:["sunny","brujah","emine","canon"],
 
 {
 src:"dessin/sunny/henne.png",
-alt:"HennÃ©.",
+alt:"Henné.",
 tags:["sunny","toreador","aylin","canon"],
-  desc:"HennÃ©."
+  desc:"Henné."
 },
 
 {
@@ -892,9 +873,9 @@ pages:[
 
 {
 src:"dessin/autriche/arbre.png",
-alt:"LignÃ©e tremere.",
+alt:"Lignée tremere.",
 tags:["autriche","tremere","canon"],
-desc:"LignÃ©e du clan tremere."
+desc:"Lignée du clan tremere."
 },
 
 {
@@ -974,7 +955,7 @@ desc:"Calendrier solo octobre 2026."
 src:"dessin/sunny/nosferatu.png",
 alt:"nosfe.",
 tags:["canon","sunny","nosferatu","nebetta","inga","atam"],
-desc:"Seule et unique prÃ©sentation de Inga a la cour."
+desc:"Seule et unique présentation de Inga a la cour."
 },
 
 
@@ -997,7 +978,7 @@ desc:"Your liar, your snake."
 
 {
 src:"dessin/sunny/kushied.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["noncanon","sunny","autre","kushi"],
 desc:"Claw fight."
 },
@@ -1007,26 +988,26 @@ desc:"Claw fight."
 src:"dessin/autriche/Esen__Atam.webp",
 alt:"Esem Atam.",
 tags:["canon","autriche","tremere","nosferatu","esen","atam"],
-desc:"Parce que c'Ã©tait lui, parce que c'Ã©tait moi."
+desc:"Parce que c'était lui, parce que c'était moi."
 },
 
 {
 src:"dessin/sunny/ship.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["noncanon","sunny","tremere","eylem","toreador","calliope"],
 desc:"My moon, my sunshine."
 },
 
 {
 src:"dessin/sunny/wtf.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["emote","sunny","tremere","eleni"],
 desc:"WTF."
 },
 
 {
 src:"dessin/sunny/soundoff.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["emote","sunny","lasombra","ketevan"],
 desc:"SoundOff."
 },
@@ -1034,28 +1015,28 @@ desc:"SoundOff."
 
 {
 src:"dessin/sunny/cozyy.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["emote","sunny","nosferatu","atam"],
 desc:"Cozy."
 },
 
 {
 src:"dessin/sunny/search.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["emote","sunny","tremere","eylem"],
 desc:"Search."
 },
 
 {
 src:"dessin/sunny/angry.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["emote","sunny","brujah","gabriel"],
 desc:"Angry."
 },
 
 {
 src:"dessin/sunny/lovers.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","sunny","ventrue","toreador","louiza","angelos"],
 desc:"Lovers."
 },
@@ -1063,14 +1044,14 @@ desc:"Lovers."
 
 {
 src:"dessin/sunny/Ketevan.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["official","sunny","lasombra","ghoule","ketevan"],
 desc:"Ketevan, ghoule Lasombra."
 },
 
 {
 src:"dessin/sunny/nebae.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","sunny","nosferatu","nebetta"],
 desc:"Belle gosse Nebetta."
 },
@@ -1078,28 +1059,28 @@ desc:"Belle gosse Nebetta."
 
   {
 src:"dessin/sunny/neonates.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","sunny","toreador","brujah","gangrel","camil","ines","gabriel"],
-desc:"Coterie des problÃ¨Ã¨mes."
+desc:"Coterie des problèèmes."
 },
 
   {
 src:"dessin/autriche/enluminured.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","autriche","toreador","brujah","ventrue","tremere","primogene","nafissa","enri","esen","arslan"],
 desc:"Enluminure conseil des primogene."
 },
 
   {
 src:"dessin/sunny/coteried.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","sunny","toreador","lasombra","tremere","nour","kejal","eleni"],
 desc:"Nafissa et Kejal. "
 },
 
   {
 src:"dessin/sunny/lignee.png",
-alt:"LignÃ©e.",
+alt:"Lignée.",
 tags:["canon","sunny","toreador","primogene","kejal","nafissa"],
 desc:"Nafissa et Kejal. "
 },
@@ -1120,9 +1101,9 @@ desc:"Premier design de Kejal. "
 
   {
 src:"dessin/sunny/gabb.png",
-alt:"DÃ©vorÃ© par la passion.",
+alt:"Dévoré par la passion.",
 tags:["canon","sunny","brujah","gabriel"],
-desc:"DÃ©vorÃ© par la passion. "
+desc:"Dévoré par la passion. "
 },
 
   {
@@ -1269,7 +1250,7 @@ desc:"Weedcat made by Inga"
 src:"dessin/hehe.webp",
 alt:"mariko",
 tags:["emote","sunny","tremere","mariko"],
-desc:"Emote Mariko hÃ©hÃ©"
+desc:"Emote Mariko héhé"
 },
 
 {
@@ -1309,9 +1290,9 @@ tags:["sunny","canon","ventrue","zaya"],
 
  {
 src:"dessin/sip.png",
-alt:"Emote Emine thÃ© vert",
+alt:"Emote Emine thé vert",
 tags:["emote","sunny","brujah","emine"],
-desc:"Emote Emine thÃ© vert."
+desc:"Emote Emine thé vert."
 },
 
 
@@ -1462,7 +1443,7 @@ desc:"collage stickers :3."
 src:"dessin/sunny/theempress.png",
 alt:"the empress is hard to impress",
 tags:["spice","canon","sunny","rhea"],
-desc:"The empress is hard to impress-, couverture du DVD, rÃ©alisÃ© par Aylin."
+desc:"The empress is hard to impress-, couverture du DVD, réalisé par Aylin."
 },
 
 
@@ -1556,7 +1537,7 @@ desc:"thirst trap."
 src:"dessin/mariage.png",
 alt:"mariage",
 tags:["brujah","noncanon","yolnir","primogene","limier"],
-desc:"ecoute Kadir, Ã©pouser une torÃ©adore c'est the master moove."
+desc:"ecoute Kadir, épouser une toréadore c'est the master moove."
 },
 
 
@@ -1663,7 +1644,7 @@ alt:"Comic en 4 pages",
 tags:["canon","sunny","toreador","nafissa"],
 desc:"Concept art Nafissa.",
 pages:[
-{src:"dessin/sunny/protonafissa.png", alt:"Nafissa, primogÃ¨ne Toreador", desc:"Nafissa, primogÃ¨ne Toreador."},
+{src:"dessin/sunny/protonafissa.png", alt:"Nafissa, primogène Toreador", desc:"Nafissa, primogène Toreador."},
 {src:"dessin/sunny/nafissaconcept2.png", alt:"Infection aux yeux de Nafissa", desc:"Infection aux yeux de Nafissa."},
 ]
 },
@@ -1714,14 +1695,14 @@ desc:"emote, eh?"
 src:"dessin/sunny/enrysprite.png",
 alt:"Enry",
 tags:["brujah","canon","primogene","official","sunny","enri"],
-desc:"Enry, primogÃ¨ne Brujah."
+desc:"Enry, primogène Brujah."
 },
 
 {
 src:"dessin/sunny/ghol.png",
 alt:"Ghoule Toreador",
 tags:["toreador","canon","primogene","official","sunny"],
-desc:"Ghoule de la primogÃ¨ne Toreador."
+desc:"Ghoule de la primogène Toreador."
 },
 
 {
@@ -1742,7 +1723,7 @@ desc:"Premier art Lasombra."
 src:"dessin/sunny/lasombra-crayon.png",
 alt:"Lasombra crayon",
 tags:["lasombra","canon","sunny","idia"],
-desc:"Test crayonÃ© Lasombra (elle a toujours pas de prÃ©nom)."
+desc:"Test crayoné Lasombra (elle a toujours pas de prénom)."
 },
 
 {

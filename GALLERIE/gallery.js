@@ -83,6 +83,8 @@ const characters={
     ],
 
     ventrue:[
+         ["chae-yeong","Chae-yeoung","chae"],
+          ["Ji-woo","ji-woo"],
        ["Zaya","zaya"],
         ["louiza","Louiza"],
         ["dimitri","Dimitri"],
@@ -92,6 +94,7 @@ const characters={
         ["alita","Alita"],
         ["thouros","Thouros"],
         ["cem","Cem"]
+        
     ],
 
     tremere:[
