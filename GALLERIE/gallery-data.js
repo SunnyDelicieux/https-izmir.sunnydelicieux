@@ -1,6 +1,35 @@
 const galleryData=[
 
     {
+src:"dessin/sun/MARIKO.png",
+alt:"Mariko.",
+tags:["sunny","canon","mariko","tremere"],
+  desc:"XX Judgement."
+},
+
+    {
+src:"dessin/sun/carreau.png",
+alt:"Love.",
+tags:["sunny","canon","angelos","toreador"],
+  desc:"Lignée du carreau."
+},
+
+    {
+src:"dessin/deneb/love.jpg",
+alt:"Love.",
+tags:["deneb","canon","Chae-yeong","Ji-Woo","ventrue"],
+  desc:"Lovers."
+},
+
+
+    {
+src:"dessin/autriche/lundi.png",
+alt:"Baba ishak.",
+tags:["autriche","canon","baba ishak","ventrue"],
+  desc:"Baba ishak."
+},
+
+    {
 src:"dessin/autriche/baba.png",
 alt:"Baba ishak.",
 tags:["autriche","canon","baba ishak","ventrue"],
