@@ -664,7 +664,7 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/WIKI/ventrue/pnj/cem.html",
   "headings": [
    "Izmir Character build",
-   "Cem"
+   "Aaron"
   ]
  },
  {
@@ -673,7 +673,7 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/WIKI/ventrue/pnj/chae.html",
   "headings": [
    "Izmir Character build",
-   "Chae-yeong"
+   "Aaron"
   ]
  },
  {
@@ -763,6 +763,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "newblog",
   "url": "/newblog/gallerie.html",
   "headings": [
+   "Halloween",
    "Color root",
    "go back to your roots, white girl",
    "Trying things",
