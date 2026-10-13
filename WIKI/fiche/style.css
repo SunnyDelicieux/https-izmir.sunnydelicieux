@@ -1,52 +1,62 @@
+@import url('/DATA/theme.css');
+
+/* Fiches PNJ : les couleurs viennent du thème commun (DATA/theme.css) */
 :root {
-  /*change these colors to suit your site's aesthetic!*/
-  --text-color: #e8dcc0;
-  --main-bg-color: #1c1208;
+  --text-color: var(--iz-text);
+  --main-bg-color: var(--iz-panel);
 
   /*background for the top header and page footer*/
-  --banner-color: #161008;
-  --banner-text-color: #e8dfc8;
+  --banner-color: var(--iz-deep);
+  --banner-text-color: var(--iz-text);
 
   /*for the main border around main and the bio table*/
-  --border-color: #3a2810;
+  --border-color: var(--iz-border);
 
   /*for h4 headings*/
-  --subsection-border-color: #5a4020;
-  --comment-border-color: #2c1d0d;
+  --subsection-border-color: var(--iz-border-strong);
+  --comment-border-color: var(--iz-border);
 
   /*used in various places for more than just headings... sorry lol*/
-  --heading-color: #2e1e0e;
+  --heading-color: var(--iz-button);
 
-  --link-color: #c09050;
+  --link-color: var(--iz-accent);
 
   /*an alternate link color used in various places*/
-  --subtle: #a07840;
+  --subtle: var(--iz-muted);
 
   /*for the spoiler tag in the gallery*/
-  --tag-color: #2b1b0d;
+  --tag-color: var(--iz-box);
 
   /*hovering the spoiler tag, and the bg for "spoiler"-class blocks*/
-  --highlight: #2a1d0f;
+  --highlight: var(--iz-box);
 
   /*bio table colors*/
-  --th-color: #24170b;
-  --td-odd-color: #2a1b0d;
-  --td-even-color: #332010;
+  --th-color: var(--iz-button);
+  --td-odd-color: var(--iz-box);
+  --td-even-color: var(--iz-box-soft);
 
-  /*nice pastels for your convenience*/
-  --red: #c09050;
-  --orange: #c09050;
-  --gold: #c09050;
-  --green: #c09050;
-  --blue: #c09050;
-  --purple: #c09050;
-  --pink: #c09050;
+  /*couleurs des bandeaux de sections (classes red, purple…) : toutes au thème*/
+  --red: var(--iz-button);
+  --orange: var(--iz-button);
+  --gold: var(--iz-button);
+  --green: var(--iz-button);
+  --blue: var(--iz-button);
+  --purple: var(--iz-button);
+  --pink: var(--iz-button);
+}
+
+/* fond de page commun (prend le pas sur le petit <style> en tête de chaque fiche) */
+html:root {
+  background: var(--iz-bg);
+  background: linear-gradient(180deg, #1e1408 0%, #2e1e0e 100%);
+  background-attachment: fixed;
 }
 
 body {
   /*change the page font here*/
-  font-family: Verdana, sans-serif;
+  font-family: var(--iz-font);
   font-size: 14px;
+  line-height: 1.5;
   margin: 0;
   color: var(--text-color);
   }
@@ -57,8 +67,8 @@ details > summary {cursor: pointer;}
 * {box-sizing: border-box;}
 
 /*highlighted text styles*/
-::selection {background:#ceb38f;
-  color: #130000;}
+::selection {background: var(--iz-accent);
+  color: var(--iz-bg);}
 
 /*links*/
 main a {color: var(--link-color);}
@@ -75,6 +85,8 @@ header, footer {
 header h1 {
   margin: 0;
   padding: 12px 24px;
+  font: italic normal 24px var(--iz-font-title);
+  letter-spacing: 2px;
   /*making the max width match <main>*/
   max-width: 900px;
   /*uncomment this line if you want to center your top header*/
@@ -91,8 +103,9 @@ main {
   width: 900px;
   max-width: 100%;
   background: var(--main-bg-color);
-  border: 3px solid var(--border-color);
-  border-radius: .25em;
+  border: 1px solid var(--border-color);
+  border-radius: var(--iz-radius);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
   margin: 20px auto;
   padding: 12px 48px;
 }
@@ -113,18 +126,32 @@ li {margin-bottom: 4px;}
 /*the page heading at the top of main*/
 .character-name {
   background-color: var(--heading-color);
+  border: 1px dashed var(--iz-border-strong);
+  border-radius: var(--iz-radius);
   padding: .5em;
-  font-size: 24px;
+  font: italic normal 26px var(--iz-font-title);
+  letter-spacing: 1px;
+  color: var(--iz-text);
 }
 
 /*all the section headings*/
 main h2,
 main h3 {
   background-color: var(--heading-color);
-  padding: .4em .5em;
+  border-left: 3px solid var(--iz-accent);
+  border-radius: 0 var(--iz-radius) var(--iz-radius) 0;
+  padding: .4em .6em;
+  font-family: var(--iz-font-title);
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: var(--iz-accent);
 }
 /*and subsections*/
-main h4 {border-bottom: 2px dashed var(--subsection-border-color);}
+main h4 {
+  border-bottom: 1px dashed var(--subsection-border-color);
+  color: var(--iz-accent-hover);
+}
 
 /*detailed list elements (for listing other characters under "relationships"*/
 dt {font-weight: bold;}
@@ -142,7 +169,9 @@ main img,
 /*character bio floats to the right!*/
 .bio {
   float: right;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  overflow: hidden;
   margin-left: 16px;
   max-width: 280px;
   /*bg color isnt shown unless your portrait image is transparent*/
@@ -170,7 +199,7 @@ main img,
 /*i didn't use table headings, but you might!*/
 .bio th {
   background: var(--th-color);
-  color: white;
+  color: var(--iz-accent);
 }
 .bio td {
   font-size: small;
@@ -190,9 +219,11 @@ main img,
 
 /*this is shown in the info section, but you don't have to use it*/
 .quote {
-  border-left: 6px solid var(--heading-color);
+  border-left: 3px solid var(--iz-border-strong);
   padding: .5em 1em;
+  font-family: var(--iz-font-title);
   font-style: italic;
+  color: var(--iz-text-soft);
 }
 
 /*for the spoiler <details> elements to hide story sections*/
@@ -203,7 +234,7 @@ main img,
   padding: .5em;
 }
 .spoilers summary {
-  color: #ffffff;
+  color: var(--iz-accent);
   font-weight: bold;
 }
 
@@ -267,8 +298,8 @@ main img,
 .img-gallery figure {
   margin: 10px;
   max-width: 200px;
-  border: 2px solid var(--border-color);
-  background: white;
+  border: 1px solid var(--iz-border-strong);
+  background: var(--iz-box);
 }
 .img-gallery details > summary:hover,
 .img-gallery figure:hover {
@@ -403,7 +434,7 @@ footer a:hover {
 h4{
     margin-bottom:15px;
     padding-bottom:6px;
-    border-bottom:1px solid #ecc500;
+    border-bottom:1px dashed var(--iz-border-strong);
 }
 
 .card-grid{
@@ -422,14 +453,15 @@ h4{
     text-decoration:none;
     color:inherit;
 
-    border:1px solid #f3e6a500;
-    border-radius:8px;
+    border:1px solid transparent;
+    border-radius:var(--iz-radius);
 
     transition:all .2s ease;
 }
 
 .card:hover{
-    border-color:#e7d05f00;
+    border-color:var(--iz-border-strong);
+    background:var(--iz-box);
     transform:translateY(-2px);
 }
 
@@ -457,7 +489,7 @@ h4{
 .content p{
     margin:3px 0 0;
     font-size:12px;
-    color:#777;
+    color:var(--iz-muted);
     line-height:1.3;
 }
 
@@ -489,21 +521,20 @@ h4{
 
  /*for the collapsible sections at the top (status and tag filters)*/
 .pinned {
-  background: var(--pinned-bg);
+  background: var(--iz-box);
   font-size: smaller;
   padding: .5em;
-  border-radius: 1em;
+  border-radius: var(--iz-radius);
   margin: 1em 0;
-  border: 2px solid var(--border-color);
-  outline: 2px solid var(--post-bg);
-  box-shadow: 2px 2px 6px var(--border-shadow);
+  border: 1px dashed var(--iz-border-strong);
 }
 /*the heading for those blocks*/
 .pinned summary {
-  color: var(--sidebar-text);
-  font-size: 1.5em;
-  font-weight: bold;
-  border-bottom: 2px dashed var(--border-color);
+  color: var(--iz-accent);
+  font: italic normal 1.6em var(--iz-font-title);
+  letter-spacing: 1px;
+  list-style: none;
+  border-bottom: 1px dashed var(--iz-border-strong);
   margin: .5em;
 }
 /*since the summary uses the special font, switch back to the other one for the timestamp*/

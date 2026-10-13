@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;900&display=swap');
+
 /* these are the main colors and header image
    replace them with anything you want! */
 :root {
@@ -18,15 +20,6 @@
  * 
  * if you don't include these files in a "fonts" folder on your website, your browser will try to substitute the next closest thing...
 */
-@font-face {
-    font-family: Noto Serif;
-    src: url('/fonts/NotoSerif-SemiBold.ttf');
-}
-@font-face {
-    font-family: Noto Serif;
-    src: url('/fonts/NotoSerif-Black.ttf');
-    font-weight: bold;
-}
 
 html {scroll-behavior: smooth;}
 ::selection {

@@ -1,26 +1,73 @@
+// ===== GRILLE =====
+
 const gallery=document.getElementById("gallery"),
 pagination=document.getElementById("gallery-pagination"),
 prevBtn=document.getElementById("gallery-prev"),
 nextBtn=document.getElementById("gallery-next"),
 pageList=document.getElementById("gallery-page-list"),
-zoom=document.getElementById("zoom"),
-zoomImg=document.getElementById("zoom-img"),
-zoomTags=document.getElementById("zoom-tags"),
-zoomDesc=document.getElementById("zoom-desc"),
-zoomCounter=document.getElementById("zoom-counter"),
-zoomPrev=document.getElementById("zoom-prev"),
-zoomNext=document.getElementById("zoom-next"),
-characterFilters=document.getElementById("character-filters"),
 galleryTitle=document.getElementById("gallery-title");
 
 const perPage=15;
 
-let currentTag="",
-    currentPage=1,
-    zoomItem=null,
-    zoomImage=null,
-    zoomPage=0;
+let currentPage=1;
 
+const clean=t=>String(t||"").trim().toLowerCase();
+const isVideo=src=>/\.(mp4|webm)$/i.test(src||"");
+
+function pages(item){
+    return item.pages?.length
+        ? item.pages
+        : [{src:item.src,alt:item.alt,desc:item.desc}];
+}
+
+function renderGallery(){
+    const items=filteredItems(),
+          maxPage=Math.max(1,Math.ceil(items.length/perPage));
+
+    currentPage=Math.min(currentPage,maxPage);
+
+    gallery.innerHTML="";
+
+    items
+        .slice(
+            (currentPage-1)*perPage,
+            currentPage*perPage
+        )
+        .forEach(item=>{
+            const p=pages(item),
+                  card=document.createElement("div"),
+                  video=isVideo(p[0].src),
+                  thumb=document.createElement(video?"video":"img");
+
+            card.className="gallery-card";
+
+            thumb.src=video?p[0].src+"#t=0.1":p[0].src;
+            thumb.alt=p[0].alt||"";
+
+            if((item.tags||[]).map(clean).includes("spice"))
+                thumb.classList.add("spice-blur");
+
+            card.appendChild(thumb);
+
+            if(p.length>1){
+                const badge=document.createElement("div");
+
+                badge.className="gallery-comic-badge";
+                badge.textContent=p.length;
+
+                card.appendChild(badge);
+            }
+
+            card.onclick=()=>openZoom(card,item);
+
+            gallery.appendChild(card);
+        });
+
+    renderPagination(items.length,maxPage);
+    galleryTitle.textContent=`Galerie (${items.length})`;
+}
+
+// ===== PERSOS PAR CLAN =====
 
 const characters={
     brujah:[
@@ -89,14 +136,11 @@ const characters={
         ["ketevan","Ketevan"]    ]
 };
 
-const clean=t=>String(t||"").trim().toLowerCase();
+// ===== FILTRES =====
 
-function pages(item){
-    return item.pages?.length
-        ? item.pages
-        : [{src:item.src,alt:item.alt,desc:item.desc}];
-}
+const characterFilters=document.getElementById("character-filters");
 
+let currentTag="";
 
 function filteredItems(){
     if(!currentTag){
@@ -120,93 +164,6 @@ function filteredItems(){
                wanted.some(tag=>tags.includes(tag));
     });
 }
-
-
-function updateGalleryCount(){
-    galleryTitle.textContent=`Galerie (${filteredItems().length})`;
-}
-
-function renderGallery(){
-    const items=filteredItems(),
-          maxPage=Math.max(1,Math.ceil(items.length/perPage));
-
-    currentPage=Math.min(currentPage,maxPage);
-
-    gallery.innerHTML="";
-
-    items
-        .slice(
-            (currentPage-1)*perPage,
-            currentPage*perPage
-        )
-        .forEach(item=>{
-            const p=pages(item),
-                  card=document.createElement("div"),
-                  img=document.createElement("img");
-
-            card.className="gallery-card";
-
-            img.src=p[0].src;
-            img.alt=p[0].alt||"";
-
-            if((item.tags||[]).map(clean).includes("spice"))
-                img.classList.add("spice-blur");
-
-            card.appendChild(img);
-
-            if(p.length>1){
-                const badge=document.createElement("div");
-
-                badge.className="gallery-comic-badge";
-                badge.textContent=p.length;
-
-                card.appendChild(badge);
-            }
-
-            card.onclick=()=>openZoom(card,item);
-
-            gallery.appendChild(card);
-        });
-
-    renderPagination(items.length,maxPage);
-    updateGalleryCount();
-}
-
-document.querySelectorAll(".tag-btn").forEach(btn=>{
-    btn.onclick=()=>{
-        document.querySelectorAll(".tag-btn")
-            .forEach(b=>b.classList.remove("active"));
-
-        btn.classList.add("active");
-
-        const tag=clean(btn.dataset.tag);
-
-        if(characters[tag]){
-            showCharacters(tag);
-            currentTag=tag;
-        }else{
-            characterFilters.innerHTML="";
-            currentTag=tag;
-        }
-
-        currentPage=1;
-        renderGallery();
-    };
-});
-
-
-document.getElementById("reset-btn").onclick=()=>{
-    document.querySelectorAll(".tag-btn")
-        .forEach(b=>b.classList.remove("active"));
-
-    characterFilters.innerHTML="";
-    currentTag="";
-    currentPage=1;
-
-    renderGallery();
-};
-
-
 
 function showCharacters(clan){
     characterFilters.innerHTML="";
@@ -234,6 +191,38 @@ function showCharacters(clan){
     });
 }
 
+document.querySelectorAll(".tag-btn").forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll(".tag-btn")
+            .forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        const tag=clean(btn.dataset.tag);
+
+        if(characters[tag])
+            showCharacters(tag);
+        else
+            characterFilters.innerHTML="";
+
+        currentTag=tag;
+        currentPage=1;
+        renderGallery();
+    };
+});
+
+document.getElementById("reset-btn").onclick=()=>{
+    document.querySelectorAll(".tag-btn")
+        .forEach(b=>b.classList.remove("active"));
+
+    characterFilters.innerHTML="";
+    currentTag="";
+    currentPage=1;
+
+    renderGallery();
+};
+
+// ===== PAGINATION =====
 
 function renderPagination(total,maxPage){
     pageList.innerHTML="";
@@ -260,33 +249,41 @@ function renderPagination(total,maxPage){
 }
 
 prevBtn.onclick=()=>{
-    if(currentPage>1){
-        currentPage--;
-        renderGallery();
-    }
+    currentPage--;
+    renderGallery();
 };
 
 nextBtn.onclick=()=>{
-    const maxPage=Math.max(
-        1,
-        Math.ceil(filteredItems().length/perPage)
-    );
-
-    if(currentPage<maxPage){
-        currentPage++;
-        renderGallery();
-    }
+    currentPage++;
+    renderGallery();
 };
 
+// ===== ZOOM =====
+
+const zoom=document.getElementById("zoom"),
+zoomImg=document.getElementById("zoom-img"),
+zoomVideo=document.getElementById("zoom-video"),
+zoomTags=document.getElementById("zoom-tags"),
+zoomDesc=document.getElementById("zoom-desc"),
+zoomCounter=document.getElementById("zoom-counter"),
+zoomPrev=document.getElementById("zoom-prev"),
+zoomNext=document.getElementById("zoom-next");
+
+let zoomItem=null,
+    zoomThumb=null,
+    zoomPage=0;
 
 function renderZoom(){
-    if(!zoomItem)return;
-
     const p=pages(zoomItem),
-          page=p[zoomPage];
+          page=p[zoomPage],
+          video=isVideo(page.src);
 
-    zoomImg.src=page.src;
+    zoomVideo.pause();
+    zoomImg.hidden=video;
+    zoomVideo.hidden=!video;
+    (video?zoomVideo:zoomImg).src=page.src;
     zoomImg.alt=page.alt||"";
+
     zoomDesc.textContent=page.desc||"";
 
     zoomTags.innerHTML=(zoomItem.tags||[])
@@ -302,8 +299,8 @@ function renderZoom(){
 }
 
 function openZoom(card,item){
-    zoomImage=card.querySelector("img");
-    zoomImage.classList.remove("spice-blur");
+    zoomThumb=card.firstElementChild;
+    zoomThumb.classList.remove("spice-blur");
 
     zoomItem=item;
     zoomPage=0;
@@ -313,64 +310,37 @@ function openZoom(card,item){
 }
 
 function closeZoom(){
-    if(
-        zoomImage &&
-        (zoomItem?.tags||[]).map(clean).includes("spice")
-    ){
-        zoomImage.classList.add("spice-blur");
-    }
+    if(!zoomItem)return;
 
-    zoomImage=null;
+    if((zoomItem.tags||[]).map(clean).includes("spice"))
+        zoomThumb.classList.add("spice-blur");
+
+    zoomVideo.pause();
     zoomItem=null;
-    zoomPage=0;
-
     zoom.classList.remove("open");
 }
 
 function changeZoomPage(direction){
     if(!zoomItem)return;
 
-    const p=pages(zoomItem);
+    const total=pages(zoomItem).length;
 
-    if(p.length<2)return;
-
-    zoomPage=
-        (zoomPage+direction+p.length)%p.length;
-
+    zoomPage=(zoomPage+direction+total)%total;
     renderZoom();
 }
-
 
 zoom.onclick=e=>{
     if(e.target===zoom)
         closeZoom();
 };
 
-zoomPrev.onclick=e=>{
-    e.stopPropagation();
-    changeZoomPage(-1);
-};
-
-zoomNext.onclick=e=>{
-    e.stopPropagation();
-    changeZoomPage(1);
-};
+zoomPrev.onclick=()=>changeZoomPage(-1);
+zoomNext.onclick=()=>changeZoomPage(1);
 
 document.onkeydown=e=>{
-    if(e.key==="Escape"){
-        closeZoom();
-        return;
-    }
-
-    if(!zoom.classList.contains("open"))
-        return;
-
-    if(e.key==="ArrowLeft")
-        changeZoomPage(-1);
-
-    if(e.key==="ArrowRight")
-        changeZoomPage(1);
+    if(e.key==="Escape")closeZoom();
+    if(e.key==="ArrowLeft")changeZoomPage(-1);
+    if(e.key==="ArrowRight")changeZoomPage(1);
 };
-
 
 renderGallery();

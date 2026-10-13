@@ -1,0 +1,39 @@
+# Remet à jour la liste de la barre de recherche (DATA/search-index.js)
+# à chaque envoi sur main qui touche une page HTML.
+name: Liste de recherche
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "DATA/build-search-index.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Régénérer la liste
+        run: python3 DATA/build-search-index.py
+
+      - name: Enregistrer si quelque chose a changé
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Liste déjà à jour."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Mise à jour de la liste de recherche"
+          git push
