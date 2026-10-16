@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -9,7 +8,12 @@
 <link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
 <script defer="" src="/WIKI/nav.js"></script>
 <script defer="" src="/DATA/search.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<style>
+/* listes d'exemples : la coche / la croix tient lieu de puce */
+ul.exemples { list-style: none; padding-left: 0; }
+ul.exemples li { display: flex; gap: 0.5em; }
+ul.exemples .marque { flex: none; width: 1em; color: var(--wiki-accent); }
+</style>
 </head>
 <body>
 <header-component></header-component>
@@ -18,236 +22,133 @@
 <h1>Les objectifs</h1>
 <div id="toc"></div>
 <div id="contents">
-<h2>Une toile d'objectifs</h2><figure class="illustration"><img alt="" src="https://cdnb.artstation.com/p/assets/images/images/040/179/903/large/m-penman-cammie-hq-birmingham-small.jpg?1628092234"/><figcaption>Cammie HQ by Birmingham small</figcaption></figure>
 
+<h2>Une toile d'objectifs</h2>
+<figure class="illustration">
+  <img alt="" src="https://cdnb.artstation.com/p/assets/images/images/040/179/903/large/m-penman-cammie-hq-birmingham-small.jpg?1628092234"/>
+  <figcaption>Cammie HQ by Birmingham small</figcaption>
+</figure>
 
+<p>L'idée générale de la ville, et la direction qu'elle prends, est rarement celle que votre personnage envisage pour son propre futur. Chaque clan, chaque individu et chaque poste souhaite quelque chose, et il est naturel que ces choses aillent les unes contre les autres.</p>
 
+<p>À la création de la chronique :</p>
+<ul>
+  <li>chaque clan définira un objectif à court terme et un objectif à long terme ;</li>
+  <li>chaque rôle (Primogènes, Limiers et Ghoules) définira également un objectif à court terme et un objectif à long terme ;</li>
+  <li>chaque personnage définira enfin ses propres objectifs.</li>
+</ul>
 
+<p>Au total, la ville sera animée par une trentaine d'objectifs différents, parfois compatibles, parfois contradictoires.</p>
 
-L'idée générale de la ville, et la direction qu'elle prends, est rarement celle que votre personnage envisage pour son propre futur. Chaque clan, chaque individu et chaque poste souhaite quelque chose, et il est naturel que ces choses aillent les unes contre les autres. 
-<br/>
-<br/>
+<p>Certaines décisions serviront vos intérêts personnels. D'autres serviront ceux de votre clan, de votre rôle ou de vos alliés.
+Les objectifs étant secrets, il est tout à fait possible que vous aidiez involontairement un ennemi ou que vous vous opposiez à un allié sans connaître ses véritables motivations.</p>
 
+<p>Rien ne vous interdit de révéler vos objectifs à d'autres personnages. Cependant, dans une société aussi politique que la Camarilla, dévoiler ses ambitions revient souvent à offrir une prise à ceux qui souhaitent vous influencer, vous manipuler ou vous arrêter.</p>
 
-
-À la création de la chronique :
-<br/>
-<br/>
-
-
-
-chaque clan définira un objectif à court terme et un objectif à long terme ;
-<br/>
-
-chaque rôle (Primogènes, Limiers et Ghoules) définira également un objectif à court terme et un objectif à long terme ;
-<br/>
-
-chaque personnage définira enfin ses propres objectifs.
-<br/>
-<br/>
-
-
-
-Au total, la ville sera animée par une trentaine d'objectifs différents, parfois compatibles, parfois contradictoires.
-<br/>
-
-
-
-Certaines décisions serviront vos intérêts personnels. D'autres serviront ceux de votre clan, de votre rôle ou de vos alliés.
-
-
-Les objectifs étant secrets, il est tout à fait possible que vous aidiez involontairement un ennemi ou que vous vous opposiez à un allié sans connaître ses véritables motivations. 
-<br/>
-<br/>
-
-Rien ne vous interdit de révéler vos objectifs à d'autres personnages. Cependant, dans une société aussi politique que la Camarilla, dévoiler ses ambitions revient souvent à offrir une prise à ceux qui souhaitent vous influencer, vous manipuler ou vous arrêter.
-<br/>
-<br/>
-
-Les objectifs ne sont pas là pour forcer le conflit entre joueurs, mais ils représentent les intérets de chacun, (les conflits viennent ensuite.) Les ressources et le temps sont limités,
-<br/>
-
-ainsi tous le monde n'aura pas ce qu'il souhaite.
-
-
-                  
+<div class="encadre">
+  <p>Les objectifs ne sont pas là pour forcer le conflit entre joueurs, mais ils représentent les intérets de chacun, (les conflits viennent ensuite.) Les ressources et le temps sont limités,
+  ainsi tous le monde n'aura pas ce qu'il souhaite.</p>
+</div>
 
 <h2>Les objectifs à court terme</h2>
 <h3>Définition</h3>
+<p>Un objectif à court terme représente quelque chose que votre personnage souhaite accomplir prochainement.</p>
 
-Un objectif à court terme représente quelque chose que votre personnage souhaite accomplir prochainement. 
-<br/>
-<br/>
+<p>Il doit par définition etre réalisable, concret et observable par le reste de la ville. Un objectif à court terme est quelque chose que votre personnage est actuellement pret à justifier moralement, à accomplir.
+Cela ne peut etre de tuer quelqu'un s'il ne s'imagine pas le faire, ou de faire quelque chose qui ne lui apporterait rien.</p>
 
+<p>Dans la mesure du possible, un objectif devrait être lié à :</p>
+<ul>
+  <li>un PNJ ;</li>
+  <li>un lieu ;</li>
+  <li>une institution ;</li>
+  <li>une ressource ;</li>
+  <li>un autre personnage.</li>
+</ul>
 
+<div class="colonnes">
+  <div class="encadre">
+    <h3>Bon objectif</h3>
+    <ul class="exemples">
+      <li><span class="marque">✓</span> <span>Obtenir le soutien du directeur du port. (C'est un individu que vous pouvez rencontrer)</span></li>
+      <li><span class="marque">✓</span> <span>Découvrir qui protège les chasseurs opérant dans mon quartier. (Vous pouvez investiguer)</span></li>
+      <li><span class="marque">✓</span> <span>Faire accepter un nouveau refuge à mon clan. (Vous pouvez négocier avec le clan)</span></li>
+      <li><span class="marque">✓</span> <span>[Objectif de clan] Réconcilier deux membres influents du clan.</span></li>
+      <li><span class="marque">✓</span> <span>[Objectif de role] Faire taire un individu qui gène vos fonctions.</span></li>
+    </ul>
+  </div>
+  <div class="encadre">
+    <h3>Mauvais objectif</h3>
+    <ul class="exemples">
+      <li><span class="marque">✗</span> <span>Devenir plus puissant. (Il faut définir ce que cela signifie, et comment vous comptez y arriver)</span></li>
+      <li><span class="marque">✗</span> <span>Être heureux. (C'est un état d'esprit, pas un objectif concret)</span></li>
+      <li><span class="marque">✗</span> <span>Améliorer ma force. (Il faut définir comment, et pourquoi)</span></li>
+      <li><span class="marque">✗</span> <span>Survivre. (C'est déjà ce que vous faites tous les soirs)</span></li>
+    </ul>
+    <p>Ces objectifs peuvent être intéressants d'un point de vue narratif, mais ils sont trop vagues pour produire des actions concrètes en jeu.</p>
+  </div>
+</div>
 
-Il doit par définition etre réalisable, concret et observable par le reste de la ville. Un objectif à court terme est quelque chose que votre personnage est actuellement pret à justifier moralement, à accomplir.
-Cela ne peut etre de tuer quelqu'un s'il ne s'imagine pas le faire, ou de faire quelque chose qui ne lui apporterait rien.
-
-<br/>
-<br/>
-
-Dans la mesure du possible, un objectif devrait être lié à :
-
-<br/>
-
-un PNJ ;
-un lieu ;
-une institution ;
-une ressource ;
-un autre personnage.
-<br/>
-<h3>Bon objectif</h3>
-
-
-
-✓ Obtenir le soutien du directeur du port. (C'est un individu que vous pouvez rencontrer) 
-<br/>
-
-✓ Découvrir qui protège les chasseurs opérant dans mon quartier. (Vous pouvez investiguer) 
-<br/>
-
-✓ Faire accepter un nouveau refuge à mon clan. (Vous pouvez négocier avec le clan) 
-<br/>
-
-✓ [Objectif de clan] Réconcilier deux membres influents du clan.  
-<br/>
-
-✓ [Objectif de role] Faire taire un individu qui gène vos fonctions.  
-<br/>
-<br/>
-<h3>Mauvais objectif</h3>
-
-
-
-✗ Devenir plus puissant. (Il faut définir ce que cela signifie, et comment vous comptez y arriver) 
-<br/>
-
-✗ Être heureux. (C'est un état d'esprit, pas un objectif concret) 
-<br/>
-
-✗ Améliorer ma force. (Il faut définir comment, et pourquoi) 
-<br/>
-
-✗ Survivre. (C'est déjà ce que vous faites tous les soirs)
-<br/>
-<br/>
-
-
-
-Ces objectifs peuvent être intéressants d'un point de vue narratif, mais ils sont trop vagues pour produire des actions concrètes en jeu.
-
-
-                  
-<h2>Les objectifs à long terme</h2><figure class="illustration"><img alt="" src="
-https://cdna.artstation.com/p/assets/images/images/099/491/970/large/vadim-ignatiev-h9.jpg?1780089818"/><figcaption>Bloodlines 2 Greenhouse by Vadim Ignatiev</figcaption></figure>
+<h2>Les objectifs à long terme</h2>
+<figure class="illustration">
+  <img alt="" src="https://cdna.artstation.com/p/assets/images/images/099/491/970/large/vadim-ignatiev-h9.jpg?1780089818"/>
+  <figcaption>Bloodlines 2 Greenhouse by Vadim Ignatiev</figcaption>
+</figure>
 <h3>Définition</h3>
+<p>Un objectif à long terme représente une ambition majeure du personnage.</p>
 
-Un objectif à long terme représente une ambition majeure du personnage. 
-<br/>
-<br/>
+<p>Il ne s'agit pas forcément d'un objectif plus difficile, mais d'un projet qui demande du temps, de la préparation ou des changements importants dans la ville. Il s'agit généralement d'une ambition qui nécessitera plusieurs étapes, de nouveaux alliés ou des changements importants dans la ville avant de pouvoir être accomplie.</p>
 
+<p>Le concept de "long terme" peut vouloir dire des choses différentes en fonction de l'age du personnage. Une ghoule verra surement le "long terme" comme une année ou deux, tandis qu'un primogène peut envisager cela comme une cinquantaine d'année.</p>
 
+<div class="colonnes">
+  <div class="encadre">
+    <h3>Bon objectif</h3>
+    <ul class="exemples">
+      <li><span class="marque">✓</span> <span>Retrouver et éliminer un ennemi majeur.</span></li>
+      <li><span class="marque">✓</span> <span>Devenir primogène de mon clan.</span></li>
+      <li><span class="marque">✓</span> <span>[Objectif de role] Éliminer l'influence anarch sur l'ensemble du territoire.</span></li>
+      <li><span class="marque">✓</span> <span>[Objectif de clan] Faire accepter les sangs clairs.</span></li>
+    </ul>
+  </div>
+  <div class="encadre">
+    <h3>Mauvais objectif</h3>
+    <ul class="exemples">
+      <li><span class="marque">✗</span> <span>Contrôler tout</span></li>
+      <li><span class="marque">✗</span> <span>Devenir le vampire le plus puissant de Turquie</span></li>
+      <li><span class="marque">✗</span> <span>Gagner</span></li>
+      <li><span class="marque">✗</span> <span>Tuer tous les sabbatiques</span></li>
+    </ul>
+  </div>
+</div>
 
-Il ne s'agit pas forcément d'un objectif plus difficile, mais d'un projet qui demande du temps, de la préparation ou des changements importants dans la ville. Il s'agit généralement d'une ambition qui nécessitera plusieurs étapes, de nouveaux alliés ou des changements importants dans la ville avant de pouvoir être accomplie. 
-<br/>
-<br/>
-
-Le concept de "long terme" peut vouloir dire des choses différentes en fonction de l'age du personnage. Une ghoule verra surement le "long terme" comme une année ou deux, tandis qu'un primogène peut envisager cela comme une cinquantaine d'année. 
-<br/>
-<br/>
-<br/>
-<h3>Bon objectif</h3>
-
-
-
-✓ Retrouver et éliminer un ennemi majeur. 
-<br/>
-
-✓ Devenir primogène de mon clan.
-<br/>
-
-✓ [Objectif de role] Éliminer l'influence anarch sur l'ensemble du territoire.
-<br/>
-
-✓ [Objectif de clan] Faire accepter les sangs clairs.
-<br/>
-<br/>
-<h3>Mauvais objectif</h3>
-
-
-
-✗ Contrôler tout 
-<br/>
-
-✗ Devenir le vampire le plus puissant de Turquie 
-<br/>
-
-✗ Gagner 
-<br/>
-
-✗ Tuer tous les sabbatiques 
-<br/>
-<br/>
-
-
-
-Ils sont beaucoup trop vague pour orienter concrétement le personnage. Il faut voir les objectif à long terme comme une grandeligne directrice dans la pensée de votre personnage, mais aussi comme
-quelque chose qui peut etre découpé en un plan d'action. Vous n'etes pas obligé d'avoir les détails du plan dès le début de la campagne, mais votre personnage pourrait essayer d'en créer un.
- 
-                  
+<p>Ils sont beaucoup trop vague pour orienter concrétement le personnage. Il faut voir les objectif à long terme comme une grandeligne directrice dans la pensée de votre personnage, mais aussi comme
+quelque chose qui peut etre découpé en un plan d'action. Vous n'etes pas obligé d'avoir les détails du plan dès le début de la campagne, mais votre personnage pourrait essayer d'en créer un.</p>
 
 <h2>Changer d'objectifs</h2>
+<p>Les objectifs ne sont pas des statistiques, il est possible de vouloir en changer au court dela campagne, surtout les objectifs courts. Si un objectif est atteinds, est devenu impossible, ou que le personnage ne souhaite plus agir ainsi, ses priorités changent.</p>
 
+<p>Chaque début de mois, il est possible de venir me voir pour changer l'objectif principal du personnage. Il est important de me prévenir, car je vais essayer de vous donner des opportunités d'atteindre votre objectif personel, et si vous ne me le communiquez pas, vous risquez
+de vous retrouvez avec des choix qui n'impactent plus autant votre personnage.</p>
 
-
-Les objectifs ne sont pas des statistiques, il est possible de vouloir en changer au court dela campagne, surtout les objectifs courts. Si un objectif est atteinds, est devenu impossible, ou que le personnage ne souhaite plus agir ainsi, ses priorités changent. 
-<br/>
-<br/>
-
-Chaque début de mois, il est possible de venir me voir pour changer l'objectif principal du personnage. Il est important de me prévenir, car je vais essayer de vous donner des opportunités d'atteindre votre objectif personel, et si vous ne me le communiquez pas, vous risquez
-de vous retrouvez avec des choix qui n'impactent plus autant votre personnage.
-                  
 <h2>Création avancée</h2>
+<p>Si je devais donner un conseil pour avoir des objectif plus vivant, ce ne serait pas juste de faire "je veux prendre le port", mais de faire un lien entre croyance et action.</p>
 
-Si je devais donner un conseil pour avoir des objectif plus vivant, ce ne serait pas juste de faire "je veux prendre le port", mais de faire un lien entre croyance et action.
+<blockquote class="citation">Je crois que X.<br/>
+Donc je vais faire Y.</blockquote>
 
-<br/>
-<br/>
-Je crois que X.
-<br/>
+<div class="encadre">
+  <div class="encadre-titre">Exemple</div>
+  <p>Je crois que le sheriff est corrompus<br/>
+  Donc je vais chercher des preuves contre lui</p>
+  <p>Je crois qu'il y a de l'intéret à controler le port<br/>
+  Donc je vais essayer de gagner le soutien du directeur du port</p>
+</div>
 
-Donc je vais faire Y.
-<br/>
-<br/>
-            
+<p>Ce n'est pas obligatoire, mais ça permet de réflechir au chemin de pensé de votre personnage. Il ne se dit pas "je veux 4 en ressource," il réagit au monde autour de lui et à ce qu'il croit.
+Ainsi, si une information vennait à lui faire croire autre chose, il pourrait changer d'objectif.</p>
 
-
-Exemple 
-<br/>
-
-Je crois que le sheriff est corrompus 
-<br/>
-
-Donc je vais chercher des preuves contre lui 
-<br/>
-<br/>
-
-Je crois qu'il y a de l'intéret à controler le port 
-<br/>
-
-Donc je vais essayer de gagner le soutien du directeur du port 
-<br/>
-<br/>
-
-
-
-Ce n'est pas obligatoire, mais ça permet de réflechir au chemin de pensé de votre personnage. Il ne se dit pas "je veux 4 en ressource," il réagit au monde autour de lui et à ce qu'il croit.
-
-<br/>
- Ainsi, si une information vennait à lui faire croire autre chose, il pourrait changer d'objectif.
-
-  </div>
+</div>
 <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
 <div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
 </div>
