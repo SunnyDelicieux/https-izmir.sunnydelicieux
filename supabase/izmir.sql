@@ -234,28 +234,16 @@ with check (public.izmir_is_admin());
 
 
 -- ── 5. Coffre-fort (Storage) ───────────────────────────────────────────────
--- Bucket privé "handouts". Range les fichiers par dossier :
---   handouts/kaadir/lettre.png   → visible par kaadir seulement
---   handouts/brujah/tract.pdf    → visible par tous les joueurs qui ont le tag "brujah"
---   handouts/public/carte.png    → visible par tous les joueurs connectés
--- (le nom du dossier = un tag : identifiant, clan, rôle ou extra_tag, en minuscules)
+-- Bucket privé "handouts" : les fichiers des handouts (dossiers lettres/ et joueurs/).
+-- Qui peut lire un fichier : ceux qui peuvent lire son handout (section 6 et 7).
+-- Il n'y a plus de dossiers au nom d'un tag : tout passe par la page "gérer les handouts".
 
 insert into storage.buckets (id, name, public)
 values ('handouts', 'handouts', false)
 on conflict (id) do update set public = false;
 
+-- ancienne règle "un dossier par tag" : retirée
 drop policy if exists "izmir: lire ses handouts" on storage.objects;
-create policy "izmir: lire ses handouts"
-on storage.objects for select
-to authenticated
-using (
-  bucket_id = 'handouts'
-  and (
-    lower((storage.foldername(name))[1]) = any(public.izmir_my_tags())
-    or public.izmir_is_admin()
-  )
-);
--- Envoi depuis le site : réservé à l'admin (voir section 6).
 
 
 -- ── 6. Lettres (handouts découpés depuis un PDF, page COMPTE/handouts.html) ──
@@ -511,7 +499,7 @@ where id = 'handouts';
 
 
 -- ── 8. Vue joueur (page admin COMPTE/vue-joueur.html) ──────────────────────
--- Tout ce qu'un joueur donné peut voir : événements, handouts, fichiers rangés par dossier.
+-- Tout ce qu'un joueur donné peut voir : événements et handouts.
 -- Calculé avec les mêmes fonctions que les règles de sécurité. Réservé à l'admin.
 
 create or replace function public.izmir_vue_joueur(target uuid)
@@ -531,13 +519,6 @@ as $$
   from public.handouts h, cible
   where public.izmir_is_admin()
     and (cible.admin or public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(h.tags)), h.author, target))
-  union all
-  select 'fichier', null, o.name, o.created_at::date, array[lower((storage.foldername(o.name))[1])], null, o.name
-  from storage.objects o, cible
-  where public.izmir_is_admin()
-    and o.bucket_id = 'handouts'
-    and (storage.foldername(o.name))[1] not in ('lettres', 'joueurs')
-    and (cible.admin or lower((storage.foldername(o.name))[1]) = any(public.izmir_tags_for(target)))
 $$;
 revoke execute on function public.izmir_vue_joueur(uuid) from public, anon;
 grant execute on function public.izmir_vue_joueur(uuid) to authenticated;

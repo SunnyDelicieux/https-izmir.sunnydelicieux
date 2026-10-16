@@ -30,22 +30,13 @@ Le joueur se connecte avec `pseudo` + mot de passe, en haut à droite de n'impor
 
 ## 4. Coffre-fort
 
-**Le plus simple : la page « gérer les handouts »** (menu du compte admin → gérer les handouts).
-Dépose un PDF : chaque page devient une lettre, tu choisis ses tags, tu envoies. Pour partager
-une lettre à quelqu'un d'autre plus tard, change ses tags dans la liste du bas.
-(Nécessite d'avoir relancé `izmir.sql` après l'ajout de la section 6.)
+Menu du compte admin → **gérer les handouts**. Dépose un PDF : chaque page devient une lettre,
+tu choisis ses tags, tu envoies. Pour partager une lettre à quelqu'un d'autre plus tard,
+change ses tags dans la liste du bas. Les joueurs peuvent aussi écrire des lettres et envoyer
+des fichiers depuis leur coffre-fort, avec leurs propres tags.
 
-**Ou à la main**, sans passer par le site :
-
-Storage → bucket `handouts` (créé par le script, privé). Un dossier par tag, **en minuscules** :
-
-| dossier | qui le voit |
-|---|---|
-| `kaadir/` | le joueur kaadir |
-| `brujah/` | tous les joueurs avec le tag brujah (clan, rôle ou extra_tags) |
-| `public/` | tous les joueurs connectés |
-
-Les liens donnés aux joueurs expirent au bout d'une heure.
+Les fichiers sont dans Storage → bucket `handouts` (privé) : n'y dépose rien à la main,
+un fichier sans ligne dans la table `handouts` n'est visible par personne.
 
 ## 5. Mail à chaque signalement
 

@@ -14,7 +14,6 @@
   const GENRES = [
     ["evenement", "événements"],
     ["handout", "handouts"],
-    ["fichier", "fichiers rangés par dossier"],
   ];
 
   let client = null;
@@ -87,7 +86,7 @@
         const line = el("div", "vj-row");
         line.appendChild(el("span", "vj-date", r.jour ? new Date(r.jour).toLocaleDateString("fr-FR") : "sans date"));
         const main = el("div", "vj-main");
-        main.appendChild(el("div", "vj-title", g === "fichier" ? r.titre : r.titre || "sans titre"));
+        main.appendChild(el("div", "vj-title", r.titre || "sans titre"));
         const meta = [
           r.genre === "handout" && (r.chemin ? (/\.pdf$/i.test(r.chemin) ? "pdf" : "image") : "lettre écrite"),
           r.auteur && `de ${r.auteur}`,

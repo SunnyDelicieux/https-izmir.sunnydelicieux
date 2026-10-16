@@ -1,6 +1,6 @@
-// Coffre-fort : handouts rangés dans le bucket privé "handouts" de Supabase Storage.
-// Un dossier par tag : handouts/<identifiant>/…, handouts/<clan>/…, handouts/public/…
-// Supabase ne laisse lister que les dossiers du joueur (supabase/izmir.sql) ; les liens expirent après 1 h.
+// Coffre-fort : les handouts du joueur (table "handouts" + fichiers du bucket privé "handouts").
+// Supabase ne renvoie que ceux que le joueur a le droit de voir (supabase/izmir.sql) ;
+// les liens vers les fichiers expirent au bout d'une heure.
 (function () {
   const gate = document.getElementById("gate");
   const content = document.getElementById("content");
@@ -8,20 +8,6 @@
 
   const BUCKET = "handouts";
   const IMAGE = /\.(png|jpe?g|gif|webp|avif|svg)$/i;
-
-  async function listFolder(client, folder) {
-    const { data, error } = await client.storage
-      .from(BUCKET)
-      .list(folder, { limit: 200, sortBy: { column: "name", order: "asc" } });
-    if (error) {
-      console.error(error);
-      return [];
-    }
-    // les sous-dossiers (id vide) et le fichier fantôme de Supabase sont ignorés
-    return data
-      .filter((f) => f.id && f.name !== ".emptyFolderPlaceholder")
-      .map((f) => ({ name: f.name, path: `${folder}/${f.name}` }));
-  }
 
   const PDF = /\.pdf$/i;
   const label = (name) => name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
@@ -155,7 +141,7 @@
     show(acc);
   });
 
-  async function show({ client, user, username, tags, isAdmin, error }) {
+  async function show({ client, user, isAdmin, error }) {
     const mine = ++run;
     content.hidden = !user;
     gate.hidden = !!user;
@@ -171,11 +157,11 @@
 
     const sections = [];
 
-    // lettres découpées depuis un PDF (page "gérer les handouts") : Supabase ne renvoie que celles du joueur
+    // tous les handouts (découpés depuis un PDF, écrits ou envoyés par les joueurs) : Supabase ne renvoie que ceux du joueur
     const { data: letters } = await client.from("handouts").select("*").order("created_at", { ascending: false });
     if (letters?.length) {
       sections.push({
-        title: "lettres",
+        title: "handouts",
         files: letters.map((h) => ({
           name: h.path ? h.path.split("/").pop() : "",
           path: h.path,
@@ -190,21 +176,6 @@
           ].filter(Boolean).join(" · "),
         })),
       });
-    }
-
-    // fichiers déposés à la main dans un dossier au nom d'un tag
-    // l'admin voit tous les dossiers, les joueurs seulement les leurs (le sien en premier)
-    let folders;
-    if (isAdmin) {
-      const { data } = await client.storage.from(BUCKET).list("", { limit: 500, sortBy: { column: "name", order: "asc" } });
-      folders = (data || []).filter((f) => !f.id && f.name !== "lettres").map((f) => f.name);
-    } else {
-      folders = [...new Set([username.toLowerCase(), ...tags])];
-    }
-
-    for (const folder of folders) {
-      const files = await listFolder(client, folder);
-      if (files.length) sections.push({ folder, files });
     }
 
     if (mine !== run) return;
@@ -222,12 +193,7 @@
     if (mine !== run) return;
     vault.innerHTML = "";
 
-    for (const { title, folder, files } of sections) {
-      const heading = title
-        || (folder === username.toLowerCase() && !isAdmin ? "pour toi"
-          : folder === "public" ? "pour tout le monde" : `pour : ${folder}`);
-      vault.appendChild(section(heading, files, urls));
-    }
+    for (const { title, files } of sections) vault.appendChild(section(title, files, urls));
   }
 
   // ── Écrire une lettre / envoyer un fichier ────────────────────────────────
