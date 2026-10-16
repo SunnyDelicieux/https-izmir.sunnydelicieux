@@ -607,3 +607,70 @@ body.light .cal-title { background: #dfc0a0; }
 /* encadrés d'un même onglet, dans la colonne de gauche : même espacement que la colonne */
 .sidebar > [data-tab] { display: flex; flex-direction: column; gap: 14px; }
 .sidebar > [data-tab][hidden] { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Pages du compte dans la mise en page du wiki (<div id="container" class="compte">)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.compte { font-size: 14px; line-height: 1.5; }
+.compte h1 { margin-bottom: 0.3em; }
+
+.compte .note,
+.compte .box {
+  padding: 12px 14px;
+  background: var(--wiki-box);
+  border: 1px dashed var(--wiki-line);
+  border-radius: var(--iz-radius);
+}
+.compte .title {
+  margin-bottom: 8px;
+  color: var(--wiki-accent);
+  font: italic 17px var(--iz-font-title);
+}
+.compte .muted { color: var(--wiki-muted); }
+
+/* onglets : soulignés, comme les liens de la barre du wiki */
+.compte .tabs { gap: 4px; margin: 0 0 18px; padding: 0; border-bottom: 1px solid var(--wiki-line); }
+.compte .tabs a,
+body.light .compte .tabs a {
+  margin-bottom: -1px;
+  padding: 8px 14px 7px;
+  color: var(--wiki-muted);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  font: 16px var(--iz-font-title);
+  text-transform: none;
+  text-decoration: none;
+}
+.compte .tabs a:hover,
+body.light .compte .tabs a:hover { color: var(--wiki-accent-hover); background: none; border-bottom-color: var(--wiki-line); }
+.compte .tabs a.active,
+body.light .compte .tabs a.active { color: var(--wiki-accent); background: none; border-bottom-color: var(--wiki-accent); }
+
+/* colonne à droite */
+.cote > [data-tab] { display: flex; flex-direction: column; gap: 14px; }
+.cote > [data-tab][hidden] { display: none; }
+.cote .encadre-titre { font-size: 16px; }
+.cote .side-hint { font-size: 12px; color: var(--wiki-muted); }
+.cote .btn { font-size: 13px; }
+.cote .tag { font-size: 11px; }
+
+/* champs et boutons à la taille du texte du wiki */
+.compte .btn { font-size: 13px; }
+.compte .input,
+.compte .field input,
+.compte .field select,
+.compte .field textarea { font-size: 14px; background: var(--wiki-sheet); border-color: var(--wiki-line); color: var(--wiki-text); }
+.compte .field label { font-size: 12px; color: var(--wiki-muted); }
+.compte .tag { font-size: 11px; }
+
+/* frise et grille sur la feuille du wiki */
+.compte .ev-year { background: var(--wiki-sheet); color: var(--wiki-accent); }
+.compte .ev-month { font-size: 15px; }
+.compte .tl-card .desc { font-size: 14px; }
+.compte .cal-day { font-size: 12px; }
+.compte .cal-title { font-size: 10px; }
+.compte .vault-name { font-size: 14px; }
+.compte .vault-heading { font: italic 18px var(--iz-font-title); color: var(--wiki-accent); }
+.compte .empty { border: 1px dashed var(--wiki-line); border-radius: var(--iz-radius); font-size: 15px; }
