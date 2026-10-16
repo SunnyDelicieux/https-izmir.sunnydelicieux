@@ -1,62 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>egechan</title>
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/forum.css">
-<!-- egechan 0.9 (tinyib fork) — Arsen, ne touche plus au css stp -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet">
+	<title>/izm/ - egechan</title>
 </head>
 <body>
-
-<!-- ======================================================
-     ENTER
-     ====================================================== -->
-<div id="scene-enter" class="scene active"><span>ENTER</span></div>
-
-
-<!-- ======================================================
-     CARTON D'ACTE
-     ====================================================== -->
-<div id="scene-card" class="scene">
-    <div class="card-title"></div>
-    <div class="card-sub"></div>
-</div>
-
-
-<!-- ======================================================
-     VISUAL NOVEL (intro / scènes parlées)
-     ====================================================== -->
-<div id="scene-vn" class="scene">
-    <img id="vn-sprite" alt="">
-    <div id="vn-box">
-        <div id="vn-name"></div>
-        <div id="vn-text"></div>
-        <div id="vn-choices"></div>
-        <div id="vn-next">▼ suite</div>
-    </div>
-</div>
-
-
-<!-- ======================================================
-     ACTE I — IMAGEBOARD
-     ====================================================== -->
-<div id="scene-forum" class="scene">
-<div class="browser">
-    <div class="browser-bar">
-        <button id="btn-back" title="Précédent">◀</button>
-        <button title="Suivant" disabled>▶</button>
-        <button title="Actualiser" onclick="location.reload()">↻</button>
-        <div id="url-bar">http://egechan.org/izm/</div>
-        <button id="btn-notes" title="notes.txt">notes.txt</button>
-    </div>
-    <div id="forum-scroll">
-    <div id="forum">
 	<div class="outer">
 		<div class="left">
 			<div class="avatar">
-				<img src="assets/forum/quicksandtourist.png" alt="" onerror="this.style.visibility='hidden'">
+				<img src="quicksandtourist.png" alt="" onerror="this.style.visibility='hidden'">
 			</div>
 			<div class="bio">
 				<h1>ISOLATIONIST</h1>
@@ -67,10 +21,13 @@
 				<a href="#">\turkey\</a><br>
 				<a href="#">\pol\</a>
 			</div>
+			<form id="admin-form">
+				<input type="password" id="admin-code" placeholder="code"> <button>ok</button>
+			</form>
 			<div class="menu"></div>
 		</div>
 		<div class="right">
-			<div class="header"><span class="userbar"><b id="userbar-name">ege_35</b> · <a href="#" id="inbox-link">Messages</a></span></div>
+			<div class="header"><span id="admin-btn">[mod]</span></div>
 			<div class="content">
 				<p>/izm/ rules</p>
 
@@ -78,14 +35,16 @@
 				<li><strong>1. </strong>Don't be a dick</li>
 				<li><strong>2. </strong>Izmir and Aegean topics only, go to \a\ for everything else</li>
 				<li><strong>3. </strong>Don't get doxxed like the last guy</li>
+				<li class="hidden"><strong>4. </strong>Ce qui est posté en hidden reste en hidden. Ici personne sait qui vous êtes. Même eux.</li>
 				</ul>
 
 
 				<!-- ===== BLOCK LIST ===== -->
 				<div class="post" id="p9343470">
 					<h2>Nouvelle block list ?</h2>
-					<i><a href="#" class="pm-target">B. #mod</a> 04/25/14(Fri)02:14:30 No.9343470</i>
-					<p>post text</p>
+					<i>B. #mod 04/25/14(Fri)02:14:30 No.9343470</i>
+					<p>le TİB prépare une nouvelle liste. si egechan est dessus, on tombe comme les autres.<br>
+					quelqu'un sait quelque chose ? MP.</p>
 
 					<div class="reply" id="p9343474">
 						<i>Anonymous 04/25/14(Fri)02:20:11 No.9343474</i>
@@ -101,6 +60,7 @@
 				</div>
 
 
+
 				<!-- ===== LE PORT ===== -->
 				<div class="post" id="p9343492">
 					<h2>le port, cette nuit</h2>
@@ -110,8 +70,7 @@
 					mon père bosse au terminal. vers 2h ils ont trouvé un type entre deux conteneurs, côté quai 3.<br>
 					il dit qu'il était déchiré. genre vraiment. ils disent des chiens.<br>
 					à 2h40 y avait plus un docker sur le quai. que des voitures banalisées.<br>
-					rien dans Yeni Asır, rien à la télé.<br><br>
-					si quelqu'un sait qui c'était, ou qui sont les types en civil, MP. pas ici.
+					rien dans Yeni Asır, rien à la télé.
 					</p>
 
 					<div class="reply" id="p9343495">
@@ -130,6 +89,13 @@
 					<div class="reply" id="p9343503">
 						<i>Anonymous 04/25/14(Fri)05:02:26 No.9343503</i>
 						<p>mon cousin est vigile là-bas. les caméras du quai 3 étaient coupées depuis minuit. « maintenance ».</p>
+					</div>
+
+					<div class="reply hidden" id="p9343504">
+						<i><span class="tag">[hidden]</span> Anonymous 04/25/14(Fri)05:06:13 No.9343504</i>
+						<p>c'était pas des chiens. j'étais sur le quai 4.<br>
+						un mec est sorti d'entre les conteneurs après. il a marché jusqu'à une voiture. il marchait normal, il se pressait pas.<br>
+						du sang jusqu'aux coudes. il s'est essuyé les mains avec un mouchoir en tissu, comme après un kumru.</p>
 					</div>
 
 					<div class="reply" id="p9343505">
@@ -156,11 +122,160 @@
 
 					<div class="reply" id="p9343531">
 						<i>liman35 04/26/14(Sat)02:03:12 No.9343531</i>
-						<p>toujours rien. mon père veut plus en parler. il dit qu'on lui a fait signer un papier.<br>
-						MP si vous savez. je bump pas, je lis tout.</p>
+						<p>toujours rien. mon père veut plus en parler. il dit qu'on lui a fait signer un papier.</p>
 					</div>
 				</div>
 
+
+				<!-- ===== PLAQUES ===== -->
+				<div class="post hidden" id="p9343540">
+					<h2><span class="tag">[hidden]</span> plaques</h2>
+					<i>Anonymous 04/26/14(Sat)03:12:55 No.9343540</i>
+					<p>
+					quelqu'un a relevé les plaques des voitures banalisées du port ? je paie bien.<br>
+					pas besoin de savoir pourquoi.
+					</p>
+
+					<div class="reply hidden" id="p9343543">
+						<i>Anonymous 04/26/14(Sat)03:20:08 No.9343543</i>
+						<p>06 quelque chose. trois Passat noires. 06 c'est Ankara lol, cherche pas plus loin</p>
+					</div>
+
+					<div class="reply hidden" id="p9343546">
+						<i>Anonymous 04/26/14(Sat)03:24:41 No.9343546</i>
+						<p><a href="#p9343540">&gt;&gt;9343540</a><br>
+						qui demande ?</p>
+					</div>
+
+					<div class="reply hidden" id="p9343547">
+						<i>Anonymous 04/26/14(Sat)03:25:02 No.9343547</i>
+						<p><a href="#p9343546">&gt;&gt;9343546</a><br>
+						personne.</p>
+					</div>
+				</div>
+
+
+				<!-- ===== LE CLUB ===== -->
+				<div class="post hidden" id="p9343380">
+					<h2><span class="tag">[hidden]</span> le club sans nom</h2>
+					<i>Anonymous 04/20/14(Sun)04:40:19 No.9343380</i>
+					<p>
+					<span class="green">&gt;Alsancak, pas d'enseigne, toujours la queue</span><br>
+					<span class="green">&gt;réussis à rentrer, on m'a choisi dans la file</span><br>
+					<span class="green">&gt;un verre offert, un papier à signer, je lis pas</span><br>
+					<span class="green">&gt;me réveille chez moi à 16h</span><br>
+					<span class="green">&gt;500 TL dans la poche et un bleu dans le cou</span><br>
+					<span class="green">&gt;aucun souvenir</span><br>
+					j'y retourne samedi.
+					</p>
+
+					<div class="reply hidden" id="p9343384">
+						<i>Anonymous 04/20/14(Sun)04:52:33 No.9343384</i>
+						<p>ils prennent que les jolis. t'es joli anon ?</p>
+					</div>
+
+					<div class="reply hidden" id="p9343389">
+						<i>Anonymous 04/20/14(Sun)05:30:10 No.9343389</i>
+						<p>mon ex y est allée six fois. elle mange plus, elle dort le jour, elle a lâché la fac. elle dit qu'elle a jamais été aussi bien.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343392">
+						<i>Anonymous 04/20/14(Sun)06:01:47 No.9343392</i>
+						<p>j'ai vu un adjoint de la belediye dans la file. et un juge. pas dans la file, eux. ils rentraient direct.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343395">
+						<i>Anonymous 04/20/14(Sun)06:14:20 No.9343395</i>
+						<p>j'ai le numéro du videur. 50 TL. MP</p>
+					</div>
+				</div>
+
+
+				<!-- ===== MANTEAU VERT ===== -->
+				<div class="post hidden" id="p9343260">
+					<h2><span class="tag">[hidden]</span> manteau vert, vapur de 7h40</h2>
+					<i>Anonymous 04/18/14(Fri)23:58:02 No.9343260</i>
+					<p>
+					Karşıyaka → Konak, tous les matins, 7h40. manteau vert, sac en toile, elle lit sur le pont même quand il pleut.<br>
+					quelqu'un a son nom ?
+					</p>
+
+					<div class="reply hidden" id="p9343263">
+						<i>Anonymous 04/19/14(Sat)00:10:39 No.9343263</i>
+						<p>elle descend à Pasaport. bosse à la banque en face, guichet 2.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343266">
+						<i>Anonymous 04/19/14(Sat)00:31:15 No.9343266</i>
+						<p>elle habite à Bostanlı. balcon au 4e, des géraniums. elle les arrose à 22h.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343270">
+						<i>B. #mod 04/19/14(Sat)01:02:44 No.9343270</i>
+						<p>pas de photo de visage. pas de nom complet. le reste je m'en fous.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343274">
+						<i>Anonymous 04/19/14(Sat)01:15:30 No.9343274</i>
+						<p>Ayşe. ça suffit pour l'instant.</p>
+					</div>
+				</div>
+
+
+				<!-- ===== LE LIEN ===== -->
+				<div class="post hidden" id="p9343350">
+					<h2><span class="tag">[hidden]</span> lien mis à jour</h2>
+					<i>B. #mod 04/22/14(Tue)02:22:22 No.9343350</i>
+					<p>
+					l'ancien est mort. le nouveau finit en .onion, vous savez où le trouver.<br>
+					pas de flics, pas de gosses. le reste c'est entre vous.
+					</p>
+
+					<div class="reply hidden" id="p9343353">
+						<i>Anonymous 04/22/14(Tue)02:40:51 No.9343353</i>
+						<p>quelqu'un vend des fiches de la sécu là-bas. nom, adresse, téléphone, médecin traitant. 5 TL la fiche.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343356">
+						<i>Anonymous 04/22/14(Tue)03:07:18 No.9343356</i>
+						<p>j'ai acheté la mienne pour voir. tout est juste. même l'ancienne adresse de ma mère.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343359">
+						<i>Anonymous 04/22/14(Tue)03:44:06 No.9343359</i>
+						<p>y a un mec qui vend des listes « d'abonnés de nuit ». des gens qui sortent jamais le jour. adresse et horaires. qui achète ça ?</p>
+					</div>
+
+					<div class="reply hidden" id="p9343360">
+						<i>Anonymous 04/22/14(Tue)03:45:30 No.9343360</i>
+						<p><a href="#p9343359">&gt;&gt;9343359</a><br>
+						des gens qui ont peur du noir</p>
+					</div>
+				</div>
+
+
+				<!-- ===== POURQUOI ON TIENT ===== -->
+				<div class="post hidden" id="p9343200">
+					<h2><span class="tag">[hidden]</span> pourquoi on tient</h2>
+					<i>B. #mod 04/22/14(Tue)04:04:04 No.9343200</i>
+					<p>
+					on me demande pourquoi egechan tient encore alors que tout le reste tombe.<br>
+					eux ils ont l'argent, la police, les juges, des siècles d'avance. ils achètent tout ce qui a un visage.<br>
+					nous on en a pas. tant que personne sait qui poste, personne peut rien acheter.<br>
+					pas même eux.
+					</p>
+
+					<div class="reply hidden" id="p9343204">
+						<i>Anonymous 04/22/14(Tue)04:10:47 No.9343204</i>
+						<p>« eux » c'est qui</p>
+					</div>
+
+					<div class="reply hidden" id="p9343205">
+						<i>Anonymous 04/22/14(Tue)04:11:20 No.9343205</i>
+						<p><a href="#p9343204">&gt;&gt;9343204</a><br>
+						si tu demandes, t'as pas encore besoin de savoir</p>
+					</div>
+				</div>
 
 				<!-- ===== IZMIR IZMIR ===== -->
 				<div class="post" id="p9343120">
@@ -190,6 +305,11 @@
 						<i>Anonymous 04/22/14(Tue)03:41:09 No.9343131</i>
 						<p>t'attends pas à ce que ça tienne</p>
 					</div>
+
+					<div class="reply hidden" id="p9343133">
+						<i><span class="tag">[hidden]</span> Anonymous 04/22/14(Tue)03:52:30 No.9343133</i>
+						<p>le sous-board arménien a pas fermé pour « contenu inapproprié ». quelqu'un a donné les IP. trois mecs ont perdu leur boulot la même semaine. personne a rien posté depuis.</p>
+					</div>
 				</div>
 
 
@@ -212,6 +332,11 @@
 					<div class="reply" id="p9343224">
 						<i>Anonymous 04/23/14(Wed)03:40:15 No.9343224</i>
 						<p>pas de raison. je dors jamais avant le premier ezan.</p>
+					</div>
+
+					<div class="reply hidden" id="p9343226">
+						<i><span class="tag">[hidden]</span> Anonymous 04/23/14(Wed)03:48:09 No.9343226</i>
+						<p>moi. je regarde la fenêtre du 3e en face. elle laisse toujours la lumière. elle sait pas que la rue est en pente et qu'on voit tout de chez moi.</p>
 					</div>
 				</div>
 
@@ -265,6 +390,12 @@
 						<p>mon oncle a pris un fumigène dans la jambe en 98 au derby. il le raconte à chaque bayram. il montre la cicatrice. tous les ans. on connaît la cicatrice.</p>
 					</div>
 
+					<div class="reply hidden" id="p9343324">
+						<i><span class="tag">[hidden]</span> Anonymous 04/19/14(Sat)22:24:56 No.9343324</i>
+						<p><a href="#p9343322">&gt;&gt;9343322</a><br>
+						le mec qui l'a lancé vit toujours à Buca. j'ai l'adresse si ton oncle veut finir l'histoire.</p>
+					</div>
+
 					<div class="reply" id="p9343330">
 						<i>Anonymous 04/19/14(Sat)22:41:09 No.9343330</i>
 						<p>
@@ -284,7 +415,7 @@
 					</div>
 
 					<div class="reply" id="p9343340">
-						<i><a href="#" class="pm-target">B. #mod</a> 04/19/14(Sat)23:10:00 No.9343340</i>
+						<i>B. #mod 04/19/14(Sat)23:10:00 No.9343340</i>
 						<p>un fil. UN. le prochain derby thread je le supprime et je ban celui qui l'a ouvert.<br>
 						(Göztepe)</p>
 					</div>
@@ -306,6 +437,11 @@
 					<div class="reply" id="p9343158">
 						<i>Anonymous 04/24/14(Thu)08:21:47 No.9343158</i>
 						<p>feels bad</p>
+					</div>
+
+					<div class="reply hidden" id="p9343161">
+						<i><span class="tag">[hidden]</span> Anonymous 04/24/14(Thu)08:30:02 No.9343161</i>
+						<p>le boyozcu de Kıbrıs Şehitleri ouvre à 6h. la fille de la pâtisserie d'en face ferme à 6h20 et rentre seule par la petite rue. pas de caméra dans la petite rue.</p>
 					</div>
 				</div>
 
@@ -374,65 +510,42 @@
 						<p><a href="#p9343402">&gt;&gt;9343402</a><br>
 						Ege. et si on t'invite aux soirées gratuites du nouveau club étudiant, dis non. tu peux pas faire une soirée avec eux sans que les flics débarquent et tabassent tout le monde.</p>
 					</div>
+
+					<div class="reply hidden" id="p9343448">
+						<i><span class="tag">[hidden]</span> Anonymous 04/22/14(Tue)00:20:41 No.9343448</i>
+						<p>le club étudiant paye les entrées et choisit qui reste à la fin. regarde qui revient pas en cours le lundi. regarde qui revient, surtout.</p>
+					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-    </div>
-    </div>
+<script>
+	// Admin : code 123 (provisoire). Affiche les posts "hidden".
+	const CODE = "123";
+	const form = document.getElementById("admin-form");
+	const btn = document.getElementById("admin-btn");
 
-    <!-- notes du chasseur -->
-    <div id="notes-win">
-        <div class="win-title"><span>notes.txt — Bloc-notes</span><button id="notes-close">x</button></div>
-        <pre id="notes-text"></pre>
-    </div>
+	function setAdmin(on) {
+		document.body.classList.toggle("admin", on);
+		btn.textContent = on ? "[mod : déconnexion]" : "[mod]";
+		try { sessionStorage.setItem("izm-admin", on ? "1" : ""); } catch (e) {}
+	}
 
-    <!-- messagerie privée -->
-    <div id="pm-win">
-        <div class="win-title"><span>Message privé — B. #mod</span><button id="pm-close">x</button></div>
-        <div id="pm-messages"></div>
-        <div id="pm-typing">B. est en train d'écrire...</div>
-        <form id="pm-form" autocomplete="off">
-            <textarea id="pm-input" placeholder="Écrire un message..."></textarea>
-            <button type="submit" id="pm-send">Envoyer</button>
-        </form>
-    </div>
+	btn.onclick = () => {
+		if (document.body.classList.contains("admin")) return setAdmin(false);
+		form.classList.toggle("open");
+		document.getElementById("admin-code").focus();
+	};
 
-    <!-- promotion admin -->
-    <div id="promote-screen">
-        <h2>egechan :: compte mis à jour</h2>
-        <p>Utilisateur <b>ege_35</b> → groupe <b>admin</b>.</p>
-        <p>Redirection vers le panel staff...</p>
-    </div>
-</div>
-</div>
+	form.onsubmit = e => {
+		e.preventDefault();
+		const input = document.getElementById("admin-code");
+		if (input.value === CODE) { setAdmin(true); form.classList.remove("open"); }
+		input.value = "";
+	};
 
-
-<!-- ======================================================
-     FIN ACTE I — messagerie (début acte II)
-     ====================================================== -->
-<div id="scene-inbox" class="scene">
-    <div class="inbox-wrap">
-        <h1>egechan :: panel staff</h1>
-        <p>Connecté : <b>ege_35</b> (admin).</p>
-        <div class="inbox-panel">
-            <div class="head">Messages privés <span id="inbox-count">(0)</span></div>
-            <div id="inbox-msg"><div class="empty">Aucun message.</div></div>
-            <div id="inbox-read"></div>
-        </div>
-    </div>
-</div>
-
-
-<audio id="bg-music" loop></audio>
-
-<script src="js/config.js"></script>
-<script src="js/save.js"></script>
-<script src="data/intro.js"></script>
-<script src="data/act1.js"></script>
-<script src="js/vn.js"></script>
-<script src="js/forum.js"></script>
-<script src="js/main.js"></script>
+	try { if (sessionStorage.getItem("izm-admin")) setAdmin(true); } catch (e) {}
+</script>
 </body>
 </html>
