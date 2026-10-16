@@ -20,8 +20,6 @@ const SITE_MENU = [
     { label: "clans", href: "/WIKI/autre/clan" },
     { label: "chronologie", href: "/WIKI/autre/chrono" },
     { label: "personnages", href: "/WIKI/fiche/" },
-    { label: "autres sectes", href: "/INGA/" },
-    { label: "elysium", href: "/ELYSIUM/" },
   ] },
   { label: "système", items: [
     { label: "factions", href: "/SITE/SYSTEME/factions.html" },
@@ -46,6 +44,11 @@ const SITE_MENU = [
     { label: "FAQ", href: "/SITE/ORGANISATION/faq.html" },
     { label: "alchemy", href: "/SITE/OUTILS/alchemy.html" },
     { label: "galerie", href: "/GALLERIE/" },
+  ] },
+  // pages à part, où l'on rencontre un personnage : pour en ajouter une, copier une ligne
+  { label: "rencontres", items: [
+    { label: "Inga", href: "/INGA/" },
+    { label: "Nebetta", href: "/ELYSIUM/" },
   ] },
   { label: "index", href: "/WIKI/liste.html" },
 ];

@@ -23,7 +23,7 @@
     { titre: "Création", match: (p) => p.folder === "SITE/CREATION" },
     { titre: "Outils", match: (p) => p.folder === "SITE/OUTILS" || ["JOURNAL"].includes(p.name) },
     { titre: "Organisation", match: (p) => p.folder === "SITE/ORGANISATION" || p.name === "GALLERIE" },
-    { titre: "Pages à part", match: (p) => p.folder === "" && ["ELYSIUM", "INGA"].includes(p.name) },
+    { titre: "Rencontres", match: (p) => p.folder === "" && ["ELYSIUM", "INGA"].includes(p.name) },
   ];
 
   // pages en plus, qui ne sont pas des fichiers html à part
@@ -39,7 +39,7 @@
     (p.headings || []).includes("Le titre de la page");
 
   // titres plus parlants que le nom de fichier
-  const NOMS = { "/WIKI/": "La ville d'Izmir", "/GALLERIE/": "Galerie", "/JOURNAL/": "Journal", "/ELYSIUM/": "Elysium", "/INGA/": "Inga", "/WIKI/fiche/": "Tous les personnages" };
+  const NOMS = { "/WIKI/": "La ville d'Izmir", "/GALLERIE/": "Galerie", "/JOURNAL/": "Journal", "/ELYSIUM/": "Nebetta (Elysium)", "/INGA/": "Inga", "/WIKI/fiche/": "Tous les personnages" };
 
   const plain = (s) => (s || "").toLowerCase().replace(/ı/g, "i").normalize("NFD").replace(/[̀-ͯ]/g, "");
   const capital = (s) => s.charAt(0).toUpperCase() + s.slice(1);

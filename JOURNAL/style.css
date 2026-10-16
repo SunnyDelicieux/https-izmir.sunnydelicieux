@@ -116,7 +116,7 @@ footer {
 }
 
 /*link styling! they're bold and match the text color until you hover them*/
-nav a,
+#navigation a,
 main a {
   font-weight: bold;
   color: var(--text-color);
@@ -126,7 +126,7 @@ main a:visited {
   color: var(--clicked-color);
 }
 /*and hovering a link gives it a highlighted background*/
-nav a:hover,
+#navigation a:hover,
 main a:hover {
   background-color:var(--link-bg-color)
 }
@@ -164,21 +164,21 @@ article {
 }
 
 /*page navigation, these are the links at the top that scroll to different parts of the page.*/
-nav {
+#navigation {
   border-block: 2px solid var(--text-color);
   padding-block: 6px;
   margin-block: 4px;
 }
 /*the list wraps around if it gets too long*/
-nav ul {
+#navigation ul {
   display: flex; flex-direction: row; flex-wrap: wrap; 
   margin: 0;
   padding: 0;
   list-style-type: none;}
 /*automatically add | dividers between list items*/
-nav li::after {content: "|"; padding-inline:6px;}
+#navigation li::after {content: "|"; padding-inline:6px;}
 /*except for on the last one*/
-nav li:last-child::after {content: "";}
+#navigation li:last-child::after {content: "";}
 
 /*regular list styling on the page needed a bit of spacing between items*/
 main li {padding-bottom:1em;}

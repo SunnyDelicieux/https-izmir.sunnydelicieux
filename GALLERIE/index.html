@@ -5,19 +5,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Galerie</title>
 <link rel="shortcut icon" href="/GALLERIE/favicon.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
+<link rel="stylesheet" href="/WIKI/wikitemplate.css">
 <link rel="stylesheet" href="/GALLERIE/gallery.css">
-
+<script src="/WIKI/nav.js" defer></script>
 <script src="/DATA/search.js" defer></script>
 </head>
-
 <body>
-<div class="page-wrap">
-    <aside class="sidebar">
-        <button id="theme-toggle">☀ jour</button>
 
-        <div class="now">
-            <div class="title">— thème —</div>
+<header-component></header-component>
+
+<main>
+<div id="container">
+  <div class="avec-cote">
+    <div>
+        <h1 id="gallery-title">Galerie</h1>           
+<div id="character-filters"></div>
+            <div id="gallery"></div>
+
+            <div id="gallery-pagination" class="gallery-pagination" aria-label="Pagination de la galerie">
+                <button id="gallery-prev" type="button">← Précédent</button>
+                <div id="gallery-page-list" class="gallery-page-list"></div>
+                <button id="gallery-next" type="button">Suivant →</button>
+            </div>
+    </div>
+    <aside class="cote">
+        
+
+        <div class="encadre">
+            <div class="encadre-titre">— thème —</div>
             <div class="filter-group">
                 <button class="tag-btn" data-tag="official">Officiel</button>
                 <button class="tag-btn" data-tag="canon">Canon</button>
@@ -30,8 +45,8 @@
             </div>
         </div>
 
-        <div class="now">
-            <div class="title">— clan —</div>
+        <div class="encadre">
+            <div class="encadre-titre">— clan —</div>
             <div class="filter-group">
                 <button class="tag-btn" data-tag="brujah">Brujah</button>
                 <button class="tag-btn" data-tag="ventrue">Ventrue</button>
@@ -43,8 +58,8 @@
             </div>
         </div>
         
-        <div class="now">
-            <div class="title">— auteur —</div>
+        <div class="encadre">
+            <div class="encadre-titre">— auteur —</div>
             <div class="filter-group">
                 <button class="tag-btn" data-tag="yolnir">Yolnir</button>
                 <button class="tag-btn" data-tag="sunny">Sunny</button>
@@ -56,25 +71,11 @@
             </div>
         </div>
 
-        <button id="reset-btn">Tout afficher</button>
+        <button id="reset-btn" type="button">Tout afficher</button>
     </aside>
-
-    <main class="container">
-        <div id="site-header"></div>
-
-        <div class="box">
-<div class="title" id="gallery-title">Galerie</div>           
-<div id="character-filters"></div>
-            <div id="gallery"></div>
-
-            <div id="gallery-pagination" class="gallery-pagination" aria-label="Pagination de la galerie">
-                <button id="gallery-prev" type="button">← Précédent</button>
-                <div id="gallery-page-list" class="gallery-page-list"></div>
-                <button id="gallery-next" type="button">Suivant →</button>
-            </div>
-        </div>
-    </main>
+  </div>
 </div>
+</main>
 
 <div id="zoom">
     <div class="zoom-media">
@@ -90,7 +91,6 @@
     </div>
 </div>
 
-<script src="/DATA/izmir.js"></script>
 <script src="/GALLERIE/gallery-data.js"></script>
 <script src="/GALLERIE/gallery.js"></script>
 </body>

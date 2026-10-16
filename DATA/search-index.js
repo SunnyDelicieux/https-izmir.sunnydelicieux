@@ -10,7 +10,9 @@ window.IZMIR_SEARCH_INDEX = [
   "name": "GALLERIE",
   "folder": "",
   "url": "/GALLERIE/",
-  "headings": []
+  "headings": [
+   "Galerie"
+  ]
  },
  {
   "name": "INGA",
