@@ -23,6 +23,7 @@
       <div class="title">mes événements</div>
       Tous les événements du calendrier auxquels tu as accès, du plus récent au plus ancien,
       sans avoir à tourner les mois un par un. Clique sur un événement pour le déplier.
+      <br><br>Tu peux aussi créer tes propres événements et choisir qui les voit.
     </div>
 
     <div class="box">
@@ -47,7 +48,33 @@
       <div class="toolbar">
         <input class="input" id="filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
         <button class="btn" id="sort" type="button">↓ plus récent d'abord</button>
+        <button class="btn" id="new" type="button">+ nouvel événement</button>
       </div>
+
+      <form class="note ev-form" id="event-form" hidden>
+        <div class="title" id="form-title">nouvel événement</div>
+        <div class="field">
+          <label for="ev-titre">titre</label>
+          <input id="ev-titre" name="titre" type="text" maxlength="200" required>
+        </div>
+        <div class="field">
+          <label for="ev-date">date</label>
+          <input id="ev-date" name="date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="ev-desc">description</label>
+          <textarea id="ev-desc" name="desc" maxlength="5000" placeholder="ce qui se passe… (**gras**, *italique*)"></textarea>
+        </div>
+        <div class="field">
+          <label>qui peut le voir</label>
+          <div id="ev-tags"></div>
+        </div>
+        <div class="row-btns">
+          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn" type="button" id="ev-cancel">annuler</button>
+        </div>
+        <div class="form-msg" id="ev-msg" aria-live="polite"></div>
+      </form>
       <div class="muted" id="count" style="margin-top:6px"></div>
       <div id="list" class="timeline"></div>
     </div>
@@ -55,6 +82,7 @@
 
 </div>
 
+<script src="/COMPTE/partage.js"></script>
 <script src="/COMPTE/evenements.js"></script>
 </body>
 </html>

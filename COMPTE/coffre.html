@@ -24,6 +24,7 @@
       Tes handouts : lettres, documents, images que ton personnage a reçus.
       Ils ne sont visibles que par toi, ou par ton clan / ton groupe quand ils leur sont destinés.
       <br><br>Clique sur un document pour le lire ici, ou ctrl+clic pour l'ouvrir dans un nouvel onglet.
+      <br><br>Toi aussi, tu peux écrire une lettre ou envoyer un document, et choisir qui le reçoit.
     </div>
   </div>
 
@@ -35,6 +36,36 @@
     <div class="note account-gate" id="gate">chargement…</div>
 
     <div id="content" hidden>
+      <div class="toolbar" style="margin-bottom:12px">
+        <button class="btn" type="button" id="new-letter">+ écrire une lettre</button>
+        <button class="btn" type="button" id="new-file">+ envoyer un fichier</button>
+      </div>
+
+      <form class="note" id="h-form" hidden style="margin-bottom:14px">
+        <div class="title" id="h-form-title">écrire une lettre</div>
+        <div class="field">
+          <label for="h-titre">titre</label>
+          <input id="h-titre" name="titre" type="text" maxlength="200" required>
+        </div>
+        <div class="field" id="h-text-field">
+          <label for="h-contenu">texte</label>
+          <textarea id="h-contenu" name="contenu" maxlength="20000" style="min-height:200px" placeholder="Cher…  (**gras**, *italique*)"></textarea>
+        </div>
+        <div class="field" id="h-file-field">
+          <label for="h-file">fichier (image ou PDF, 10 Mo max)</label>
+          <input id="h-file" name="file" type="file" accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
+        </div>
+        <div class="field">
+          <label>qui peut le voir</label>
+          <div id="h-tags"></div>
+        </div>
+        <div class="row-btns">
+          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn" type="button" id="h-cancel">annuler</button>
+        </div>
+        <div class="form-msg" id="h-msg" aria-live="polite"></div>
+      </form>
+
       <div id="vault" style="display:flex;flex-direction:column;gap:14px"></div>
     </div>
   </div>
@@ -42,6 +73,7 @@
 </div>
 
 <script src="/COMPTE/lecteur.js"></script>
+<script src="/COMPTE/partage.js"></script>
 <script src="/COMPTE/coffre.js"></script>
 </body>
 </html>

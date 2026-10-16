@@ -230,6 +230,29 @@ button.tag:hover { color: var(--iz-accent-hover); border-color: var(--iz-accent-
 .vault-thumb canvas.ready { opacity: 1; }
 .vault-item .file-icon { height: 100%; display: flex; align-items: center; justify-content: center; font: italic 22px georgia, serif; color: var(--iz-accent); text-transform: uppercase; }
 .vault-name { font: italic 12px georgia, serif; letter-spacing: 0.5px; }
+.vault-tools { display: flex; gap: 10px; margin-top: 2px; }
+.letter-thumb {
+  position: relative;
+  height: 100%;
+  padding: 12px 10px;
+  overflow: hidden;
+  background: #f6ead2;
+  color: #2a1a0e;
+  font: 8px/1.5 Georgia, serif;
+  letter-spacing: 0;
+}
+.letter-thumb * { font-family: Georgia, serif; }
+/* le texte s'efface vers le bas de la feuille */
+.letter-thumb::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(transparent, #f6ead2); }
+
+/* formulaires de création (événement, lettre) */
+.share-editor { display: flex; flex-direction: column; gap: 6px; }
+.share-row { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.share-label { min-width: 80px; color: var(--iz-muted); font-size: 10px; text-transform: lowercase; }
+.ev-form { margin-top: 12px; }
+.ev-author { margin: -2px 0 4px; color: var(--iz-muted); font: italic 11px georgia, serif; }
+.tl-actions { display: flex; gap: 12px; margin-top: 6px; }
+.field [hidden], .field[hidden] { display: none; }
 .vault-meta { font-size: 9px; color: var(--iz-muted); text-transform: uppercase; letter-spacing: 1px; }
 
 /* ── Lecteur de handouts (COMPTE/lecteur.js) ── */
@@ -282,6 +305,21 @@ html.lx-lock, html.lx-lock body { overflow: hidden; }
 .lx-page canvas { display: block; }
 .lx-image { max-width: 100%; max-height: calc(100vh - 120px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6); }
 .lx-loading { margin-top: 40px; color: var(--iz-text-soft); font: italic 14px georgia, serif; }
+
+/* lettre écrite par un joueur : une feuille de papier */
+.lx-letter {
+  width: min(680px, 100%);
+  padding: 48px 56px 60px;
+  background: #f6ead2;
+  background-image: linear-gradient(rgba(120, 80, 30, 0.06), rgba(120, 80, 30, 0.12));
+  color: #2a1a0e;
+  box-shadow: 0 0 0 1px #c8906a, 0 6px 24px rgba(0, 0, 0, 0.6);
+  font: 16px/1.7 Georgia, "Times New Roman", serif;
+}
+.lx-letter, .lx-letter * { font-family: Georgia, "Times New Roman", serif; letter-spacing: 0.2px; }
+.lx-letter-title { margin: 0 0 4px; color: #6b2a10; font: italic 26px Georgia, serif; }
+.lx-letter-author { margin-bottom: 24px; color: #7a5a3e; font: italic 13px Georgia, serif; }
+.lx-letter-body { white-space: normal; word-wrap: break-word; }
 
 /* calque de texte de PDF.js : invisible, mais sélectionnable */
 .lx-text {
@@ -415,3 +453,4 @@ body.light .drop:hover, body.light .drop.over { border-color: #8b4a18; color: #8
 body.light .page-card { background: #e8d0b4; border-color: #c8906a; }
 body.light .page-keep { color: #7a5a3e; }
 body.light .sent-thumb { background: #f0e0cc; border-color: #c8906a; }
+body.light .share-label, body.light .ev-author { color: #7a5a3e; }

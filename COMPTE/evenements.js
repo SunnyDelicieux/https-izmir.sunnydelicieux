@@ -73,6 +73,7 @@
     }
     const text = el("div", "tl-text");
     text.appendChild(el("div", "title", e.titre || "sans titre"));
+    if (e.author_name) text.appendChild(el("div", "ev-author", `par ${e.author_name}`));
 
     const tags = el("div", "tags");
     for (const t of tagsOf(e)) {
@@ -90,7 +91,8 @@
     box.appendChild(head);
 
     const desc = el("div", "desc");
-    desc.innerHTML = e.desc || "";
+    // texte d'un joueur : jamais interprété comme du HTML (seulement **gras** / *italique*)
+    desc.innerHTML = e.author ? izmirPartage.format(e.desc) : (e.desc || "");
     box.appendChild(desc);
 
     if (e.image) {
@@ -115,6 +117,25 @@
       if (!box.classList.contains("open") && !ev.target.closest("a")) toggle();
     });
     if (box.classList.contains("open")) more.textContent = "replier";
+
+    // ses propres événements (ou tous pour l'admin) : modifier / supprimer
+    if (account && (account.isAdmin || (e.author && e.author === account.user.id))) {
+      const actions = el("div", "tl-actions");
+      const edit = el("button", "tl-more", "modifier");
+      edit.type = "button";
+      edit.addEventListener("click", (ev) => { ev.stopPropagation(); openForm(e); });
+      const del = el("button", "tl-more", "supprimer");
+      del.type = "button";
+      del.addEventListener("click", async (ev) => {
+        ev.stopPropagation();
+        if (!confirm(`Supprimer « ${e.titre || "sans titre"} » ?`)) return;
+        const { error } = await account.client.from("Calendar").delete().eq("id", e.id);
+        if (error) { console.error(error); del.textContent = "échec"; return; }
+        load();
+      });
+      actions.append(edit, del);
+      box.appendChild(actions);
+    }
 
     item.appendChild(box);
     // une fois affichée : pas de bouton si tout tient déjà
@@ -203,26 +224,92 @@
     render();
   });
 
-  izmirAccount.onChange(async ({ client, user, error: loadError }) => {
-    content.hidden = !user;
-    gate.hidden = !!user;
-    if (!user) {
-      gate.textContent = loadError
-        ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour voir tes événements.";
-      events = [];
+  // ── Créer / modifier un événement ─────────────────────────────────────────
+
+  const form = document.getElementById("event-form");
+  const formTitle = document.getElementById("form-title");
+  const formTags = document.getElementById("ev-tags");
+  const formMsg = document.getElementById("ev-msg");
+  let editing = null;   // événement en cours de modification (null = nouveau)
+  let chosen = new Set();
+
+  async function openForm(e = null) {
+    editing = e;
+    chosen = new Set(e ? tagsOf(e).filter((t) => !(t === "public" && !e.permissions?.length)) : []);
+    formTitle.textContent = e ? "modifier l'événement" : "nouvel événement";
+    form.titre.value = e?.titre || "";
+    form.date.value = e?.date ? String(e.date).slice(0, 10) : "";
+    form.desc.value = e?.desc || "";
+    formMsg.textContent = "";
+    formTags.innerHTML = "";
+    const { mine, players } = await izmirPartage.tags(account);
+    formTags.appendChild(izmirPartage.editor(chosen, [
+      { label: account.isAdmin ? "groupes" : "mes groupes", tags: mine },
+      { label: "joueurs", tags: players },
+    ]));
+    form.hidden = false;
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+    form.titre.focus();
+  }
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    if (!chosen.size) {
+      formMsg.textContent = "Choisis au moins un tag (qui peut voir l'événement).";
       return;
     }
+    const row = {
+      titre: form.titre.value.trim(),
+      date: form.date.value,
+      desc: form.desc.value.trim() || null,
+      permissions: [...chosen],
+    };
+    formMsg.textContent = "enregistrement…";
+    const { error } = editing
+      ? await account.client.from("Calendar").update(row).eq("id", editing.id)
+      : await account.client.from("Calendar").insert(row);
+    if (error) {
+      console.error(error);
+      formMsg.textContent = /row-level security|violates/i.test(error.message || "")
+        ? "Refusé : tu ne peux utiliser que tes propres tags ou des pseudos de joueurs."
+        : "L'enregistrement a échoué, réessaie.";
+      return;
+    }
+    form.hidden = true;
+    load();
+  });
 
-    const { data, error } = await client.from("Calendar").select("*");
+  document.getElementById("ev-cancel").addEventListener("click", () => (form.hidden = true));
+  document.getElementById("new").addEventListener("click", () => openForm());
+
+  // ── Chargement ────────────────────────────────────────────────────────────
+
+  let account = null;
+
+  async function load() {
+    const { data, error } = await account.client.from("Calendar").select("*");
     if (error) {
       console.error(error);
       list.innerHTML = `<div class="note">Impossible de charger le calendrier.</div>`;
       return;
     }
-
     events = (data || []).map((e) => ({ ...e, _p: parts(e.date) }));
-    activeTag = null;
     render();
+  }
+
+  izmirAccount.onChange(async (acc) => {
+    account = acc;
+    content.hidden = !acc.user;
+    gate.hidden = !!acc.user;
+    form.hidden = true;
+    if (!acc.user) {
+      gate.textContent = acc.error
+        ? "Connexion au serveur impossible, réessaie plus tard."
+        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour voir tes événements.";
+      events = [];
+      return;
+    }
+    activeTag = null;
+    load();
   });
 })();

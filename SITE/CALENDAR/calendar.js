@@ -51,6 +51,15 @@ window.addEventListener("DOMContentLoaded", async () => {
     return data || [];
   }
 
+// texte d'un joueur : tout est échappé, seuls **gras**, *italique* et les retours à la ligne restent
+  function formatPlayerText(text) {
+    return String(text ?? "")
+      .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]))
+      .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+      .replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<i>$2</i>")
+      .replace(/\n/g, "<br>");
+  }
+
 // METTRE LES INFOS SUR LA SIDEBAR
 
   function renderSidebar(dayEvents) {
@@ -75,10 +84,14 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     div.innerHTML = `
       ${imgHTML}
-      <div class="title">${e.titre || "Untitled"}</div>
-      <div class="meta">${e.date || ""}</div>
-      <div class="desc">${e.desc || ""}</div>
+      <div class="title"></div>
+      <div class="meta"></div>
+      <div class="desc"></div>
     `;
+    div.querySelector(".title").textContent = e.titre || "Untitled";
+    div.querySelector(".meta").textContent = [e.date, e.author_name && `par ${e.author_name}`].filter(Boolean).join(" · ");
+    // événement créé par un joueur : son texte n'est jamais interprété comme du HTML
+    div.querySelector(".desc").innerHTML = e.author ? formatPlayerText(e.desc) : (e.desc || "");
 
     viewer.appendChild(div);
   }

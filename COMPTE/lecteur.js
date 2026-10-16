@@ -3,6 +3,7 @@
 // et les liens restent cliquables, contrairement à une conversion en image.
 //
 //   izmirLecteur.open({ title, url, kind: "pdf" | "image", download })
+//   izmirLecteur.open({ title, kind: "texte", html, author })   -> lettre écrite sur le site
 //   izmirLecteur.cover(url, canvas)  -> dessine la 1re page du PDF dans un <canvas> (vignette)
 //   izmirLecteur.thumb(doc, n, canvas) -> idem pour la page n d'un PDF déjà chargé avec pdfjs()
 (function () {
@@ -128,21 +129,37 @@
     resizeTimer = setTimeout(() => current?.rerender(), 200);
   }
 
-  async function open({ title, url, kind, download }) {
+  async function open({ title, url, kind, download, html, author }) {
     if (!overlay) build();
     close();
     overlay.hidden = false;
     document.documentElement.classList.add("lx-lock");
     overlay.querySelector(".lx-title").textContent = title;
     overlay.querySelector(".lx-info").textContent = "";
-    overlay.querySelector("[data-open]").href = url;
+    const openLink = overlay.querySelector("[data-open]");
     const dl = overlay.querySelector("[data-download]");
-    dl.href = download || url;
+    openLink.hidden = dl.hidden = !url;
+    if (url) {
+      openLink.href = url;
+      dl.href = download || url;
+    }
     overlay.querySelectorAll("[data-zoom]").forEach((b) => (b.hidden = kind !== "pdf"));
     overlay.querySelector(".lx-close").focus();
 
     const pages = overlay.querySelector(".lx-pages");
     const state = (current = { zoom: 1, rerender: () => {} });
+
+    // lettre écrite sur le site : "html" est déjà nettoyé (izmirPartage.format)
+    if (kind === "texte") {
+      const sheet = el("article", "lx-letter");
+      sheet.appendChild(el("h2", "lx-letter-title", title));
+      if (author) sheet.appendChild(el("div", "lx-letter-author", `de ${author}`));
+      const body = el("div", "lx-letter-body");
+      body.innerHTML = html || "";
+      sheet.appendChild(body);
+      pages.appendChild(sheet);
+      return;
+    }
 
     if (kind !== "pdf") {
       const img = el("img", "lx-image");

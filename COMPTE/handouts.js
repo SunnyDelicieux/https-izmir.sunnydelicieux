@@ -308,7 +308,7 @@
       return;
     }
     sent = data || [];
-    const paths = sent.map((h) => h.path);
+    const paths = sent.map((h) => h.path).filter(Boolean); // les lettres écrites n'ont pas de fichier
     const { data: signed } = paths.length
       ? await client.storage.from(BUCKET).createSignedUrls(paths, 3600)
       : { data: [] };
@@ -334,11 +334,24 @@
       const thumb = el("button", "sent-thumb");
       thumb.type = "button";
       thumb.title = "lire";
-      if (h._url) {
+      const isPdf = /\.pdf$/i.test(h.path || "");
+      if (!h.path) {
+        const sheet = el("div", "letter-thumb");
+        sheet.innerHTML = izmirPartage.format((h.contenu || "").slice(0, 300));
+        thumb.appendChild(sheet);
+        thumb.addEventListener("click", () => izmirLecteur.open({ title: h.titre, kind: "texte", html: izmirPartage.format(h.contenu), author: h.author_name }));
+      } else if (h._url && isPdf) {
         const canvas = el("canvas");
         thumb.appendChild(canvas);
         izmirLecteur.cover(h._url, canvas).then(() => canvas.classList.add("ready")).catch(() => {});
         thumb.addEventListener("click", () => izmirLecteur.open({ title: h.titre, url: h._url, kind: "pdf" }));
+      } else if (h._url) {
+        const img = el("img");
+        img.src = h._url;
+        img.alt = "";
+        img.style.cssText = "width:100%;height:100%;object-fit:cover";
+        thumb.appendChild(img);
+        thumb.addEventListener("click", () => izmirLecteur.open({ title: h.titre, url: h._url, kind: "image" }));
       }
       row.appendChild(thumb);
 
@@ -347,7 +360,7 @@
       titre.value = h.titre;
       body.appendChild(titre);
       body.appendChild(el("div", "muted sent-meta",
-        [h.source && `${h.source}${h.page ? `, page ${h.page}` : ""}`, new Date(h.created_at).toLocaleDateString("fr-FR")]
+        [h.author_name && `de ${h.author_name}`, !h.path && "lettre écrite", h.source && `${h.source}${h.page ? `, page ${h.page}` : ""}`, new Date(h.created_at).toLocaleDateString("fr-FR")]
           .filter(Boolean).join(" · ")));
 
       const actions = el("div", "row-btns");
@@ -378,7 +391,7 @@
         del.disabled = true;
         const { error } = await client.from("handouts").delete().eq("id", h.id);
         if (error) { console.error(error); del.disabled = false; del.textContent = "échec"; return; }
-        await client.storage.from(BUCKET).remove([h.path]);
+        if (h.path) await client.storage.from(BUCKET).remove([h.path]);
         sent = sent.filter((x) => x.id !== h.id);
         renderSent();
       });

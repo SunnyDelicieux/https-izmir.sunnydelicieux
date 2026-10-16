@@ -69,6 +69,27 @@ $$;
 alter table public."Calendar" enable row level security;
 
 drop policy if exists "izmir: voir les evenements autorises" on public."Calendar";
+
+-- permissions : texte (un seul tag) -> liste de tags, pour qu'un événement vise plusieurs personnes.
+-- "brujah" devient {brujah}, "brujah, limier" devient {brujah,limier}. Fait une seule fois.
+do $$
+begin
+  if (select data_type from information_schema.columns
+      where table_schema = 'public' and table_name = 'Calendar' and column_name = 'permissions') = 'text' then
+    alter table public."Calendar" alter column permissions type text[] using
+      case
+        when permissions is null or trim(permissions) = '' then '{}'::text[]
+        when trim(permissions) like '[%' then public.izmir_as_tags(permissions::jsonb)
+        else public.izmir_as_tags(to_jsonb(string_to_array(permissions, ',')))
+      end;
+    alter table public."Calendar" alter column permissions set default '{}';
+  end if;
+end $$;
+
+-- qui a créé l'événement (vide = toi, depuis le tableau de bord)
+alter table public."Calendar" add column if not exists author uuid references auth.users (id) on delete set null;
+alter table public."Calendar" add column if not exists author_name text;
+
 create policy "izmir: voir les evenements autorises"
 on public."Calendar" for select
 to anon, authenticated
@@ -76,9 +97,10 @@ using (
   cardinality(public.izmir_as_tags(to_jsonb(permissions))) = 0
   or 'public' = any(public.izmir_as_tags(to_jsonb(permissions)))
   or public.izmir_as_tags(to_jsonb(permissions)) && public.izmir_my_tags()
+  or author = auth.uid()
   or public.izmir_is_admin()
 );
--- Pas de règle insert/update/delete : seul le tableau de bord Supabase peut modifier le calendrier.
+-- Création / modification par les joueurs : section 7.
 
 
 -- ── 2. Profils ─────────────────────────────────────────────────────────────
@@ -269,3 +291,192 @@ create policy "izmir: admin supprime des handouts"
 on storage.objects for delete
 to authenticated
 using (bucket_id = 'handouts' and public.izmir_is_admin());
+
+
+
+-- ── 7. Créations des joueurs (événements et handouts) ──────────────────────
+-- Un joueur peut créer des événements et des handouts (texte écrit ou fichier),
+-- avec ses propres tags (pseudo, clan, rôle, extra_tags, public) et le pseudo de n'importe quel joueur.
+-- Il ne peut modifier / supprimer que ce qu'il a créé. L'admin peut tout faire.
+
+-- tags qu'un joueur a le droit d'utiliser
+create or replace function public.izmir_allowed_tags()
+returns text[]
+language sql stable security definer
+set search_path = public
+as $$
+  select public.izmir_my_tags()
+         || coalesce((select array_agg(lower(username)) from public.profiles where username is not null), '{}')
+$$;
+
+-- liste des pseudos, pour proposer "écrire à …" (joueurs connectés seulement)
+create or replace function public.izmir_usernames()
+returns setof text
+language sql stable security definer
+set search_path = public
+as $$
+  select lower(username) from public.profiles
+  where username is not null and auth.uid() is not null
+  order by 1
+$$;
+revoke execute on function public.izmir_usernames() from public, anon;
+grant execute on function public.izmir_usernames() to authenticated;
+
+-- l'auteur est rempli par la base (impossible de se faire passer pour quelqu'un d'autre),
+-- les tags sont mis en minuscules, et un joueur ne peut pas changer l'image d'un événement
+create or replace function public.izmir_event_defaults()
+returns trigger
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  new.permissions := public.izmir_as_tags(to_jsonb(new.permissions));
+  if auth.uid() is null then return new; end if; -- tableau de bord Supabase
+  if tg_op = 'INSERT' then
+    if not public.izmir_is_admin() then
+      new.author := auth.uid();
+      new.author_name := public.izmir_username();
+      new.image := null;
+    end if;
+  else
+    new.author := old.author;
+    new.author_name := old.author_name;
+    if not public.izmir_is_admin() then new.image := old.image; end if;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists izmir_event_before_write on public."Calendar";
+create trigger izmir_event_before_write
+before insert or update on public."Calendar"
+for each row execute function public.izmir_event_defaults();
+
+drop policy if exists "izmir: creer un evenement" on public."Calendar";
+create policy "izmir: creer un evenement"
+on public."Calendar" for insert
+to authenticated
+with check (
+  public.izmir_is_admin()
+  or (author = auth.uid()
+      and cardinality(permissions) > 0
+      and permissions <@ public.izmir_allowed_tags())
+);
+
+drop policy if exists "izmir: modifier son evenement" on public."Calendar";
+create policy "izmir: modifier son evenement"
+on public."Calendar" for update
+to authenticated
+using (public.izmir_is_admin() or author = auth.uid())
+with check (
+  public.izmir_is_admin()
+  or (author = auth.uid()
+      and cardinality(permissions) > 0
+      and permissions <@ public.izmir_allowed_tags())
+);
+
+drop policy if exists "izmir: supprimer son evenement" on public."Calendar";
+create policy "izmir: supprimer son evenement"
+on public."Calendar" for delete
+to authenticated
+using (public.izmir_is_admin() or author = auth.uid());
+
+-- handouts des joueurs : texte écrit (contenu) ou fichier (path, dans joueurs/<son id>/)
+alter table public.handouts add column if not exists author uuid references auth.users (id) on delete set null;
+alter table public.handouts add column if not exists author_name text;
+alter table public.handouts add column if not exists contenu text check (char_length(contenu) <= 20000);
+alter table public.handouts alter column path drop not null;
+
+create or replace function public.izmir_handout_defaults()
+returns trigger
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  new.tags := public.izmir_as_tags(to_jsonb(new.tags));
+  if auth.uid() is null then return new; end if;
+  if tg_op = 'INSERT' then
+    if not public.izmir_is_admin() then
+      new.author := auth.uid();
+      new.author_name := public.izmir_username();
+    end if;
+  else
+    new.author := old.author;
+    new.author_name := old.author_name;
+    new.path := old.path; -- le fichier ne change pas
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists izmir_handout_before_write on public.handouts;
+create trigger izmir_handout_before_write
+before insert or update on public.handouts
+for each row execute function public.izmir_handout_defaults();
+
+drop policy if exists "izmir: lire ses lettres" on public.handouts;
+create policy "izmir: lire ses lettres"
+on public.handouts for select
+to authenticated
+using (
+  public.izmir_as_tags(to_jsonb(tags)) && public.izmir_my_tags()
+  or author = auth.uid()
+  or public.izmir_is_admin()
+);
+
+drop policy if exists "izmir: creer un handout" on public.handouts;
+create policy "izmir: creer un handout"
+on public.handouts for insert
+to authenticated
+with check (
+  author = auth.uid()
+  and cardinality(tags) > 0
+  and tags <@ public.izmir_allowed_tags()
+  and (path is null or path like 'joueurs/' || auth.uid()::text || '/%')
+  and (path is not null or coalesce(trim(contenu), '') <> '')
+);
+
+drop policy if exists "izmir: modifier son handout" on public.handouts;
+create policy "izmir: modifier son handout"
+on public.handouts for update
+to authenticated
+using (author = auth.uid())
+with check (author = auth.uid() and cardinality(tags) > 0 and tags <@ public.izmir_allowed_tags());
+
+drop policy if exists "izmir: supprimer son handout" on public.handouts;
+create policy "izmir: supprimer son handout"
+on public.handouts for delete
+to authenticated
+using (author = auth.uid());
+
+-- fichier d'un handout : lisible aussi par son auteur
+create or replace function public.izmir_can_read_handout(object_path text)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select exists (
+    select 1 from public.handouts h
+    where h.path = object_path
+      and (public.izmir_as_tags(to_jsonb(h.tags)) && public.izmir_my_tags() or h.author = auth.uid())
+  )
+$$;
+
+-- fichiers des joueurs : chacun dans joueurs/<son id>/
+drop policy if exists "izmir: joueur envoie ses fichiers" on storage.objects;
+create policy "izmir: joueur envoie ses fichiers"
+on storage.objects for insert
+to authenticated
+with check (bucket_id = 'handouts' and name like 'joueurs/' || auth.uid()::text || '/%');
+
+drop policy if exists "izmir: joueur supprime ses fichiers" on storage.objects;
+create policy "izmir: joueur supprime ses fichiers"
+on storage.objects for delete
+to authenticated
+using (bucket_id = 'handouts' and name like 'joueurs/' || auth.uid()::text || '/%');
+
+-- taille et type des fichiers acceptés (10 Mo, images et PDF)
+update storage.buckets
+set file_size_limit = 10485760,
+    allowed_mime_types = array['application/pdf', 'image/png', 'image/jpeg', 'image/webp', 'image/gif']
+where id = 'handouts';
