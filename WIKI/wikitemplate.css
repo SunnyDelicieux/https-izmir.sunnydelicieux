@@ -785,3 +785,34 @@ table.res-table,
     width: auto;
     margin: 0;
 }
+
+/* ── Index du site (WIKI/liste.html) ── */
+.index-filtre {
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 7px 10px;
+    color: var(--wiki-text);
+    background: var(--wiki-box);
+    border: 1px solid var(--wiki-line);
+    border-radius: var(--iz-radius);
+    font: 14px var(--iz-font);
+    outline: none;
+}
+
+.index-filtre:focus {
+    border-color: var(--wiki-accent);
+}
+
+.index-liste {
+    columns: 3 200px;
+    column-gap: 28px;
+    margin: 0.4em 0 1.2em;
+}
+
+.index-liste li {
+    break-inside: avoid;
+}
+
+.index-liste small {
+    color: var(--wiki-muted);
+}

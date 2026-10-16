@@ -17,7 +17,6 @@ const SITE_MENU = [
   { label: "accueil", href: "/accueil.html" },
   { label: "univers", items: [
     { label: "la ville d'Izmir", href: "/WIKI/index.html" },
-    { label: "index du wiki", href: "/WIKI/liste.html" },
     { label: "clans", href: "/WIKI/autre/clan" },
     { label: "chronologie", href: "/WIKI/autre/chrono" },
     { label: "personnages", href: "/WIKI/fiche/" },
@@ -48,6 +47,7 @@ const SITE_MENU = [
     { label: "alchemy", href: "/SITE/OUTILS/alchemy.html" },
     { label: "galerie", href: "/GALLERIE/" },
   ] },
+  { label: "index", href: "/WIKI/liste.html" },
 ];
 
 // "/WIKI/fiche/index.html", "/WIKI/fiche/" et "/WIKI/fiche" désignent la même page
@@ -78,9 +78,10 @@ function slug(text) {
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-function buildToc() {
+function buildToc(force) {
   const toc = document.getElementById("toc");
-  if (!toc || toc.children.length) return;
+  if (!toc || (toc.children.length && !force)) return;
+  toc.innerHTML = "";
   const scope = document.getElementById("contents") || document.getElementById("container") || document.body;
   const heads = [...scope.querySelectorAll("h2, h3")].filter((h) => !h.closest("#toc, header-component, .no-toc"));
   if (heads.length < 2) return;
@@ -107,6 +108,9 @@ function buildToc() {
   }
   toc.appendChild(root);
 }
+
+// pour les pages qui ajoutent leurs titres après coup (ex : l'index du site)
+window.izmirBuildToc = buildToc;
 
 class Header extends HTMLElement {
   connectedCallback() {
@@ -351,7 +355,7 @@ header-component .search-champ {
       document.head.appendChild(script);
     }
 
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", buildToc);
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => buildToc());
     else buildToc();
   }
 }

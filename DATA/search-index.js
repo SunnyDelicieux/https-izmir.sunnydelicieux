@@ -458,12 +458,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI",
   "url": "/WIKI/liste.html",
   "headings": [
-   "Index du wiki",
-   "Izmir",
-   "Brujah",
-   "Toreador",
-   "Tremere",
-   "Ventrue"
+   "Index du site"
   ]
  },
  {
