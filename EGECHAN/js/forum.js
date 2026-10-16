@@ -1,8 +1,8 @@
 /* ==========================================================
-   FORUM — imageboard de l'acte 1
-   Les fils sont écrits en HTML dans index.html.
+   FORUM — la board de l'acte 1
+   Les fils sont écrits en HTML dans index.html (style de izmir.html).
    Le joueur est connecté avec son compte (ege_35) ; il doit
-   obtenir l'admin en aidant le modo "A." par MP.
+   obtenir l'admin en aidant le modo "B." par MP.
    ========================================================== */
 
 const Forum = (() => {
@@ -13,62 +13,22 @@ const Forum = (() => {
     const $  = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-    /* ---------- Vues index / fil ---------- */
-
-    function showIndex() {
-        $("#forum").classList.remove("thread-mode");
-        $$(".thread").forEach(t => {
-            t.classList.remove("open");
-            const replies = $$(".replyContainer", t);
-            replies.forEach((r, i) => r.classList.toggle("folded", i < replies.length - 2));
-            const omitted = replies.length - 2;
-            const note = $(".omitted", t);
-            if (note) note.textContent = omitted > 0
-                ? `${omitted} réponses masquées. Cliquez sur Répondre pour tout voir.` : "";
-        });
-        setUrl(BASE);
-        $("#forum-scroll").scrollTop = 0;
-    }
-
-    function showThread(id) {
-        $("#forum").classList.add("thread-mode");
-        $$(".thread").forEach(t => {
-            t.classList.toggle("open", t.dataset.thread === id);
-            $$(".replyContainer", t).forEach(r => r.classList.remove("folded"));
-        });
-        setUrl(BASE + "res/" + id + ".html");
-        $("#forum-scroll").scrollTop = 0;
-    }
-
     function setUrl(u) { $("#url-bar").textContent = u; }
 
-    /* ---------- Images : assets/forum/<fichier> sinon placeholder ---------- */
-
-    function loadImages() {
-        $$(".ph[data-file]").forEach(ph => {
-            ph.style.width  = (ph.dataset.w || 250) + "px";
-            ph.style.height = (ph.dataset.h || 180) + "px";
-            const img = new Image();
-            img.onload = () => {
-                img.className = "thumb";
-                img.style.maxWidth = (ph.dataset.w || 250) + "px";
-                ph.replaceWith(img);
-            };
-            img.src = "assets/forum/" + ph.dataset.file;
-        });
-    }
-
-    /* ---------- >>liens ---------- */
+    /* ---------- >>liens : href="#p123" → scroll dans la board ---------- */
 
     function quoteLinks() {
-        $$("a.quotelink").forEach(a => a.addEventListener("click", e => {
+        $$('#forum a[href^="#p"]').forEach(a => a.addEventListener("click", e => {
             e.preventDefault();
-            const target = document.getElementById("p" + a.textContent.replace(/\D/g, ""));
+            const target = document.getElementById(a.getAttribute("href").slice(1));
             if (!target) return;
             target.scrollIntoView({ block: "center" });
             target.classList.add("highlight");
             setTimeout(() => target.classList.remove("highlight"), 1500);
         }));
+        // les liens morts (\a\, \pol\…) ne rechargent pas la page
+        $$('#forum a[href="#"]:not(.pm-target):not(#inbox-link)').forEach(a =>
+            a.addEventListener("click", e => e.preventDefault()));
     }
 
     /* ---------- notes.txt (notes du chasseur) ---------- */
@@ -102,7 +62,7 @@ const Forum = (() => {
     function bubble(m) {
         const d = document.createElement("div");
         d.className = "pm-line " + (m.from === "mod" ? "them" : m.from);
-        const who = m.from === "me" ? CONFIG.playerAccount : (m.from === "mod" ? "A. ## Mod" : "");
+        const who = m.from === "me" ? CONFIG.playerAccount : (m.from === "mod" ? "B. #mod" : "");
         if (m.text === "__LINK__") {
             d.innerHTML = `<span class="pm-who">${who}</span><a href="#" class="promote-link">${PROMOTE_URL}</a>`;
             d.querySelector("a").addEventListener("click", e => { e.preventDefault(); promote(); });
@@ -181,20 +141,10 @@ const Forum = (() => {
     function open() {
         if (!ready) {
             ready = true;
-            loadImages();
             quoteLinks();
             notes();
 
-            $$(".replylink").forEach(a => a.addEventListener("click", e => {
-                e.preventDefault();
-                showThread(a.closest(".thread").dataset.thread);
-            }));
-            $$(".return-link").forEach(a => a.addEventListener("click", e => {
-                e.preventDefault(); showIndex();
-            }));
-            $("#btn-back").addEventListener("click", showIndex);
-
-            // ouvrir un MP : cliquer sur le nom du modo, ou Inbox
+            // ouvrir un MP : cliquer sur le nom du modo, ou Messages
             $$(".pm-target").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openPM(); }));
             $("#inbox-link").addEventListener("click", e => { e.preventDefault(); openPM(); });
             $("#pm-close").addEventListener("click", () => $("#pm-win").classList.remove("open"));
@@ -202,9 +152,10 @@ const Forum = (() => {
             $("#pm-input").addEventListener("keydown", e => {
                 if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(e); }
             });
+            $("#btn-back").addEventListener("click", () => { $("#forum .content").scrollTop = 0; });
             updateInboxCount();
         }
-        showIndex();
+        setUrl(BASE);
     }
 
     return { open };

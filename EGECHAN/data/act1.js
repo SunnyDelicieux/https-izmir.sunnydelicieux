@@ -1,5 +1,5 @@
 /* ==========================================================
-   ACTE I — textes et logique du MP avec le modo "A."
+   ACTE I — textes et logique du MP avec le modo "B."
    Le joueur écrit librement ; on cherche des mots-clés.
    Il doit dire : 1) la date de la prochaine liste (2 mai)
                   2) que egechan est dessus
@@ -16,7 +16,7 @@ egechan.org
   → il me faut un accès admin.
 
 staff
-  "A." gère les comptes et la modération. méfiant.
+  "B." gère les comptes et la modération. méfiant.
   écrit en anglais, parfois en turc. jamais en journée.
   les autres modos ont l'air inactifs depuis 2013.
 
