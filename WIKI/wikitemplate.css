@@ -816,3 +816,60 @@ table.res-table,
 .index-liste small {
     color: var(--wiki-muted);
 }
+
+/* ── Échelle de niveaux (• à ••••••) ──
+   <ul class="echelle"><li><span class="points">••</span> description</li></ul> */
+ul.echelle {
+    list-style: none;
+    margin: 0.6em 0;
+    padding: 0;
+}
+
+ul.echelle li {
+    display: grid;
+    grid-template-columns: 5.2em 1fr;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--wiki-line);
+}
+
+ul.echelle li:last-child {
+    border-bottom: none;
+}
+
+ul.echelle .points {
+    color: var(--wiki-accent);
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* ── Étapes numérotées (création de personnage…) ──
+   <h2><span class="etape">1</span> Choisir son clan</h2> */
+.etape {
+    display: inline-block;
+    min-width: 1.5em;
+    margin-right: 6px;
+    color: var(--wiki-accent);
+    font-style: italic;
+}
+
+/* lien mis en avant (ex : « la fiche est ici ») */
+a.lien-doc {
+    display: inline-block;
+    margin: 0.4em 0;
+    padding: 5px 12px;
+    color: var(--wiki-accent);
+    background: var(--wiki-box);
+    border: 1px solid var(--wiki-line);
+    border-radius: var(--iz-radius);
+    text-decoration: none;
+}
+
+a.lien-doc::after {
+    content: " →";
+}
+
+a.lien-doc:hover {
+    color: var(--wiki-accent-hover);
+    border-color: var(--wiki-accent);
+}
