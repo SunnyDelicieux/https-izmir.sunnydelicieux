@@ -86,12 +86,12 @@
       // destinataires (visibles par l'auteur et l'admin)
       if (f.shareTags) a.appendChild(izmirPartage.chips(f.shareTags));
 
-      // ses propres créations (ou tout, pour l'admin) : modifier / supprimer, au survol de la vignette
+      // ses propres créations (ou tout, pour l'admin) : modifier / supprimer
       if (f.row && account && (account.isAdmin || f.row.author === account.user.id)) {
         const tools = document.createElement("span");
         tools.className = "vault-tools";
-        const edit = Object.assign(document.createElement("button"), { type: "button", textContent: "✎", title: "modifier", className: "vault-tool" });
-        const del = Object.assign(document.createElement("button"), { type: "button", textContent: "✕", title: "supprimer", className: "vault-tool" });
+        const edit = Object.assign(document.createElement("button"), { type: "button", textContent: "modifier", title: "modifier", className: "tl-more" });
+        const del = Object.assign(document.createElement("button"), { type: "button", textContent: "supprimer", title: "supprimer", className: "tl-more" });
         edit.setAttribute("aria-label", "modifier");
         del.setAttribute("aria-label", "supprimer");
         edit.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); openForm(f.row.path ? "fichier" : "texte", f.row); });
@@ -105,7 +105,7 @@
           refresh();
         });
         tools.append(edit, del);
-        thumb.appendChild(tools);
+        a.appendChild(tools);
       }
 
       if (kind === "texte") {

@@ -72,7 +72,6 @@
         const list = el("div", "tags");
         for (const t of g.tags) {
           const b = el("button", tagClass(t) + (selected.has(t) ? " active" : ""), t);
-          b.setAttribute("aria-pressed", selected.has(t));
           b.type = "button";
           b.addEventListener("click", () => {
             selected.has(t) ? selected.delete(t) : selected.add(t);
