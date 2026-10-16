@@ -474,3 +474,158 @@ body.light .share-label, body.light .ev-author { color: #7a5a3e; }
 body.light .vj-row { border-bottom-color: #c8906a; }
 body.light .vj-title { color: #2a1a0e; }
 body.light .vj-date { color: #7a5a3e; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Passe visuelle : formulaires en fenêtre, boutons principaux, tags colorés,
+   coffre-fort aéré. (Les règles ci-dessous complètent ou remplacent celles du haut.)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Boutons ── */
+.btn { padding: 6px 14px; }
+.btn-primary {
+  color: #1e1408;
+  background: var(--iz-accent);
+  border-color: var(--iz-accent);
+  font-weight: bold;
+}
+.btn-primary:hover { color: #1e1408; background: var(--iz-accent-hover); border-color: var(--iz-accent-hover); }
+.row-btns { margin-top: 6px; }
+.toolbar { gap: 8px; }
+
+/* ── Formulaires en fenêtre ── */
+html.modal-lock, html.modal-lock body { overflow: hidden; }
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10002; /* au-dessus de la recherche et du bouton de compte */
+  background: rgba(10, 6, 2, 0.72);
+  backdrop-filter: blur(2px);
+  animation: modal-fade 0.15s ease;
+}
+.modal-backdrop[hidden] { display: none; }
+.modal-form:not([hidden]) {
+  position: fixed;
+  z-index: 10003;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(620px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 22px 24px 18px;
+  border-style: solid;
+  border-color: var(--iz-accent-dim);
+  background: var(--iz-panel);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  animation: modal-pop 0.18s ease;
+}
+.modal-form > .title { font-size: 17px; margin-bottom: 14px; padding-right: 30px; }
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: var(--iz-muted);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--iz-radius);
+  font-size: 14px;
+}
+.modal-close:hover { color: var(--iz-accent-hover); border-color: var(--iz-border-strong); }
+@keyframes modal-fade { from { opacity: 0; } }
+@keyframes modal-pop { from { opacity: 0; transform: translate(-50%, -46%); } }
+
+.field label { font-size: 11px; letter-spacing: 0.5px; }
+.field-row { display: grid; grid-template-columns: 1fr 170px; gap: 12px; }
+.field-row .field { margin-bottom: 10px; }
+@media (max-width: 520px) { .field-row { grid-template-columns: 1fr; gap: 0; } }
+
+/* ── Tags colorés : groupe (neutre), joueur, public (or) ── */
+.tag { padding: 2px 7px; font-size: 10px; border-radius: 10px; transition: 0.15s ease; }
+.tag--joueur { color: #e0b4a8; background: rgba(150, 70, 55, 0.18); border-color: rgba(176, 96, 78, 0.55); }
+.tag--public { color: #e8c88a; background: rgba(192, 144, 80, 0.14); border-color: rgba(192, 144, 80, 0.6); }
+.tag.active,
+button.tag[aria-pressed="true"] { color: #1e1408; background: var(--iz-accent); border-color: var(--iz-accent); }
+.tag--joueur.active, .tag--joueur[aria-pressed="true"] { color: #fff2ec; background: #a85a48; border-color: #a85a48; }
+
+/* dans les formulaires : des tags plus grands, faciles à cliquer, avec une coche */
+.share-editor { gap: 10px; }
+.share-row { align-items: center; }
+.share-label { min-width: 90px; font-size: 11px; }
+.share-editor .tag { padding: 4px 11px; font-size: 11px; cursor: pointer; }
+.share-editor .tag[aria-pressed="true"]::before { content: "✓ "; }
+
+/* ── Messages vides / chargement ── */
+.empty {
+  padding: 34px 16px;
+  text-align: center;
+  color: var(--iz-muted);
+  font: italic 14px georgia, serif;
+  border: 1px dashed var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+}
+.empty small { display: block; margin-top: 6px; font: 11px var(--iz-font); opacity: 0.8; }
+
+/* ── Coffre-fort : sans boîte autour, cartes aérées, outils au survol ── */
+.vault { display: flex; flex-direction: column; gap: 22px; margin-top: 8px; }
+.vault-heading {
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--iz-border-strong);
+  color: var(--iz-accent);
+  font: italic 16px georgia, serif;
+  text-transform: lowercase;
+}
+.vault-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+.vault-item { padding: 10px; gap: 5px; border-style: solid; border-color: var(--iz-border); }
+.vault-item:hover { border-color: var(--iz-accent-dim); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); }
+.vault-name { font-size: 13px; line-height: 1.3; }
+.vault-item .tags { margin-top: 2px; }
+.vault-tools {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.vault-item:hover .vault-tools,
+.vault-item:focus-within .vault-tools { opacity: 1; }
+@media (hover: none) { .vault-tools { opacity: 1; } }
+.vault-tool {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  color: #f6ead2;
+  background: rgba(20, 12, 4, 0.82);
+  border: 1px solid rgba(192, 144, 80, 0.5);
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+}
+.vault-tool:hover { color: #1e1408; background: var(--iz-accent); }
+
+/* ── Frise : actions plus discrètes ── */
+.tl-actions { padding-top: 6px; border-top: 1px dotted var(--iz-border-strong); }
+
+/* ── Jour ── */
+body.light .modal-form:not([hidden]) { background: #fbf5ec; border-color: #c8906a; border-style: solid; box-shadow: 0 12px 40px rgba(60, 20, 5, 0.35); }
+body.light .modal-backdrop { background: rgba(60, 30, 10, 0.45); }
+body.light .btn-primary { color: #fdf0e0; background: #8b4a18; border-color: #8b4a18; }
+body.light .btn-primary:hover { color: #fdf0e0; background: #b86030; border-color: #b86030; }
+body.light .tag--joueur { color: #7a2e1e; background: rgba(168, 90, 72, 0.12); border-color: rgba(168, 90, 72, 0.5); }
+body.light .tag--public { color: #7a4a10; background: rgba(192, 144, 80, 0.18); border-color: #c09050; }
+body.light .tag.active, body.light button.tag[aria-pressed="true"] { color: #fdf0e0; background: #8b4a18; border-color: #8b4a18; }
+body.light .tag--joueur.active, body.light .tag--joueur[aria-pressed="true"] { color: #fff; background: #a85a48; border-color: #a85a48; }
+body.light .empty { color: #7a5a3e; border-color: #c8906a; }
+body.light .vault-heading { color: #8b4a18; border-bottom-color: #c8906a; }
+body.light .vault-item { border-color: #d8b898; }
+body.light .vault-item:hover { border-color: #a86840; box-shadow: 0 6px 18px rgba(60, 20, 5, 0.18); }
+body.light .tl-actions { border-top-color: #c8906a; }

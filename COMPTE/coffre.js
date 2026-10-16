@@ -32,10 +32,10 @@
   }, { rootMargin: "200px" });
 
   function section(title, files, urls) {
-    const box = document.createElement("div");
-    box.className = "note";
-    box.innerHTML = `<div class="title"></div><div class="vault-grid"></div>`;
-    box.querySelector(".title").textContent = title;
+    const box = document.createElement("section");
+    box.className = "vault-section";
+    box.innerHTML = `<div class="vault-heading"></div><div class="vault-grid"></div>`;
+    box.querySelector(".vault-heading").textContent = `${title} · ${files.length}`;
     const grid = box.querySelector(".vault-grid");
 
     for (const f of files) {
@@ -83,13 +83,17 @@
       meta.className = "vault-meta";
       meta.textContent = f.meta || (kind === "file" ? f.name.split(".").pop() : kind);
       a.appendChild(meta);
+      // destinataires (visibles par l'auteur et l'admin)
+      if (f.shareTags) a.appendChild(izmirPartage.chips(f.shareTags));
 
-      // ses propres créations (ou tout, pour l'admin) : modifier / supprimer
+      // ses propres créations (ou tout, pour l'admin) : modifier / supprimer, au survol de la vignette
       if (f.row && account && (account.isAdmin || f.row.author === account.user.id)) {
         const tools = document.createElement("span");
         tools.className = "vault-tools";
-        const edit = Object.assign(document.createElement("button"), { type: "button", textContent: "modifier", className: "tl-more" });
-        const del = Object.assign(document.createElement("button"), { type: "button", textContent: "supprimer", className: "tl-more" });
+        const edit = Object.assign(document.createElement("button"), { type: "button", textContent: "✎", title: "modifier", className: "vault-tool" });
+        const del = Object.assign(document.createElement("button"), { type: "button", textContent: "✕", title: "supprimer", className: "vault-tool" });
+        edit.setAttribute("aria-label", "modifier");
+        del.setAttribute("aria-label", "supprimer");
         edit.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); openForm(f.row.path ? "fichier" : "texte", f.row); });
         del.addEventListener("click", async (e) => {
           e.preventDefault();
@@ -101,7 +105,7 @@
           refresh();
         });
         tools.append(edit, del);
-        a.appendChild(tools);
+        thumb.appendChild(tools);
       }
 
       if (kind === "texte") {
@@ -153,7 +157,8 @@
       return;
     }
 
-    vault.innerHTML = `<div class="note muted">ouverture du coffre…</div>`;
+    vault.innerHTML = `<div class="empty">ouverture du coffre…</div>`;
+    await izmirPartage.tags(account).catch(() => {}); // pour colorer les pseudos de joueurs
 
     const sections = [];
 
@@ -172,8 +177,8 @@
           meta: [
             h.path ? (PDF.test(h.path) ? "pdf" : "image") : "lettre",
             h.author_name && (h.author === user.id ? "de toi" : `de ${h.author_name}`),
-            (isAdmin || h.author === user.id) && `→ ${(h.tags || []).join(", ")}`,
           ].filter(Boolean).join(" · "),
+          shareTags: (isAdmin || h.author === user.id) ? h.tags : null,
         })),
       });
     }
@@ -181,7 +186,7 @@
     if (mine !== run) return;
     vault.innerHTML = "";
     if (!sections.length) {
-      vault.innerHTML = `<div class="note muted">Ton coffre est vide pour l'instant.</div>`;
+      vault.innerHTML = `<div class="empty">Ton coffre est vide pour l'instant.<br><small>Les lettres et documents que tu reçois apparaîtront ici.</small></div>`;
       return;
     }
 
@@ -227,7 +232,6 @@
       { label: "joueurs", tags: players },
     ]));
     hForm.hidden = false;
-    hForm.scrollIntoView({ behavior: "smooth", block: "start" });
     hForm.titre.focus();
   }
 

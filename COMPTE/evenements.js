@@ -77,7 +77,7 @@
 
     const tags = el("div", "tags");
     for (const t of tagsOf(e)) {
-      const b = el("button", "tag" + (t === activeTag ? " active" : ""), t);
+      const b = el("button", izmirPartage.tagClass(t) + (t === activeTag ? " active" : ""), t);
       b.type = "button";
       b.title = `voir seulement « ${t} »`;
       b.addEventListener("click", (ev) => {
@@ -168,7 +168,7 @@
     const tags = new Map();
     for (const e of events) for (const t of tagsOf(e)) tags.set(t, (tags.get(t) || 0) + 1);
     for (const [t, n] of [...tags].sort((a, b) => b[1] - a[1])) {
-      const b = el("button", "tag" + (t === activeTag ? " active" : ""), `${t} · ${n}`);
+      const b = el("button", izmirPartage.tagClass(t) + (t === activeTag ? " active" : ""), `${t} · ${n}`);
       b.type = "button";
       b.addEventListener("click", () => setTag(t === activeTag ? null : t));
       tagLinks.appendChild(b);
@@ -192,7 +192,7 @@
     count.textContent = `${shown.length} événement${shown.length > 1 ? "s" : ""}` + (activeTag ? ` · ${activeTag}` : "");
 
     if (!shown.length) {
-      list.appendChild(el("div", "note muted", "Aucun événement."));
+      list.appendChild(el("div", "empty", activeTag || filter.value ? "Aucun événement ne correspond." : "Aucun événement pour l'instant."));
       return;
     }
 
@@ -248,7 +248,6 @@
       { label: "joueurs", tags: players },
     ]));
     form.hidden = false;
-    form.scrollIntoView({ behavior: "smooth", block: "start" });
     form.titre.focus();
   }
 
@@ -294,6 +293,7 @@
       return;
     }
     events = (data || []).map((e) => ({ ...e, _p: parts(e.date) }));
+    await izmirPartage.tags(account).catch(() => {}); // pour colorer les pseudos de joueurs
     render();
   }
 

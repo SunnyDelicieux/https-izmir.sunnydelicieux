@@ -37,11 +37,11 @@
 
     <div id="content" hidden>
       <div class="toolbar" style="margin-bottom:12px">
-        <button class="btn" type="button" id="new-letter">+ écrire une lettre</button>
-        <button class="btn" type="button" id="new-file">+ envoyer un fichier</button>
+        <button class="btn btn-primary" type="button" id="new-letter">+ écrire une lettre</button>
+        <button class="btn btn-primary" type="button" id="new-file">+ envoyer un fichier</button>
       </div>
 
-      <form class="note" id="h-form" hidden style="margin-bottom:14px">
+      <form class="note modal-form" id="h-form" hidden>
         <div class="title" id="h-form-title">écrire une lettre</div>
         <div class="field">
           <label for="h-titre">titre</label>
@@ -60,13 +60,13 @@
           <div id="h-tags"></div>
         </div>
         <div class="row-btns">
-          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn btn-primary" type="submit">enregistrer</button>
           <button class="btn" type="button" id="h-cancel">annuler</button>
         </div>
         <div class="form-msg" id="h-msg" aria-live="polite"></div>
       </form>
 
-      <div id="vault" style="display:flex;flex-direction:column;gap:14px"></div>
+      <div id="vault" class="vault"></div>
     </div>
   </div>
 

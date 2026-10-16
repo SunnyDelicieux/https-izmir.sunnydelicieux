@@ -8,6 +8,28 @@
   const norm = (s) => (s || "").toString().toLowerCase().trim();
 
   let usernamesPromise = null;
+  let knownPlayers = new Set();
+
+  // classe de couleur d'un tag : public (or), pseudo d'un joueur, ou groupe (clan, rôle…)
+  function tagClass(t) {
+    t = norm(t);
+    if (t === "public") return "tag tag--public";
+    if (knownPlayers.has(t)) return "tag tag--joueur";
+    return "tag tag--groupe";
+  }
+
+  // petite rangée de tags colorés (affichage seul)
+  function chips(tags) {
+    const box = document.createElement("div");
+    box.className = "tags";
+    for (const t of tags || []) {
+      const s = document.createElement("span");
+      s.className = tagClass(t);
+      s.textContent = t;
+      box.appendChild(s);
+    }
+    return box;
+  }
 
   // ses propres tags + le pseudo de chaque joueur (pour écrire à quelqu'un en particulier)
   async function tags(acc) {
@@ -15,7 +37,9 @@
       usernamesPromise = acc.client.rpc("izmir_usernames").then(({ data }) => (data || []).map((r) =>
         norm(typeof r === "string" ? r : r.izmir_usernames)));
     }
-    const players = (await usernamesPromise).filter((u) => u && u !== norm(acc.username));
+    const all = await usernamesPromise;
+    knownPlayers = new Set(all);
+    const players = all.filter((u) => u && u !== norm(acc.username));
     let mine = [...new Set(acc.tags)].filter((t) => t !== "public" && t !== norm(acc.username));
     if (acc.isAdmin) {
       // l'admin peut viser n'importe quel groupe : tous les clans, rôles, extra_tags
@@ -45,18 +69,19 @@
         if (!g.tags.length) continue;
         const row = el("div", "share-row");
         row.appendChild(el("span", "share-label", g.label));
-        const chips = el("div", "tags");
+        const list = el("div", "tags");
         for (const t of g.tags) {
-          const b = el("button", "tag" + (selected.has(t) ? " active" : ""), t);
+          const b = el("button", tagClass(t) + (selected.has(t) ? " active" : ""), t);
+          b.setAttribute("aria-pressed", selected.has(t));
           b.type = "button";
           b.addEventListener("click", () => {
             selected.has(t) ? selected.delete(t) : selected.add(t);
             draw();
             onChange?.();
           });
-          chips.appendChild(b);
+          list.appendChild(b);
         }
-        row.appendChild(chips);
+        row.appendChild(list);
         box.appendChild(row);
       }
     };
@@ -76,5 +101,41 @@
       .replace(/\n/g, "<br>");
   }
 
-  window.izmirPartage = { tags, editor, format, escape };
+  // ── Formulaires en fenêtre (class="modal-form") ───────────────────────────
+  // Les pages ouvrent / ferment le formulaire avec form.hidden ; ici on ajoute le fond sombre,
+  // la fermeture par Échap ou par un clic à côté, et on bloque le défilement de la page.
+  function setupModals() {
+    const forms = [...document.querySelectorAll(".modal-form")];
+    if (!forms.length) return;
+    const backdrop = el("div", "modal-backdrop");
+    backdrop.hidden = true;
+    document.body.appendChild(backdrop);
+
+    const sync = () => {
+      const open = forms.some((f) => !f.hidden);
+      backdrop.hidden = !open;
+      document.documentElement.classList.toggle("modal-lock", open);
+    };
+    const closeAll = () => forms.forEach((f) => (f.hidden = true));
+
+    for (const f of forms) {
+      new MutationObserver(sync).observe(f, { attributes: true, attributeFilter: ["hidden"] });
+      // bouton ✕ en haut à droite
+      const x = el("button", "modal-close", "✕");
+      x.type = "button";
+      x.setAttribute("aria-label", "Fermer");
+      x.addEventListener("click", () => (f.hidden = true));
+      f.prepend(x);
+    }
+    backdrop.addEventListener("click", closeAll);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && forms.some((f) => !f.hidden) && !document.querySelector(".lx:not([hidden])")) closeAll();
+    });
+    sync();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupModals);
+  else setupModals();
+
+  window.izmirPartage = { tags, editor, format, escape, tagClass, chips };
 })();

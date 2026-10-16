@@ -48,18 +48,20 @@
       <div class="toolbar">
         <input class="input" id="filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
         <button class="btn" id="sort" type="button">↓ plus récent d'abord</button>
-        <button class="btn" id="new" type="button">+ nouvel événement</button>
+        <button class="btn btn-primary" id="new" type="button">+ nouvel événement</button>
       </div>
 
-      <form class="note ev-form" id="event-form" hidden>
+      <form class="note modal-form" id="event-form" hidden>
         <div class="title" id="form-title">nouvel événement</div>
-        <div class="field">
-          <label for="ev-titre">titre</label>
-          <input id="ev-titre" name="titre" type="text" maxlength="200" required>
-        </div>
-        <div class="field">
-          <label for="ev-date">date</label>
-          <input id="ev-date" name="date" type="date" required>
+        <div class="field-row">
+          <div class="field">
+            <label for="ev-titre">titre</label>
+            <input id="ev-titre" name="titre" type="text" maxlength="200" required>
+          </div>
+          <div class="field field-date">
+            <label for="ev-date">date</label>
+            <input id="ev-date" name="date" type="date" required>
+          </div>
         </div>
         <div class="field">
           <label for="ev-desc">description</label>
@@ -70,7 +72,7 @@
           <div id="ev-tags"></div>
         </div>
         <div class="row-btns">
-          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn btn-primary" type="submit">enregistrer</button>
           <button class="btn" type="button" id="ev-cancel">annuler</button>
         </div>
         <div class="form-msg" id="ev-msg" aria-live="polite"></div>
