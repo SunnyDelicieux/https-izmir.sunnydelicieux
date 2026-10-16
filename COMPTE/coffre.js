@@ -110,14 +110,17 @@
     return box;
   }
 
+  let run = 0; // seul le dernier chargement a le droit d'afficher (pas de doublons)
+
   izmirAccount.onChange(async ({ client, user, username, tags, isAdmin, error }) => {
+    const mine = ++run;
     content.hidden = !user;
     gate.hidden = !!user;
     vault.innerHTML = "";
     if (!user) {
       gate.textContent = error
         ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (bouton « connexion » au bout du menu) pour ouvrir ton coffre-fort.";
+        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour ouvrir ton coffre-fort.";
       return;
     }
 
@@ -154,6 +157,7 @@
       if (files.length) sections.push({ folder, files });
     }
 
+    if (mine !== run) return;
     vault.innerHTML = "";
     if (!sections.length) {
       vault.innerHTML = `<div class="note muted">Ton coffre est vide pour l'instant.</div>`;
@@ -163,6 +167,8 @@
     const paths = sections.flatMap((s) => s.files.map((f) => f.path));
     const { data: signed } = await client.storage.from(BUCKET).createSignedUrls(paths, 3600);
     const urls = Object.fromEntries((signed || []).map((s) => [s.path, s.signedUrl]));
+    if (mine !== run) return;
+    vault.innerHTML = "";
 
     for (const { title, folder, files } of sections) {
       const heading = title

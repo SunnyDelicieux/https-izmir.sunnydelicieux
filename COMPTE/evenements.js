@@ -209,7 +209,7 @@
     if (!user) {
       gate.textContent = loadError
         ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (bouton « connexion » au bout du menu) pour voir tes événements.";
+        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour voir tes événements.";
       events = [];
       return;
     }

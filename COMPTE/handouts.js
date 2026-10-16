@@ -196,15 +196,41 @@
       : "";
   }
 
+  // message lisible pour les erreurs les plus courantes
+  function explain(err) {
+    const m = String(err?.message || err?.error || err || "");
+    if (/row-level security|violates|Unauthorized|403/i.test(m))
+      return "Supabase refuse l'envoi : relance supabase/izmir.sql en entier (section 6) et vérifie que ton compte a is_admin = true.";
+    if (/handouts.*(does not exist|not find)|relation .*handouts|schema cache/i.test(m))
+      return "la table « handouts » n'existe pas encore : relance supabase/izmir.sql en entier.";
+    if (/bucket not found/i.test(m))
+      return "le bucket « handouts » n'existe pas : relance supabase/izmir.sql en entier.";
+    if (/duplicate|already exists/i.test(m))
+      return "un fichier du même nom existe déjà, réessaie.";
+    if (/pdf-lib introuvable/i.test(m))
+      return "la bibliothèque de découpage (pdf-lib) n'a pas pu se charger : vérifie ta connexion ou un bloqueur de pub.";
+    return `erreur : ${m || "inconnue"} (détails dans la console, F12)`;
+  }
+
   async function send() {
     const kept = pending.pages.filter((p) => p.keep);
     if (!kept.length) return;
     sendBtn.disabled = cancelBtn.disabled = true;
 
-    const { PDFDocument } = await pdfLib();
-    const source = await PDFDocument.load(pending.bytes);
+    let source, PDFDocument;
+    try {
+      ({ PDFDocument } = await pdfLib());
+      // ignoreEncryption : les PDF "protégés" (souvent juste contre la modification) s'ouvrent quand même
+      source = await PDFDocument.load(pending.bytes, { ignoreEncryption: true });
+    } catch (err) {
+      console.error(err);
+      sendBtn.disabled = cancelBtn.disabled = false;
+      sendMsg.textContent = `Impossible de découper ce PDF : ${explain(err)}`;
+      return;
+    }
     let done = 0;
     const failed = [];
+    let lastError = null;
 
     for (const p of kept) {
       sendMsg.textContent = `envoi ${done + 1} / ${kept.length}…`;
@@ -216,7 +242,7 @@
         out.setTitle(p.titre);
         const bytes = await out.save();
 
-        const path = `lettres/${crypto.randomUUID()}.pdf`;
+        const path = `lettres/${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}.pdf`;
         const up = await client.storage.from(BUCKET).upload(path, new Blob([bytes], { type: "application/pdf" }), {
           contentType: "application/pdf",
         });
@@ -235,8 +261,9 @@
         }
         done++;
       } catch (err) {
-        console.error(err);
+        console.error(`page ${p.num}`, err);
         failed.push(p.num);
+        lastError = err;
       }
     }
 
@@ -245,7 +272,7 @@
       // on garde seulement les pages qui ont échoué, pour réessayer
       pending.pages = pending.pages.filter((p) => failed.includes(p.num));
       drawPages();
-      sendMsg.textContent = `${done} envoyée${done > 1 ? "s" : ""}, échec pour la page ${failed.join(", ")} : réessaie`;
+      sendMsg.textContent = `${done} envoyée${done > 1 ? "s" : ""}, échec pour la page ${failed.join(", ")} — ${explain(lastError)}`;
     } else {
       pending = null;
       fileInput.value = "";
@@ -375,7 +402,7 @@
     if (!acc.user) {
       gate.textContent = acc.error
         ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (bouton « connexion » au bout du menu) avec le compte admin.";
+        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) avec le compte admin.";
       return;
     }
     if (!acc.isAdmin) {

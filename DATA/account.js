@@ -54,11 +54,17 @@
     return clientPromise;
   }
 
+  let appliedUserId; // compte en cours d'application (mis à jour tout de suite, avant toute attente)
+
   async function applySession(session) {
     const user = session?.user || null;
-    const changed = (user?.id || null) !== (state.user?.id || null);
-    if (started && !changed) return; // simple rafraîchissement du jeton
+    // Supabase envoie souvent deux signaux d'affilée au chargement (session retrouvée, puis connecté) :
+    // le second arrive pendant qu'on lit encore le profil. On compare donc au compte déjà en cours,
+    // pas à celui déjà affiché, sinon tout serait chargé deux fois.
+    const changed = (user?.id || null) !== (appliedUserId ?? null);
+    if (started && !changed) return; // même compte : simple rafraîchissement du jeton
     started = true;
+    appliedUserId = user?.id || null;
 
     let profile = null;
     if (user) {
@@ -182,10 +188,10 @@ body.light .iza-form input:focus { border-color: #8b4a18; }
 body.light .iza-form button { background: #dfc0a0; color: #2a1a0e; border-color: #c8906a; }
 body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; }
 
-/* ── Dans le menu du site (header.html) : même allure que les autres onglets ── */
-.iza-box--navi { margin-left: auto; font-family: Arial, Tahoma, Verdana, sans-serif; }
+/* ── Coin haut-droit du bandeau du site (header.html) : même allure que les onglets du menu ── */
+.iza-box--navi { position: absolute; top: 8px; right: 8px; z-index: 50; font-family: Arial, Tahoma, Verdana, sans-serif; }
 .iza-box--navi .iza-btn {
-  padding: 5px 12px; min-width: 0; max-width: 180px; text-align: center;
+  padding: 5px 12px; min-width: 0; max-width: 200px; text-align: center;
   color: #ecdfc8; background: var(--iz-button, #2e1e0e);
   border: 1px solid var(--iz-border-strong, #4a3018); border-radius: 4px;
   font: italic 14px georgia, serif; text-transform: lowercase; letter-spacing: 1px;
@@ -207,8 +213,7 @@ body.light .iza-box--navi .iza-panel { background: #f0e0cc; border-color: #c8906
 body.light .iza-box--navi .iza-panel a, body.light .iza-box--navi .iza-panel button.iza-item { color: #3a2010; }
 body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-panel button.iza-item:hover { background: #dfc0a0; color: #150d05; }
 @media (max-width: 768px) {
-  .iza-box--navi { margin-left: 0; }
-  .iza-box--navi .iza-panel { left: 0; right: auto; }
+  .iza-box--navi .iza-btn { max-width: 120px; padding: 4px 10px; font-size: 13px; }
 }
 
 /* ── Dans la barre du wiki (WIKI/nav.js) : à côté du bouton jour/nuit ── */
@@ -245,7 +250,7 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
   }
 
   // Où mettre le bouton :
-  //   pages du site  -> au bout du menu (header.html, injecté par DATA/izmir.js)
+  //   pages du site  -> coin haut-droit du bandeau (header.html, injecté par DATA/izmir.js)
   //   pages du wiki  -> dans la barre du wiki, à côté du bouton jour/nuit (WIKI/nav.js)
   //   autres pages   -> en haut à droite, à côté de la recherche
   function place() {
@@ -257,8 +262,11 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
       const navi = siteHeader?.querySelector(".navi");
       const wikinav = wikiHeader?.querySelector(".wikinav");
       if (navi) {
+        // dans le coin haut-droit du bandeau du site : ne prend pas de place dans le menu,
+        // qui passerait sinon à la ligne avec un pseudo un peu long
         box.className = box.className.replace(/iza-box--\w+/g, "") + " iza-box--navi";
-        navi.appendChild(box);
+        siteHeader.style.position = "relative";
+        siteHeader.appendChild(box);
       } else if (wikinav) {
         box.className = box.className.replace(/iza-box--\w+/g, "") + " iza-box--wiki";
         const toggle = wikinav.querySelector("#theme-toggle");
