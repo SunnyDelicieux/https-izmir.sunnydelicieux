@@ -46,7 +46,7 @@ class Header extends HTMLElement {
   align-items: center;
   gap: 28px;
   min-height: 52px;
-  padding: 0 380px 0 20px;
+  padding: 0 260px 0 20px;
   background: var(--iz-deep);
   border-bottom: 2px solid var(--iz-accent);
   font-family: var(--iz-font);
@@ -98,8 +98,10 @@ class Header extends HTMLElement {
 #theme-toggle {
   margin-left: auto;
   flex-shrink: 0;
-  padding: 5px 12px;
-  font: 13px var(--iz-font);
+  height: 28px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  font: 13px/26px var(--iz-font);
   color: var(--iz-accent);
   background: var(--iz-button);
   border: 1px solid var(--iz-border-strong);
@@ -111,6 +113,10 @@ class Header extends HTMLElement {
   color: var(--iz-accent-hover);
   border-color: var(--iz-accent);
 }
+
+/* barre de recherche (DATA/search.js) : sur la même ligne que les boutons de la barre */
+#iz-topbar { top: 12px; }
+#iz-topbar .izs-input { height: 28px; padding-top: 0; padding-bottom: 0; }
 
 /* recherche de secours (WIKI/search.js), si la page n'a pas DATA/search.js */
 header-component #search {

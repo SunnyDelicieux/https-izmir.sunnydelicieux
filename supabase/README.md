@@ -30,6 +30,13 @@ Le joueur se connecte avec `pseudo` + mot de passe, en haut à droite de n'impor
 
 ## 4. Coffre-fort
 
+**Le plus simple : la page « gérer les handouts »** (menu du compte admin → gérer les handouts).
+Dépose un PDF : chaque page devient une lettre, tu choisis ses tags, tu envoies. Pour partager
+une lettre à quelqu'un d'autre plus tard, change ses tags dans la liste du bas.
+(Nécessite d'avoir relancé `izmir.sql` après l'ajout de la section 6.)
+
+**Ou à la main**, sans passer par le site :
+
 Storage → bucket `handouts` (créé par le script, privé). Un dossier par tag, **en minuscules** :
 
 | dossier | qui le voit |

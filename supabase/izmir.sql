@@ -205,4 +205,67 @@ using (
     or public.izmir_is_admin()
   )
 );
--- Pas de règle d'envoi : les fichiers s'ajoutent uniquement depuis le tableau de bord Supabase.
+-- Envoi depuis le site : réservé à l'admin (voir section 6).
+
+
+-- ── 6. Lettres (handouts découpés depuis un PDF, page COMPTE/handouts.html) ──
+-- Une ligne = une lettre = un fichier dans le bucket "handouts" (dossier lettres/).
+-- Qui la voit : ses tags (comme le calendrier). Pour la partager plus tard,
+-- il suffit de changer ses tags, le fichier ne bouge pas.
+
+create table if not exists public.handouts (
+  id         bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  titre      text not null,
+  path       text not null unique,          -- chemin dans le bucket, ex "lettres/1a2b….pdf"
+  tags       text[] not null default '{}',  -- ex {kaadir} ou {brujah,limier}
+  source     text,                           -- nom du PDF d'origine
+  page       int                             -- numéro de page dans ce PDF
+);
+
+alter table public.handouts enable row level security;
+
+drop policy if exists "izmir: lire ses lettres" on public.handouts;
+create policy "izmir: lire ses lettres"
+on public.handouts for select
+to authenticated
+using (public.izmir_as_tags(to_jsonb(tags)) && public.izmir_my_tags() or public.izmir_is_admin());
+
+drop policy if exists "izmir: admin gere les lettres" on public.handouts;
+create policy "izmir: admin gere les lettres"
+on public.handouts for all
+to authenticated
+using (public.izmir_is_admin())
+with check (public.izmir_is_admin());
+
+-- le fichier d'une lettre est lisible par ceux qui ont le droit de lire la lettre
+create or replace function public.izmir_can_read_handout(object_path text)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select exists (
+    select 1 from public.handouts h
+    where h.path = object_path
+      and public.izmir_as_tags(to_jsonb(h.tags)) && public.izmir_my_tags()
+  )
+$$;
+
+drop policy if exists "izmir: lire le fichier de ses lettres" on storage.objects;
+create policy "izmir: lire le fichier de ses lettres"
+on storage.objects for select
+to authenticated
+using (bucket_id = 'handouts' and public.izmir_can_read_handout(name));
+
+-- envoi et suppression de fichiers depuis le site : admin seulement
+drop policy if exists "izmir: admin envoie des handouts" on storage.objects;
+create policy "izmir: admin envoie des handouts"
+on storage.objects for insert
+to authenticated
+with check (bucket_id = 'handouts' and public.izmir_is_admin());
+
+drop policy if exists "izmir: admin supprime des handouts" on storage.objects;
+create policy "izmir: admin supprime des handouts"
+on storage.objects for delete
+to authenticated
+using (bucket_id = 'handouts' and public.izmir_is_admin());

@@ -137,7 +137,7 @@
     if (!acc.user) {
       gate.textContent = acc.error
         ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (en haut à droite) pour signaler une erreur.";
+        : "Connecte-toi (bouton « connexion » au bout du menu) pour signaler une erreur.";
       return;
     }
     msg.textContent = "";

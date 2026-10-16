@@ -20,14 +20,19 @@
     <button id="theme-toggle">☾ nuit</button>
 
     <div class="box">
-      <div class="title">observer le calendrier</div>
-      Tous les événements du calendrier auxquels tu as accès, du plus ancien au plus récent,
-      sans avoir à tourner les mois un par un.
+      <div class="title">mes événements</div>
+      Tous les événements du calendrier auxquels tu as accès, du plus récent au plus ancien,
+      sans avoir à tourner les mois un par un. Clique sur un événement pour le déplier.
     </div>
 
     <div class="box">
       <div class="title">années</div>
       <div class="year-links" id="year-links"></div>
+    </div>
+
+    <div class="box">
+      <div class="title">tags</div>
+      <div class="tags" id="tag-links"></div>
     </div>
   </div>
 
@@ -41,9 +46,10 @@
     <div id="content" hidden>
       <div class="toolbar">
         <input class="input" id="filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
-        <span class="muted" id="count"></span>
+        <button class="btn" id="sort" type="button">↓ plus récent d'abord</button>
       </div>
-      <div id="list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px"></div>
+      <div class="muted" id="count" style="margin-top:6px"></div>
+      <div id="list" class="timeline"></div>
     </div>
   </div>
 

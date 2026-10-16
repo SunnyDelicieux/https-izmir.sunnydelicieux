@@ -181,6 +181,54 @@ body.light .iza-form input::placeholder { color: #8b6a4a; }
 body.light .iza-form input:focus { border-color: #8b4a18; }
 body.light .iza-form button { background: #dfc0a0; color: #2a1a0e; border-color: #c8906a; }
 body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; }
+
+/* ── Dans le menu du site (header.html) : même allure que les autres onglets ── */
+.iza-box--navi { margin-left: auto; font-family: Arial, Tahoma, Verdana, sans-serif; }
+.iza-box--navi .iza-btn {
+  padding: 5px 12px; min-width: 0; max-width: 180px; text-align: center;
+  color: #ecdfc8; background: var(--iz-button, #2e1e0e);
+  border: 1px solid var(--iz-border-strong, #4a3018); border-radius: 4px;
+  font: italic 14px georgia, serif; text-transform: lowercase; letter-spacing: 1px;
+  transition: 0.2s ease;
+}
+.iza-box--navi .iza-btn::after { color: var(--iz-accent-dim, #7a5028); }
+.iza-box--navi:hover .iza-btn, .iza-box--navi.iza-open .iza-btn { color: #d4aa72; background: #1e1208; border-color: var(--iz-border-strong, #4a3018); }
+/* comme les autres onglets : s'ouvre au survol, et reste ouvert pendant qu'on tape */
+.iza-box--navi:hover .iza-panel, .iza-box--navi:focus-within .iza-panel { display: block; }
+.iza-box--navi .iza-panel {
+  z-index: 100; margin-top: 0; padding: 6px 4px 4px; min-width: 180px;
+  background: #1e1208; border: 1px solid var(--iz-border-strong, #4a3018); border-radius: 4px;
+}
+.iza-box--navi .iza-panel a, .iza-box--navi .iza-panel button.iza-item { border-radius: 3px; padding: 4px 8px; }
+.iza-box--navi .iza-panel a:hover, .iza-box--navi .iza-panel button.iza-item:hover { background: var(--iz-button, #2e1e0e); }
+body.light .iza-box--navi .iza-btn { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
+body.light .iza-box--navi:hover .iza-btn, body.light .iza-box--navi.iza-open .iza-btn { color: #150d05; background: #cfaa88; border-color: #a86840; }
+body.light .iza-box--navi .iza-panel { background: #f0e0cc; border-color: #c8906a; }
+body.light .iza-box--navi .iza-panel a, body.light .iza-box--navi .iza-panel button.iza-item { color: #3a2010; }
+body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-panel button.iza-item:hover { background: #dfc0a0; color: #150d05; }
+@media (max-width: 768px) {
+  .iza-box--navi { margin-left: 0; }
+  .iza-box--navi .iza-panel { left: 0; right: auto; }
+}
+
+/* ── Dans la barre du wiki (WIKI/nav.js) : à côté du bouton jour/nuit ── */
+.iza-box--wiki { margin-left: -20px; align-self: center; } /* la barre du wiki espace ses éléments de 28px : on se colle au bouton jour/nuit */
+.iza-box--wiki .iza-btn {
+  height: 28px; box-sizing: border-box; padding: 0 12px; min-width: 0; max-width: 150px;
+  font: 13px/26px Arial, Tahoma, Verdana, sans-serif; letter-spacing: 0;
+  color: var(--iz-accent, #c09050); background: var(--iz-button, #2e1e0e);
+  border: 1px solid var(--iz-border-strong, #4a3018); border-radius: var(--iz-radius, 4px);
+}
+.iza-box--wiki:hover .iza-btn, .iza-box--wiki.iza-open .iza-btn { color: var(--iz-accent-hover, #d4aa72); border-color: var(--iz-accent, #c09050); }
+.iza-box--wiki .iza-panel { margin-top: 6px; border-radius: var(--iz-radius, 4px); }
+.iza-box--wiki .iza-panel::before { top: -8px; height: 8px; }
+/* la barre du wiki reste sombre en mode jour : le bouton aussi */
+body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); background: var(--iz-button, #2e1e0e); border-color: var(--iz-border-strong, #4a3018); }
+@media screen and (max-width: 700px) {
+  .iza-box--wiki { position: absolute; top: 12px; left: 128px; margin: 0; }
+  .iza-box--wiki .iza-btn { max-width: 80px; padding: 0 8px; }
+  .iza-box--wiki .iza-panel { left: 0; right: auto; }
+}
 `;
 
   let box = null;
@@ -196,6 +244,43 @@ body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; 
     return bar;
   }
 
+  // Où mettre le bouton :
+  //   pages du site  -> au bout du menu (header.html, injecté par DATA/izmir.js)
+  //   pages du wiki  -> dans la barre du wiki, à côté du bouton jour/nuit (WIKI/nav.js)
+  //   autres pages   -> en haut à droite, à côté de la recherche
+  function place() {
+    const siteHeader = document.getElementById("site-header");
+    const wikiHeader = document.querySelector("header-component");
+    const host = siteHeader || wikiHeader;
+
+    const tryPlace = () => {
+      const navi = siteHeader?.querySelector(".navi");
+      const wikinav = wikiHeader?.querySelector(".wikinav");
+      if (navi) {
+        box.className = box.className.replace(/iza-box--\w+/g, "") + " iza-box--navi";
+        navi.appendChild(box);
+      } else if (wikinav) {
+        box.className = box.className.replace(/iza-box--\w+/g, "") + " iza-box--wiki";
+        const toggle = wikinav.querySelector("#theme-toggle");
+        toggle ? toggle.after(box) : wikinav.appendChild(box);
+      } else {
+        return false;
+      }
+      return true;
+    };
+
+    if (host && tryPlace()) return;
+    if (host) {
+      // le menu arrive un peu après (chargé à part) : en attendant, on n'affiche rien
+      const obs = new MutationObserver(() => { if (tryPlace()) obs.disconnect(); });
+      obs.observe(host, { childList: true, subtree: true });
+      // menu introuvable au bout de 3 s : retour en haut à droite
+      setTimeout(() => { if (!box.isConnected) { obs.disconnect(); topbar().prepend(box); } }, 3000);
+      return;
+    }
+    topbar().prepend(box);
+  }
+
   function renderWidget() {
     if (!box) return;
     box.classList.remove("iza-open");
@@ -207,9 +292,10 @@ body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; 
         <button class="iza-btn" type="button" aria-haspopup="true"></button>
         <div class="iza-panel" role="menu">
           <div class="iza-who"></div>
-          <a href="/COMPTE/evenements.html" role="menuitem">observer le calendrier</a>
+          <a href="/COMPTE/evenements.html" role="menuitem">mes événements</a>
           <a href="/COMPTE/signaler.html?page=${pageUrl}" role="menuitem">signaler une erreur</a>
           <a href="/COMPTE/coffre.html" role="menuitem">coffre-fort</a>
+          ${state.isAdmin ? '<a href="/COMPTE/handouts.html" role="menuitem">gérer les handouts</a>' : ""}
           <div class="iza-sep"></div>
           <button class="iza-item" type="button" data-logout role="menuitem">déconnexion</button>
         </div>`;
@@ -256,7 +342,7 @@ body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; 
 
     box = document.createElement("div");
     box.className = "iza-box";
-    topbar().prepend(box);
+    place();
     renderWidget();
 
     // clic ailleurs ou Échap : on referme
