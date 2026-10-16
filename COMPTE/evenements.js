@@ -1,23 +1,33 @@
-// Liste de tous les événements du calendrier visibles par le joueur connecté, en frise.
+// Onglet « calendrier » de l'espace joueur : tous les événements visibles, en grille (mois) ou en liste (frise).
 // Le tri "qui voit quoi" est fait par Supabase (supabase/izmir.sql) : on n'affiche que ce qu'il renvoie.
+// Les visiteurs non connectés voient les événements publics.
 (function () {
-  const gate = document.getElementById("gate");
-  const content = document.getElementById("content");
-  const list = document.getElementById("list");
-  const filter = document.getElementById("filter");
-  const count = document.getElementById("count");
-  const sortBtn = document.getElementById("sort");
+  const status = document.getElementById("ev-status");
+  const list = document.getElementById("ev-list");
+  const gridBox = document.getElementById("ev-grid");
+  const dayBox = document.getElementById("ev-day");
+  const filter = document.getElementById("ev-filter");
+  const count = document.getElementById("ev-count");
+  const sortBtn = document.getElementById("ev-sort");
+  const newBtn = document.getElementById("ev-new");
+  const viewBtns = document.querySelectorAll("[data-view]");
   const yearLinks = document.getElementById("year-links");
   const tagLinks = document.getElementById("tag-links");
 
   const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
   const DAYS = ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"];
   const norm = (s) => (s || "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const VIEW_KEY = "izmir-calendrier-vue";
 
   let events = [];
   let newestFirst = true;
   let activeTag = null;
+  let view = "grille";
+  let month = null;       // { y, m } affiché dans la grille
+  let selectedDay = null; // "2014-03-02"
   const opened = new Set(); // fiches dépliées, gardées quand on filtre
+
+  try { view = localStorage.getItem(VIEW_KEY) === "liste" ? "liste" : "grille"; } catch (e) {}
 
   // "2014-03-07..." -> { y: 2014, m: 2, d: 7, wd: 5 }
   function parts(dateStr) {
@@ -26,6 +36,7 @@
     const d = iso ? new Date(+iso[1], +iso[2] - 1, +iso[3]) : new Date(dateStr);
     return isNaN(d) ? null : { y: d.getFullYear(), m: d.getMonth(), d: d.getDate(), wd: d.getDay(), t: d.getTime() };
   }
+  const keyOf = (y, m, d) => `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 
   function tagsOf(e) {
     const raw = e.permissions;
@@ -40,6 +51,15 @@
       if (!b._p) return -1;
       return dir * (a._p.t - b._p.t);
     });
+  }
+
+  // événements après filtre (tag + texte), communs aux deux vues
+  function filtered() {
+    const q = norm(filter.value.trim());
+    return sorted().filter((e) =>
+      (!activeTag || tagsOf(e).includes(activeTag)) &&
+      (!q || norm([e.titre, e.desc, e.date, e.author_name, ...tagsOf(e)].join(" ")).includes(q))
+    );
   }
 
   function el(tag, cls, text) {
@@ -119,7 +139,7 @@
     if (box.classList.contains("open")) more.textContent = "replier";
 
     // ses propres événements (ou tous pour l'admin) : modifier / supprimer
-    if (account && (account.isAdmin || (e.author && e.author === account.user.id))) {
+    if (account?.user && (account.isAdmin || (e.author && e.author === account.user.id))) {
       const actions = el("div", "tl-actions");
       const edit = el("button", "tl-more", "modifier");
       edit.type = "button";
@@ -148,8 +168,9 @@
     return item;
   }
 
+  // ── Colonne de gauche : années et tags ────────────────────────────────────
+
   function renderSidebar() {
-    // années (avec leur nombre d'événements)
     yearLinks.innerHTML = "";
     const years = new Map();
     for (const e of sorted()) {
@@ -158,12 +179,23 @@
     }
     for (const [y, n] of years) {
       const a = el("a", null, y);
-      a.href = `#annee-${y}`;
+      a.href = "#calendrier";
       a.title = `${n} événement${n > 1 ? "s" : ""}`;
+      a.addEventListener("click", (ev) => {
+        ev.preventDefault();
+        if (view === "grille" && y !== "sans date") {
+          // en grille : on saute au premier mois de l'année qui a un événement
+          const first = sorted().filter((x) => x._p && x._p.y === y).pop();
+          month = { y, m: first ? first._p.m : 0 };
+          selectedDay = null;
+          render();
+        } else {
+          document.getElementById(`annee-${y}`)?.scrollIntoView({ behavior: "smooth" });
+        }
+      });
       yearLinks.appendChild(a);
     }
 
-    // tags (pour filtrer d'un clic)
     tagLinks.innerHTML = "";
     const tags = new Map();
     for (const e of events) for (const t of tagsOf(e)) tags.set(t, (tags.get(t) || 0) + 1);
@@ -180,41 +212,121 @@
     render();
   }
 
-  function render() {
-    const q = norm(filter.value.trim());
-    const shown = sorted().filter((e) =>
-      (!activeTag || tagsOf(e).includes(activeTag)) &&
-      (!q || norm([e.titre, e.desc, e.date, ...tagsOf(e)].join(" ")).includes(q))
-    );
+  // ── Vue liste (frise) ─────────────────────────────────────────────────────
 
-    renderSidebar();
+  function renderList(shown) {
     list.innerHTML = "";
-    count.textContent = `${shown.length} événement${shown.length > 1 ? "s" : ""}` + (activeTag ? ` · ${activeTag}` : "");
-
     if (!shown.length) {
       list.appendChild(el("div", "empty", activeTag || filter.value ? "Aucun événement ne correspond." : "Aucun événement pour l'instant."));
       return;
     }
-
-    let year = null, month = null, section = null;
+    let year = null, m = null, section = null;
     for (const e of shown) {
       const p = e._p;
       const y = p ? p.y : "sans date";
-
       if (y !== year) {
-        year = y; month = null;
+        year = y; m = null;
         section = el("section", "tl-year");
         const h = el("div", "ev-year", y);
         h.id = `annee-${y}`;
         section.appendChild(h);
         list.appendChild(section);
       }
-      if (p && p.m !== month) {
-        month = p.m;
+      if (p && p.m !== m) {
+        m = p.m;
         section.appendChild(el("div", "ev-month", MONTHS[p.m]));
       }
       section.appendChild(card(e));
     }
+  }
+
+  // ── Vue grille (un mois) ──────────────────────────────────────────────────
+
+  function renderGrid(shown) {
+    gridBox.innerHTML = "";
+    dayBox.innerHTML = "";
+    if (!month) {
+      const latest = shown.find((e) => e._p) || sorted().find((e) => e._p);
+      const p = latest?._p;
+      month = p ? { y: p.y, m: p.m } : { y: 2014, m: new Date().getMonth() };
+    }
+    const { y, m } = month;
+
+    const nav = el("div", "cal-nav");
+    const prev = el("button", "btn", "◀");
+    const next = el("button", "btn", "▶");
+    prev.type = next.type = "button";
+    prev.title = "mois précédent";
+    next.title = "mois suivant";
+    prev.addEventListener("click", () => moveMonth(-1));
+    next.addEventListener("click", () => moveMonth(1));
+    nav.append(prev, el("div", "cal-month", `${MONTHS[m]} ${y}`), next);
+    gridBox.appendChild(nav);
+
+    // événements du mois, rangés par jour
+    const byDay = new Map();
+    for (const e of shown) {
+      if (!e._p || e._p.y !== y || e._p.m !== m) continue;
+      const k = keyOf(y, m, e._p.d);
+      if (!byDay.has(k)) byDay.set(k, []);
+      byDay.get(k).push(e);
+    }
+
+    const grid = el("div", "cal-grid");
+    for (const d of ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"]) grid.appendChild(el("div", "cal-weekday", d));
+    const offset = (new Date(y, m, 1).getDay() + 6) % 7;
+    for (let i = 0; i < offset; i++) grid.appendChild(el("div", "cal-day empty"));
+    const days = new Date(y, m + 1, 0).getDate();
+    for (let d = 1; d <= days; d++) {
+      const k = keyOf(y, m, d);
+      const evs = byDay.get(k) || [];
+      const cell = el("button", "cal-day" + (evs.length ? " has" : "") + (k === selectedDay ? " selected" : ""));
+      cell.type = "button";
+      cell.appendChild(el("span", "cal-num", d));
+      if (evs.length) {
+        // les premiers titres, en petit, pour voir d'un coup d'œil
+        for (const e of evs.slice(0, 2)) cell.appendChild(el("span", "cal-title", e.titre || "sans titre"));
+        if (evs.length > 2) cell.appendChild(el("span", "cal-more", `+${evs.length - 2}`));
+      }
+      cell.addEventListener("click", () => {
+        selectedDay = selectedDay === k ? null : k;
+        render();
+      });
+      grid.appendChild(cell);
+    }
+    gridBox.appendChild(grid);
+
+    // sous la grille : le jour choisi, sinon tout le mois
+    const picked = selectedDay ? byDay.get(selectedDay) || [] : [...byDay.values()].flat();
+    const label = selectedDay
+      ? `${+selectedDay.slice(8)} ${MONTHS[m]} ${y}`
+      : `${MONTHS[m]} ${y}`;
+    dayBox.appendChild(el("div", "ev-month", picked.length ? label : `${label} : aucun événement`));
+    const ordered = [...picked].sort((a, b) => a._p.t - b._p.t);
+    for (const e of ordered) dayBox.appendChild(card(e));
+  }
+
+  function moveMonth(delta) {
+    let { y, m } = month;
+    m += delta;
+    if (m < 0) { m = 11; y--; }
+    if (m > 11) { m = 0; y++; }
+    month = { y, m };
+    selectedDay = null;
+    render();
+  }
+
+  // ── Rendu ─────────────────────────────────────────────────────────────────
+
+  function render() {
+    const shown = filtered();
+    renderSidebar();
+    count.textContent = `${shown.length} événement${shown.length > 1 ? "s" : ""}` + (activeTag ? ` · ${activeTag}` : "");
+    for (const b of viewBtns) b.classList.toggle("active", b.dataset.view === view);
+    sortBtn.hidden = view !== "liste";
+    list.hidden = view !== "liste";
+    gridBox.hidden = dayBox.hidden = view !== "grille";
+    view === "liste" ? renderList(shown) : renderGrid(shown);
   }
 
   filter.addEventListener("input", render);
@@ -223,6 +335,13 @@
     sortBtn.textContent = newestFirst ? "↓ plus récent d'abord" : "↑ plus ancien d'abord";
     render();
   });
+  for (const b of viewBtns) {
+    b.addEventListener("click", () => {
+      view = b.dataset.view;
+      try { localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+      render();
+    });
+  }
 
   // ── Créer / modifier un événement ─────────────────────────────────────────
 
@@ -238,7 +357,8 @@
     chosen = new Set(e ? tagsOf(e).filter((t) => !(t === "public" && !e.permissions?.length)) : []);
     formTitle.textContent = e ? "modifier l'événement" : "nouvel événement";
     form.titre.value = e?.titre || "";
-    form.date.value = e?.date ? String(e.date).slice(0, 10) : "";
+    // nouvel événement : date du jour choisi dans la grille, s'il y en a un
+    form.date.value = e?.date ? String(e.date).slice(0, 10) : selectedDay || "";
     form.desc.value = e?.desc || "";
     formMsg.textContent = "";
     formTags.innerHTML = "";
@@ -279,7 +399,7 @@
   });
 
   document.getElementById("ev-cancel").addEventListener("click", () => (form.hidden = true));
-  document.getElementById("new").addEventListener("click", () => openForm());
+  newBtn.addEventListener("click", () => openForm());
 
   // ── Chargement ────────────────────────────────────────────────────────────
 
@@ -289,27 +409,30 @@
     const { data, error } = await account.client.from("Calendar").select("*");
     if (error) {
       console.error(error);
-      list.innerHTML = `<div class="note">Impossible de charger le calendrier.</div>`;
+      status.hidden = false;
+      status.textContent = "Impossible de charger le calendrier.";
       return;
     }
+    if (account.user) status.hidden = true; // le visiteur garde son message
     events = (data || []).map((e) => ({ ...e, _p: parts(e.date) }));
-    await izmirPartage.tags(account).catch(() => {}); // pour colorer les pseudos de joueurs
+    if (account.user) await izmirPartage.tags(account).catch(() => {}); // pour colorer les pseudos de joueurs
     render();
   }
 
   izmirAccount.onChange(async (acc) => {
     account = acc;
-    content.hidden = !acc.user;
-    gate.hidden = !!acc.user;
     form.hidden = true;
-    if (!acc.user) {
-      gate.textContent = acc.error
-        ? "Connexion au serveur impossible, réessaie plus tard."
-        : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour voir tes événements.";
-      events = [];
+    newBtn.hidden = !acc.user; // seuls les joueurs connectés créent des événements
+    if (acc.error) {
+      status.hidden = false;
+      status.textContent = "Connexion au serveur impossible, réessaie plus tard.";
       return;
     }
+    status.hidden = !!acc.user;
+    if (!acc.user) status.textContent = "Visiteur : seulement les événements publics. Connecte-toi pour voir les tiens.";
     activeTag = null;
+    month = null;
+    selectedDay = null;
     load();
   });
 })();

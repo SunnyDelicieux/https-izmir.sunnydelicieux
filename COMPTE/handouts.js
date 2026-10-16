@@ -6,8 +6,8 @@
   const PDFLIB = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js";
   const BUCKET = "handouts";
 
-  const gate = document.getElementById("gate");
-  const content = document.getElementById("content");
+  const gate = document.getElementById("ho-gate");
+  const content = document.getElementById("ho-content");
   const fileInput = document.getElementById("file");
   const drop = document.getElementById("drop");
   const dropText = document.getElementById("drop-text");
@@ -18,8 +18,8 @@
   const cancelBtn = document.getElementById("cancel");
   const sendMsg = document.getElementById("send-msg");
   const sentBox = document.getElementById("sent");
-  const filter = document.getElementById("filter");
-  const count = document.getElementById("count");
+  const filter = document.getElementById("ho-filter");
+  const count = document.getElementById("ho-count");
 
   const norm = (s) => (s || "").toString().toLowerCase().trim();
   const plain = (s) => norm(s).normalize("NFD").replace(/[̀-ͯ]/g, "");

@@ -2,59 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Calendrier qui casse les couilles</title>
-
-<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
-<link rel="stylesheet" href="calendar.css">
-
-<script src="/DATA/izmir.js"></script>
-<script src="/DATA/account.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<title>Calendrier</title>
+<!-- ancienne adresse : renvoie vers /COMPTE/#calendrier -->
+<meta http-equiv="refresh" content="0; url=/COMPTE/#calendrier">
+<script>location.replace("/COMPTE/" + location.search + "#calendrier");</script>
 </head>
-
-<body>
-
-<div class="page-wrap">
-
-  <div class="sidebar">
-
-    <button id="theme-toggle">☾ nuit</button>
-
-    <div class="box">
-      <div class="title">Calendrier</div>
-      Normalement, je vous donnerai tous un login qui vous permet de voir les évenements de votre clan et groupe. Les évenement public
-        sont visibles par tous le monde. <BR>
-        <br> Connectez-vous avec le bouton <b>connexion</b>, en haut à droite du bandeau.
-        <br><br> Pour voir tous vos événements d'un coup : <a href="/COMPTE/evenements.html">la liste</a>.
-    </div>
-
-
-    <div id="event-viewer"></div>
-    <div id="login-status"></div>
-  </div>
-
-  <div class="container">
-<div id="site-header"></div>
-    <div id="calendar-header">Calendrier 2014</div>
-
-
-    <div class="nav">
-      <button id="prevMonth">◀</button>
-      <button id="nextMonth">▶</button>
-    </div>
-
-
-    <div id="grid"></div>
-
-  </div>
-
-</div>
-
-<!-- SCRIPT -->
-<script src="calendar.js"></script>
-
+<body style="background:#1e1408;color:#e8dcc0;font:12px Arial">
+<p>Cette page a déménagé : <a href="/COMPTE/#calendrier" style="color:#c09050">/COMPTE/#calendrier</a></p>
 </body>
 </html>

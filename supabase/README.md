@@ -26,11 +26,12 @@ Authentication → Users → Add user → `pseudo@izmir.local` + mot de passe, *
 Une ligne `profiles` est créée toute seule (`username` = pseudo) : il reste à remplir
 `clan`, `role`, `extra_tags` dans Table Editor. `is_admin = true` pour ton compte.
 
-Le joueur se connecte avec `pseudo` + mot de passe, en haut à droite de n'importe quelle page.
+Le joueur se connecte avec `pseudo` + mot de passe (bouton en haut à droite du bandeau).
+Son **espace joueur** (`/COMPTE/`) réunit le calendrier, le coffre-fort et les signalements.
 
 ## 4. Coffre-fort
 
-Menu du compte admin → **gérer les handouts**. Dépose un PDF : chaque page devient une lettre,
+Menu du compte admin → **espace MJ** → onglet **handouts**. Dépose un PDF : chaque page devient une lettre,
 tu choisis ses tags, tu envoies. Pour partager une lettre à quelqu'un d'autre plus tard,
 change ses tags dans la liste du bas. Les joueurs peuvent aussi écrire des lettres et envoyer
 des fichiers depuis leur coffre-fort, avec leurs propres tags.
@@ -49,11 +50,11 @@ un fichier sans ligne dans la table `handouts` n'est visible par personne.
 4. Database → Webhooks → Create : table `tickets`, événement **Insert**, type **Supabase Edge Functions**,
    fonction `ticket-mail`, en-tête HTTP `x-izmir-secret` = la même valeur que `WEBHOOK_SECRET`.
 
-Même sans le mail, les signalements sont visibles sur `/COMPTE/signaler.html` quand tu te
-connectes avec le compte admin : tu peux y répondre et changer leur statut.
+Même sans le mail, les signalements sont dans **espace MJ** → onglet **signalements** :
+tu peux y répondre et changer leur statut.
 
 ## 6. Vérifier ce que voit un joueur
 
-Menu du compte admin → **vue joueur** : choisis un joueur, la page liste tout ce que Supabase
+Menu du compte admin → **espace MJ** → onglet **vue joueur** : choisis un joueur, la page liste tout ce que Supabase
 lui envoie (événements et handouts) et pourquoi (« via brujah », « il en est l'auteur »…).
 Elle utilise les mêmes règles que la sécurité du site. À faire avant chaque révélation importante.

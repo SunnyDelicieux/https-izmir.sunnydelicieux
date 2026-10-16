@@ -1,43 +1,44 @@
-// Signaler une erreur : envoie un ticket dans la table "tickets" (supabase/izmir.sql).
-// Le mail est envoyé par Supabase lui-même (supabase/functions/ticket-mail).
-// Un admin voit tous les tickets et peut répondre / changer le statut.
+// Signalements (table "tickets", supabase/izmir.sql). Le mail est envoyé par Supabase (supabase/functions/ticket-mail).
+// Deux usages, selon data-scope sur #tickets :
+//   "mine" (espace joueur) : formulaire + ses propres signalements et les réponses
+//   "all"  (espace MJ)     : tous les signalements, avec réponse et statut (admin seulement)
 (function () {
-  const gate = document.getElementById("gate");
-  const content = document.getElementById("content");
+  const gate = document.getElementById("si-gate");
+  const content = document.getElementById("si-content");
   const form = document.getElementById("ticket-form");
   const msg = document.getElementById("form-msg");
   const ticketsBox = document.getElementById("tickets");
   const ticketsTitle = document.getElementById("tickets-title");
 
   const STATUTS = ["nouveau", "en cours", "réglé"];
+  const all = ticketsBox.dataset.scope === "all";
   let account = null;
 
   // page d'où vient le joueur (passée par le menu du compte)
   const from = new URLSearchParams(location.search).get("page");
-  if (from && from.startsWith("/") && !from.startsWith("/COMPTE/")) form.page.value = from;
+  if (form && from && from.startsWith("/") && !from.startsWith("/COMPTE/")) form.page.value = from;
 
   function when(iso) {
     return new Date(iso).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" });
   }
 
   async function loadTickets() {
-    const { client, isAdmin } = account;
-    ticketsTitle.textContent = isAdmin ? "tous les signalements" : "mes signalements";
+    const { client, user } = account;
+    const isAdmin = all && account.isAdmin; // outils de réponse : espace MJ seulement
+    if (ticketsTitle) ticketsTitle.textContent = all ? "tous les signalements" : "mes signalements";
 
-    const { data, error } = await client
-      .from("tickets")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(100);
+    let query = client.from("tickets").select("*").order("created_at", { ascending: false }).limit(100);
+    if (!all) query = query.eq("user_id", user.id); // l'admin aussi ne voit ici que les siens
+    const { data, error } = await query;
 
     ticketsBox.innerHTML = "";
     if (error) {
       console.error(error);
-      ticketsBox.innerHTML = `<div class="note muted">Impossible de charger les signalements.</div>`;
+      ticketsBox.innerHTML = `<div class="empty">Impossible de charger les signalements.</div>`;
       return;
     }
     if (!data.length) {
-      ticketsBox.innerHTML = `<div class="note muted">Aucun signalement pour l'instant.</div>`;
+      ticketsBox.innerHTML = `<div class="empty">Aucun signalement pour l'instant.</div>`;
       return;
     }
 
@@ -104,7 +105,7 @@
     return box;
   }
 
-  form.addEventListener("submit", async (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const message = form.message.value.trim();
     if (!message) return;
@@ -140,7 +141,13 @@
         : "Connecte-toi (bouton « connexion » en haut à droite du bandeau) pour signaler une erreur.";
       return;
     }
-    msg.textContent = "";
+    if (all && !acc.isAdmin) {
+      content.hidden = true;
+      gate.hidden = false;
+      gate.textContent = "Réservé à l'admin.";
+      return;
+    }
+    if (msg) msg.textContent = "";
     loadTickets();
   });
 })();

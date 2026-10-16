@@ -527,3 +527,83 @@ body.light .tag--joueur { color: #8a3a26; }
 body.light .tag--public { color: #8b4a18; }
 body.light .empty { color: #7a5a3e; }
 body.light .vault-heading { color: #8b4a18; }
+
+/* ── Onglets des espaces (même allure que le menu du site) ── */
+.tabs { display: flex; gap: 5px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px dashed var(--iz-border-strong); }
+.tabs a {
+  padding: 5px 12px;
+  color: #ecdfc8;
+  background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: 4px;
+  font: italic 14px georgia, serif;
+  text-transform: lowercase;
+  transition: 0.2s ease;
+}
+.tabs a:hover { color: var(--iz-accent-hover); background: #1e1208; }
+.tabs a.active { color: var(--iz-accent); border-color: var(--iz-accent); background: #1e1208; }
+body.light .tabs { border-bottom-color: #c8906a; }
+body.light .tabs a { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
+body.light .tabs a:hover { color: #150d05; background: #cfaa88; border-color: #a86840; }
+body.light .tabs a.active { color: #8b4a18; background: #dfc0a0; border-color: #8b4a18; }
+
+/* ── Colonne de gauche ── */
+.side-btn { display: block; width: 100%; margin-bottom: 6px; text-align: left; }
+.side-hint { margin-top: 4px; color: var(--iz-muted); font-size: 10px; line-height: 1.4; }
+.sidebar .input { width: 100%; }
+.sidebar .tags { margin-top: 0; }
+body.light .side-hint { color: #7a5a3e; }
+
+/* boutons grille / liste */
+.toolbar .btn.active { color: var(--iz-accent); border-color: var(--iz-accent); }
+body.light .toolbar .btn.active { color: #8b4a18; border-color: #8b4a18; }
+
+/* ── Grille du calendrier ── */
+.cal-nav { display: flex; align-items: center; gap: 10px; margin: 12px 0 8px; }
+.cal-month { flex: 1; color: var(--iz-accent-hover); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.cal-weekday { text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+.cal-day {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 62px;
+  padding: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  color: var(--iz-text);
+  background: rgba(20, 12, 6, 0.6);
+  border: 1px solid var(--iz-border);
+  font: 11px var(--iz-font);
+}
+.cal-day:hover { background: rgba(40, 25, 10, 0.6); }
+.cal-day.empty { visibility: hidden; cursor: default; }
+.cal-day.selected { border-color: var(--iz-accent); }
+.cal-day.has .cal-num { color: var(--iz-accent-hover); font-weight: bold; }
+.cal-title {
+  display: block;
+  padding: 1px 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 9px;
+  background: var(--iz-border);
+}
+.cal-more { font-size: 9px; color: var(--iz-muted); }
+.ev-day { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.ev-day .ev-month { margin-left: 0; }
+@media (max-width: 520px) {
+  .cal-day { min-height: 44px; padding: 3px; }
+  .cal-title { display: none; }
+  .cal-day.has::after { content: "•"; color: var(--iz-accent); }
+}
+body.light .cal-month { color: #8b4a18; }
+body.light .cal-day { background: rgba(245, 232, 215, 0.82); border-color: #c8906a; color: #2a1a0e; }
+body.light .cal-day:hover { background: #ead8c0; }
+body.light .cal-day.selected { border-color: #8b4a18; }
+body.light .cal-day.has .cal-num { color: #8b4a18; }
+body.light .cal-title { background: #dfc0a0; }
+/* encadrés d'un même onglet, dans la colonne de gauche : même espacement que la colonne */
+.sidebar > [data-tab] { display: flex; flex-direction: column; gap: 14px; }
+.sidebar > [data-tab][hidden] { display: none; }

@@ -2,51 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vue joueur</title>
-<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
-<link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/DATA/izmir.js"></script>
-<script src="/DATA/account.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<!-- ancienne adresse : renvoie vers /COMPTE/mj.html#vue -->
+<meta http-equiv="refresh" content="0; url=/COMPTE/mj.html#vue">
+<script>location.replace("/COMPTE/mj.html" + location.search + "#vue");</script>
 </head>
-
-<body>
-
-<div class="page-wrap">
-
-  <div class="sidebar">
-    <button id="theme-toggle">☾ nuit</button>
-
-    <div class="box">
-      <div class="title">vue joueur</div>
-      Choisis un joueur : tu vois exactement ce que Supabase lui envoie (événements et handouts).
-      <br><br>C'est calculé avec les mêmes règles que la sécurité du site : si quelque chose apparaît ici
-      alors qu'il ne devrait pas, le joueur peut le voir.
-      <br><br>À vérifier avant chaque révélation importante.
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="site-header"></div>
-
-    <div class="page-title">vue joueur</div>
-
-    <div class="note account-gate" id="gate">chargement…</div>
-
-    <div id="content" hidden>
-      <div class="toolbar">
-        <select class="input" id="player" aria-label="Joueur"></select>
-        <input class="input" id="filter" type="search" placeholder="filtrer…" aria-label="Filtrer">
-      </div>
-      <div class="note" id="summary" style="margin-top:10px"></div>
-      <div id="result" style="display:flex;flex-direction:column;gap:14px;margin-top:14px"></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="/COMPTE/vue-joueur.js"></script>
+<body style="background:#1e1408;color:#e8dcc0;font:12px Arial">
+<p>Cette page a déménagé : <a href="/COMPTE/mj.html#vue" style="color:#c09050">/COMPTE/mj.html#vue</a></p>
 </body>
 </html>

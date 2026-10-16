@@ -2,78 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coffre-fort</title>
-<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
-<link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/DATA/izmir.js"></script>
-<script src="/DATA/account.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<!-- ancienne adresse : renvoie vers /COMPTE/#coffre -->
+<meta http-equiv="refresh" content="0; url=/COMPTE/#coffre">
+<script>location.replace("/COMPTE/" + location.search + "#coffre");</script>
 </head>
-
-<body>
-
-<div class="page-wrap">
-
-  <div class="sidebar">
-    <button id="theme-toggle">☾ nuit</button>
-
-    <div class="box">
-      <div class="title">coffre-fort</div>
-      Tes handouts : lettres, documents, images que ton personnage a reçus.
-      Ils ne sont visibles que par toi, ou par ton clan / ton groupe quand ils leur sont destinés.
-      <br><br>Clique sur un document pour le lire ici, ou ctrl+clic pour l'ouvrir dans un nouvel onglet.
-      <br><br>Toi aussi, tu peux écrire une lettre ou envoyer un document, et choisir qui le reçoit.
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="site-header"></div>
-
-    <div class="page-title">coffre-fort</div>
-
-    <div class="note account-gate" id="gate">chargement…</div>
-
-    <div id="content" hidden>
-      <div class="toolbar" style="margin-bottom:12px">
-        <button class="btn" type="button" id="new-letter">+ écrire une lettre</button>
-        <button class="btn" type="button" id="new-file">+ envoyer un fichier</button>
-      </div>
-
-      <form class="note modal-form" id="h-form" hidden>
-        <div class="title" id="h-form-title">écrire une lettre</div>
-        <div class="field">
-          <label for="h-titre">titre</label>
-          <input id="h-titre" name="titre" type="text" maxlength="200" required>
-        </div>
-        <div class="field" id="h-text-field">
-          <label for="h-contenu">texte</label>
-          <textarea id="h-contenu" name="contenu" maxlength="20000" style="min-height:200px" placeholder="Cher…  (**gras**, *italique*)"></textarea>
-        </div>
-        <div class="field" id="h-file-field">
-          <label for="h-file">fichier (image ou PDF, 10 Mo max)</label>
-          <input id="h-file" name="file" type="file" accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
-        </div>
-        <div class="field">
-          <label>qui peut le voir</label>
-          <div id="h-tags"></div>
-        </div>
-        <div class="row-btns">
-          <button class="btn" type="submit">enregistrer</button>
-          <button class="btn" type="button" id="h-cancel">annuler</button>
-        </div>
-        <div class="form-msg" id="h-msg" aria-live="polite"></div>
-      </form>
-
-      <div id="vault" class="vault"></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="/COMPTE/lecteur.js"></script>
-<script src="/COMPTE/partage.js"></script>
-<script src="/COMPTE/coffre.js"></script>
+<body style="background:#1e1408;color:#e8dcc0;font:12px Arial">
+<p>Cette page a déménagé : <a href="/COMPTE/#coffre" style="color:#c09050">/COMPTE/#coffre</a></p>
 </body>
 </html>

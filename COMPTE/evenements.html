@@ -2,89 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mes événements</title>
-<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
-<link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/DATA/izmir.js"></script>
-<script src="/DATA/account.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<title>Calendrier</title>
+<!-- ancienne adresse : renvoie vers /COMPTE/#calendrier -->
+<meta http-equiv="refresh" content="0; url=/COMPTE/#calendrier">
+<script>location.replace("/COMPTE/" + location.search + "#calendrier");</script>
 </head>
-
-<body>
-
-<div class="page-wrap">
-
-  <div class="sidebar">
-    <button id="theme-toggle">☾ nuit</button>
-
-    <div class="box">
-      <div class="title">mes événements</div>
-      Tous les événements du calendrier auxquels tu as accès, du plus récent au plus ancien,
-      sans avoir à tourner les mois un par un. Clique sur un événement pour le déplier.
-      <br><br>Tu peux aussi créer tes propres événements et choisir qui les voit.
-    </div>
-
-    <div class="box">
-      <div class="title">années</div>
-      <div class="year-links" id="year-links"></div>
-    </div>
-
-    <div class="box">
-      <div class="title">tags</div>
-      <div class="tags" id="tag-links"></div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="site-header"></div>
-
-    <div class="page-title">événements du calendrier</div>
-
-    <div class="note account-gate" id="gate">chargement…</div>
-
-    <div id="content" hidden>
-      <div class="toolbar">
-        <input class="input" id="filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
-        <button class="btn" id="sort" type="button">↓ plus récent d'abord</button>
-        <button class="btn" id="new" type="button">+ nouvel événement</button>
-      </div>
-
-      <form class="note modal-form" id="event-form" hidden>
-        <div class="title" id="form-title">nouvel événement</div>
-        <div class="field-row">
-          <div class="field">
-            <label for="ev-titre">titre</label>
-            <input id="ev-titre" name="titre" type="text" maxlength="200" required>
-          </div>
-          <div class="field field-date">
-            <label for="ev-date">date</label>
-            <input id="ev-date" name="date" type="date" required>
-          </div>
-        </div>
-        <div class="field">
-          <label for="ev-desc">description</label>
-          <textarea id="ev-desc" name="desc" maxlength="5000" placeholder="ce qui se passe… (**gras**, *italique*)"></textarea>
-        </div>
-        <div class="field">
-          <label>qui peut le voir</label>
-          <div id="ev-tags"></div>
-        </div>
-        <div class="row-btns">
-          <button class="btn" type="submit">enregistrer</button>
-          <button class="btn" type="button" id="ev-cancel">annuler</button>
-        </div>
-        <div class="form-msg" id="ev-msg" aria-live="polite"></div>
-      </form>
-      <div class="muted" id="count" style="margin-top:6px"></div>
-      <div id="list" class="timeline"></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="/COMPTE/partage.js"></script>
-<script src="/COMPTE/evenements.js"></script>
+<body style="background:#1e1408;color:#e8dcc0;font:12px Arial">
+<p>Cette page a déménagé : <a href="/COMPTE/#calendrier" style="color:#c09050">/COMPTE/#calendrier</a></p>
 </body>
 </html>

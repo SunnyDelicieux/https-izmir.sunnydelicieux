@@ -2,10 +2,10 @@
 // La liste vient de la fonction Supabase izmir_vue_joueur (supabase/izmir.sql, section 8),
 // qui utilise les mêmes règles que la sécurité du site.
 (function () {
-  const gate = document.getElementById("gate");
-  const content = document.getElementById("content");
+  const gate = document.getElementById("vj-gate");
+  const content = document.getElementById("vj-content");
   const select = document.getElementById("player");
-  const filter = document.getElementById("filter");
+  const filter = document.getElementById("vj-filter");
   const summary = document.getElementById("summary");
   const result = document.getElementById("result");
 

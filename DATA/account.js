@@ -300,10 +300,10 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
         <button class="iza-btn" type="button" aria-haspopup="true"></button>
         <div class="iza-panel" role="menu">
           <div class="iza-who"></div>
-          <a href="/COMPTE/evenements.html" role="menuitem">mes événements</a>
-          <a href="/COMPTE/signaler.html?page=${pageUrl}" role="menuitem">signaler une erreur</a>
-          <a href="/COMPTE/coffre.html" role="menuitem">coffre-fort</a>
-          ${state.isAdmin ? '<a href="/COMPTE/handouts.html" role="menuitem">gérer les handouts</a><a href="/COMPTE/vue-joueur.html" role="menuitem">vue joueur</a>' : ""}
+          <a href="/COMPTE/#calendrier" role="menuitem">calendrier</a>
+          <a href="/COMPTE/#coffre" role="menuitem">coffre-fort</a>
+          <a href="/COMPTE/?page=${pageUrl}#signaler" role="menuitem">signaler une erreur</a>
+          ${state.isAdmin ? '<div class="iza-sep"></div><a href="/COMPTE/mj.html" role="menuitem">espace MJ</a>' : ""}
           <div class="iza-sep"></div>
           <button class="iza-item" type="button" data-logout role="menuitem">déconnexion</button>
         </div>`;

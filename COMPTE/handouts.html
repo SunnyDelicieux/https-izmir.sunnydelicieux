@@ -2,77 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gérer les handouts</title>
-<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
-<link rel="stylesheet" href="/DATA/izmir.css">
-<link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/DATA/izmir.js"></script>
-<script src="/DATA/account.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<!-- ancienne adresse : renvoie vers /COMPTE/mj.html#handouts -->
+<meta http-equiv="refresh" content="0; url=/COMPTE/mj.html#handouts">
+<script>location.replace("/COMPTE/mj.html" + location.search + "#handouts");</script>
 </head>
-
-<body>
-
-<div class="page-wrap">
-
-  <div class="sidebar">
-    <button id="theme-toggle">☾ nuit</button>
-
-    <div class="box">
-      <div class="title">gérer les handouts</div>
-      Dépose un PDF : chaque page devient une lettre, que tu tagues pour choisir qui la reçoit.
-      <br><br>Les tags marchent comme pour le calendrier : un pseudo, un clan, un rôle, ou <i>public</i>
-      pour tous les joueurs connectés.
-      <br><br>Pour partager une lettre à quelqu'un d'autre plus tard, change simplement ses tags dans la liste du bas.
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="site-header"></div>
-
-    <div class="page-title">gérer les handouts</div>
-
-    <div class="note account-gate" id="gate">chargement…</div>
-
-    <div id="content" hidden>
-
-      <!-- 1. découper un PDF -->
-      <div class="note">
-        <div class="title">découper un pdf</div>
-        <label class="drop" id="drop">
-          <input type="file" id="file" accept="application/pdf,.pdf" hidden>
-          <span id="drop-text">clique ou glisse un PDF ici</span>
-        </label>
-
-        <div id="split" hidden>
-          <div class="bulk">
-            <span class="muted">tags pour toutes les pages :</span>
-            <div class="tags" id="bulk-tags"></div>
-          </div>
-          <div class="pages-grid" id="pages"></div>
-          <div class="toolbar" style="margin-top:12px">
-            <button class="btn" type="button" id="send">envoyer</button>
-            <button class="btn" type="button" id="cancel">annuler</button>
-            <span class="form-msg" id="send-msg" aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. lettres déjà envoyées -->
-      <div class="title" style="margin-top:18px">lettres envoyées</div>
-      <div class="toolbar">
-        <input class="input" id="filter" type="search" placeholder="filtrer : titre, tag, pdf d'origine…" aria-label="Filtrer les lettres">
-        <span class="muted" id="count"></span>
-      </div>
-      <div id="sent" class="sent-list"></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="/COMPTE/lecteur.js"></script>
-<script src="/COMPTE/partage.js"></script>
-<script src="/COMPTE/handouts.js"></script>
+<body style="background:#1e1408;color:#e8dcc0;font:12px Arial">
+<p>Cette page a déménagé : <a href="/COMPTE/mj.html#handouts" style="color:#c09050">/COMPTE/mj.html#handouts</a></p>
 </body>
 </html>

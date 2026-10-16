@@ -2,8 +2,8 @@
 // Supabase ne renvoie que ceux que le joueur a le droit de voir (supabase/izmir.sql) ;
 // les liens vers les fichiers expirent au bout d'une heure.
 (function () {
-  const gate = document.getElementById("gate");
-  const content = document.getElementById("content");
+  const gate = document.getElementById("co-gate");
+  const content = document.getElementById("co-content");
   const vault = document.getElementById("vault");
 
   const BUCKET = "handouts";
@@ -135,6 +135,17 @@
     return box;
   }
 
+  // filtre de la colonne de gauche : tout / reçus / envoyés par moi
+  let who = "tout";
+  const whoBtns = document.querySelectorAll("[data-who]");
+  for (const b of whoBtns) {
+    b.addEventListener("click", () => {
+      who = b.dataset.who;
+      for (const x of whoBtns) x.classList.toggle("active", x === b);
+      refresh();
+    });
+  }
+
   let run = 0; // seul le dernier chargement a le droit d'afficher (pas de doublons)
   let account = null;
   const refresh = () => account && show(account);
@@ -142,6 +153,8 @@
   izmirAccount.onChange((acc) => {
     account = acc;
     hForm.hidden = true;
+    // créer : joueurs connectés seulement
+    for (const id of ["new-letter", "new-file"]) document.getElementById(id).hidden = !acc.user;
     show(acc);
   });
 
@@ -163,10 +176,12 @@
     const sections = [];
 
     // tous les handouts (découpés depuis un PDF, écrits ou envoyés par les joueurs) : Supabase ne renvoie que ceux du joueur
-    const { data: letters } = await client.from("handouts").select("*").order("created_at", { ascending: false });
-    if (letters?.length) {
+    const { data: all } = await client.from("handouts").select("*").order("created_at", { ascending: false });
+    const letters = (all || []).filter((h) =>
+      who === "tout" || (who === "envoyes" ? h.author === user.id : h.author !== user.id));
+    if (letters.length) {
       sections.push({
-        title: "handouts",
+        title: who === "envoyes" ? "envoyés par toi" : who === "recus" ? "reçus" : "handouts",
         files: letters.map((h) => ({
           name: h.path ? h.path.split("/").pop() : "",
           path: h.path,
@@ -186,7 +201,9 @@
     if (mine !== run) return;
     vault.innerHTML = "";
     if (!sections.length) {
-      vault.innerHTML = `<div class="empty">Ton coffre est vide pour l'instant.<br><small>Les lettres et documents que tu reçois apparaîtront ici.</small></div>`;
+      vault.innerHTML = who === "tout"
+        ? `<div class="empty">Ton coffre est vide pour l'instant.<br><small>Les lettres et documents que tu reçois apparaîtront ici.</small></div>`
+        : `<div class="empty">Rien ici.</div>`;
       return;
     }
 
