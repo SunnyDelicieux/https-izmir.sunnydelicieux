@@ -1,16 +1,9 @@
 window.addEventListener("DOMContentLoaded", async () => {
 
-// LOGIN POUR SUPABASE (si tu lis ça, les piques pas stp TT)
-  const supabase = window.supabase.createClient(
-    "https://bbxuycsmyowwsjrcdrsd.supabase.co",
-    "sb_publishable_IvC70lWI8ymTVMaAnF76Uw_9CEKbexj"
-  );
 // GERER LES EVENTS
+// connexion : bouton en haut à droite (DATA/account.js)
+// qui voit quoi : décidé par Supabase (supabase/izmir.sql), le navigateur ne reçoit que les événements autorisés
   const grid = document.getElementById("grid");
-  const loginBtn = document.getElementById("loginBtn");
-  const usernameInput = document.getElementById("usernameInput");
-  const passwordInput = document.getElementById("passwordInput");
-  const logoutBtn = document.getElementById("logoutBtn");
   const header = document.getElementById("calendar-header");
   const loginStatus = document.getElementById("login-status");
   const viewer = document.getElementById("event-viewer");
@@ -22,17 +15,11 @@ window.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // domaine des emails des comptes Supabase (ex : "kaadir" -> "kaadir@<domaine>")
-  const LOGIN_DOMAIN = "izmir.local";
-
   let events = [];
   let selectedKey = null;
-  let player = null;
 
   let viewYear = 2014;
   let viewMonth = new Date().getMonth();
-
-  const norm = (s) => (s || "").toLowerCase().trim();
 
 
   function toKey(dateStr) {
@@ -51,8 +38,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   return `${y}-${m}-${day}`;
 }
 
-  async function loadEvents() {
-    const { data, error } = await supabase
+  async function loadEvents(client) {
+    const { data, error } = await client
       .from("Calendar")
       .select("*");
 
@@ -63,64 +50,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     return data || [];
   }
-
-// PROFIL LIE AU COMPTE SUPABASE AUTH
-  async function loadProfile(user) {
-
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("user_id", user.id)
-      .single();
-
-    if (error || !data) {
-      return null;
-    }
-
-    const p = data;
-
-    return {
-      ...p,
-      clan: norm(p.clan),
-      role: norm(p.role),
-      extra_tags: Array.isArray(p.extra_tags)
-        ? p.extra_tags.map(norm)
-        : []
-    };
-  }
-
-// LES PERMS
-  function canSee(event, player) {
-
-  const raw = event.permissions;
-
-  const tags = Array.isArray(raw)
-    ? raw.map(norm)
-    : typeof raw === "string"
-      ? [norm(raw)]
-      : [];
-
-  // 💥 PUBLIC RULE FIX (IMPORTANT)
-  const isPublic = tags.length === 0 || tags.includes("public");
-
-  // guest
-  if (!player) return isPublic;
-
-  // admin
-  if (player.is_admin) return true;
-
-  const playerTags = [
-    "public",
-    player.clan,
-    player.role,
-    ...player.extra_tags
-  ].map(norm);
-
-
-  if (isPublic) return true;
-
-  return tags.some(t => playerTags.includes(t));
-}
 
 // METTRE LES INFOS SUR LA SIDEBAR
 
@@ -230,7 +159,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     selectedKey = null;
     if (viewer) viewer.innerHTML = "";
 
-    render(events.filter(e => canSee(e, player)));
+    render(events);
   }
 
   prevBtn?.addEventListener("click", () => changeMonth(-1));
@@ -238,64 +167,26 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // it's tea time INNIT ? (aha...)
 
-  events = await loadEvents();
+  render(events);
 
-  render(events.filter(e => canSee(e, null)));
-
-  async function applySession(session) {
-    player = session?.user ? await loadProfile(session.user) : null;
-
-    if (session?.user && !player) {
-      loginStatus.textContent = "Compte authentifié, profil introuvable";
-      return;
-    }
-
-    if (player) {
-      loginStatus.textContent = `✔ ${player.username || session.user.email} (${player.clan})`;
-      loginBtn.hidden = true;
-      usernameInput.hidden = true;
-      passwordInput.hidden = true;
-      logoutBtn.hidden = false;
-    } else {
-      loginStatus.textContent = "Visiteur : événements publics";
-      loginBtn.hidden = false;
-      usernameInput.hidden = false;
-      passwordInput.hidden = false;
-      logoutBtn.hidden = true;
-    }
-
-    render(events.filter(e => canSee(e, player)));
-  }
-
-  loginBtn?.addEventListener("click", async () => {
-    const login = usernameInput.value.trim();
-    const password = passwordInput.value;
-
-    // Supabase Auth veut un email : un identifiant sans "@" est complété avec LOGIN_DOMAIN
-    const email = login.includes("@") ? login : `${login}@${LOGIN_DOMAIN}`;
-
-    loginStatus.textContent = "Connexion...";
-
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
+  izmirAccount.onChange(async ({ client, user, username, profile, error }) => {
     if (error) {
-      loginStatus.textContent = "❌ Identifiants invalides";
+      if (loginStatus) loginStatus.textContent = "Connexion au serveur impossible";
       return;
     }
 
-    await applySession(data.session);
-  });
+    if (loginStatus) {
+      loginStatus.textContent = !user
+        ? "Visiteur : événements publics"
+        : profile
+          ? `✔ ${username}${profile.clan ? ` (${profile.clan})` : ""}`
+          : "Compte authentifié, profil introuvable";
+    }
 
-  passwordInput?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") loginBtn.click();
+    events = await loadEvents(client);
+    selectedKey = null;
+    if (viewer) viewer.innerHTML = "";
+    render(events);
   });
-
-  logoutBtn?.addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    await applySession(null);
-  });
-
-  const { data: { session } } = await supabase.auth.getSession();
-  await applySession(session);
 
 });

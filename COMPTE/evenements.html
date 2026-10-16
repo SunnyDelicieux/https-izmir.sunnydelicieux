@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes événements</title>
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<link rel="stylesheet" href="/COMPTE/compte.css">
+<script src="/DATA/izmir.js"></script>
+<script src="/DATA/account.js"></script>
+  <script src="/DATA/search.js" defer></script>
+</head>
+
+<body>
+
+<div class="page-wrap">
+
+  <div class="sidebar">
+    <button id="theme-toggle">☾ nuit</button>
+
+    <div class="box">
+      <div class="title">observer le calendrier</div>
+      Tous les événements du calendrier auxquels tu as accès, du plus ancien au plus récent,
+      sans avoir à tourner les mois un par un.
+    </div>
+
+    <div class="box">
+      <div class="title">années</div>
+      <div class="year-links" id="year-links"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="site-header"></div>
+
+    <div class="page-title">événements du calendrier</div>
+
+    <div class="note account-gate" id="gate">chargement…</div>
+
+    <div id="content" hidden>
+      <div class="toolbar">
+        <input class="input" id="filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
+        <span class="muted" id="count"></span>
+      </div>
+      <div id="list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/COMPTE/evenements.js"></script>
+</body>
+</html>

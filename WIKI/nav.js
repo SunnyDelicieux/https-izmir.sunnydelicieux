@@ -46,7 +46,7 @@ class Header extends HTMLElement {
   align-items: center;
   gap: 28px;
   min-height: 52px;
-  padding: 0 260px 0 20px;
+  padding: 0 380px 0 20px;
   background: var(--iz-deep);
   border-bottom: 2px solid var(--iz-accent);
   font-family: var(--iz-font);

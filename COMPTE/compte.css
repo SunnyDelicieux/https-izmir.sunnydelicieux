@@ -1,0 +1,173 @@
+/* Pages du compte joueur (événements, signalement, coffre-fort).
+   Le gros du style vient de DATA/izmir.css ; ici seulement ce qui est propre à ces pages. */
+
+.page-title {
+  color: var(--iz-accent-hover);
+  font: italic 16px georgia, serif;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
+.muted { color: var(--iz-muted); }
+
+.account-gate { text-align: center; padding: 24px 14px; }
+
+/* ── Champs et boutons ── */
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.field label { color: var(--iz-muted); font-size: 10px; text-transform: lowercase; }
+
+.input,
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--iz-bg);
+  color: var(--iz-text);
+  border: 1px solid var(--iz-border);
+  border-radius: 0;
+  outline: none;
+  font: 12px/1.4 var(--iz-font);
+  letter-spacing: 0.3px;
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.input:focus,
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--iz-accent); }
+
+.btn {
+  padding: 5px 12px;
+  cursor: pointer;
+  color: var(--iz-accent);
+  background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  font: italic 12px georgia, serif;
+  letter-spacing: 0.5px;
+  transition: 0.2s ease;
+}
+.btn:hover { color: var(--iz-accent-hover); border-color: var(--iz-accent); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.form-msg { margin-top: 8px; color: var(--iz-muted); min-height: 1em; }
+
+/* ── Liste des événements ── */
+.toolbar { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.toolbar .input { flex: 1; min-width: 140px; }
+
+.year-links { display: flex; flex-wrap: wrap; gap: 4px; }
+.year-links a {
+  padding: 2px 8px;
+  border: 1px solid var(--iz-border-strong);
+  border-radius: 3px;
+  font: italic 12px georgia, serif;
+}
+
+.ev-year {
+  margin-top: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--iz-border-strong);
+  color: var(--iz-accent);
+  font: italic 18px georgia, serif;
+  scroll-margin-top: 50px;
+}
+.ev-month {
+  margin: 4px 0 -8px;
+  color: var(--iz-muted);
+  font: italic 13px georgia, serif;
+  text-transform: lowercase;
+}
+
+.ev {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 10px;
+}
+.ev-date { text-align: center; color: var(--iz-accent-hover); font: italic 20px georgia, serif; line-height: 1; }
+.ev-date small { display: block; margin-top: 3px; font: 9px var(--iz-font); color: var(--iz-muted); text-transform: uppercase; }
+.ev .title { margin-bottom: 4px; }
+.ev .desc { line-height: 1.4; }
+.ev img { max-width: 100%; max-height: 200px; display: block; margin-top: 8px; border: 1px solid var(--iz-border); border-radius: 3px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
+.tag {
+  padding: 1px 6px;
+  font-size: 9px;
+  color: var(--iz-text-soft);
+  background: var(--iz-box-soft);
+  border: 1px solid var(--iz-border-strong);
+  border-radius: 3px;
+  text-transform: lowercase;
+}
+
+/* ── Signalements ── */
+.ticket .meta { font-size: 10px; color: var(--iz-muted); margin-bottom: 6px; }
+.ticket .msg { white-space: pre-wrap; line-height: 1.4; }
+.ticket .reply {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-left: 2px solid var(--iz-accent);
+  white-space: pre-wrap;
+}
+.statut { float: right; }
+.statut-nouveau { color: var(--iz-accent-hover); border-color: var(--iz-accent); }
+.statut-réglé { opacity: 0.6; }
+.ticket-admin { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.ticket-admin .row-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ── Coffre-fort ── */
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+.vault-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--iz-box-soft);
+  border: 1px dashed var(--iz-border-strong);
+  border-radius: var(--iz-radius);
+  color: var(--iz-text);
+  word-break: break-word;
+}
+.vault-item:hover { border-color: var(--iz-accent); color: var(--iz-accent-hover); }
+.vault-item img { width: 100%; height: 110px; object-fit: cover; border-radius: 3px; }
+.vault-item .file-icon { height: 110px; display: flex; align-items: center; justify-content: center; font: italic 22px georgia, serif; color: var(--iz-accent); text-transform: uppercase; }
+
+/* ── Jour ── */
+body.light .page-title,
+body.light .ev-year,
+body.light .ev-date { color: #8b4a18; }
+body.light .muted,
+body.light .field label,
+body.light .form-msg,
+body.light .ev-month,
+body.light .ev-date small,
+body.light .ticket .meta { color: #7a5a3e; }
+body.light .ev-year { border-bottom-color: #c8906a; }
+
+body.light .input,
+body.light .field input,
+body.light .field select,
+body.light .field textarea { background: #fbf5ec; color: #2a1a0e; border-color: #c8906a; }
+body.light .input:focus,
+body.light .field input:focus,
+body.light .field select:focus,
+body.light .field textarea:focus { border-color: #8b4a18; }
+
+body.light .btn { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
+body.light .btn:hover { background: #cfaa88; border-color: #8b4a18; }
+
+body.light .year-links a,
+body.light .tag { border-color: #c8906a; }
+body.light .tag { background: #e8d0b4; color: #2a1a0e; }
+body.light .ev img { border-color: #c8906a; }
+body.light .ticket .reply { border-left-color: #8b4a18; }
+body.light .statut-nouveau { color: #8b4a18; border-color: #8b4a18; }
+
+body.light .vault-item { background: #e8d0b4; border-color: #c8906a; color: #2a1a0e; }
+body.light .vault-item:hover { border-color: #8b4a18; color: #8b4a18; }
+body.light .vault-item .file-icon { color: #8b4a18; }

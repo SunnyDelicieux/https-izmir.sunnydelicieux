@@ -68,9 +68,13 @@
   }
 
   const CSS = `
-.izs-box {
+#iz-topbar {
   position: fixed; top: 10px; right: 10px; z-index: 9999;
-  width: 230px; max-width: calc(100vw - 20px);
+  display: flex; gap: 6px; align-items: flex-start;
+  max-width: calc(100vw - 20px);
+}
+.izs-box {
+  flex: 0 1 230px; width: 230px; min-width: 0;
   font: 12px/1.3 Arial, Tahoma, Verdana, sans-serif; letter-spacing: 0.3px;
 }
 .izs-input {
@@ -96,6 +100,11 @@
 .izs-folder { display: block; font-size: 10px; opacity: 0.6; }
 .izs-none { padding: 6px 9px; color: #a08a68; }
 
+@media (max-width: 520px) {
+  .izs-box { flex-basis: 150px; }
+  .iza-btn { min-width: 0; max-width: 100px; }
+}
+
 body.light .izs-input, body.light .izs-results { background: rgba(245, 232, 215, 0.98); color: #2a1a0e; border-color: #c8906a; }
 body.light .izs-input::placeholder { color: #8b6a4a; }
 body.light .izs-input:focus { border-color: #8b4a18; }
@@ -118,7 +127,21 @@ body.light .izs-none { color: #8b6a4a; }
       <input class="izs-input" type="search" placeholder="rechercher une page…" aria-label="Rechercher une page" autocomplete="off">
       <ul class="izs-results"></ul>
     `;
-    document.body.appendChild(box);
+    // barre fixe en haut à droite, partagée avec le bouton de compte (DATA/account.js)
+    let bar = document.getElementById("iz-topbar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "iz-topbar";
+      document.body.appendChild(bar);
+    }
+    bar.appendChild(box);
+
+    // bouton de connexion, à gauche de la recherche
+    if (!window.izmirAccount && !document.querySelector('script[src="/DATA/account.js"]')) {
+      const s = document.createElement("script");
+      s.src = "/DATA/account.js";
+      document.head.appendChild(s);
+    }
 
     const input = box.querySelector(".izs-input");
     const list = box.querySelector(".izs-results");
