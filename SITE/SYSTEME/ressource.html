@@ -1,504 +1,296 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ressources</title>
-<link href="/img/wiki/icon/wikilogo.png" rel="icon" type="image/png"/>
-<link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
+<link rel="stylesheet" href="/WIKI/wikitemplate.css">
+<script src="/WIKI/nav.js" defer></script>
+<script src="/DATA/search.js" defer></script>
 <style>
-/* ── Tableau de ressources ── */
-.res-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 11px;
-}
-.res-table th {
-  padding: 5px 10px;
-  text-align: left;
-  color: #a07840;
-  font: italic 11px georgia, serif;
-  letter-spacing: 1px;
-  border-bottom: 1px solid #4a3018;
-  font-weight: normal;
-}
-.res-table td {
-  padding: 5px 10px;
-  border-bottom: 1px dotted #3a2810;
-  color: #e8dcc0;
-  vertical-align: top;
-  line-height: 1.4;
-}
-.res-table tr:last-child td { border-bottom: none; }
-.res-table td:first-child { color: #c09050; font: italic 12px georgia, serif; white-space: nowrap; }
-.res-table td.num  { text-align: center; color: #d4aa72; font: italic 13px georgia, serif; }
-.res-table td.stress { text-align: center; color: #c04030; font: italic 13px georgia, serif; }
-
-/* ── Ressource collapsible ── */
-details.res-item {
-  background: #261a0c;
-  border: 1px dashed #4a3018;
-  border-radius: 4px;
-  overflow: hidden;
-}
-details.res-item[open] { border-color: #7a5028; }
-details.res-item summary {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 10px 14px;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-  color: #c09050;
-  font: italic 13px georgia, serif;
-  letter-spacing: 0.5px;
-}
-details.res-item summary::-webkit-details-marker { display: none; }
-details.res-item summary::before {
-  content: "\25b8";
-  font-size: 9px;
-  color: #7a5028;
-  transition: transform 0.2s, color 0.2s;
-  flex-shrink: 0;
-  line-height: 1.6;
-}
-details.res-item[open] summary::before { transform: rotate(90deg); color: #c09050; }
-details.res-item summary:hover { color: #d4aa72; }
-.res-body {
-  padding: 0 14px 12px 28px;
-  border-top: 1px dotted #3a2810;
-  color: #c8b898;
-  line-height: 1.5;
-}
-.res-desc { margin: 8px 0; font-size: 11px; }
-
-/* light theme */
-body.light .res-table th { color: #8b4a18; border-bottom-color: #c8906a; }
-body.light .res-table td { color: #2a1a0e; border-bottom-color: #c8906a; }
-body.light .res-table td:first-child { color: #8b4a18; }
-body.light .res-table td.num { color: #7a3e14; }
-body.light .res-table td.stress { color: #c04030; }
-body.light details.res-item { background: #f0e0cc; border-color: #c8906a; }
-body.light details.res-item[open] { border-color: #a86840; }
-body.light details.res-item summary { color: #8b4a18; }
-body.light details.res-item summary::before { color: #c8906a; }
-body.light details.res-item[open] summary::before { color: #8b4a18; }
-body.light .res-body { color: #3a2010; border-top-color: #c8906a; }
+  /* petits tableaux d'exemple : ils peuvent rester à côté d'une vignette */
+  @media only screen and (min-width: 761px) {
+    #contents table.res-table.exemple {
+      clear: none;
+      width: auto;
+      min-width: 50%;
+    }
+  }
+  /* les six échelles de ressources : grille de volets */
+  .colonnes.ressources {
+    align-items: start;
+    gap: 8px 20px;
+  }
+  .colonnes.ressources ul.echelle {
+    font-size: 14px;
+  }
+  .colonnes.ressources ul.echelle li {
+    grid-template-columns: 3.8em 1fr;
+  }
 </style>
-<script defer="" src="/WIKI/nav.js"></script>
-<script defer="" src="/DATA/search.js"></script>
-  <script src="/DATA/search.js" defer></script>
 </head>
+
 <body>
+
 <header-component></header-component>
+
 <main>
 <div id="container">
-<h1>Ressources</h1>
-<div id="toc"></div>
-<div id="contents">
-<h2>exemple de ressource</h2><figure class="illustration"><img alt="" src="https://cdna.artstation.com/p/assets/images/images/098/718/060/4k/quentin-hofmann-screan-finalimage-0000.jpg?1777887529"/><figcaption>Oriental shisha bar by Quentin Hofmann</figcaption></figure>
 
-J'ai fais une feuille d'exemple de ressource pour que vous vous fassiez une idée. Lors de la campagne j'en passerai une videà chaque clan pour qu'ils puissent suivre leur propre ressources. 
-<br/>
-<a href="https://docs.google.com/spreadsheets/d/1kilfo_WIBB0WD-bmgMJv_Ku0fuSqCxq17GSu_B2hqFg/edit?usp=sharing"> Vous pouvez retrouver l'exemple ici </a>
-<br/>
+  <h1>Ressources</h1>
 
-<h2>Les ressources du clan</h2>
+  <div id="toc"></div>
 
-      Chaque clan dispose de plusieurs ressources stratégiques, limitées et mobilisables pour résoudre des problèmes, soutenir des projets ou défendre ses intérêts.
-<br/>
-<br/>
-<table class="res-table">
-<tr>
-<th>Ressource</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>Domaine</td>
-<td>Contrôle territorial du clan</td>
-</tr>
-<tr>
-<td>Trésorerie</td>
-<td>Richesse et moyens financiers</td>
-</tr>
-<tr>
-<td>Sécurité</td>
-<td>Protection des refuges et du territoire</td>
-</tr>
-<tr>
-<td>Troupeau</td>
-<td>Accès à des sources de sang fiables</td>
-</tr>
-<tr>
-<td>Influence</td>
-<td>Contrôle des institutions mortelles</td>
-</tr>
-<tr>
-<td>Cohésion</td>
-<td>Loyauté et discipline interne</td>
-</tr>
-</table>
-<div class="colonnes"><details class="res-item">
-<summary>domaine</summary>
-<div class="res-body">
-<p class="res-desc">Étendue du territoire contrôlé et capacité à y faire respecter l'autorité du clan.</p>
-<ul>
-<em>•</em>   Quelques refuges isolés, peu d'autorité. Territoire vulnérable aux intrusions et revendications extérieures.
-            <em>••</em>   Une poignée de lieux importants, influence limitée à quelques quartiers ou réseaux spécifiques.
-            <em>•••</em>   Territoire stable et reconnu. Les autres clans savent généralement où commencent vos frontières.
-            <em>••••</em>   Domine une portion importante de la ville ou plusieurs lieux prisés. Les revendications du clan sont largement respectées.
-            <em>•••••</em>   L'un des principaux propriétaires de territoire d'İzmir. Domaines nombreux, bien défendus et difficiles à contester.
-<em>••••••</em>   Contrôle quasi incontesté sur une part majeure de la ville. Peu de clans peuvent rivaliser avec sa présence territoriale.
-</ul>
-</div>
-</details><details class="res-item">
-<summary>sécurité</summary>
-<div class="res-body">
-<p class="res-desc">Mesures de protection des membres, refuges et intérêts du clan — surveillance, gardes, goules armées, réseaux défensifs.</p>
-<ul>
-<em>•</em>   Protection rudimentaire. La plupart des menaces ne sont découvertes qu'une fois le problème déjà présent.
-<em>••</em>   Quelques mesures de sécurité existent, mais restent limitées.
-<em>•••</em>   Dispositif de protection fiable, capable de gérer la plupart des risques courants.
-<em>••••</em>   Les menaces sont souvent détectées avant de devenir problématiques. Les refuges importants sont bien protégés.
-<em>•••••</em>   Véritable infrastructure sécuritaire. Infiltrer les réseaux ou surprendre les membres demande une préparation considérable.
-<em>••••••</em>   Efficacité défensive réputée. Les menaces sont identifiées et neutralisées avant même d'être remarquées par les autres clans.
-</ul>
-</div>
-</details><details class="res-item">
-<summary>troupeau</summary>
-<div class="res-body">
-<p class="res-desc">Capacité du clan à se nourrir de manière sûre, régulière et discrète.</p>
-<ul>
-<em>•</em>   Trouver du sang est une préoccupation constante. Chaque repas comporte un risque. <br/>
-<em>••</em>   Quelques sources régulières mais le clan doit improviser fréquemment.<br/>
-<em>•••</em>   Les besoins quotidiens du clan sont couverts sans difficulté particulière.<br/>
-<em>••••</em>   Plusieurs sources fiables et diversifiées. Il est possible de se nourrir sans attirer l'attention.<br/>
-<em>•••••</em>   Les membres peuvent se nourrir sans craindre la concurrence ou la pénurie.<br/>
-<em>••••••</em>   Contrôle de certaines des meilleures zones de chasse de la ville. Accès exceptionnellement stable au sang.<br/>
-</ul>
-</div>
-</details><details class="res-item">
-<summary>trésorerie</summary>
-<div class="res-body">
-<p class="res-desc">Richesses, revenus, investissements et réseaux économiques du clan.</p>
-<ul>
-            • Finances précaires. Les imprévus peuvent rapidement devenir problématiques. <br/>
-            •• Revenus réguliers mais modestes. Les grands projets restent difficiles à financer.<br/>
-            ••• Finances saines. Le clan peut absorber la plupart des dépenses imprévues.<br/>
-            •••• Plusieurs sources de revenus importantes. Peut soutenir des opérations ambitieuses sans mettre en danger sa stabilité.<br/>
-            ••••• Richesses rivalisant avec les grandes fortunes locales. Peu de projets sont hors de sa portée.<br/>
-            •••••• Un véritable empire financier. Son influence économique se fait sentir dans toute la ville.<br/>
-</ul>
-</div>
-</details><details class="res-item">
-<summary>influence</summary>
-<div class="res-body">
-<p class="res-desc">Capacité du clan à orienter les décisions du monde mortel — politiciens, médias, justice, institutions.</p>
-<ul>
-            • Quelques contacts dispersés. Le clan subit généralement les décisions des institutions. <br/>
-            •• Quelques individus influents sont favorables au clan, mais leur aide reste limitée.<br/>
-            ••• Réseau stable capable d'orienter certaines décisions importantes.<br/>
-            •••• Les institutions locales prennent régulièrement en compte les intérêts du clan, parfois sans même en avoir conscience.<br/>
-            ••••• Profondément enraciné dans les structures de pouvoir. Peu de décisions importantes lui échappent totalement.<br/>
-            •••••• Force incontournable du paysage institutionnel. Son influence façonne activement le fonctionnement de la ville.<br/>
-</ul>
-</div>
-</details><details class="res-item">
-<summary>cohésion</summary>
-<div class="res-body">
-<p class="res-desc">Confiance, discipline et solidarité entre les membres du clan.</p>
-<ul>
-            •   Rivalités internes omniprésentes. Les membres coopèrent rarement sans y être contraints.
-            ••   Les tensions sont fréquentes, mais le clan parvient généralement à fonctionner malgré elles.
-            •••   Les membres partagent une identité commune et savent travailler ensemble lorsque nécessaire.
-            ••••   Culture forte et traditions respectées. Les conflits internes sont réglés avant de devenir dangereux.
-            •••••   Les intérêts du clan passent souvent avant les ambitions personnelles.
-            ••••••   Fonctionne comme une véritable famille politique. Loyauté interne légendaire et extrêmement difficile à briser.
+  <div id="contents">
+
+    <h2>Exemple de ressource</h2>
+    <div class="encadre">
+      <p>J'ai fais une feuille d'exemple de ressource pour que vous vous fassiez une idée. Lors de la campagne j'en passerai une videà chaque clan pour qu'ils puissent suivre leur propre ressources.</p>
+      <p><a class="lien-doc" href="https://docs.google.com/spreadsheets/d/1kilfo_WIBB0WD-bmgMJv_Ku0fuSqCxq17GSu_B2hqFg/edit?usp=sharing">Vous pouvez retrouver l'exemple ici</a></p>
+    </div>
+
+    <h2>Les ressources du clan</h2>
+    <p>Chaque clan dispose de plusieurs ressources stratégiques, limitées et mobilisables pour résoudre des problèmes, soutenir des projets ou défendre ses intérêts.</p>
+
+    <table class="res-table">
+      <tr><th>Ressource</th><th>Description</th></tr>
+      <tr><td>Domaine</td><td>Contrôle territorial du clan</td></tr>
+      <tr><td>Trésorerie</td><td>Richesse et moyens financiers</td></tr>
+      <tr><td>Sécurité</td><td>Protection des refuges et du territoire</td></tr>
+      <tr><td>Troupeau</td><td>Accès à des sources de sang fiables</td></tr>
+      <tr><td>Influence</td><td>Contrôle des institutions mortelles</td></tr>
+      <tr><td>Cohésion</td><td>Loyauté et discipline interne</td></tr>
+    </table>
+
+    <div class="colonnes ressources">
+      <details class="res-item">
+        <summary>domaine</summary>
+        <div class="res-body">
+          <p class="res-desc">Étendue du territoire contrôlé et capacité à y faire respecter l'autorité du clan.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Quelques refuges isolés, peu d'autorité. Territoire vulnérable aux intrusions et revendications extérieures.</li>
+            <li><span class="points">••</span> Une poignée de lieux importants, influence limitée à quelques quartiers ou réseaux spécifiques.</li>
+            <li><span class="points">•••</span> Territoire stable et reconnu. Les autres clans savent généralement où commencent vos frontières.</li>
+            <li><span class="points">••••</span> Domine une portion importante de la ville ou plusieurs lieux prisés. Les revendications du clan sont largement respectées.</li>
+            <li><span class="points">•••••</span> L'un des principaux propriétaires de territoire d'İzmir. Domaines nombreux, bien défendus et difficiles à contester.</li>
+            <li><span class="points">••••••</span> Contrôle quasi incontesté sur une part majeure de la ville. Peu de clans peuvent rivaliser avec sa présence territoriale.</li>
           </ul>
-</div>
-</details></div>
-<h2>Engager une ressource</h2>
+        </div>
+      </details>
 
+      <details class="res-item">
+        <summary>sécurité</summary>
+        <div class="res-body">
+          <p class="res-desc">Mesures de protection des membres, refuges et intérêts du clan — surveillance, gardes, goules armées, réseaux défensifs.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Protection rudimentaire. La plupart des menaces ne sont découvertes qu'une fois le problème déjà présent.</li>
+            <li><span class="points">••</span> Quelques mesures de sécurité existent, mais restent limitées.</li>
+            <li><span class="points">•••</span> Dispositif de protection fiable, capable de gérer la plupart des risques courants.</li>
+            <li><span class="points">••••</span> Les menaces sont souvent détectées avant de devenir problématiques. Les refuges importants sont bien protégés.</li>
+            <li><span class="points">•••••</span> Véritable infrastructure sécuritaire. Infiltrer les réseaux ou surprendre les membres demande une préparation considérable.</li>
+            <li><span class="points">••••••</span> Efficacité défensive réputée. Les menaces sont identifiées et neutralisées avant même d'être remarquées par les autres clans.</li>
+          </ul>
+        </div>
+      </details>
 
-    Posséder une ressource ne signifie pas qu'elle est immédiatement disponible.
-    Chaque ressource possède deux valeurs : sa valeur maximale et sa valeur disponible.
-    
-<br/>
-<br/>
+      <details class="res-item">
+        <summary>troupeau</summary>
+        <div class="res-body">
+          <p class="res-desc">Capacité du clan à se nourrir de manière sûre, régulière et discrète.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Trouver du sang est une préoccupation constante. Chaque repas comporte un risque.</li>
+            <li><span class="points">••</span> Quelques sources régulières mais le clan doit improviser fréquemment.</li>
+            <li><span class="points">•••</span> Les besoins quotidiens du clan sont couverts sans difficulté particulière.</li>
+            <li><span class="points">••••</span> Plusieurs sources fiables et diversifiées. Il est possible de se nourrir sans attirer l'attention.</li>
+            <li><span class="points">•••••</span> Les membres peuvent se nourrir sans craindre la concurrence ou la pénurie.</li>
+            <li><span class="points">••••••</span> Contrôle de certaines des meilleures zones de chasse de la ville. Accès exceptionnellement stable au sang.</li>
+          </ul>
+        </div>
+      </details>
 
+      <details class="res-item">
+        <summary>trésorerie</summary>
+        <div class="res-body">
+          <p class="res-desc">Richesses, revenus, investissements et réseaux économiques du clan.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Finances précaires. Les imprévus peuvent rapidement devenir problématiques.</li>
+            <li><span class="points">••</span> Revenus réguliers mais modestes. Les grands projets restent difficiles à financer.</li>
+            <li><span class="points">•••</span> Finances saines. Le clan peut absorber la plupart des dépenses imprévues.</li>
+            <li><span class="points">••••</span> Plusieurs sources de revenus importantes. Peut soutenir des opérations ambitieuses sans mettre en danger sa stabilité.</li>
+            <li><span class="points">•••••</span> Richesses rivalisant avec les grandes fortunes locales. Peu de projets sont hors de sa portée.</li>
+            <li><span class="points">••••••</span> Un véritable empire financier. Son influence économique se fait sentir dans toute la ville.</li>
+          </ul>
+        </div>
+      </details>
 
-    La valeur maximale représente la puissance réelle du clan, tandis que la valeur disponible représente ce qui peut être mobilisé immédiatement.
-    
-<br/>
-<br/>
+      <details class="res-item">
+        <summary>influence</summary>
+        <div class="res-body">
+          <p class="res-desc">Capacité du clan à orienter les décisions du monde mortel — politiciens, médias, justice, institutions.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Quelques contacts dispersés. Le clan subit généralement les décisions des institutions.</li>
+            <li><span class="points">••</span> Quelques individus influents sont favorables au clan, mais leur aide reste limitée.</li>
+            <li><span class="points">•••</span> Réseau stable capable d'orienter certaines décisions importantes.</li>
+            <li><span class="points">••••</span> Les institutions locales prennent régulièrement en compte les intérêts du clan, parfois sans même en avoir conscience.</li>
+            <li><span class="points">•••••</span> Profondément enraciné dans les structures de pouvoir. Peu de décisions importantes lui échappent totalement.</li>
+            <li><span class="points">••••••</span> Force incontournable du paysage institutionnel. Son influence façonne activement le fonctionnement de la ville.</li>
+          </ul>
+        </div>
+      </details>
 
-
-    Par exemple :
-    
-<br/>
-<br/>
-<table class="res-table">
-<tr>
-<th>Ressource</th>
-<th>Valeur max</th>
-<th>Disponible</th>
-</tr>
-<tr>
-<td>Sécurité</td>
-<td>4</td>
-<td>2</td>
-</tr>
-</table>
-<br/>
-
-    Le clan dispose d'une sécurité importante, mais une partie de celle-ci est déjà mobilisée ailleurs.
-    
-<br/>
-<br/>
-
-
-    Lorsqu'un clan souhaite résoudre un problème ou lancer un projet, il peut engager une partie de ses ressources disponibles.
-    Une ressource engagée devient temporairement indisponible jusqu'à la fin de l'opération concernée.
-    
-<br/>
-<br/>
-
-
-    Par exemple :
-    
-<ul>
-        Organiser un Elysium peut mobiliser du Troupeau, de la Sécurité et de la Cohésion.<br/>
-        Financer une enquête peut mobiliser de la Trésorerie.<br/>
-        Surveiller un quartier sensible peut mobiliser de la Sécurité.<br/>
-</ul>
-
-
-    Un seul point de ressource ne peut pas être utilisé simultanément à plusieurs endroits, mais il est possible d'engager plusieurs points de la meme ressource sur différentes opérations.
-    
-<br/>
-<br/>
-<h2>Ressources engagées et ressources disponibles</h2><figure class="illustration"><img alt="" src="https://cdnb.artstation.com/p/assets/images/images/018/892/925/4k/greg-westphal-greg-westphal-vtmalley.jpg?1561128537"/><figcaption>Alleyway Approach by Greg Westphal</figcaption></figure>
-
-Une ressource totalement engagée n'est plus disponible pour répondre aux événements imprévus du clan. 
-<br/>
-
-Par exemple :
-
-
-<table class="res-table">
-<tr>
-<th>Ressource</th>
-<th>Valeur Max</th>
-<th>Disponible</th>
-</tr>
-<tr>
-<td>Sécurité</td>
-<td>2</td>
-<td>0</td>
-</tr>
-</table>
-
-
-Le clan possède toujours une Sécurité maximale de 2, c'est à dire qu'il à les moyen de protéger ses intérets, mais pour l'instant, il à décidé de se concentrer ailleurs que son propre territoire. 
-<br/>
-
-Le territoire est alors plus vulnérable aux intrusions, aux attaques ou aux incidents. 
-<br/>
-
-Cette vulnérabilité est indépendante du Stress, car une ressource peut être parfaitement saine tout en étant momentanément indisponible.
-    
-
-<h2>Le stress</h2>
-
-Cependant, les ressources d'un clan ne peuvent pas être utilisées indéfiniment sans conséquence. Trop puiser dans les finances d'une entreprise, surexploiter un contact, ou trop solliciter un refuge peut provoquer de la fatigue, des erreurs, ou des failles d'attention. 
-<br/>
-<br/>
-
-Chaque fois qu'une ressource est mobilisée pour une opération, un projet ou une crise, elle accumule du Stress. 
-
-Le Stress représente l'usure naturelle des infrastructures du clan : agents fatigués, contacts surexploités, finances sous pression, territoires instables ou réseaux compromis.
-
-<br/>
-<br/>
-Cependant le Stress n'est pas une pénalité immédiate, c'est un indicateur de risque à venir. Un primogène sait ne pas utiliser ce qu'il possède jusqu'à l'exténuation. 
-
-<br/>
-<br/>
-<h2>Générer du stress</h2>
-
-
-Chaque fois qu'une ressource est engagée sur une nouvelle opération, elle gagne immédiatement 1 point de Stress. Peu importe la quantitée de ressource engagé. Ce qui compte, c'est qu'elle a été mobilisé.
-
-<br/>
-<br/>
-
-Engager 1 point de ressource génère 1 Stress. 
-<br/>
-
-Engager 2 points de ressource génère 1 Stress. 
-Engager 3 points de ressource génère 1 Stress. 
-
-Par exemple, ici, le clan possède 3 en domaine et 4 en trésorerie. Il décide d'engager un point de trésorerie et deux point de sécurité pour financer une opération. Les deux ressource gagnent un seul point de stress. Pour l'instant, aucune des deux n'est en péril.
-
-<br/>
-<br/>
-<table class="res-table">
-<tr>
-<th>Ressource</th>
-<th>Statistique</th>
-<th>Disponible</th>
-<th>Stress</th>
-</tr>
-<tr>
-<td>Domaine</td>
-<td>3</td>
-<td>3</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Trésorerie</td>
-<td>4</td>
-<td>3</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Sécurité</td>
-<td>2</td>
-<td>0</td>
-<td>1</td>
-</tr></table>
-<br/>
-<br/>
-<h2>Seuil critique</h2>
-
-Chaque ressource possède un seuil critique égal à sa valeur maximale (et non à la valeur disponible actuellement). Lorsque le stress atteint ou dépasse ce seuil, la ressource est considéré "en péril". 
-
-<br/>
-<br/>
-Une ressource en péril attire naturellement les problèmes, ce n'est pas forcément instantané, mais si ce n'est pas géré, c'est une catastrophe en devenir. Lorsqu'une ressource reste en péril pendant plusieurs
-séances, ou lorsqu'un évenement l'aggrave d'avantage, une crise peut apparaitre.   
-  
-<br/>
-<br/>
-<table class="res-table">
-<tr>
-<th>Ressource</th>
-<th>Exemple de crise</th>
-</tr>
-<tr>
-<td>Domaine</td>
-<td>Revendication anarchs sur le territoire</td>
-</tr>
-<tr>
-<td>Trésorerie</td>
-<td>Blocage temporaire de fonds</td>
-</tr>
-<tr>
-<td>Sécurité</td>
-<td>Fuite de l'adresse d'un domaine</td>
-</tr>
-<tr>
-</tr></table>
-<h2>Réduire le Stress</h2><figure class="illustration"><img alt="" src="https://cdna.artstation.com/p/assets/images/images/078/137/486/4k/scans-factory-abandonedmanor-09.jpg?1721288431"/><figcaption>Abandoned Manor by Scans Factory</figcaption></figure>
-
-Le Stress peut être réduit de plusieurs manières:
-<br/>
-<br/>
-
-
-- Laisser une ressource au repos
-<br/>
-
-Une ressource qui n'est ni engagée ni sollicitée pendant deux séances complètes perd automatiquement 1 point de Stress.
-
-
-<br/>
-<br/>
-
-
-- Réparer les dégâts
-<br/>
-
-Les Ghoules et les Limiers peuvent être chargés de missions visant spécifiquement à réduire le Stress d'une ressource. Ils peuvent ainsi recruter de nouveaux contacts, sécuriser un refuge ; résoudre une enquête ou négocier une paix territoriale. 
-<br/>
-
-Selon la difficulté de la mission, cela peut réduire le Stress d'un ou plusieurs points.
-
-
-<br/>
-<br/>
-
-
-
-- Résoudre la cause du problème 
-<br/>
-
-Certaines sources de Stress persistent tant qu'elles ne sont pas traitées, nottament lors de crise. Par exemple, si une ressource est en péril à cause d'une menace extérieure, elle ne pourra pas baisser tant que la menace est présente.
-L'éliminer peut permettre à la ressource de se rétablir naturellement.
-
-
-<h2>Récapitulatif</h2>
-<h3>Schema</h3>
-<div class="flowchart-horizontal">
-<div class="flow-box">
-        Ressource disponible
+      <details class="res-item">
+        <summary>cohésion</summary>
+        <div class="res-body">
+          <p class="res-desc">Confiance, discipline et solidarité entre les membres du clan.</p>
+          <ul class="echelle">
+            <li><span class="points">•</span> Rivalités internes omniprésentes. Les membres coopèrent rarement sans y être contraints.</li>
+            <li><span class="points">••</span> Les tensions sont fréquentes, mais le clan parvient généralement à fonctionner malgré elles.</li>
+            <li><span class="points">•••</span> Les membres partagent une identité commune et savent travailler ensemble lorsque nécessaire.</li>
+            <li><span class="points">••••</span> Culture forte et traditions respectées. Les conflits internes sont réglés avant de devenir dangereux.</li>
+            <li><span class="points">•••••</span> Les intérêts du clan passent souvent avant les ambitions personnelles.</li>
+            <li><span class="points">••••••</span> Fonctionne comme une véritable famille politique. Loyauté interne légendaire et extrêmement difficile à briser.</li>
+          </ul>
+        </div>
+      </details>
     </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">
-        Engagement
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">
-        +1 Stress
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">
-        Stress ≥ Valeur max
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box warning">
-        Péril
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">
-        Stress ≥ Valeur max × 2
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box danger">
-        Crise
-    </div>
-<div class="flow-arrow">→</div>
-<div class="flow-box loss">
-        - Perte de statistique
-    </div>
-</div>
-<h3>Glossaire</h3>
 
-Ressource max : Défini par le nombre de point mis dans une statistique à la création de personnage; Ce chiffre défini le nombre maximum de point de ressource que le clan peut mobiliser. 
-<br/>
-<br/>
+    <h2>Engager une ressource</h2>
+    <figure class="illustration">
+      <img src="https://cdnb.artstation.com/p/assets/images/images/018/892/925/4k/greg-westphal-greg-westphal-vtmalley.jpg?1561128537" alt="">
+      <figcaption>Alleyway Approach by Greg Westphal</figcaption>
+    </figure>
 
-Mobiliser : L'action d'engager une ressource pour une opération. Cela rends la ressource indisponible.
-<br/>
-<br/>
+    <p>Posséder une ressource ne signifie pas qu'elle est immédiatement disponible. Chaque ressource possède deux valeurs : sa valeur maximale et sa valeur disponible.</p>
+    <p>La valeur maximale représente la puissance réelle du clan, tandis que la valeur disponible représente ce qui peut être mobilisé immédiatement.</p>
+    <p>Par exemple :</p>
 
-Stress : Représente l'usure d'une ressource du clan.
-<br/>
-<br/>
+    <table class="res-table exemple">
+      <tr><th>Ressource</th><th>Valeur max</th><th>Disponible</th></tr>
+      <tr><td>Sécurité</td><td class="num">4</td><td class="num">2</td></tr>
+    </table>
 
-Péril : Lorsque le stress d'une ressource atteint ou dépasse sa valeur maximale, elle est considérée en péril. 
-<br/>
-<br/>
+    <p>Le clan dispose d'une sécurité importante, mais une partie de celle-ci est déjà mobilisée ailleurs.</p>
+    <p>Lorsqu'un clan souhaite résoudre un problème ou lancer un projet, il peut engager une partie de ses ressources disponibles. Une ressource engagée devient temporairement indisponible jusqu'à la fin de l'opération concernée.</p>
+    <p>Par exemple :</p>
+    <ul>
+      <li>Organiser un Elysium peut mobiliser du Troupeau, de la Sécurité et de la Cohésion.</li>
+      <li>Financer une enquête peut mobiliser de la Trésorerie.</li>
+      <li>Surveiller un quartier sensible peut mobiliser de la Sécurité.</li>
+    </ul>
+    <p>Un seul point de ressource ne peut pas être utilisé simultanément à plusieurs endroits, mais il est possible d'engager plusieurs points de la meme ressource sur différentes opérations.</p>
 
-Crise : Lorsque le stress d'une ressource atteint ou dépasse deux fois sa valeur maximale, elle est en crise. 
-<br/>
-<br/>
-</div>
-<!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
-<div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
+    <h3>Ressources engagées et ressources disponibles</h3>
+    <p>Une ressource totalement engagée n'est plus disponible pour répondre aux événements imprévus du clan.</p>
+    <p>Par exemple :</p>
+
+    <table class="res-table exemple">
+      <tr><th>Ressource</th><th>Valeur Max</th><th>Disponible</th></tr>
+      <tr><td>Sécurité</td><td class="num">2</td><td class="num">0</td></tr>
+    </table>
+
+    <p>Le clan possède toujours une Sécurité maximale de 2, c'est à dire qu'il à les moyen de protéger ses intérets, mais pour l'instant, il à décidé de se concentrer ailleurs que son propre territoire.</p>
+    <p>Le territoire est alors plus vulnérable aux intrusions, aux attaques ou aux incidents.</p>
+    <p>Cette vulnérabilité est indépendante du Stress, car une ressource peut être parfaitement saine tout en étant momentanément indisponible.</p>
+
+    <h2>Le stress</h2>
+    <figure class="illustration">
+      <img src="https://cdna.artstation.com/p/assets/images/images/098/718/060/4k/quentin-hofmann-screan-finalimage-0000.jpg?1777887529" alt="">
+      <figcaption>Oriental shisha bar by Quentin Hofmann</figcaption>
+    </figure>
+
+    <p>Cependant, les ressources d'un clan ne peuvent pas être utilisées indéfiniment sans conséquence. Trop puiser dans les finances d'une entreprise, surexploiter un contact, ou trop solliciter un refuge peut provoquer de la fatigue, des erreurs, ou des failles d'attention.</p>
+    <p>Chaque fois qu'une ressource est mobilisée pour une opération, un projet ou une crise, elle accumule du Stress.</p>
+    <p>Le Stress représente l'usure naturelle des infrastructures du clan : agents fatigués, contacts surexploités, finances sous pression, territoires instables ou réseaux compromis.</p>
+    <p>Cependant le Stress n'est pas une pénalité immédiate, c'est un indicateur de risque à venir. Un primogène sait ne pas utiliser ce qu'il possède jusqu'à l'exténuation.</p>
+
+    <h3>Générer du stress</h3>
+    <p>Chaque fois qu'une ressource est engagée sur une nouvelle opération, elle gagne immédiatement 1 point de Stress. Peu importe la quantitée de ressource engagé. Ce qui compte, c'est qu'elle a été mobilisé.</p>
+    <ul>
+      <li>Engager 1 point de ressource génère 1 Stress.</li>
+      <li>Engager 2 points de ressource génère 1 Stress.</li>
+      <li>Engager 3 points de ressource génère 1 Stress.</li>
+    </ul>
+    <p>Par exemple, ici, le clan possède 3 en domaine et 4 en trésorerie. Il décide d'engager un point de trésorerie et deux point de sécurité pour financer une opération. Les deux ressource gagnent un seul point de stress. Pour l'instant, aucune des deux n'est en péril.</p>
+
+    <table class="res-table">
+      <tr><th>Ressource</th><th>Statistique</th><th>Disponible</th><th>Stress</th></tr>
+      <tr><td>Domaine</td><td class="num">3</td><td class="num">3</td><td class="stress">0</td></tr>
+      <tr><td>Trésorerie</td><td class="num">4</td><td class="num">3</td><td class="stress">1</td></tr>
+      <tr><td>Sécurité</td><td class="num">2</td><td class="num">0</td><td class="stress">1</td></tr>
+    </table>
+
+    <h3>Seuil critique</h3>
+    <p>Chaque ressource possède un seuil critique égal à sa valeur maximale (et non à la valeur disponible actuellement). Lorsque le stress atteint ou dépasse ce seuil, la ressource est considéré "en péril".</p>
+    <p>Une ressource en péril attire naturellement les problèmes, ce n'est pas forcément instantané, mais si ce n'est pas géré, c'est une catastrophe en devenir. Lorsqu'une ressource reste en péril pendant plusieurs séances, ou lorsqu'un évenement l'aggrave d'avantage, une crise peut apparaitre.</p>
+
+    <table class="res-table">
+      <tr><th>Ressource</th><th>Exemple de crise</th></tr>
+      <tr><td>Domaine</td><td>Revendication anarchs sur le territoire</td></tr>
+      <tr><td>Trésorerie</td><td>Blocage temporaire de fonds</td></tr>
+      <tr><td>Sécurité</td><td>Fuite de l'adresse d'un domaine</td></tr>
+    </table>
+
+    <h2>Réduire le stress</h2>
+    <figure class="illustration">
+      <img src="https://cdna.artstation.com/p/assets/images/images/078/137/486/4k/scans-factory-abandonedmanor-09.jpg?1721288431" alt="">
+      <figcaption>Abandoned Manor by Scans Factory</figcaption>
+    </figure>
+
+    <p>Le Stress peut être réduit de plusieurs manières:</p>
+    <dl class="definitions">
+      <dt>Laisser une ressource au repos</dt>
+      <dd>Une ressource qui n'est ni engagée ni sollicitée pendant deux séances complètes perd automatiquement 1 point de Stress.</dd>
+      <dt>Réparer les dégâts</dt>
+      <dd>
+        <p>Les Ghoules et les Limiers peuvent être chargés de missions visant spécifiquement à réduire le Stress d'une ressource. Ils peuvent ainsi recruter de nouveaux contacts, sécuriser un refuge ; résoudre une enquête ou négocier une paix territoriale.</p>
+        <p>Selon la difficulté de la mission, cela peut réduire le Stress d'un ou plusieurs points.</p>
+      </dd>
+      <dt>Résoudre la cause du problème</dt>
+      <dd>Certaines sources de Stress persistent tant qu'elles ne sont pas traitées, nottament lors de crise. Par exemple, si une ressource est en péril à cause d'une menace extérieure, elle ne pourra pas baisser tant que la menace est présente. L'éliminer peut permettre à la ressource de se rétablir naturellement.</dd>
+    </dl>
+
+    <h2>Récapitulatif</h2>
+    <h3>Schema</h3>
+    <div class="flowchart-horizontal">
+      <div class="flow-box">Ressource disponible</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Engagement</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">+1 Stress</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Stress ≥ Valeur max</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box warning">Péril</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Stress ≥ Valeur max × 2</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box danger">Crise</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box loss">- Perte de statistique</div>
+    </div>
+
+    <h3>Glossaire</h3>
+    <dl class="definitions">
+      <dt>Ressource max</dt>
+      <dd>Défini par le nombre de point mis dans une statistique à la création de personnage; Ce chiffre défini le nombre maximum de point de ressource que le clan peut mobiliser.</dd>
+      <dt>Mobiliser</dt>
+      <dd>L'action d'engager une ressource pour une opération. Cela rends la ressource indisponible.</dd>
+      <dt>Stress</dt>
+      <dd>Représente l'usure d'une ressource du clan.</dd>
+      <dt>Péril</dt>
+      <dd>Lorsque le stress d'une ressource atteint ou dépasse sa valeur maximale, elle est considérée en péril.</dd>
+      <dt>Crise</dt>
+      <dd>Lorsque le stress d'une ressource atteint ou dépasse deux fois sa valeur maximale, elle est en crise.</dd>
+    </dl>
+
+  </div>
+
+  <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
+  <div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
+
 </div>
 </main>
+
 </body>
 </html>
