@@ -847,8 +847,7 @@ ul.echelle .points {
    <h2><span class="etape">1</span> Choisir son clan</h2> */
 .etape {
     display: inline-block;
-    min-width: 1.5em;
-    margin-right: 6px;
+    margin-right: 0.3em;
     color: var(--wiki-accent);
     font-style: italic;
 }

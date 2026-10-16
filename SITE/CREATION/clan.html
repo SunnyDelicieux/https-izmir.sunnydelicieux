@@ -9,7 +9,12 @@
 <link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
 <script defer="" src="/WIKI/nav.js"></script>
 <script defer="" src="/DATA/search.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<style>
+/* questions guidées : la question en gras, l'aide en dessous */
+ol.questions { padding-left: 1.4em; }
+ol.questions li { margin: 0.7em 0; }
+ol.questions .aide { margin-top: 0.15em; color: var(--wiki-muted); }
+</style>
 </head>
 <body>
 <header-component></header-component>
@@ -18,169 +23,89 @@
 <h1>Clan</h1>
 <div id="toc"></div>
 <div id="contents">
-<h2>FEUILLE DE CREATION</h2>
 
-Tout ce qui est là est également dans un doc, hésitez pas à dupliquer pour pouvoir travailler dessus avec le reste du clan. Essayez de ne pas le partager avec les autres, il y a des trucs secrets ! 
-<br/>
-<a href="https://docs.google.com/document/d/15AmJVgCS8lrT6B9Vf-CZwx7BwbXKgVoqRO1zxH47w-I/edit?usp=sharing"> Vous pouvez retrouver la fiche de création avec toute les questions ici </a>
-<br/>
-<h2>La CULTURE DE CLAN</h2><div class="illustrations"><figure class="illustration"><img alt="" src="
-https://cdnb.artstation.com/p/assets/images/images/060/199/175/large/hande-izzet-habib-al-najjar-shop2.jpg?1678044820"/><figcaption>Habib-i Najjar Mosque by Hande Karaguzel</figcaption></figure><figure class="illustration"><img alt="" src="
-https://cdna.artstation.com/p/assets/images/images/066/887/444/4k/jacob-kroon-variation.jpg?1694014259"/><figcaption>Bloodline headgear by Jacob Kroon</figcaption></figure></div>
+<h2>Feuille de création</h2>
+<p>Tout ce qui est là est également dans un doc, hésitez pas à dupliquer pour pouvoir travailler dessus avec le reste du clan. Essayez de ne pas le partager avec les autres, il y a des trucs secrets !</p>
+<p><a class="lien-doc" href="https://docs.google.com/document/d/15AmJVgCS8lrT6B9Vf-CZwx7BwbXKgVoqRO1zxH47w-I/edit?usp=sharing">Vous pouvez retrouver la fiche de création avec toute les questions ici</a></p>
 
-La création du clan est un des aspects les plus importants de l'expérience de jeu de Izmir. C'est pour ça que j'insiste au fait que vous décidier de ses aspects ensemble.
-Votre culture de clan va beaucoup définir sur votre position dans la ville, et aussitot vous donner des aprioris sur beaucoup de PJ ou PNJ. De meme, les PNJ qui composent votre clan
-seront défini une fois que vous aurez établi la culture. Tous le monde ne la suivra pas à la trace, et c'est le but, mais ça vous donne une ligne directrice. 
-<br/>
-<br/>
+<h2>La culture de clan</h2>
+<div class="illustrations">
+<figure class="illustration"><img alt="" src="https://cdnb.artstation.com/p/assets/images/images/060/199/175/large/hande-izzet-habib-al-najjar-shop2.jpg?1678044820"/><figcaption>Habib-i Najjar Mosque by Hande Karaguzel</figcaption></figure>
+<figure class="illustration"><img alt="" src="https://cdna.artstation.com/p/assets/images/images/066/887/444/4k/jacob-kroon-variation.jpg?1694014259"/><figcaption>Bloodline headgear by Jacob Kroon</figcaption></figure>
+</div>
+<p>La création du clan est un des aspects les plus importants de l'expérience de jeu de Izmir. C'est pour ça que j'insiste au fait que vous décidier de ses aspects ensemble. Votre culture de clan va beaucoup définir sur votre position dans la ville, et aussitot vous donner des aprioris sur beaucoup de PJ ou PNJ. De meme, les PNJ qui composent votre clan seront défini une fois que vous aurez établi la culture. Tous le monde ne la suivra pas à la trace, et c'est le but, mais ça vous donne une ligne directrice.</p>
+<p>Autant que pour les PNJ, votre PJ n'est pas obligé de suivre ou d'adhérer à la culture de clan. Il peut en dévier, et vouloir la chaner et l'influencer, ou simplement etre satisfait de sa place.</p>
 
-Autant que pour les PNJ, votre PJ n'est pas obligé de suivre ou d'adhérer à la culture de clan. Il peut en dévier, et vouloir la chaner et l'influencer, ou simplement etre satisfait de sa place.
+<div class="colonnes">
+<div class="encadre" id="identitié">
+<div class="encadre-titre">Identité</div>
+<p>Tous les clans prétendent savoir ce qu’ils sont. Être Ventrue, Brujah ou Gangrel ne définit pas à lui seul la personnalité d’un clan.</p>
+<p>Lorsque les autres habitants d’Izmir pensent à votre clan, qu’imaginent-ils ? Des dirigeants respectés ? Des prédateurs sans scrupules ? Des gardiens du territoire ?</p>
+<p><b>Pour vous aider :</b></p>
+<ol class="questions">
+<li><b>Quelle est la devise du clan ?</b><div class="aide">Une phrase courte qui résume la manière dont votre clan justifie ses actions et son existence.</div></li>
+<li><b>Quelles qualités sont admirées ?</b><div class="aide">Quelles attitudes donnent du prestige et du respect au sein du clan ? (Courage, ambition, ruse, loyauté, efficacité… 3 choix recommandés)</div></li>
+<li><b>Quels comportements sont méprisés ?</b><div class="aide">Quelles attitudes font perdre la confiance ou le statut au sein du clan ? (Trahison, faiblesse, incompétence, dépendance… 3 choix recommandés)</div></li>
+<li><b>De quoi le clan est-il fier ?</b><div class="aide">Une réputation que le clan met en avant publiquement. (Ex : contrôle du port depuis un siècle, domination d’une sphère administrative, influence culturelle)</div></li>
+</ol>
+</div>
+<div class="encadre" id="structure">
+<div class="encadre-titre">Structure de pouvoir</div>
+<p>Les structures de pouvoir sont le quotidien de la Camarilla, et même lorsqu’ils prétendent fonctionner dans l’ombre ou l’égalité, chaque clan possède le sien. Cette section définit comment le pouvoir circule réellement dans le clan, et quelles sont les règles qui définissent ses relations internes.</p>
+<p><b>Pour vous aider :</b></p>
+<ol class="questions">
+<li><b>Qui prend les décisions importantes ?</b><div class="aide">Qui a le dernier mot lorsque le clan doit choisir une direction, résoudre un conflit ou engager ses ressources ? (Primogène, conseil, anciens, vote)</div></li>
+<li><b>Comment un membre du clan gagne-t-il du pouvoir en interne?</b><div class="aide">(Ancienneté, efficacité, richesse, loyauté)</div></li>
+<li><b>Comment sont réglés les conflits internes ?</b><div class="aide">(Arbitrage, négociation, duel, choix des anciens)</div></li>
+<li><b>Qu’est-ce qui fait perdre du pouvoir ou du statut ?</b><div class="aide">(trahison, echec mascarade, désobéissance…)</div></li>
+<li><b>Comment le clan traite-t-il les faible et les problématique ?</b><div class="aide">(Exclusion, punition, rééducation, soutien)</div></li>
+</ol>
+</div>
+</div>
 
-<div class="colonnes"><div class="encadre" id="identitié"><div class="encadre-titre">Identité</div>
-
-
-
-Tous les clans prétendent savoir ce qu’ils sont.
-
-
-Être Ventrue, Brujah ou Gangrel ne définit pas à lui seul la personnalité d’un clan.
-
-
-Lorsque les autres habitants d’Izmir pensent à votre clan, qu’imaginent-ils ?
-Des dirigeants respectés ? Des prédateurs sans scrupules ? Des gardiens du territoire ? <br/><br/>
-<b>Pour vous aider :</b> <br/><br/>
-
-
-1. Quelle est la devise du clan ? <br/>
-Une phrase courte qui résume la manière dont votre clan justifie ses actions et son existence. <br/><br/>
-
-
-2. Quelles qualités sont admirées ? <br/>
-Quelles attitudes donnent du prestige et du respect au sein du clan ?
-(Courage, ambition, ruse, loyauté, efficacité… 3 choix recommandés) <br/><br/>
-
-
-3. Quels comportements sont méprisés ? <br/>
-Quelles attitudes font perdre la confiance ou le statut au sein du clan ?
-(Trahison, faiblesse, incompétence, dépendance… 3 choix recommandés) <br/><br/>
-
-
-4. De quoi le clan est-il fier ? <br/>
-Une réputation que le clan met en avant publiquement.<br/>
-(Ex : contrôle du port depuis un siècle, domination d’une sphère administrative, influence culturelle) <br/><br/>
-</div><div class="encadre" id="structure"><div class="encadre-titre">Structure de pouvoir</div>
-
-Les structures de pouvoir sont le quotidien de la Camarilla, et même lorsqu’ils prétendent fonctionner dans l’ombre ou l’égalité, chaque clan possède le sien.
-Cette section définit comment le pouvoir circule réellement dans le clan, et quelles sont les règles qui définissent ses relations internes. <br/><br/>
-<b>Pour vous aider :</b><br/><br/>
-
-
-1. Qui prend les décisions importantes ? <br/>
-Qui a le dernier mot lorsque le clan doit choisir une direction, résoudre un conflit ou engager ses ressources ?
-(Primogène, conseil, anciens, vote) <br/><br/>
-
-
-2. Comment un membre du clan gagne-t-il du pouvoir en interne? <br/>
-(Ancienneté, efficacité, richesse, loyauté) <br/><br/>
-
-
-3. Comment sont réglés les conflits internes ? <br/>
-(Arbitrage, négociation, duel, choix des anciens) <br/><br/>
-
-
-4. Qu’est-ce qui fait perdre du pouvoir ou du statut ? <br/>
-(trahison, echec mascarade, désobéissance…) <br/><br/>
-
-
-
-
-5. Comment le clan traite-t-il les faible et les problématique ? <br/>
-(Exclusion, punition, rééducation, soutien) <br/><br/>
-</div></div>
-<div class="colonnes"><div class="encadre" id="histoire"><div class="encadre-titre">Histoire</div>
-
-Connaitre l'histoire de ses prédécésseurs, c'est comprendre les forces qui ont façonné le clan. Qu'est ce que vous savez sur cette histoire ?
-<br/><br/>
-<b>Pour vous aider :</b><br/><br/>
-
-
-1. Quel est l’événement fondateur du clan ? <br/>
-(Une guerre, une trahison, une alliance) <br/><br/>
-
-
-2. Quel est votre plus grand moment de gloire ? <br/>
-(Contrôle d’un territoire, élimination d’un rival, survie face à une menace) <br/><br/>
-
-
-5. Quelle est votre plus grande défaite ?<br/>
-(Notre ancien primogène nous à trahis, nous avons abandonné des alliés historique.) <br/><br/>
-
-
-4. Quel secret le clan préfère-t-il cacher ? <br/>
-(Un mensonge fondateur, une origine honteuse) <br/><br/>
-</div><div class="encadre" id="recrutement"><div class="encadre-titre">Recrutement</div>
-
-
-
-Les étreintes sont rare, et les vampires sont sélectifs. Jusqu'à présent, quel type d'individu est-ce que votre clan à étreint ? <br/><br/>
-<b>Pour vous aider :</b><br/><br/>
-
-
-1. Quels types de mortels sont considérés comme des candidats légitimes ? <br/>
-(Professions, qualités, origines, statuts sociaux) <br/><br/>
-
-
-2. Quels profils sont systématiquement refusés ou méprisés ? <br/>
-(Certaines classes sociales, comportements, idéologies, faiblesses) <br/><br/>
-
-
-3. Quelle preuve/action est nécessaire pour être étreint ? <br/>
-(Est-ce qu'il y a un test, un nombre d'année, un service à rendre . .  .) <br/><br/>
-</div></div>
+<div class="colonnes">
+<div class="encadre" id="histoire">
+<div class="encadre-titre">Histoire</div>
+<p>Connaitre l'histoire de ses prédécésseurs, c'est comprendre les forces qui ont façonné le clan. Qu'est ce que vous savez sur cette histoire ?</p>
+<p><b>Pour vous aider :</b></p>
+<ol class="questions">
+<li><b>Quel est l’événement fondateur du clan ?</b><div class="aide">(Une guerre, une trahison, une alliance)</div></li>
+<li><b>Quel est votre plus grand moment de gloire ?</b><div class="aide">(Contrôle d’un territoire, élimination d’un rival, survie face à une menace)</div></li>
+<li><b>Quelle est votre plus grande défaite ?</b><div class="aide">(Notre ancien primogène nous à trahis, nous avons abandonné des alliés historique.)</div></li>
+<li><b>Quel secret le clan préfère-t-il cacher ?</b><div class="aide">(Un mensonge fondateur, une origine honteuse)</div></li>
+</ol>
+</div>
+<div class="encadre" id="recrutement">
+<div class="encadre-titre">Recrutement</div>
+<p>Les étreintes sont rare, et les vampires sont sélectifs. Jusqu'à présent, quel type d'individu est-ce que votre clan à étreint ?</p>
+<p><b>Pour vous aider :</b></p>
+<ol class="questions">
+<li><b>Quels types de mortels sont considérés comme des candidats légitimes ?</b><div class="aide">(Professions, qualités, origines, statuts sociaux)</div></li>
+<li><b>Quels profils sont systématiquement refusés ou méprisés ?</b><div class="aide">(Certaines classes sociales, comportements, idéologies, faiblesses)</div></li>
+<li><b>Quelle preuve/action est nécessaire pour être étreint ?</b><div class="aide">(Est-ce qu'il y a un test, un nombre d'année, un service à rendre . .  .)</div></li>
+</ol>
+</div>
+</div>
 
 <h2>Politique</h2>
+<p>La manière dont un clan perçoit le monde extérieur définit autant ses alliés que ses ennemis, et influence directement ses décisions politiques et ses engagements de ressources.</p>
+<p><b>Pour vous aider, définissez la vision du clan sur ces points :</b></p>
+<ol>
+<li>Les humains</li>
+<li>Les ghoules</li>
+<li>Les sang-clairs</li>
+<li>Détaillez les grand clan (avec primogène)</li>
+<li>Les clans mineurs et indépendants</li>
+<li>Le Sabbat</li>
+<li>Les Anarchs</li>
+</ol>
 
-La manière dont un clan perçoit le monde extérieur définit autant ses alliés que ses ennemis, et influence directement ses décisions politiques et ses engagements de ressources. 
-<br/>
-<br/>
-<b>Pour vous aider, définissez la vision du clan sur ces points :</b>
-<br/>
-<br/>
-
-
-
-1. Les humains 
-<br/>
-
-2. Les ghoules 
-<br/>
-
-3. Les sang-clairs 
-<br/>
-
-4. Détaillez les grand clan (avec primogène) 
-<br/>
-
-5. Les clans mineurs et indépendants 
-<br/>
-
-6. Le Sabbat 
-<br/>
-
-7. Les Anarchs 
-<br/>
 <h2>Vie quotidienne</h2>
-
-
-
-1. Type de domaine (bas fond, immeuble, commercial) 
-<br/>
-
-2. Lieu de rencontre (l'adresse de votre/vos point de réunions) 
-<br/>
-
-3. Type de reunion (bar, table ronde, formel ect) 
-<br/>
+<ol>
+<li>Type de domaine (bas fond, immeuble, commercial)</li>
+<li>Lieu de rencontre (l'adresse de votre/vos point de réunions)</li>
+<li>Type de reunion (bar, table ronde, formel ect)</li>
+</ol>
 </div>
 </div>
 </main>
