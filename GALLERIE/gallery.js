@@ -83,9 +83,9 @@ const characters={
     ],
 
     ventrue:[
-         ["chae-yeong","Chae-yeoung","chae"]
-          ["Ji-woo","ji-woo"],
-       ["Zaya","zaya"],
+        ["chae-yeong","Chae-yeong","chae"],
+        ["ji-woo","Ji-woo"],
+        ["zaya","Zaya"],
         ["louiza","Louiza"],
         ["dimitri","Dimitri"],
         ["arslan","Arslan","kerem"],

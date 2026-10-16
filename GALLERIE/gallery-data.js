@@ -1,5 +1,41 @@
 const galleryData=[
 
+   {
+src:"dessin/sun/strenght.png",
+alt:"Strenght.",
+tags:["sunny","canon","tarik","tremere"],
+  desc:"Strenght."
+},
+
+   {
+src:"dessin/ashita/arslan_halloween.jpg",
+alt:"Louiza.",
+tags:["ashita","canon","kerem","ventrue"],
+  desc:"Arslan Halloween."
+},
+
+    {
+src:"dessin/sun/magician.png",
+alt:"Mariko.",
+tags:["sunny","canon","esen","tremere"],
+  desc:"I Magician."
+},
+
+
+    {
+src:"dessin/sun/louiza.png",
+alt:"Louiza.",
+tags:["sunny","canon","louisa","ventrue"],
+  desc:"Run bunny, run."
+},
+
+    {
+src:"dessin/ashita/dimitri_hermes.jpg",
+alt:"Hermes.",
+tags:["ashita","canon","dimitri","ventrue"],
+  desc:"Dimitri Halloween."
+},
+
     {
 src:"dessin/sun/MARIKO.png",
 alt:"Mariko.",
