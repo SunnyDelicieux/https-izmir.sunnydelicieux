@@ -9,7 +9,16 @@
 <link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
 <script defer="" src="/WIKI/nav.js"></script>
 <script defer="" src="/DATA/search.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<style>
+/* le cadre intégré prend toute la largeur de la feuille */
+#contents iframe.plein-cadre {
+  width: 100%;
+  height: min(80vh, 720px);
+  margin: 0.4em 0 1em;
+  background: var(--wiki-box);
+  border-radius: var(--iz-radius);
+}
+</style>
 </head>
 <body>
 <header-component></header-component>
@@ -18,7 +27,7 @@
 <h1>Relations</h1>
 <div id="toc"></div>
 <div id="contents">
-<iframe frameborder="0" height="600" src="https://embed.kumu.io/da71e3a38c65cab1e7d1dd72cef44bd7" width="600"></iframe>
+<iframe class="plein-cadre" title="Relations" frameborder="0" height="600" src="https://embed.kumu.io/da71e3a38c65cab1e7d1dd72cef44bd7" width="600"></iframe>
 </div>
 <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
 <div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>

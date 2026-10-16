@@ -9,7 +9,21 @@
 <link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
 <script defer="" src="/WIKI/nav.js"></script>
 <script defer="" src="/DATA/search.js"></script>
-  <script src="/DATA/search.js" defer></script>
+<style>
+/* tâches terminées : coche à la place de la puce */
+ul.fait {
+  list-style: none;
+  padding-left: 0.2em;
+}
+ul.fait li {
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+}
+ul.fait li::before {
+  content: "✓ ";
+  color: var(--wiki-accent);
+}
+</style>
 </head>
 <body>
 <header-component></header-component>
@@ -18,63 +32,41 @@
 <h1>Roadmap</h1>
 <div id="toc"></div>
 <div id="contents">
-<h2>Roadmap -</h2>
+<h2>Avancement</h2>
+<div class="colonnes trois">
+<div class="encadre">
+<div class="encadre-titre">En cours</div>
+<ul>
+<li>Ecrire le guide Alchemy [Pas commencé]</li>
+<li>Mettre en place les role et modération</li>
+<li>Créer le discord [délégué à quelqu'un d'autre]</li>
+</ul>
+</div>
+<div class="encadre">
+<div class="encadre-titre">À venir</div>
+<ul>
+<li>Faire le guide workadventure</li>
+<li>Faire la frise chronologie de la ville</li>
+<li>Faire la fiche de présentation du prince</li>
+<li>Faire les fiches exemple de Primo Limier Ghoule</li>
+</ul>
+</div>
+<div class="encadre">
+<div class="encadre-titre">Terminé</div>
+<ul class="fait">
+<li>Mettre en place un système avancé de background et ressources</li>
+<li>Mettre en place le guide de création de clan</li>
+<li>Faire le guide de création de PNJ</li>
+<li>Dévelloper la holding et les entreprises</li>
+<li>Méchanique de pression</li>
+<li>Créer la fiche de ligne et de voile</li>
+<li>Faire la carte de création des objectifs</li>
+</ul>
+</div>
+</div>
 
-                - Ecrire le guide Alchemy [Pas commencé] 
-<br/>
-
-                - Mettre en place les role et modération
-<br/>
-
-                - Créer le discord [délégué à quelqu'un d'autre]
-                
-                
-<br/>
-<br/>
-<br/>
-<h3>FUTURE roadmap -</h3>
-
-                 - Faire le guide workadventure 
-<br/>
-
-                 - Faire la frise chronologie de la ville
-<br/>
-
-                 - Faire la fiche de présentation du prince
-<br/>
-
-                 - Faire les fiches exemple de Primo Limier Ghoule
-
-                
-<br/>
-<br/>
-<br/>
-<h3>TERMINE -</h3>
-
-                 - Mettre en place un système avancé de background et ressources
-<br/>
-
-                 - Mettre en place le guide de création de clan
-<br/>
-
-                 - Faire le guide de création de PNJ  
-<br/>
-
-                 - Dévelloper la holding et les entreprises  
-<br/>
-
-                 - Méchanique de pression  
-<br/>
-
-                 - Créer la fiche de ligne et de voile
-<br/>
-
-                 - Faire la carte de création des objectifs 
-<br/>
-<h2>Note en tas -</h2>
-
-                Il faut rapidement mettre en place une timeline pour la création de personnage et de clan, probablement d'abords sous la fomre d'un graphique basique, puis ajouter les info que chaque clan me donera au fur et a mesure. 
-<br/>
+<h2>Note en tas</h2>
+<p>Il faut rapidement mettre en place une timeline pour la création de personnage et de clan, probablement d'abords sous la fomre d'un graphique basique, puis ajouter les info que chaque clan me donera au fur et a mesure.</p>
 </div>
 <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
 <div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
