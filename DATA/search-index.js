@@ -39,10 +39,9 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/CREATION",
   "url": "/SITE/CREATION/clan.html",
   "headings": [
-   "Identité",
-   "Structure de pouvoir",
-   "Histoire",
-   "Recrutement",
+   "Clan",
+   "FEUILLE DE CREATION",
+   "La CULTURE DE CLAN",
    "Politique",
    "Vie quotidienne"
   ]
@@ -52,8 +51,8 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/CREATION",
   "url": "/SITE/CREATION/creaclan.html",
   "headings": [
+   "Le clan",
    "Creer son clan",
-   "Une histoire partagée",
    "Votre entourage",
    "Les ressources du clan",
    "Répartition des territoires",
@@ -67,8 +66,6 @@ window.IZMIR_SEARCH_INDEX = [
   "headings": [
    "Créer son personnage",
    "1 Choisir son clan",
-   "2 Choisir son role",
-   "3 Ses objectifs",
    "5 Concept de personnage",
    "6 Créer sa fiche",
    "7 Les PNJ"
@@ -79,6 +76,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/CREATION",
   "url": "/SITE/CREATION/groupes.html",
   "headings": [
+   "Les groupes",
    "La vie des primogènes",
    "Fiche de personnage",
    "Le combat des limiers",
@@ -90,6 +88,7 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/CREATION",
   "url": "/SITE/CREATION/objectif.html",
   "headings": [
+   "Les objectifs",
    "Une toile d'objectifs",
    "Les objectifs à court terme",
    "Les objectifs à long terme",
@@ -102,52 +101,72 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/CREATION",
   "url": "/SITE/CREATION/pnj.html",
   "headings": [
+   "Les relations sociales entre Pj",
    "Les Attaches",
    "Les PNJ de la camarilla",
-   "Les autres PNJ"
+   "Les autres PNJ",
+   "template PNJ"
   ]
  },
  {
   "name": "faq",
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/faq.html",
-  "headings": []
+  "headings": [
+   "questions fréquentes"
+  ]
  },
  {
   "name": "lignes_et_voiles",
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/lignes_et_voiles.html",
-  "headings": []
+  "headings": [
+   "lignes & voiles — c'est quoi ?",
+   "Trigger de la campagne",
+   "la consent sheet individuelle"
+  ]
  },
  {
   "name": "roadmap",
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/roadmap.html",
-  "headings": []
+  "headings": [
+   "Roadmap",
+   "Roadmap -",
+   "Note en tas -"
+  ]
  },
  {
   "name": "alchemy",
   "folder": "SITE/OUTILS",
   "url": "/SITE/OUTILS/alchemy.html",
-  "headings": []
+  "headings": [
+   "Alchemy",
+   "Guide utilisation alchemy"
+  ]
  },
  {
   "name": "carte",
   "folder": "SITE/OUTILS",
   "url": "/SITE/OUTILS/carte.html",
-  "headings": []
+  "headings": [
+   "La carte d'İzmir"
+  ]
  },
  {
   "name": "relation",
   "folder": "SITE/OUTILS",
   "url": "/SITE/OUTILS/relation.html",
-  "headings": []
+  "headings": [
+   "Relations"
+  ]
  },
  {
   "name": "entreprises",
   "folder": "SITE/SYSTEME",
   "url": "/SITE/SYSTEME/entreprises.html",
   "headings": [
+   "Entreprises",
    "Wayfarer Holdings",
    "Les entreprises de clan",
    "Les Ghoules et la gestion des entreprises",
@@ -158,13 +177,21 @@ window.IZMIR_SEARCH_INDEX = [
   "name": "factions",
   "folder": "SITE/SYSTEME",
   "url": "/SITE/SYSTEME/factions.html",
-  "headings": []
+  "headings": [
+   "Système caché des factions",
+   "Pression, Cohésion, Ressources",
+   "Engagement et résolution",
+   "Effets et dynamique",
+   "Synthèse en jeu"
+  ]
  },
  {
   "name": "ressource",
   "folder": "SITE/SYSTEME",
   "url": "/SITE/SYSTEME/ressource.html",
   "headings": [
+   "Ressources",
+   "exemple de ressource",
    "Les ressources du clan",
    "Engager une ressource",
    "Ressources engagées et ressources disponibles",
@@ -734,7 +761,10 @@ window.IZMIR_SEARCH_INDEX = [
   "name": "accueil",
   "folder": "",
   "url": "/accueil.html",
-  "headings": []
+  "headings": [
+   "İzmir by Night",
+   "une campagne à 9 joueurs ?"
+  ]
  },
  {
   "name": "index",
