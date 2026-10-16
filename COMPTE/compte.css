@@ -400,6 +400,23 @@ html.lx-lock, html.lx-lock body { overflow: hidden; }
 .sent-meta { font-size: 10px; }
 .row-btns { display: flex; gap: 6px; flex-wrap: wrap; }
 
+/* ── Vue joueur (COMPTE/vue-joueur.html) ── */
+.vj-counts { margin-top: 8px; }
+.vj-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--iz-border-strong);
+}
+.vj-row:last-child { border-bottom: none; }
+.vj-date { color: var(--iz-muted); font-size: 10px; }
+.vj-title { font: italic 13px georgia, serif; color: var(--iz-text); }
+.vj-meta { font-size: 10px; }
+.vj-why { white-space: nowrap; }
+@media (max-width: 520px) { .vj-row { grid-template-columns: 1fr; gap: 2px; } }
+
 /* ── Jour ── */
 body.light .page-title,
 body.light .ev-year,
@@ -454,3 +471,6 @@ body.light .page-card { background: #e8d0b4; border-color: #c8906a; }
 body.light .page-keep { color: #7a5a3e; }
 body.light .sent-thumb { background: #f0e0cc; border-color: #c8906a; }
 body.light .share-label, body.light .ev-author { color: #7a5a3e; }
+body.light .vj-row { border-bottom-color: #c8906a; }
+body.light .vj-title { color: #2a1a0e; }
+body.light .vj-date { color: #7a5a3e; }

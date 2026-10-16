@@ -32,8 +32,8 @@ as $$
   ) x
 $$;
 
--- tags du joueur connecté ("security definer" : lit profiles sans passer par ses règles)
-create or replace function public.izmir_my_tags()
+-- tags d'un compte ("security definer" : lit profiles sans passer par ses règles)
+create or replace function public.izmir_tags_for(uid uuid)
 returns text[]
 language sql stable security definer
 set search_path = public
@@ -42,9 +42,40 @@ as $$
     select array_remove(array[lower(p.username), lower(p.clan), lower(p.role)], null)
            || public.izmir_as_tags(to_jsonb(p.extra_tags))
     from public.profiles p
-    where p.user_id = auth.uid()
+    where p.user_id = uid
     limit 1
   ), '{}')
+$$;
+
+-- tags du joueur connecté
+create or replace function public.izmir_my_tags()
+returns text[]
+language sql stable security definer
+set search_path = public
+as $$
+  select public.izmir_tags_for(auth.uid())
+$$;
+
+-- LES deux règles de visibilité. Utilisées à la fois par la sécurité (RLS) et par la page
+-- "vue joueur" de l'admin : ce que la page montre est donc exactement ce que le joueur reçoit.
+create or replace function public.izmir_event_visible_to(perms text[], author uuid, uid uuid)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce(cardinality(perms), 0) = 0
+      or 'public' = any(perms)
+      or perms && public.izmir_tags_for(uid)
+      or (uid is not null and author = uid)
+$$;
+
+create or replace function public.izmir_handout_visible_to(tags text[], author uuid, uid uuid)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce(tags && public.izmir_tags_for(uid), false)
+      or (uid is not null and author = uid)
 $$;
 
 create or replace function public.izmir_is_admin()
@@ -94,10 +125,7 @@ create policy "izmir: voir les evenements autorises"
 on public."Calendar" for select
 to anon, authenticated
 using (
-  cardinality(public.izmir_as_tags(to_jsonb(permissions))) = 0
-  or 'public' = any(public.izmir_as_tags(to_jsonb(permissions)))
-  or public.izmir_as_tags(to_jsonb(permissions)) && public.izmir_my_tags()
-  or author = auth.uid()
+  public.izmir_event_visible_to(public.izmir_as_tags(to_jsonb(permissions)), author, auth.uid())
   or public.izmir_is_admin()
 );
 -- Création / modification par les joueurs : section 7.
@@ -419,8 +447,7 @@ create policy "izmir: lire ses lettres"
 on public.handouts for select
 to authenticated
 using (
-  public.izmir_as_tags(to_jsonb(tags)) && public.izmir_my_tags()
-  or author = auth.uid()
+  public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(tags)), author, auth.uid())
   or public.izmir_is_admin()
 );
 
@@ -458,7 +485,7 @@ as $$
   select exists (
     select 1 from public.handouts h
     where h.path = object_path
-      and (public.izmir_as_tags(to_jsonb(h.tags)) && public.izmir_my_tags() or h.author = auth.uid())
+      and public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(h.tags)), h.author, auth.uid())
   )
 $$;
 
@@ -480,3 +507,37 @@ update storage.buckets
 set file_size_limit = 10485760,
     allowed_mime_types = array['application/pdf', 'image/png', 'image/jpeg', 'image/webp', 'image/gif']
 where id = 'handouts';
+
+
+
+-- ── 8. Vue joueur (page admin COMPTE/vue-joueur.html) ──────────────────────
+-- Tout ce qu'un joueur donné peut voir : événements, handouts, fichiers rangés par dossier.
+-- Calculé avec les mêmes fonctions que les règles de sécurité. Réservé à l'admin.
+
+create or replace function public.izmir_vue_joueur(target uuid)
+returns table (genre text, id bigint, titre text, jour date, tags text[], auteur text, chemin text)
+language sql stable security definer
+set search_path = public
+as $$
+  with cible as (
+    select coalesce((select p.is_admin from public.profiles p where p.user_id = target limit 1), false) as admin
+  )
+  select 'evenement', c.id, c.titre, c.date::date, public.izmir_as_tags(to_jsonb(c.permissions)), c.author_name, null
+  from public."Calendar" c, cible
+  where public.izmir_is_admin()
+    and (cible.admin or public.izmir_event_visible_to(public.izmir_as_tags(to_jsonb(c.permissions)), c.author, target))
+  union all
+  select 'handout', h.id, h.titre, h.created_at::date, h.tags, h.author_name, h.path
+  from public.handouts h, cible
+  where public.izmir_is_admin()
+    and (cible.admin or public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(h.tags)), h.author, target))
+  union all
+  select 'fichier', null, o.name, o.created_at::date, array[lower((storage.foldername(o.name))[1])], null, o.name
+  from storage.objects o, cible
+  where public.izmir_is_admin()
+    and o.bucket_id = 'handouts'
+    and (storage.foldername(o.name))[1] not in ('lettres', 'joueurs')
+    and (cible.admin or lower((storage.foldername(o.name))[1]) = any(public.izmir_tags_for(target)))
+$$;
+revoke execute on function public.izmir_vue_joueur(uuid) from public, anon;
+grant execute on function public.izmir_vue_joueur(uuid) to authenticated;

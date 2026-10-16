@@ -60,3 +60,9 @@ Les liens donnés aux joueurs expirent au bout d'une heure.
 
 Même sans le mail, les signalements sont visibles sur `/COMPTE/signaler.html` quand tu te
 connectes avec le compte admin : tu peux y répondre et changer leur statut.
+
+## 6. Vérifier ce que voit un joueur
+
+Menu du compte admin → **vue joueur** : choisis un joueur, la page liste tout ce que Supabase
+lui envoie (événements, handouts, fichiers) et pourquoi (« via brujah », « il en est l'auteur »…).
+Elle utilise les mêmes règles que la sécurité du site. À faire avant chaque révélation importante.

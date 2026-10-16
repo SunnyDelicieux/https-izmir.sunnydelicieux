@@ -303,7 +303,7 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
           <a href="/COMPTE/evenements.html" role="menuitem">mes événements</a>
           <a href="/COMPTE/signaler.html?page=${pageUrl}" role="menuitem">signaler une erreur</a>
           <a href="/COMPTE/coffre.html" role="menuitem">coffre-fort</a>
-          ${state.isAdmin ? '<a href="/COMPTE/handouts.html" role="menuitem">gérer les handouts</a>' : ""}
+          ${state.isAdmin ? '<a href="/COMPTE/handouts.html" role="menuitem">gérer les handouts</a><a href="/COMPTE/vue-joueur.html" role="menuitem">vue joueur</a>' : ""}
           <div class="iza-sep"></div>
           <button class="iza-item" type="button" data-logout role="menuitem">déconnexion</button>
         </div>`;
