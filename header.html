@@ -12,58 +12,80 @@
 
 <div class="navi">
     <a href="/accueil.html" data-page="izmir">Accueil</a>
+
+    <!-- chaque rubrique : des colonnes (navi-col), chacune avec un titre (navi-titre) et ses liens -->
     <div class="navi-group">
         <span class="navi-parent">Univers</span>
         <div class="navi-sub">
-            <a href="/WIKI/index.html">La ville d'Izmir</a>
-            <a href="/WIKI/autre/clan.html">Les clans</a>
-            <a href="/WIKI/autre/chrono.html">Chronologie</a>
-            <a href="/WIKI/fiche/" data-page="wiki/index.html">Personnages</a>
-            <a href="/WIKI/liste.html">Toutes les pages du wiki</a>
+            <div class="navi-col">
+                <div class="navi-titre">La ville</div>
+                <a href="/WIKI/index.html">La ville d'Izmir</a>
+                <a href="/WIKI/autre/chrono.html">Chronologie</a>
+                <a href="/SITE/OUTILS/carte.html" data-page="carte">Carte</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">Les clans</div>
+                <a href="/WIKI/autre/clan.html">Tous les clans</a>
+                <a href="/WIKI/brujah/index.html">Brujah</a>
+                <a href="/WIKI/toreador/info/index.html">Toreador</a>
+                <a href="/WIKI/tremere/index.html">Tremere</a>
+                <a href="/WIKI/ventrue/index.html">Ventrue</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">Personnages</div>
+                <a href="/WIKI/fiche/" data-page="wiki/index.html">Tous les personnages</a>
+                <a href="/SITE/OUTILS/relation.html" data-page="relation">Relations</a>
+                <a href="/WIKI/liste.html">Toutes les pages du wiki</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">Rencontres</div>
+                <a href="/INGA/" data-page="laville">Inga</a>
+                <a href="/ELYSIUM/">Nebetta (Elysium)</a>
+            </div>
         </div>
     </div>
+
     <div class="navi-group">
-        <span class="navi-parent">Rencontres</span>
+        <span class="navi-parent">Jouer</span>
         <div class="navi-sub">
-            <a href="/INGA/" data-page="laville">Inga</a>
-            <a href="/ELYSIUM/">Nebetta (Elysium)</a>
+            <div class="navi-col">
+                <div class="navi-titre">Créer son personnage</div>
+                <a href="/SITE/CREATION/creation.html" data-page="création personnage">Création de personnage</a>
+                <a href="/SITE/CREATION/creaclan.html" data-page="clan">Le clan</a>
+                <a href="/SITE/CREATION/groupes.html" data-page="groupes">Les groupes</a>
+                <a href="/SITE/CREATION/objectif.html" data-page="objectifs">Les objectifs</a>
+                <a href="/SITE/CREATION/pnj.html" data-page="pnj">Les PNJ</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">Système</div>
+                <a href="/SITE/SYSTEME/factions.html" data-page="pression">Factions</a>
+                <a href="/SITE/SYSTEME/ressource.html" data-page="ressource">Ressources</a>
+                <a href="/SITE/SYSTEME/entreprises.html" data-page="entreprises">Entreprises</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">Organisation</div>
+                <a href="/SITE/ORGANISATION/faq.html" data-page="faq">FAQ</a>
+                <a href="/SITE/ORGANISATION/lignes_et_voiles.html" data-page="lignes_et_voiles">Lignes et voiles</a>
+                <a href="/SITE/OUTILS/alchemy.html" data-page="alchemy">Alchemy</a>
+                <a href="/SITE/ORGANISATION/roadmap.html">Roadmap</a>
+            </div>
         </div>
     </div>
-    <div class="navi-group">
-        <span class="navi-parent">Création</span>
-        <div class="navi-sub">
-            <a href="/SITE/CREATION/creation.html" data-page="création personnage">Création de personnage</a>
-            <a href="/SITE/CREATION/creaclan.html" data-page="clan">Le clan</a>
-            <a href="/SITE/CREATION/groupes.html" data-page="groupes">Les groupes</a>
-            <a href="/SITE/CREATION/objectif.html" data-page="objectifs">Les objectifs</a>
-            <a href="/SITE/CREATION/pnj.html" data-page="pnj">Les PNJ</a>
-        </div>
-    </div>
-    <div class="navi-group">
-        <span class="navi-parent">Système</span>
-        <div class="navi-sub">
-            <a href="/SITE/SYSTEME/factions.html" data-page="pression">Factions</a>
-            <a href="/SITE/SYSTEME/ressource.html" data-page="ressource">Ressources</a>
-            <a href="/SITE/SYSTEME/entreprises.html" data-page="entreprises">Entreprises</a>
-        </div>
-    </div>
+
     <div class="navi-group">
         <span class="navi-parent">Outils</span>
         <div class="navi-sub">
-            <a href="/COMPTE/#calendrier" data-page="calendrier">Calendrier</a>
-            <a href="/SITE/OUTILS/carte.html" data-page="carte">Carte</a>
-            <a href="/SITE/OUTILS/relation.html" data-page="relation">Relations</a>
-            <a href="/JOURNAL/index.html">Journal</a>
-            <a href="/GALLERIE/" data-page="gallery">Galerie</a>
-        </div>
-    </div>
-    <div class="navi-group">
-        <span class="navi-parent">Organisation</span>
-        <div class="navi-sub">
-            <a href="/SITE/ORGANISATION/faq.html" data-page="faq">FAQ</a>
-            <a href="/SITE/ORGANISATION/lignes_et_voiles.html" data-page="lignes_et_voiles">Lignes et voiles</a>
-            <a href="/SITE/OUTILS/alchemy.html" data-page="alchemy">Alchemy</a>
-            <a href="/SITE/ORGANISATION/roadmap.html">Roadmap</a>
+            <div class="navi-col">
+                <div class="navi-titre">Mon espace</div>
+                <a href="/COMPTE/#calendrier" data-page="calendrier">Calendrier</a>
+                <a href="/COMPTE/#coffre">Coffre-fort</a>
+                <a href="/COMPTE/#signaler">Signaler une erreur</a>
+            </div>
+            <div class="navi-col">
+                <div class="navi-titre">À lire, à voir</div>
+                <a href="/JOURNAL/index.html">Journal</a>
+                <a href="/GALLERIE/" data-page="gallery">Galerie</a>
+            </div>
         </div>
     </div>
 </div>
