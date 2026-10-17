@@ -65,7 +65,8 @@ for path in sorted(ROOT.rglob("*.html")):
     pages.append({"name": name, "folder": folder, "url": url, "headings": headings(html)})
 
     # ajoute la barre de recherche juste avant le premier </head>
-    if SCRIPT_TAG not in html:
+    # (sauf si la page charge déjà search.js, quelle que soit l'écriture de la balise)
+    if not re.search(r"<script[^>]*src=[\"']/DATA/search\.js", html, re.IGNORECASE):
         new_html, count = re.subn(
             r"^([ \t]*)</head>",
             lambda m: f"{m.group(1)}  {SCRIPT_TAG}\n{m.group(0)}",
