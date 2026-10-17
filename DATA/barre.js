@@ -2,10 +2,11 @@
 // Le menu est repris de header.html (un seul endroit à modifier pour ajouter une page).
 // À charger juste après <body> : <script src="/DATA/barre.js"></script>
 (function () {
+  if (document.getElementById("iz-barre")) return;
   const CSS = `
 #iz-barre {
   position: sticky; top: 0; z-index: 9000;
-  margin: -32px -32px 24px;
+  margin: 0 0 24px;
   background: rgba(20, 12, 4, 0.97);
   border-bottom: 1px dashed #4a3018;
   font: italic 14px Georgia, serif; letter-spacing: 0.5px;
@@ -30,6 +31,11 @@
   content: "·"; display: inline-block; margin: 0 2px 0 -2px; color: #5a3c1c; font-style: normal; pointer-events: none;
 }
 #iz-barre, #iz-barre * { font-family: Georgia, serif; }
+#iz-barre .izb-menu > a, #iz-barre .izb-menu .navi-parent, #iz-barre .iza-btn { font-size: 14px; line-height: 1.4; }
+#iz-barre .izb-menu .navi-sub a { font-size: 13.5px; line-height: 1.4; }
+#iz-barre .izb-titre { font-size: 15px; line-height: 1.4; }
+#iz-barre .izs-input { font-size: 12px; line-height: 1.3; height: auto; }
+body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background: #fbf3e8; color: #2a1a0e; border-color: #c8906a; }
 /* annule le style « bouton » du menu du bandeau (DATA/izmir.css) */
 #iz-barre .izb-menu > a, #iz-barre .izb-menu .navi-parent,
 #iz-barre .izb-menu .navi-group:hover .navi-parent, #iz-barre .izb-menu .navi-group:has(.active) .navi-parent {
@@ -67,7 +73,9 @@
 
 /* le menu en boutons du bandeau et le bouton jour/nuit de la colonne : remplacés par la barre */
 body.avec-barre #site-header .navi,
-body.avec-barre .sidebar #theme-toggle { display: none; }
+body.avec-barre .sidebar #theme-toggle,
+body.avec-barre > header:has(h1),
+body.avec-barre > footer:has(a[href*="fiche/index"]) { display: none; }
 
 body.light #iz-barre { background: rgba(245, 232, 215, 0.97); border-bottom-color: #c8906a; }
 body.light .izb-titre { color: #2a1a0e; }
@@ -79,11 +87,12 @@ body.light .izb-menu .navi-sub { background: #f0e0cc; border-color: #c8906a; }
 body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
 
 @media (max-width: 860px) {
-  #iz-barre { margin: -32px -32px 18px; padding: 0 12px; }
+  #iz-barre { padding: 0 12px; }
   .izb-ligne { flex-wrap: wrap; gap: 6px 12px; }
   .izb-titre { order: 1; }
   .izb-outils { order: 2; margin-left: auto; }
   .izb-menu { order: 3; flex-basis: 100%; }
+  .izb-menu > * + *::before { display: none; }
   #iz-barre .izs-box { width: 120px; flex-basis: 120px; }
   /* au doigt : la rubrique s'ouvre au toucher */
   .izb-menu .navi-group:hover .navi-sub { display: none; }
@@ -110,6 +119,27 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
       </div>
     </div>`;
   document.body.prepend(barre);
+
+  // recherche ou compte déjà posés en haut à droite (chargés avant la barre) : on les range dedans
+  const ancienne = [...document.querySelectorAll("#iz-topbar")].find((x) => !barre.contains(x));
+  if (ancienne) {
+    ancienne.querySelectorAll(".izs-box").forEach((x) => barre.querySelector("#iz-topbar").appendChild(x));
+    ancienne.querySelectorAll(".iza-box").forEach((x) => {
+      x.className = x.className.replace(/iza-box--\w+/g, "") + " iza-box--barre";
+      barre.querySelector("#iz-barre-compte").appendChild(x);
+    });
+    ancienne.remove();
+  }
+
+  // la barre touche les bords de la fenêtre, quelle que soit la marge de la page
+  const caler = () => {
+    const cs = getComputedStyle(document.body);
+    barre.style.marginTop = `-${cs.paddingTop}`;
+    barre.style.marginLeft = `-${cs.paddingLeft}`;
+    barre.style.marginRight = `-${cs.paddingRight}`;
+  };
+  caler();
+  addEventListener("resize", caler);
 
   // jour / nuit
   const theme = barre.querySelector(".izb-theme");

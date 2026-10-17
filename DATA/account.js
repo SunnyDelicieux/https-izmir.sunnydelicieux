@@ -297,7 +297,7 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
     if (host) {
       // le menu arrive un peu après (chargé à part) : en attendant, on n'affiche rien
       const obs = new MutationObserver(() => { if (tryPlace()) obs.disconnect(); });
-      obs.observe(host, { childList: true, subtree: true });
+      obs.observe(document.body, { childList: true, subtree: true });
       // menu introuvable au bout de 3 s : retour en haut à droite
       setTimeout(() => { if (!box.isConnected) { obs.disconnect(); topbar().prepend(box); } }, 3000);
       return;
