@@ -159,8 +159,13 @@ a:hover { color: var(--iz-accent-hover); }
 }
 
 .navi-parent::after {
-  content: " ▾";
-  font-size: 8px;
+  content: "▾";
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 9px;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: middle;
   color: var(--iz-accent-dim);
 }
 

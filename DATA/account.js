@@ -137,7 +137,7 @@
   font: italic 12px Georgia, serif; letter-spacing: 0.5px; text-align: left;
   white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;
 }
-.iza-btn::after { content: " ▾"; font-size: 8px; color: #7a5028; }
+.iza-btn::after { content: "▾"; display: inline-block; margin-left: 5px; font-size: 9px; font-style: normal; line-height: 1; vertical-align: middle; color: #7a5028; }
 .iza-box:hover .iza-btn, .iza-box.iza-open .iza-btn, .iza-btn:focus-visible { border-color: #c09050; color: #d4aa72; outline: none; }
 .iza-panel {
   display: none; position: absolute; top: 100%; right: 0; margin-top: 2px;
