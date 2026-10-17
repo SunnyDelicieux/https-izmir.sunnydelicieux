@@ -2,80 +2,101 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Character Gallery</title>
-
-    <link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-    <link href="style.css" rel="stylesheet" type="text/css" media="all">
-
-    <script src="script.js"></script>
-    <script src="/WIKI/nav.js" type="text/javascript" defer></script>
-
-    <style>
-        html {
-            background: var(--main-bg-color);
-            background: linear-gradient(
-                180deg,
-                rgb(32, 16, 1) 0%,
-                rgb(63, 36, 6) 100%
-            );
-            background-attachment: fixed;
-        }
-
-        body {
-            background-attachment: fixed;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des personnages</title>
+  <link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
+  <link rel="stylesheet" href="/WIKI/wikitemplate.css">
+  <script src="/WIKI/nav.js" defer></script>
   <script src="/DATA/search.js" defer></script>
+  <script src="script.js"></script>
+  <style>
+    /* grille des fiches de personnages */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 0.6em 0 1.4em;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      color: inherit;
+      text-decoration: none;
+      background: var(--wiki-box);
+      border: 1px solid var(--wiki-line);
+      border-radius: var(--iz-radius);
+      transition: border-color .2s, transform .2s;
+    }
+    a.card:hover {
+      color: inherit;
+      border-color: var(--wiki-accent);
+      transform: translateY(-2px);
+    }
+    .card .icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: var(--iz-radius);
+      image-rendering: pixelated;
+    }
+    .card .content { flex: 1; min-width: 0; }
+    .card h5 {
+      margin: 0;
+      color: var(--wiki-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    a.card h5 { color: var(--wiki-accent); }
+    .card .content p {
+      margin: 2px 0 0;
+      color: var(--wiki-muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    .liens-fiche { display: flex; flex-wrap: wrap; gap: 10px; }
+    @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) {
+      .card { gap: 8px; padding: 6px 8px; }
+      .card .icon { width: 34px; height: 34px; }
+      .card h5 { font-size: 13px; }
+    }
+    @media (max-width: 340px) { .card-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <a href="/WIKI/index.html">
-            <h1>Izmir Character Build</h1>
-        </a>
-    </header>
+<header-component></header-component>
 
-    <main>
+<main>
+<div id="container">
 
-        <h2 class="character-name">
-            Liste des personnages
-        </h2>
+  <h1>Liste des personnages</h1>
 
-        <p>
-            La page complète des PNJ de la campagne. Ce sont tous ceux qui étaient
-            déjà présents en ville au début de l'histoire et que vos personnages
-            connaissent au moins de nom, ou ceux qui ont été rencontrés en jeu.
-            <br><br>
-            Pour la page de création de PNJ, référez-vous à
-            <a href="/SITE/CREATION/pnj.html">
-                cette page.
-            </a>
-        </p>
+  <p class="chapeau">La page complète des PNJ de la campagne. Ce sont tous ceux qui étaient déjà présents en ville au début de l'histoire et que vos personnages connaissent au moins de nom, ou ceux qui ont été rencontrés en jeu.</p>
 
-        <a href="#" onclick="pageAleatoire(); return false;">
-            Aller sur une page de personnage aléatoire
-        </a>
+  <p>Pour la page de création de PNJ, référez-vous à <a href="/SITE/CREATION/pnj.html">cette page.</a></p>
 
-        <br><br>
+  <p class="liens-fiche">
+    <a class="lien-doc" href="#" onclick="pageAleatoire(); return false;">Aller sur une page de personnage aléatoire</a>
+    <a class="lien-doc" href="/WIKI/index.html">Retourner sur le wiki général</a>
+  </p>
 
-        <a href="/WIKI/index.html">
-            Retourner sur le wiki général
-        </a>
+  <div id="toc"></div>
+
+  <div id="contents">
 
          <!-- CAMARILLA -->
 
-        <section id="camarilla">
-
-            <h3 class="purple">Dans la Camarilla</h3>
+        <h2 id="camarilla">Dans la Camarilla</h2>
 
             <!-- TOREADOR -->
 
-           <section class="status pinned">
-                <summary>Toreador</summary>
+           <h3>Toreador</h3>
 
                 <div class="card-grid">
 
@@ -144,12 +165,10 @@
                     </a>
 
                 </div>
-            </section>
 
             <!-- TREMERE -->
 
-            <section class="status pinned">
-              <summary>Tremere</summary>
+            <h3>Tremere</h3>
 
                 <div class="card-grid">
 
@@ -218,12 +237,10 @@
                     </a>
 
                 </div>
-            </section>
 
             <!-- VENTRUE -->
 
-            <section class="status pinned">
-                 <summary>Ventrue</summary>
+            <h3>Ventrue</h3>
 
                 <div class="card-grid">
 
@@ -300,12 +317,10 @@
                     </a>
 
                 </div>
-            </section>
 
             <!-- BRUJAH -->
 
-            <section class="status pinned">
-                 <summary>Brujah</summary>
+            <h3>Brujah</h3>
 
                 <div class="card-grid">
 
@@ -374,12 +389,10 @@
                     </a>
 
                 </div>
-            </section>
 
             <!-- AUTRES -->
 
-            <section class="status pinned">
-                 <summary>Autres</summary>
+            <h3>Autres</h3>
 
                 <div class="card-grid">
 
@@ -448,17 +461,11 @@
                     </a>
 
                 </div>
-            </section>
-
-        </section>
 
         <!-- HUMAINS -->
-        <section id="humains">
+        <h2 id="humains">Humains</h2>
 
-            <h3 class="purple">Humains</h3>
-
-            <section class="status pinned">
-                <summary>Ghoules</summary>
+            <h3>Ghoules</h3>
 
                 <div class="card-grid">
 
@@ -503,20 +510,14 @@
                     </a>
 
                 </div>
-            </section>
-
-        </section>
 
          <!-- AUTRES FACTIONSEEH -->
 
-        <section id="ennemis">
-
-            <h3 class="purple">Factions ennemies</h3>
+        <h2 id="ennemis">Factions ennemies</h2>
 
             <!-- ANARCHS -->
 
-            <section class="status pinned">
-                 <summary>Anarchs</summary>
+            <h3>Anarchs</h3>
 
                 <div class="card-grid">
 
@@ -577,21 +578,15 @@
                     </div>
 
                 </div>
-            </section>
 
             <!-- SABBAT -->
 
-            <section class="status pinned">
-                 <summary>Sabbat</summary>
+            <h3>Sabbat</h3>
 
                 <div class="card-grid">
 
                     <div class="card">
-                        <img
-                            src="https://i.pinimg.com/736x/a7/7f/3b/a77f3b0b96c31603a4dee2fa85f4e22c.jpg"
-                            class="icon"
-                            alt="Le ductus"
-                        >
+                        <img src="https://i.pinimg.com/736x/a7/7f/3b/a77f3b0b96c31603a4dee2fa85f4e22c.jpg" class="icon" alt="Le ductus">
                         <div class="content">
                             <h5>"Le ductus"</h5>
                             <p>L'infante de Scilla</p>
@@ -605,12 +600,10 @@
                     </div>
 
                 </div>
-            </section>
 
             <!-- SETITES -->
 
-            <section class="status pinned">
-                 <summary>Setites</summary>
+            <h3>Setites</h3>
 
                 <div class="card-grid">
 
@@ -621,22 +614,16 @@
                     </div>
 
                 </div>
-            </section>
-
-        </section>
 
         <!-- =========================
              ABSENTS
         ========================== -->
 
-        <section id="absents">
-
-            <h3 class="purple">Absents</h3>
+        <h2 id="absents">Absents</h2>
 
             <!-- MORT FINALE -->
 
-            <section class="status pinned">
-                 <summary>Mort finale</summary>
+            <h3>Mort finale</h3>
 
                 <div class="card-grid">
 
@@ -676,12 +663,10 @@
                     </div>
 
                 </div>
-            </section>
 
             <!-- A QUITTÉ LA VILLE -->
 
-            <section class="status pinned">
-                <summary>A quitté la ville</summary>
+            <h3>A quitté la ville</h3>
 
                 <div class="card-grid">
 
@@ -695,22 +680,11 @@
                     </div>
 
                 </div>
-            </section>
 
-        </section>
+  </div>
 
-    </main>
-
-    <hr>
-
-    <nav>
-        <a href="/WIKI/index.html">[Izmir by Night]</a>
-    </nav>
-
-    <footer>
-        © 2026 [Izmir by Night]
-    </footer>
-
+</div>
+</main>
+<footer id="footer"></footer>
 </body>
 </html>
-
