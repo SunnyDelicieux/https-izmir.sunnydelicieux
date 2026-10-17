@@ -19,6 +19,8 @@
   flex: none; color: #e8dfc8; text-decoration: none; letter-spacing: 1.5px; font-size: 15px;
 }
 .izb-titre:hover { color: #d4aa72; }
+.izb-titre { display: flex; align-items: center; gap: 8px; }
+.izb-logo { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; flex: none; }
 .izb-menu { display: flex; align-items: center; flex-wrap: wrap; gap: 0; flex: 1; min-width: 0; }
 .izb-menu > a, .izb-menu .navi-parent {
   display: block; padding: 12px 9px; color: #c8b898; text-decoration: none; cursor: pointer;
@@ -105,7 +107,10 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
   .izb-outils { order: 2; margin-left: auto; }
   .izb-menu { order: 3; flex-basis: 100%; }
   .izb-menu > * + *::before { display: none; }
-  #iz-barre .izs-box { width: 120px; flex-basis: 120px; }
+  #iz-barre .izs-box { width: 96px; flex-basis: 96px; }
+  .izb-logo { width: 22px; height: 22px; }
+  .izb-titre { gap: 6px; }
+  #iz-barre .izb-titre { font-size: 14px; letter-spacing: 1px; }
   /* au doigt : la rubrique s'ouvre au toucher */
   .izb-menu .navi-group:hover .navi-sub { display: none; }
   .izb-menu .navi-group.izb-ouvert .navi-sub { display: grid; grid-template-columns: 1fr 1fr; justify-content: stretch; gap: 14px 16px; padding: 14px 16px; }
@@ -126,7 +131,7 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
   barre.setAttribute("aria-label", "Navigation du site");
   barre.innerHTML = `
     <div class="izb-ligne">
-      <a class="izb-titre" href="/accueil.html">İzmir by Night</a>
+      <a class="izb-titre" href="/accueil.html"><img class="izb-logo" src="/img/wiki/icon/logo-128.png" alt="">İzmir by Night</a>
       <div class="izb-menu"></div>
       <div class="izb-outils">
         <div id="iz-topbar"></div>
