@@ -4,31 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Espace MJ</title>
-<link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-<link rel="stylesheet" href="/WIKI/wikitemplate.css">
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
 <link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/WIKI/nav.js" defer></script>
+<script src="/DATA/izmir.js"></script>
 <script src="/DATA/account.js"></script>
   <script src="/DATA/search.js" defer></script>
 </head>
 
 <body>
 
-<header-component></header-component>
+<div class="page-wrap">
 
-<main>
-<div id="container" class="compte">
+  <!-- colonne de gauche : son contenu change avec l'onglet -->
+  <div class="sidebar">
+    <button id="theme-toggle">☾ nuit</button>
 
-  <h1>espace MJ</h1>
+    <div data-tab="handouts">
+      <div class="box">
+        <div class="title">handouts</div>
+        <div class="side-hint">Dépose un PDF : chaque page devient une lettre, que tu tagues.
+          Pour partager une lettre à d'autres plus tard, change ses tags dans la liste.</div>
+      </div>
+      <div class="box">
+        <div class="title">chercher</div>
+        <input class="input" id="ho-filter" type="search" placeholder="titre, tag, pdf…" aria-label="Filtrer les lettres">
+        <div class="muted" id="ho-count" style="margin-top:6px"></div>
+      </div>
+    </div>
+
+    <div data-tab="vue" hidden>
+      <div class="box">
+        <div class="title">joueur</div>
+        <select class="input" id="player" aria-label="Joueur"></select>
+        <input class="input" id="vj-filter" type="search" placeholder="filtrer…" aria-label="Filtrer" style="margin-top:6px">
+        <div class="side-hint">Exactement ce que Supabase envoie à ce joueur, calculé avec les mêmes règles que la sécurité.
+          À vérifier avant chaque révélation.</div>
+      </div>
+    </div>
+
+    <div data-tab="signalements" hidden>
+      <div class="box">
+        <div class="title">signalements</div>
+        <div class="side-hint">Écris ta réponse, puis choisis le statut : le joueur la voit dans son espace.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="site-header"></div>
 
     <nav class="tabs" aria-label="Espace MJ">
       <a href="#handouts">handouts</a>
       <a href="#vue">vue joueur</a>
       <a href="#signalements">signalements</a>
     </nav>
-
-    <div class="avec-cote">
-    <div>
 
     <!-- ── handouts ── -->
     <section data-tab="handouts">
@@ -76,46 +106,9 @@
         <div id="tickets" data-scope="all" style="display:flex;flex-direction:column;gap:10px"></div>
       </div>
     </section>
-
-    </div>
-
-    <aside class="cote">
-    
-
-    <div data-tab="handouts">
-      <div class="encadre">
-        <div class="encadre-titre">handouts</div>
-        <div class="side-hint">Dépose un PDF : chaque page devient une lettre, que tu tagues.
-          Pour partager une lettre à d'autres plus tard, change ses tags dans la liste.</div>
-      </div>
-      <div class="encadre">
-        <div class="encadre-titre">chercher</div>
-        <input class="input" id="ho-filter" type="search" placeholder="titre, tag, pdf…" aria-label="Filtrer les lettres">
-        <div class="muted" id="ho-count" style="margin-top:6px"></div>
-      </div>
-    </div>
-
-    <div data-tab="vue" hidden>
-      <div class="encadre">
-        <div class="encadre-titre">joueur</div>
-        <select class="input" id="player" aria-label="Joueur"></select>
-        <input class="input" id="vj-filter" type="search" placeholder="filtrer…" aria-label="Filtrer" style="margin-top:6px">
-        <div class="side-hint">Exactement ce que Supabase envoie à ce joueur, calculé avec les mêmes règles que la sécurité.
-          À vérifier avant chaque révélation.</div>
-      </div>
-    </div>
-
-    <div data-tab="signalements" hidden>
-      <div class="encadre">
-        <div class="encadre-titre">signalements</div>
-        <div class="side-hint">Écris ta réponse, puis choisis le statut : le joueur la voit dans son espace.</div>
-      </div>
-    </div>
-      </aside>
-    </div>
+  </div>
 
 </div>
-</main>
 
 <script src="/COMPTE/lecteur.js"></script>
 <script src="/COMPTE/partage.js"></script>

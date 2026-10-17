@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="fr">
+<html class="no-js" lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Index du site</title>
-  <link rel="stylesheet" href="/WIKI/wikitemplate.css">
+  <title>Index du wiki</title>
+  <link rel="stylesheet" href="wikitemplate.css">
   <link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-  <script src="/WIKI/nav.js" defer></script>
+  <script src="nav.js" type="text/javascript" defer></script>
   <script src="/DATA/search.js" defer></script>
 </head>
 
@@ -15,23 +15,47 @@
 <header-component></header-component>
 
 <main>
-<div id="container">
+        <div id="container"><main>
 
-  <h1>Index du site</h1>
+        <h1>Index du wiki</h1>
 
-  <p class="chapeau">Toutes les pages du site et du wiki, rangées par rubrique. La liste se met à jour toute seule quand une page est ajoutée.</p>
+<p>Toutes les pages du wiki, hors fiches de personnages (elles sont dans <a href="/WIKI/fiche/index.html">Personnages</a>).</p>
 
-  <input class="index-filtre" id="index-filtre" type="search" placeholder="chercher une page…" aria-label="Chercher une page">
+<!--POUR AJOUTER UNE PAGE : copier une ligne <li> dans la bonne section et changer le lien et le nom.
+    Pour une nouvelle section : copier un bloc <h2> + <ul>.-->
 
-  <div id="toc"></div>
+<h2>Izmir</h2>
+<ul>
+    <li><a href="/WIKI/index.html">La ville d'Izmir</a></li>
+    <li><a href="/WIKI/autre/clan.html">Les clans d'Izmir</a></li>
+    <li><a href="/WIKI/autre/chrono.html">Chronologie de Smyrne</a></li>
+    <li><a href="/WIKI/autre/assamite.html">Le déclin et le renouveau de Smyrne</a></li>
+</ul>
 
-  <div id="contents">
-    <div id="index-site"><p>chargement…</p></div>
-  </div>
+<h2>Brujah</h2>
+<ul>
+    <li><a href="/WIKI/brujah/index.html">Histoire des Brujah</a></li>
+    <li><a href="/WIKI/brujah/uyanik.html">Uyanık Göz</a></li>
+</ul>
 
+<h2>Toreador</h2>
+<ul>
+    <li><a href="/WIKI/toreador/info/index.html">L'histoire des Toreador</a></li>
+    <li><a href="/WIKI/toreador/info/soteria.html">Les fleurs de Soteria</a></li>
+</ul>
+
+<h2>Tremere</h2>
+<ul>
+    <li><a href="/WIKI/tremere/index.html">La Pyramide d'Izmir</a></li>
+</ul>
+
+<h2>Ventrue</h2>
+<ul>
+    <li><a href="/WIKI/ventrue/index.html">Histoire des Ventrues</a></li>
+</ul>
+
+</main>
 </div>
 </main>
-
-<script src="/WIKI/index-site.js"></script>
 </body>
 </html>

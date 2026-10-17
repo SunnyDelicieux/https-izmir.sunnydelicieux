@@ -31,8 +31,8 @@ html, body {margin: 0}
 
 body {
     font-family: var(--iz-font);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     background: var(--wiki-bg);
     color: var(--wiki-text);
 }
@@ -124,7 +124,7 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 34px;
     line-height: 1.2;
     margin: 0.3em 0 0.6em;
     padding-bottom: 8px;
@@ -133,7 +133,7 @@ h1 {
 
 h2 {
     display: flow-root; 
-    font-size: 21px;
+    font-size: 25px;
     line-height: 1.3;
     margin: 1.6em 0 0.6em;
     padding-bottom: 4px;
@@ -148,11 +148,11 @@ h3, h4 {
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 19px;
 }
 
 h4 {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 small {
@@ -165,23 +165,22 @@ hr {
     margin: 2em 0;
 }
 
-/* sommaire : un bandeau compact en haut de l'article (rempli par WIKI/nav.js) */
 #toc {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 4px 12px;
-    margin: 0 0 1.6em;
-    padding: 8px 14px;
+    float: left;
+    width: 240px;
+    margin: 0 32px 16px 0;
+    padding: 12px 16px 8px;
     background: var(--wiki-box);
     border: 1px solid var(--wiki-line);
     border-radius: var(--iz-radius);
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 #toc::before {
     content: "Sommaire";
+    display: block;
+    margin-bottom: 6px;
     font-weight: bold;
     color: var(--wiki-text);
 }
@@ -191,26 +190,18 @@ hr {
 }
 
 #toc ol {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px 14px;
     margin: 0;
-    padding: 0;
-    list-style: none;
+    padding-left: 18px;
+    list-style-type: disc;
 }
 
 #toc ol ol {
-    display: none; /* seulement les grandes sections dans le bandeau */
+    padding-left: 14px;
+    list-style-type: circle;
 }
 
 #toc li {
-    padding: 0;
-}
-
-#toc li + li::before {
-    content: "·";
-    margin-right: 14px;
-    color: var(--wiki-muted);
+    padding: 2px 0;
 }
 
 #toc a {
@@ -393,606 +384,5 @@ td:nth-child(odd) {
 
     h2 {
         font-size: 22px;
-    }
-}
-
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Composants repris des articles du site, à utiliser au besoin dans une page du wiki
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/* chapeau : le paragraphe d'introduction sous le titre */
-.chapeau {
-    font-size: 15px;
-    font-style: italic;
-    color: var(--wiki-muted);
-}
-
-/* encadré : un bloc à part (règle, rappel, note du MJ…)
-   <div class="encadre"><div class="encadre-titre">Titre</div> texte…</div> */
-.encadre {
-    margin: 1em 0 1.4em;
-    padding: 12px 18px;
-    background: var(--wiki-box);
-    border: 1px dashed var(--wiki-line);
-    border-radius: var(--iz-radius);
-}
-
-.encadre-titre {
-    margin-bottom: 6px;
-    color: var(--wiki-accent);
-    font: italic 16px var(--iz-font-title);
-}
-
-.encadre > :last-child {
-    margin-bottom: 0;
-}
-
-/* deux colonnes côte à côte : <div class="colonnes"><div>…</div><div>…</div></div> */
-.colonnes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 1em 0;
-}
-
-.colonnes > * > :first-child {
-    margin-top: 0;
-}
-
-/* illustration avec légende, en vignette à droite (le texte coule à côté) :
-   <figure class="illustration"><img …><figcaption>…</figcaption></figure>
-   en grand, sur toute la largeur : <figure class="illustration grande">… */
-.illustration {
-    float: right;
-    clear: right;
-    width: 320px;
-    margin: 0.3em 0 1em 24px;
-    padding: 6px;
-    background: var(--wiki-box);
-    border: 1px solid var(--wiki-line);
-    border-radius: var(--iz-radius);
-}
-
-.illustration img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
-}
-
-.illustration figcaption {
-    margin-top: 5px;
-    color: var(--wiki-muted);
-    font: italic 12px/1.4 var(--iz-font-title);
-    text-align: center;
-}
-
-.illustration.grande {
-    float: none;
-    width: auto;
-    margin: 1.4em 0;
-}
-
-.illustration.grande img {
-    max-height: 480px;
-    width: auto;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-/* un titre de section passe sous les vignettes de la section précédente */
-#contents h2 {
-    clear: both;
-}
-
-/* citation : <blockquote class="citation">…</blockquote> */
-.citation {
-    margin: 1.2em 0;
-    padding: 4px 0 4px 18px;
-    border-left: 3px solid var(--wiki-accent);
-    color: var(--wiki-muted);
-    font: italic 15px/1.6 var(--iz-font-title);
-}
-
-/* définitions : <dl class="definitions"><dt>Mot</dt><dd>explication</dd></dl> */
-.definitions dt {
-    margin-top: 0.8em;
-    color: var(--wiki-accent);
-    font-weight: bold;
-}
-
-.definitions dd {
-    margin: 0.2em 0 0 1.2em;
-}
-
-/* page avec une colonne à côté (espace joueur, accueil…) :
-   <div class="avec-cote"><div>contenu</div><aside class="cote">…</aside></div> */
-.avec-cote {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
-    gap: 28px;
-    align-items: start;
-}
-
-.cote {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: sticky;
-    top: 70px;
-    font-size: 14px;
-}
-
-.cote .encadre {
-    margin: 0;
-}
-
-/* crédit en pied de page (pages venues du site) */
-.credit {
-    margin-top: 2.4em;
-    padding-top: 10px;
-    border-top: 1px solid var(--wiki-line);
-    color: var(--wiki-muted);
-    font-size: 12px;
-    text-align: center;
-}
-
-@media only screen and (max-width: 760px) {
-    .colonnes,
-    .avec-cote {
-        grid-template-columns: 1fr;
-    }
-
-    .cote {
-        position: static;
-    }
-
-    #container {
-        padding: 18px 18px 28px;
-    }
-
-    .illustration {
-        float: none;
-        width: auto;
-        margin: 1em 0;
-    }
-
-    #toc li + li::before {
-        display: none;
-    }
-}
-
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Composants particuliers repris de certaines pages du site
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/* iframes (carte, relations…) : jamais plus larges que la feuille */
-#container iframe {
-    display: block;
-    max-width: 100%;
-    margin: 1em auto;
-    border: 1px solid var(--wiki-line);
-}
-
-/* listes à lignes (".row" : une info par ligne) */
-#contents .row {
-    padding: 3px 0;
-    border-bottom: 1px dotted var(--wiki-line);
-}
-
-#contents .row:last-child {
-    border-bottom: none;
-}
-
-/* ── FAQ (pages ORGANISATION) ── */
-.faq-section {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin: 1em 0 1.6em;
-}
-
-.faq-category {
-    margin-bottom: 4px;
-    padding-bottom: 6px;
-    color: var(--wiki-muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 12px;
-    border-bottom: 1px solid var(--wiki-line);
-}
-
-details.faq-item,
-details.res-item {
-    background: var(--wiki-box);
-    border: 1px dashed var(--wiki-line);
-    border-radius: var(--iz-radius);
-    overflow: hidden;
-}
-
-details.faq-item[open],
-details.res-item[open] {
-    border-style: solid;
-}
-
-details.faq-item summary,
-details.res-item summary {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 9px 14px;
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-    color: var(--wiki-accent);
-    font: italic 15px var(--iz-font-title);
-}
-
-details.faq-item summary::-webkit-details-marker,
-details.res-item summary::-webkit-details-marker {
-    display: none;
-}
-
-details.faq-item summary::before,
-details.res-item summary::before {
-    content: "\25b8";
-    font-size: 10px;
-    color: var(--wiki-muted);
-    transition: transform 0.2s;
-    flex-shrink: 0;
-}
-
-details.faq-item[open] summary::before,
-details.res-item[open] summary::before {
-    transform: rotate(90deg);
-    color: var(--wiki-accent);
-}
-
-details.faq-item summary:hover,
-details.res-item summary:hover {
-    color: var(--wiki-accent-hover);
-}
-
-.faq-answer,
-.res-body {
-    padding: 0 16px 12px 30px;
-    border-top: 1px dotted var(--wiki-line);
-    color: var(--wiki-text);
-}
-
-.faq-answer p,
-.res-desc {
-    margin: 8px 0;
-}
-
-.faq-answer em {
-    color: var(--wiki-muted);
-}
-
-/* ── Tableaux et schéma (page ressources) ── */
-table.res-table {
-    width: 100%;
-    margin: 0.6em 0 1em;
-    background: none;
-    border: none;
-    font-size: 13px;
-}
-
-.res-table th,
-.res-table td,
-.res-table td:nth-child(odd) {
-    padding: 5px 10px;
-    text-align: left;
-    font-weight: normal;
-    vertical-align: top;
-    border: none;
-    border-bottom: 1px dotted var(--wiki-line);
-    color: var(--wiki-text);
-    background: none;
-}
-
-.res-table th {
-    color: var(--wiki-muted);
-    font: italic 13px var(--iz-font-title);
-    border-bottom: 1px solid var(--wiki-line);
-}
-
-.res-table td:first-child {
-    color: var(--wiki-accent);
-    font: italic 14px var(--iz-font-title);
-    white-space: nowrap;
-}
-
-.res-table td.num {
-    text-align: center;
-    color: var(--wiki-accent-hover);
-}
-
-.res-table td.stress {
-    text-align: center;
-    color: #c04030;
-}
-
-.flowchart-horizontal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 1.4em 0;
-}
-
-.flow-box {
-    min-width: 110px;
-    padding: 8px 14px;
-    text-align: center;
-    background: var(--wiki-box);
-    border: 1px solid var(--wiki-line);
-    border-radius: var(--iz-radius);
-    font-size: 13px;
-}
-
-.flow-arrow {
-    color: var(--wiki-muted);
-    font-size: 20px;
-}
-
-.flow-box.warning { border-color: #d6a500; }
-.flow-box.danger  { border-color: #c0392b; }
-.flow-box.loss    { border-color: #8e44ad; }
-
-/* encadrés en colonnes : 2 ou 3 côte à côte */
-.colonnes.trois {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.colonnes > .encadre {
-    margin: 0;
-}
-
-@media only screen and (max-width: 760px) {
-    .colonnes.trois {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* les blocs larges (colonnes, FAQ, tableaux, schémas) passent sous les vignettes au lieu de se tasser à côté */
-.colonnes,
-.faq-section,
-table.res-table,
-.flowchart-horizontal {
-    clear: both;
-}
-
-/* vignettes un peu plus étroites ; plusieurs à la suite : côte à côte, pleine largeur
-   <div class="illustrations"><figure class="illustration">…</figure><figure …>…</figure></div> */
-.illustration {
-    width: 280px;
-}
-
-.illustrations {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    clear: both;
-    margin: 1em 0 1.4em;
-}
-
-.illustrations .illustration {
-    float: none;
-    width: auto;
-    margin: 0;
-}
-
-@media only screen and (max-width: 760px) {
-    .illustration {
-        width: auto;
-    }
-}
-
-/* ── Index du site (WIKI/liste.html) ── */
-.index-filtre {
-    width: 100%;
-    margin: 0 0 14px;
-    padding: 7px 10px;
-    color: var(--wiki-text);
-    background: var(--wiki-box);
-    border: 1px solid var(--wiki-line);
-    border-radius: var(--iz-radius);
-    font: 14px var(--iz-font);
-    outline: none;
-}
-
-.index-filtre:focus {
-    border-color: var(--wiki-accent);
-}
-
-.index-liste {
-    columns: 3 200px;
-    column-gap: 28px;
-    margin: 0.4em 0 1.2em;
-}
-
-.index-liste li {
-    break-inside: avoid;
-}
-
-.index-liste small {
-    color: var(--wiki-muted);
-}
-
-/* ── Échelle de niveaux (• à ••••••) ──
-   <ul class="echelle"><li><span class="points">••</span> description</li></ul> */
-ul.echelle {
-    list-style: none;
-    margin: 0.6em 0;
-    padding: 0;
-}
-
-ul.echelle li {
-    display: grid;
-    grid-template-columns: 5.2em 1fr;
-    gap: 8px;
-    padding: 4px 0;
-    border-bottom: 1px dotted var(--wiki-line);
-}
-
-ul.echelle li:last-child {
-    border-bottom: none;
-}
-
-ul.echelle .points {
-    color: var(--wiki-accent);
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-/* ── Étapes numérotées (création de personnage…) ──
-   <h2><span class="etape">1</span> Choisir son clan</h2> */
-.etape {
-    display: inline-block;
-    margin-right: 0.3em;
-    color: var(--wiki-accent);
-    font-style: italic;
-}
-
-/* lien mis en avant (ex : « la fiche est ici ») */
-a.lien-doc {
-    display: inline-block;
-    margin: 0.4em 0;
-    padding: 5px 12px;
-    color: var(--wiki-accent);
-    background: var(--wiki-box);
-    border: 1px solid var(--wiki-line);
-    border-radius: var(--iz-radius);
-    text-decoration: none;
-}
-
-a.lien-doc::after {
-    content: " →";
-}
-
-a.lien-doc:hover {
-    color: var(--wiki-accent-hover);
-    border-color: var(--wiki-accent);
-}
-
-/* ── Fiches de personnage (WIKI/clan/pnj/) ──
-   <h1 class="fiche-nom"><img class="fiche-icone">Nom</h1>, la fiche (portrait + tableau) dans aside.cote > .fiche-bio,
-   les relations dans <dl class="fiche-relations"><dt><img class="icone">Nom</dt><dd>…</dd></dl> */
-#container h1.fiche-nom {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.fiche-nom .fiche-icone {
-    width: 52px;
-    height: 52px;
-    object-fit: cover;
-    border: 1px solid var(--wiki-line);
-    border-radius: 50%;
-}
-
-.fiche .citation {
-    margin-top: 0;
-}
-
-.fiche-bio {
-    padding: 8px;
-    background: var(--wiki-box);
-    border: 1px solid var(--wiki-line);
-    border-radius: var(--iz-radius);
-}
-
-.fiche-bio img {
-    display: block;
-    width: 100%;
-    border-radius: var(--iz-radius);
-}
-
-.fiche-bio table {
-    width: 100%;
-    margin: 8px 0 0;
-    background: none;
-    border: none;
-    border-collapse: collapse;
-    font-size: 13px;
-}
-
-.fiche-bio td {
-    padding: 4px 6px;
-    border: none;
-    border-bottom: 1px dotted var(--wiki-line);
-    background: none;
-    vertical-align: top;
-}
-
-.fiche-bio tr:last-child td {
-    border-bottom: none;
-}
-
-.fiche-bio td:nth-child(even) {
-    font-weight: normal;
-}
-
-.fiche-bio td:first-child {
-    width: 38%;
-    font-weight: normal;
-    text-align: left;
-    color: var(--wiki-accent);
-    font: italic 13px var(--iz-font-title);
-}
-
-dl.fiche-relations {
-    margin: 0.6em 0 1.2em;
-}
-
-.fiche .avec-cote > * {
-    min-width: 0;
-}
-
-.fiche-bio td {
-    overflow-wrap: anywhere;
-}
-
-dl.fiche-relations dt {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 12px;
-    color: var(--wiki-accent);
-    font-weight: bold;
-}
-
-dl.fiche-relations dt .icone {
-    width: 36px;
-    height: 36px;
-    object-fit: cover;
-    border: 1px solid var(--wiki-line);
-    border-radius: 50%;
-}
-
-dl.fiche-relations dd {
-    margin: 4px 0 0 46px;
-}
-
-/* téléphone : la fiche (portrait) passe avant le texte, plus petite */
-@media only screen and (max-width: 760px) {
-    .fiche .avec-cote > .cote {
-        order: -1;
-    }
-
-    .fiche-bio {
-        display: grid;
-        grid-template-columns: 110px minmax(0, 1fr);
-        gap: 10px;
-        align-items: start;
-    }
-
-    .fiche-bio table {
-        margin: 0;
     }
 }

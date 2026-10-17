@@ -217,7 +217,7 @@ body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-pan
 }
 
 /* ── Dans la barre du wiki (WIKI/nav.js) : à côté du bouton jour/nuit ── */
-.iza-box--wiki { margin-left: -10px; align-self: center; } /* la barre du wiki espace ses éléments de 18px : on se rapproche du bouton jour/nuit */
+.iza-box--wiki { margin-left: -20px; align-self: center; } /* la barre du wiki espace ses éléments de 28px : on se colle au bouton jour/nuit */
 .iza-box--wiki .iza-btn {
   height: 28px; box-sizing: border-box; padding: 0 12px; min-width: 0; max-width: 150px;
   font: 13px/26px Arial, Tahoma, Verdana, sans-serif; letter-spacing: 0;
@@ -229,7 +229,7 @@ body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-pan
 .iza-box--wiki .iza-panel::before { top: -8px; height: 8px; }
 /* la barre du wiki reste sombre en mode jour : le bouton aussi */
 body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); background: var(--iz-button, #2e1e0e); border-color: var(--iz-border-strong, #4a3018); }
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 700px) {
   .iza-box--wiki { position: absolute; top: 12px; left: 128px; margin: 0; }
   .iza-box--wiki .iza-btn { max-width: 80px; padding: 0 8px; }
   .iza-box--wiki .iza-panel { left: 0; right: auto; }

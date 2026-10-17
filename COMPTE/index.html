@@ -4,31 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Espace joueur</title>
-<link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-<link rel="stylesheet" href="/WIKI/wikitemplate.css">
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
 <link rel="stylesheet" href="/COMPTE/compte.css">
-<script src="/WIKI/nav.js" defer></script>
+<script src="/DATA/izmir.js"></script>
 <script src="/DATA/account.js"></script>
   <script src="/DATA/search.js" defer></script>
 </head>
 
 <body>
 
-<header-component></header-component>
+<div class="page-wrap">
 
-<main>
-<div id="container" class="compte">
+  <!-- colonne de gauche : son contenu change avec l'onglet -->
+  <div class="sidebar">
+    <button id="theme-toggle">☾ nuit</button>
 
-  <h1>espace joueur</h1>
+    <div data-tab="calendrier">
+      <div class="box">
+        <div class="title">calendrier</div>
+        <button class="btn side-btn" id="ev-new" type="button" hidden>+ nouvel événement</button>
+        <div class="side-hint">Clique sur un jour de la grille, ou sur un événement de la liste pour le déplier.</div>
+      </div>
+      <div class="box">
+        <div class="title">années</div>
+        <div class="year-links" id="year-links"></div>
+      </div>
+      <div class="box">
+        <div class="title">tags</div>
+        <div class="tags" id="tag-links"></div>
+      </div>
+    </div>
+
+    <div data-tab="coffre" hidden>
+      <div class="box">
+        <div class="title">coffre-fort</div>
+        <button class="btn side-btn" type="button" id="new-letter" hidden>+ écrire une lettre</button>
+        <button class="btn side-btn" type="button" id="new-file" hidden>+ envoyer un fichier</button>
+        <div class="side-hint">Ctrl+clic sur un document pour l'ouvrir dans un nouvel onglet.</div>
+      </div>
+      <div class="box">
+        <div class="title">afficher</div>
+        <div class="tags">
+          <button class="tag active" type="button" data-who="tout">tout</button>
+          <button class="tag" type="button" data-who="recus">reçus</button>
+          <button class="tag" type="button" data-who="envoyes">envoyés par moi</button>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab="signaler" hidden>
+      <div class="box">
+        <div class="title">signaler</div>
+        <div class="side-hint">Une faute, un bug visuel, une info fausse, un truc à changer : ça m'arrive directement, et ma réponse s'affiche ici.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="site-header"></div>
 
     <nav class="tabs" aria-label="Espace joueur">
       <a href="#calendrier">calendrier</a>
       <a href="#coffre">coffre-fort</a>
       <a href="#signaler">signaler une erreur</a>
     </nav>
-
-    <div class="avec-cote">
-    <div>
 
     <!-- ── calendrier ── -->
     <section data-tab="calendrier">
@@ -138,56 +178,9 @@
         <div id="tickets" data-scope="mine" style="display:flex;flex-direction:column;gap:10px"></div>
       </div>
     </section>
-
-    </div>
-
-    <aside class="cote">
-    
-
-    <div data-tab="calendrier">
-      <div class="encadre">
-        <div class="encadre-titre">calendrier</div>
-        <button class="btn side-btn" id="ev-new" type="button" hidden>+ nouvel événement</button>
-        <div class="side-hint">Clique sur un jour de la grille, ou sur un événement de la liste pour le déplier.</div>
-      </div>
-      <div class="encadre">
-        <div class="encadre-titre">années</div>
-        <div class="year-links" id="year-links"></div>
-      </div>
-      <div class="encadre">
-        <div class="encadre-titre">tags</div>
-        <div class="tags" id="tag-links"></div>
-      </div>
-    </div>
-
-    <div data-tab="coffre" hidden>
-      <div class="encadre">
-        <div class="encadre-titre">coffre-fort</div>
-        <button class="btn side-btn" type="button" id="new-letter" hidden>+ écrire une lettre</button>
-        <button class="btn side-btn" type="button" id="new-file" hidden>+ envoyer un fichier</button>
-        <div class="side-hint">Ctrl+clic sur un document pour l'ouvrir dans un nouvel onglet.</div>
-      </div>
-      <div class="encadre">
-        <div class="encadre-titre">afficher</div>
-        <div class="tags">
-          <button class="tag active" type="button" data-who="tout">tout</button>
-          <button class="tag" type="button" data-who="recus">reçus</button>
-          <button class="tag" type="button" data-who="envoyes">envoyés par moi</button>
-        </div>
-      </div>
-    </div>
-
-    <div data-tab="signaler" hidden>
-      <div class="encadre">
-        <div class="encadre-titre">signaler</div>
-        <div class="side-hint">Une faute, un bug visuel, une info fausse, un truc à changer : ça m'arrive directement, et ma réponse s'affiche ici.</div>
-      </div>
-    </div>
-      </aside>
-    </div>
+  </div>
 
 </div>
-</main>
 
 <script src="/COMPTE/lecteur.js"></script>
 <script src="/COMPTE/partage.js"></script>

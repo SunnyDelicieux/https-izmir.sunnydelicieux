@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İzmir by Night</title>
-<link href="/img/wiki/icon/wikilogo.png" rel="icon" type="image/png"/>
-<link href="/WIKI/wikitemplate.css" rel="stylesheet"/>
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
+
+
 <style>
-/* ── Bandeau de blinkies qui défile ── */
+
+
+/* ── Blinkie scroll ── */
 .blinkie-scroll {
   overflow: hidden;
   width: 100%;
-  margin: 0 0 1.4em;
-  padding: 4px 0;
-  border-top: 1px dotted var(--wiki-line);
-  border-bottom: 1px dotted var(--wiki-line);
 }
 .blinkie-scroll-inner {
   display: inline-flex;
@@ -23,133 +22,107 @@
   white-space: nowrap;
   animation: blinkie-march 20s linear infinite;
 }
-.blinkie-scroll-inner img {
-  display: block;
-  height: 20px;
-  width: auto;
-  max-width: 150px;
-}
 @keyframes blinkie-march {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-/* ── Colonne de côté de l'accueil ── */
-.avec-cote > * {
-  min-width: 0; /* le bandeau qui défile ne doit pas élargir la colonne */
-}
-.cote ul {
-  margin: 0;
-  padding-left: 1.2em;
-}
-.compteur {
-  text-align: center;
-}
-.compteur .encadre-titre {
-  text-align: left;
-}
-.compteur img {
-  max-width: 100%;
-  height: auto;
-}
-@media only screen and (max-width: 560px) {
-  .flowchart-horizontal {
-    flex-direction: column;
-    gap: 2px;
-  }
-  .flowchart-horizontal .flow-box {
-    min-width: 180px;
-  }
-  .flowchart-horizontal .flow-arrow {
-    transform: rotate(90deg);
-  }
-}
 </style>
-<script defer="" src="/WIKI/nav.js"></script>
-<script defer="" src="/DATA/search.js"></script>
+  <script src="/DATA/search.js" defer></script>
 </head>
+
+  
+  
 <body>
-<header-component></header-component>
-<main>
-<div id="container">
-<div class="avec-cote">
+
+<script src="/DATA/izmir.js"></script>
+
+<div class="page-wrap">
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+            <button id="theme-toggle" onclick="toggleTheme()">☀ jour</button>
+
+
+       
+
+<iframe src="https://www5.cbox.ws/box/?boxid=963380&boxtag=NhwaYc" width="100%" height="250" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"><p style="text-align:center;padding:8px;">Chargement du chat...</p></iframe>
+
+         
+      
+
+<div class="poll-wrap">
+<form method="post" action="https://poll.pollcode.com/23764232"><div style="background-color:#EECA77;padding:2px;width:190px;font-family:Arial;font-size:small;color:#000000;"><div style="padding:2px 0px 4px 2px;"><strong>Quel clan voulez vous jouable ? </strong></div><div align="center" style="padding-bottom:5px;"><select name="answer"><option value="1">Brujah</option><option value="2">Ventrue</option><option value="3">Gangrel</option><option value="4">Tremere</option><option value="5">Toreador</option><option value="6">Nosferatu</option></select></div><div align="center" style="padding:3px;"><input type="submit" value=" Vote "> <input type="submit" name="view" value=" View "></div><div align="right" style="font-size:10px;">pollcode.com <a href="https://pollcode.com/">free polls</a></div></div></form>
+</div>
+
+
 <div>
-<h1>İzmir by Night</h1>
-
-<p class="chapeau">Izmir by Night c'est 9 pj , 3 clans, et 3 groupes de joueur qui intéragissent entre eux (ou non) pour former une ville plus complète et immersive. Il y a 3 clan jouables, Ventrue, Brujah et Tremere, et pour chaqun de ces clans,
-trois roles, Primogènes, Limier du sheriff, et Ghoule. Un total de 9 joueurs !</p>
-
-<div id="toc"></div>
-
-<div id="contents">
-
-<div aria-hidden="true" class="blinkie-scroll">
-<div class="blinkie-scroll-inner">
-<img alt="" src="https://i.postimg.cc/kgbXzSJZ/blinkies-Cafe-st.gif"/>
-<img alt="" src="https://i.postimg.cc/13q52Fmb/blinkies-Cafe-JV.gif"/>
-<img alt="" src="https://i.postimg.cc/9Q7FK9mv/blinkies-Cafe-at.gif"/>
-<img alt="" src="https://i.postimg.cc/K8MvwTGw/blinkies-Cafe-68.gif"/>
-<img alt="" src="https://i.postimg.cc/zG88tcQX/blinkies-Cafe-8J.gif"/>
-<img alt="" src="https://i.postimg.cc/kgbXzSJp/blinkies-Cafe-Aj.gif"/>
-<img alt="" src="https://i.postimg.cc/Qt5zrX9X/blinkies-Cafe-m3.gif"/>
-<img alt="" src="https://i.postimg.cc/kgbXzSJZ/blinkies-Cafe-st.gif"/>
-<img alt="" src="https://i.postimg.cc/13q52Fmb/blinkies-Cafe-JV.gif"/>
-<img alt="" src="https://i.postimg.cc/9Q7FK9mv/blinkies-Cafe-at.gif"/>
-<img alt="" src="https://i.postimg.cc/K8MvwTGw/blinkies-Cafe-68.gif"/>
-<img alt="" src="https://i.postimg.cc/zG88tcQX/blinkies-Cafe-8J.gif"/>
-<img alt="" src="https://i.postimg.cc/kgbXzSJp/blinkies-Cafe-Aj.gif"/>
-<img alt="" src="https://i.postimg.cc/Qt5zrX9X/blinkies-Cafe-m3.gif"/>
+ <!-- FC2 Counter  Starts here -->
+<script type="text/javascript" src="//counter1.fc2.com/counter.php?id=89515831"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89515831" /></noscript>
+<!-- FC2 Counter  Ends here -->
 </div>
 </div>
+<!-- Sidebar ends -->
 
-<h2>Une campagne à 9 joueurs ?</h2>
+<!-- Container starts -->
+<div class="container">
 
-<p>Comment ça s'organise ? Chaque mois commence par une séance de clan, ou vous discutez avec les autres joueurs de votre clan de l'avenir, de vos projets, ou de vos problèmes,
-ensuite, une séance de Ghoule qui mènent les recherche sur un problème, une séance de Primogène qui décident comment régler le problème avec les info donnés par les ghoules, et une séance de Limiers qui vont régler le dit problème.</p>
+<div id="site-header"></div>
+            
+            <div class="blinkie-scroll" aria-hidden="true">
+              <div class="blinkie-scroll-inner">
+<img src="https://i.postimg.cc/kgbXzSJZ/blinkies-Cafe-st.gif" alt=""><img src="https://i.postimg.cc/13q52Fmb/blinkies-Cafe-JV.gif" alt="">
+<img src="https://i.postimg.cc/9Q7FK9mv/blinkies-Cafe-at.gif" alt="">
+<img src="https://i.postimg.cc/K8MvwTGw/blinkies-Cafe-68.gif" alt="">
+  <img src="https://i.postimg.cc/zG88tcQX/blinkies-Cafe-8J.gif" alt="">
+<img src="https://i.postimg.cc/kgbXzSJp/blinkies-Cafe-Aj.gif" alt="">
+<img src="https://i.postimg.cc/Qt5zrX9X/blinkies-Cafe-m3.gif" alt="">
+<img src="https://i.postimg.cc/kgbXzSJZ/blinkies-Cafe-st.gif" alt=""><img src="https://i.postimg.cc/13q52Fmb/blinkies-Cafe-JV.gif" alt="">
+<img src="https://i.postimg.cc/9Q7FK9mv/blinkies-Cafe-at.gif" alt="">
+<img src="https://i.postimg.cc/K8MvwTGw/blinkies-Cafe-68.gif" alt="">
+  <img src="https://i.postimg.cc/zG88tcQX/blinkies-Cafe-8J.gif" alt="">
+<img src="https://i.postimg.cc/kgbXzSJp/blinkies-Cafe-Aj.gif" alt="">
+<img src="https://i.postimg.cc/Qt5zrX9X/blinkies-Cafe-m3.gif" alt="">
+              </div>
+            </div>
 
-<div class="flowchart-horizontal" aria-hidden="true">
-<div class="flow-box">Séance de clan</div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">Ghoules</div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">Primogènes</div>
-<div class="flow-arrow">→</div>
-<div class="flow-box">Limiers</div>
+  <div class="note">
+                <div class="title"> une campagne à 9 joueurs ? </div>
+Izmir by Night c'est 9 pj , 3 clans, et 3 groupes de joueur qui intéragissent entre eux (ou non) pour former une ville plus complète et immersive. Il y a 3 clan jouables, Ventrue, Brujah et Tremere, et pour chaqun de ces clans,
+trois roles, Primogènes, Limier du sheriff, et Ghoule. Un total de 9 joueurs ! <br><br>
+Comment ça s'organise ? Chaque mois commence par une séance de clan, ou vous discutez avec les autres joueurs de votre clan de l'avenir, de vos projets, ou de vos problèmes,
+ensuite, une séance de Ghoule qui mènent les recherche sur un problème, une séance de Primogène qui décident comment régler le problème avec les info donnés par les ghoules, et une séance de Limiers qui vont régler le dit problème.<br><br> 
+C'est la base du projet, mais par dessus, il y a plein de petites sutbilité et de petit trucs interessant que j'ai hate de vous présenter.          </div>
+
+
+            <!-- Atmospheric image 1 -->
+            <div class="imgblock tall">
+              <img src="https://i.pinimg.com/736x/26/99/10/269910da7590acfde1b448765cd4cecd.jpg" alt="Vue du temple d'Artémis près d'Izmir">
+              <div class="imgcaption">Le temple d'Artemis, merveille du monde Antique, est a quelques dizaines de kilomètre de Izmir</div>
+            </div>
+
+            <!-- Description -->
+            <div class="note">
+                <div class="title"> İzmir by Night</div>
+Pour la Camarilla, Izmir est une ville parmis tant d'autre. Elle est un port important et elle est populeuse, mais elle est sous le joug de la Camarilla depuis si longtemps, et entouré de tellement de ville
+qui demandent plus d'attention, qu'on demande à son Prince de tenir le navire et rien de plus. C'est une position prestigieuse, certes, mais les autres villes de Turquie n'hésiteront pas à intervenir pour empécher toute action risquée, peu importe ce que cela pourrait apporter.
+On ne veut pas de grand coup d'eclat, pas de vague, simplement, continuer comme tel.            </div>
+
+           
+            <div class="footer"> <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
+                <p><b>Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></b></p>
+            </div>
+
+        </div>    
+        
+   
 </div>
-
-<p>C'est la base du projet, mais par dessus, il y a plein de petites sutbilité et de petit trucs interessant que j'ai hate de vous présenter.</p>
-
-<h2>La ville d'İzmir</h2>
-<figure class="illustration"><img alt="" src="https://i.pinimg.com/736x/26/99/10/269910da7590acfde1b448765cd4cecd.jpg"/><figcaption>Le temple d'Artemis, merveille du monde Antique, est a quelques dizaines de kilomètre de Izmir</figcaption></figure>
-
-<p>Pour la Camarilla, Izmir est une ville parmis tant d'autre. Elle est un port important et elle est populeuse, mais elle est sous le joug de la Camarilla depuis si longtemps, et entouré de tellement de ville
-qui demandent plus d'attention, qu'on demande à son Prince de tenir le navire et rien de plus. C'est une position prestigieuse, certes, mais les autres villes de Turquie n'hésiteront pas à intervenir pour empécher toute action risquée, peu importe ce que cela pourrait apporter.</p>
-
-<p class="citation">On ne veut pas de grand coup d'eclat, pas de vague, simplement, continuer comme tel.</p>
+<!-- Container ends -->
 
 </div>
-</div>
+<!-- page-wrap ends -->
 
-<aside class="cote">
-<div class="encadre">
-<div class="encadre-titre">Pour commencer</div>
-<ul>
-<li><a href="/WIKI/index.html">la ville d'Izmir</a></li>
-<li><a href="/SITE/CREATION/creation.html">création de personnage</a></li>
-<li><a href="/SITE/CREATION/groupes.html">les groupes</a></li>
-<li><a href="/SITE/ORGANISATION/faq.html">FAQ</a></li>
-<li><a href="/SITE/ORGANISATION/lignes_et_voiles.html">lignes et voiles</a></li>
-</ul>
-</div>
-<div class="encadre compteur">
-<div class="encadre-titre">Visiteurs</div>
-<script src="//counter1.fc2.com/counter.php?id=89515831" type="text/javascript"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89515831"/></noscript>
-</div>
-</aside>
-</div>
-<!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
-<div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
-</div>
-</main>
 </body>
 </html>
+            
+

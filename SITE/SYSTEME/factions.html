@@ -3,84 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Factions</title>
-<link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-<link rel="stylesheet" href="/WIKI/wikitemplate.css">
-<script src="/WIKI/nav.js" defer></script>
-<script src="/DATA/search.js" defer></script>
+<title>Relations</title>
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/bc/5e/b5/bc5eb5c00c26a519749f86c79d617e42.gif">
+<link rel="stylesheet" href="/DATA/izmir.css">
+
+
+  <script src="/DATA/search.js" defer></script>
 </head>
 
+  
+  
 <body>
 
-<header-component></header-component>
+<script src="/DATA/izmir.js"></script>
 
-<main>
-<div id="container">
+<div class="page-wrap">
 
-  <h1>Système caché des factions</h1>
+<!-- Sidebar -->
+<div class="sidebar">
 
-  <p class="chapeau">Chaque faction antagoniste à la Camarilla est modélisée en coulisses par trois valeurs : Pression, Cohésion et Ressources. Elles ne sont pas connues des joueurs et vous n'avez pas à les gérer (vous en avez déjà assez comme ça :"3). Elles servent uniquement à simuler leur comportement, leur danger et leur évolution dans la ville. Je partage ici le système pour que vous puissiez le comprendre et aussi pour écouter vos feedback au cas ou !</p>
+            <button id="theme-toggle" onclick="toggleTheme()">☀ jour</button>
 
-  <div id="toc"></div>
+            <div class="now">
+                <div class="title"> Calendrier de septembre</div>
+                <div class="row"> <b>xx/09</b> Séance Brujah / Ventrue</div>
+                <div class="row"> <b>xx/09</b> Séance Ghoule</div>
+                <div class="row"> <b>xx/09</b> Séance Primogène</div>
+                <div class="row"> <b>xx/09</b> Séance Hound</div>
+            </div>
 
-  <div id="contents">
+            <iframe src="https://www5.cbox.ws/box/?boxid=963380&boxtag=NhwaYc" width="100%" height="250" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"><p style="text-align:center;padding:8px;">Chargement du chat...</p></iframe>
 
-    <h2>Pression, Cohésion, Ressources</h2>
-    <figure class="illustration">
-      <img src="https://cdna.artstation.com/p/assets/images/images/067/926/522/large/maichol-quinto-ch-2-between-the-rows-final.jpg?1696548900" alt="">
-      <figcaption>Betweens the rows - Maichol Quinto</figcaption>
-    </figure>
-
-    <dl class="definitions">
-      <dt>Pression</dt>
-      <dd>C'est la valeur de conflit entre la camarilla et la faction. Plus des actions agressive sont prit entre les deux, plus elle augmente.<br>
-        Une valeur haute signifie plus d'attaque, et plus de risque pour la camarilla. Il est possible de baisser la pression en faisant des compromis, de la diplomatie, ou de régler les problèmes a la source.</dd>
-      <dt>Cohésion</dt>
-      <dd>stabilité interne de la faction. Plus elle est faible, plus elle à des chance de s'éffondrer. Une faction avec une cohésion faible agira plus lentement et moins souvent, et prendra plus de temps à régénrer ses ressources.</dd>
-      <dt>Ressources</dt>
-      <dd>moyens concrets disponibles (agents, vampires, réseaux, refuges, logistique). Elles définissent la capacité d’action réelle de la faction dans la ville et ce qu'elle peut faire.</dd>
-    </dl>
-
-    <h2>Engagement et résolution</h2>
-    <p>Lorsqu’une faction agit, elle engage une partie de ses ressources dans une opération. Cet engagement représente la force  investie : plus il est élevé, plus l’action est impactante, mais plus la faction s’expose à des pertes ou à une indisponibilité temporaire.</p>
-    <p>Les actions sont résolues en comparant l’engagement à la situation de la zone (pression + opposition éventuelle). Ce type de résolution n'est présent que quand le scénario se concentre sur l'action et n'est pas systématique pour ne pas alourdir le jeu.</p>
-
-    <div class="encadre">
-      <div class="encadre-titre">Résultats typiques</div>
-      <ul>
-        <li>+1 : résultat instable ou partiel</li>
-        <li>+2 : succès avec effets secondaires limités</li>
-        <li>+3 : contrôle net de la situation</li>
-        <li>domination : bascule complète</li>
-        <li>infériorité : échec ou coût élevé (ressources / cohésion)</li>
-      </ul>
-    </div>
-
-    <h2>Effets et dynamique</h2>
-    <figure class="illustration">
-      <img src="https://cdnb.artstation.com/p/assets/images/images/049/572/577/large/goran-pavlovski-goran-pavlovski-vampire-launchtrailer-9.jpg?1652805880" alt="">
-      <figcaption>Bloodhunt Launch Trailer - Goran Pavlovski</figcaption>
-    </figure>
-
-    <p>Les actions modifient toujours l’état de la ville : pression dans une zone, déplacement vers une autre, perte ou immobilisation de ressources, ou évolution de la cohésion. Certaines conséquences apparaissent plus tard.</p>
-    <p>Quand plusieurs factions agissent dans une même zone, leurs effets s’opposent via la pression; Il peut arriver que la pression du sabbat dans une zone réduise celle des anarch qui reculent. Une faction dominante rend toute intervention extérieure plus difficile.</p>
-    <p>Le but c'est de s'éloigner d'un système à phase, mais qu'on ai quelque chose de plus continu : chaque action influence les suivantes. Une action violente augmente souvent la pression future, une action discrète la déplace, une action ratée renforce l’adversaire, une action réussie peut fragiliser l’acteur.</p>
-
-    <h2>Synthèse en jeu</h2>
-    <p>Quelques configurations permettent de comprendre rapidement une faction :</p>
-    <ul>
-      <li>cohésion élevée + faibles ressources → résistance forte mais champs d'action limitée (ex: Sabbat)</li>
-      <li>ressources élevées + faible cohésion → puissance instable (ex: Anarch)</li>
-      <li>pression faible + ressources élevées → préparation ou infiltration silencieuse (Chasseur)</li>
-    </ul>
-
-  </div>
-
-  <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
-  <div class="credit">Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></div>
+            <div>
+                <!-- FC2 Counter -->
+                <script type="text/javascript" src="//counter1.fc2.com/counter.php?id=89515831"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=89515831" alt="visitor counter"></noscript>
+            </div>
 
 </div>
-</main>
+<!-- Sidebar ends -->
+
+<!-- Container starts -->
+<div class="container">
+
+<div id="site-header"></div>
+
+
+<div class="note">
+  <div class="title">Système caché des factions</div>
+Chaque faction antagoniste à la Camarilla est modélisée en coulisses par trois valeurs : Pression, Cohésion et Ressources. Elles ne sont pas connues des joueurs et vous n'avez pas à les gérer (vous en avez déjà assez comme ça :"3). Elles servent uniquement à simuler leur comportement, leur danger et leur évolution dans la ville. Je partage ici le système pour que vous puissiez le comprendre et aussi pour écouter vos feedback au cas ou !
+</div>
+
+
+<div class="imgblock tall">
+<img src="https://cdna.artstation.com/p/assets/images/images/067/926/522/large/maichol-quinto-ch-2-between-the-rows-final.jpg?1696548900" alt="Vue du temple d'Artémis près d'Izmir">
+ <div class="imgcaption">Betweens the rows - Maichol Quinto </div>
+</div>
+
+
+<div class="note">
+  <div class="title">Pression, Cohésion, Ressources</div>
+<b>Pression</b> : C'est la valeur de conflit entre la camarilla et la faction. Plus des actions agressive sont prit entre les deux, plus elle augmente. <BR>
+    Une valeur haute signifie plus d'attaque, et plus de risque pour la camarilla. Il est possible de baisser la pression en faisant des compromis, de la diplomatie, ou de régler les problèmes a la source. <BR>
+
+<br><br>
+
+<b>Cohésion</b> : stabilité interne de la faction. Plus elle est faible, plus elle à des chance de s'éffondrer. Une faction avec une cohésion faible agira plus lentement et moins souvent, et prendra plus de temps à régénrer ses ressources.
+<br><br>
+
+<b>Ressources</b> : moyens concrets disponibles (agents, vampires, réseaux, refuges, logistique). Elles définissent la capacité d’action réelle de la faction dans la ville et ce qu'elle peut faire.
+</div>
+
+<div class="note">
+  <div class="title">Engagement et résolution</div>
+Lorsqu’une faction agit, elle engage une partie de ses ressources dans une opération. Cet engagement représente la force  investie : plus il est élevé, plus l’action est impactante, mais plus la faction s’expose à des pertes ou à une indisponibilité temporaire.
+<br><br>
+Les actions sont résolues en comparant l’engagement à la situation de la zone (pression + opposition éventuelle). Ce type de résolution n'est présent que quand le scénario se concentre sur l'action et n'est pas systématique pour ne pas alourdir le jeu.
+
+<br><br>
+
+Résultats typiques :
+- +1 : résultat instable ou partiel  
+- +2 : succès avec effets secondaires limités  
+- +3 : contrôle net de la situation  
+- domination : bascule complète  
+- infériorité : échec ou coût élevé (ressources / cohésion)
+</div>
+
+<div class="note">
+  <div class="title">Effets et dynamique</div>
+Les actions modifient toujours l’état de la ville : pression dans une zone, déplacement vers une autre, perte ou immobilisation de ressources, ou évolution de la cohésion. Certaines conséquences apparaissent plus tard.
+
+<br><br>
+
+Quand plusieurs factions agissent dans une même zone, leurs effets s’opposent via la pression; Il peut arriver que la pression du sabbat dans une zone réduise celle des anarch qui reculent. Une faction dominante rend toute intervention extérieure plus difficile.
+
+<br><br>
+
+Le but c'est de s'éloigner d'un système à phase, mais qu'on ai quelque chose de plus continu : chaque action influence les suivantes. Une action violente augmente souvent la pression future, une action discrète la déplace, une action ratée renforce l’adversaire, une action réussie peut fragiliser l’acteur.
+</div>
+
+
+<div class="imgblock tall">
+<img src="https://cdnb.artstation.com/p/assets/images/images/049/572/577/large/goran-pavlovski-goran-pavlovski-vampire-launchtrailer-9.jpg?1652805880" alt="Vue du temple d'Artémis près d'Izmir">
+ <div class="imgcaption">Bloodhunt Launch Trailer - Goran Pavlovski
+</div>
+</div>
+
+
+<div class="note">
+  <div class="title">Synthèse en jeu</div> 
+Quelques configurations permettent de comprendre rapidement une faction :<br><br>
+
+- cohésion élevée + faibles ressources → résistance forte mais champs d'action limitée (ex: Sabbat) <br>
+- ressources élevées + faible cohésion → puissance instable (ex: Anarch) <br>
+- pression faible + ressources élevées → préparation ou infiltration silencieuse (Chasseur) <br>
+</div>
+</div>
+
+        </div>    
+
+
+        
+            <div class="footer"> <!-- PLEASE DON'T REMOVE THE CREDIT "layout made by itinerae" !! Thank you. -->
+                <p><b>Layout made by <a href="https://itinerae.org" target="_blank">Itinerae.</a></b></p>
+            </div>
+
+</div>
+<!-- Container ends -->
+
+</div>
+<!-- page-wrap ends -->
 
 </body>
 </html>
+            
+

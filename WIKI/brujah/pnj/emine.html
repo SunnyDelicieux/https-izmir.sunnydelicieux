@@ -1,104 +1,216 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Character Gallery</title>
-<link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
-<link rel="stylesheet" href="/WIKI/wikitemplate.css">
-<script src="/WIKI/nav.js" defer></script>
-<script src="/DATA/search.js" defer></script>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>My Character Gallery</title>
+    <link rel="icon" type="image/png" href="/img/wiki/icon/wikilogo.png">
+    <link href="../../fiche/style.css" rel="stylesheet" type="text/css" media="all">
+      <style>
+html {
+    background: var(--main-bg-color);
+    background: linear-gradient(180deg,rgb(32, 16, 1) 0%, rgb(63, 36, 6) 100%);
+    background-attachment: fixed;
+}
+</style>
+    <script src="/DATA/search.js" defer></script>
+  </head>
+    
+  <body>
+      
+      <header>
+        <a href="../../../index.html"><h1>Izmir Character build</h1></a>
+      </header>
+      
+      <main>
+      <!--at the top we have your OC's name-->
+          <h2 class="character-name">
+      <!--if you don't have an image you want to use, you can remove the <img> tag-->
+              <img src="../../../img/wiki/brujah/emine.png" class="icon">Emine Zeyneb</h2>
+          
+      <!--this is the little biography table, it floats to the right!-->
+          <aside class="bio">
+            <img src="../../../img/wiki/brujah/emine.png">
+              
+              <table>
+              <!--replace these with whatever info you want-->
+              <tr>
+                  <td>Nom</td>
+                  <td>Emine</td>
+              </tr>
 
-<body>
+              <tr>
+                  <td>Âge apparent</td>
+                  <td>37</td>
+              </tr>
+              <tr>
+                  <td>Clan</td>
+                  <td>Brujah</td>
+              </tr>
+              <tr>
+                  <td>Sire</td>
+                  <td>Childéric</td>
+              </tr>
 
-<header-component></header-component>
-
-<main>
-<div id="container" class="fiche">
-
-  <h1 class="fiche-nom"><img alt="" class="fiche-icone" src="../../../img/wiki/brujah/emine.png"/>Emine Zeyneb</h1>
-
-  <div class="avec-cote">
-  <div>
-  <p class="citation"> « ...Ce qui compte, ce n’est pas que le feu brûle encore ou
+                  
+              </table>
+          
+          </aside>
+          <section id="info">
+          <p class="quote"> « ...Ce qui compte, ce n’est pas que le feu brûle encore ou
 s’éteigne un instant, mais de se rappeler pourquoi il a brûlé... »  </p>
-  <div id="toc"></div>
+          </section>
+          
+          <section id="personality">
+          <h3 class="purple">Information connue</h3>
+          <p>
+Émine Zeyneb est une ancienne Brujah, connue pour son rôle de gardienne des traditions du clan et
+de la mémoire de Smyrne. Discrète, organisée et peu portée sur les discours inutiles, elle semble
+préférer conseiller et préserver les connaissances plutôt que chercher le pouvoir. Elle reste une
+présence importante auprès des siens.           </p>
+          </section>
+          
 
-  <div id="contents">
-<h2>Information connue</h2>
-<p>Émine Zeyneb est une ancienne Brujah, connue pour son rôle de gardienne des traditions du clan et de la mémoire de Smyrne. Discrète, organisée et peu portée sur les discours inutiles, elle semble préférer conseiller et préserver les connaissances plutôt que chercher le pouvoir. Elle reste une présence importante auprès des siens.</p>
-<h2>Histoire</h2>
-<p>Émine Zeyneb est née en Cappadoce au sein d’une communauté chrétienne orthodoxe turque. Intelligente et particulièrement organisée, elle est remarquée par Childéric, qui l’Étreint pour ses talents d’administratrice. Elle devient rapidement un élément important de son domaine. Pendant cette période, elle se rapproche de Bardas Planudes, son frère de sang, avec qui elle développe une relation particulièrement forte.</p>
-<p>En 1550, ils arrivent ensemble à Smyrne, où Bardas devient Primogène, tandis qu’Émine prend en charge l’administration du clan dans la ville. Elle trouve également un rôle de conseillère en rejoignant le Conseil des Anciens. Cette période est aussi marquée par sa rencontre avec Shahar, avec qui elle développe une amitié particulièrement intime.</p>
-<p>La Décennie des Pleurs est sans doute l’une des pires périodes de la non-vie d’Émine. La mort de Shahar la fait sombrer dans une spirale de vengeance. Elle part à la recherche de son assassin dans un tourbillon de rage inhabituel chez elle. Bardas ne parvient pas à l’arrêter et c’est Eudokia qui paie le prix de son départ. La mort de son infante est l’événement qui la fait revenir. À son retour, c’est une colère froide et une haine teintée de tristesse qui la caractérisent.</p>
-<p>Sa vie continue cependant et la douleur semble finir par s’atténuer. Elle suit plus tard Bardas dans son combat contre le Ductus du Sabbat lors de l’attaque de 1920 et aide Enry à prendre la relève après sa mort. Elle semble s’être éloignée de la politique depuis.</p>
-<h2>La mémoire du clan</h2>
-<p>Au fil des siècles, Émine est devenue la gardienne des traditions et la mémoire du clan Brujah à Smyrne. Ce titre symbolique est reconnu par tous les membres. Elle est, par son expérience et ses connaissances, la grande sœur qui parle peu, mais qui est toujours de bon conseil. Ce statut est également reconnu par d’autres membres de la ville et elle est une aide précieuse pour les archives de la ville.</p>
-<h2>Relations</h2>
-<h3>Lignée</h3>
-<dl class="fiche-relations">
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Childéric</dt><dd>Émine parle peu de son sire mais avec beaucoup de respect</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Bardas</dt><dd>La mémoire de son frère est entretenue par Émine. Elle ne tolère aucune critique à son égard</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Eudokia</dt><dd>Elle n’en parle jamais. L’évocation de son nom fait apparaître un voile dans ses yeux, mais elle sera prête à défendre le nom de son infante s’il est entaché.</dd>
-</dl>
-<h3>Amis</h3>
-<dl class="fiche-relations">
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Enry</dt>
-<dd>Émine et Enry se respectent et reconnaissent leurs qualités respectives. Ils se voient régulièrement pour diriger le clan Brujah. Cependant, leur relation semble se limiter au domaine professionnel, ce qui, d’après les dires de certains anciens, n’a pas toujours été le cas.</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Kushi</dt>
-<dd>Ils se connaissent depuis longtemps et aucune opposition entre les deux n’est apparue au cours de ces plusieurs siècles.</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Essen</dt>
-<dd>Les deux se sont rencontrés à l’initiative de Sophia, mais leur relation semble sincère. Essen a l’air d’apprécier l’expérience et la sagesse d’Émine et il n’est pas rare de les voir discuter de sujets obscurs en Elysium.</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/> Zaya Borte</dt>
-<dd>Les deux femmes ont gardé une alliance solide malgré la mort de Shahar et la fin du trio.</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Atam</dt>
-<dd>Les deux se voient souvent aux archives. Ils ont l’air de partager une idée commune du souvenir et de l’importance de la mémoire.</dd>
-<dt><img alt="" class="icone" src="../../../img/wiki/icon/no-icon.png"/>Sophia</dt>
-<dd>Elles se sont rapprochées pendant la chasse d’Artémis. Émine a aidé Sophia, et elles ont gardé un lien depuis.</dd>
-</dl>
-<h2>Trivia</h2>
-<ul>
-<li>Elle est la gardienne de « l’âme des Brujah »</li>
-<li>Elle a tellement de connaissances qu’actuellement, seulement 40 % sont posées sur papier.</li>
-<li>Elle est la gardienne de « l’âme des Brujah »</li>
-<li>Elle est membre des archives de Smyrne à titre honorifique depuis 200 ans.</li>
-<li>Elle collectionne les poteries diverses.</li>
-<li>Elle est une des rares descendantes non tremere a avoir été dans la chantry.</li>
-</ul>
-  </div>
-  </div>
+          <section id="story">
+          <h3 class="red">Histoire</h3>
+          <p>
+Émine Zeyneb est née en Cappadoce au sein d’une communauté chrétienne orthodoxe turque.
+Intelligente et particulièrement organisée, elle est remarquée par Childéric, qui l’Étreint pour ses
+talents d’administratrice. Elle devient rapidement un élément important de son domaine. Pendant
+cette période, elle se rapproche de Bardas Planudes, son frère de sang, avec qui elle développe une
+relation particulièrement forte. 
+          </p>
+          <p>
+En 1550, ils arrivent ensemble à Smyrne, où Bardas devient Primogène, tandis qu’Émine prend en
+charge l’administration du clan dans la ville. Elle trouve également un rôle de conseillère en
+rejoignant le Conseil des Anciens. Cette période est aussi marquée par sa rencontre avec Shahar,
+avec qui elle développe une amitié particulièrement intime. 
+            </p>
 
-  <aside class="cote">
-    <div class="fiche-bio">
-      <img alt="" src="../../../img/wiki/brujah/emine.png"/>
-      <table>
+<p>
+    La Décennie des Pleurs est sans doute l’une des pires périodes de la non-vie d’Émine. La mort de
+Shahar la fait sombrer dans une spirale de vengeance. Elle part à la recherche de son assassin dans
+un tourbillon de rage inhabituel chez elle. Bardas ne parvient pas à l’arrêter et c’est Eudokia qui
+paie le prix de son départ. La mort de son infante est l’événement qui la fait revenir. À son retour,
+c’est une colère froide et une haine teintée de tristesse qui la caractérisent. 
+</p>
+<p>
+Sa vie continue cependant et la douleur semble finir par s’atténuer. Elle suit plus tard Bardas dans
+son combat contre le Ductus du Sabbat lors de l’attaque de 1920 et aide Enry à prendre la relève
+après sa mort. Elle semble s’être éloignée de la politique depuis. 
+</p>
 
-<tr>
-<td>Nom</td>
-<td>Emine</td>
-</tr>
-<tr>
-<td>Âge apparent</td>
-<td>37</td>
-</tr>
-<tr>
-<td>Clan</td>
-<td>Brujah</td>
-</tr>
-<tr>
-<td>Sire</td>
-<td>Childéric</td>
-</tr>
-</table>
+<h3>La mémoire du clan</h3>
+<P> Au fil des siècles, Émine est devenue la gardienne des traditions et la mémoire du clan Brujah à
+Smyrne. Ce titre symbolique est reconnu par tous les membres. Elle est, par son expérience et ses
+connaissances, la grande sœur qui parle peu, mais qui est toujours de bon conseil. Ce statut est
+également reconnu par d’autres membres de la ville et elle est une aide précieuse pour les archives
+de la ville. </P>
+              <br><br>
+          </section>
+          
+    <section id="relationships">
+          <h3 class="red">Relations</h3>
+              
+          <h4>LIGNEE</h4>
+          <dl>
+              
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Childéric</dt><dd>
+ Émine parle peu de son sire mais avec beaucoup de respect  </dd>
+              
+ <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Bardas</dt><dd>
+La mémoire de son frère est entretenue par Émine. Elle ne tolère aucune critique à
+son égard
+              </dd>
+
+ <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Eudokia</dt><dd>
+ Elle n’en parle jamais. L’évocation de son nom fait apparaître un voile dans ses
+yeux, mais elle sera prête à défendre le nom de son infante s’il est entaché.
+              </dd>
+
+          </dl>
+              
+          <h4>AMIS</h4>
+            <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Enry</dt>
+              <dd>
+Émine et Enry se respectent et reconnaissent leurs qualités respectives. Ils se voient
+régulièrement pour diriger le clan Brujah. Cependant, leur relation semble se limiter au domaine
+professionnel, ce qui, d’après les dires de certains anciens, n’a pas toujours été le cas. 
+              </dd>
+                
+          </dl>
+
+          <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Kushi</dt>
+              <dd>
+Ils se connaissent depuis longtemps et aucune opposition entre les deux n’est
+apparue au cours de ces plusieurs siècles. 
+              </dd>
+          </dl>
+
+
+          <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Essen</dt>
+              <dd>
+Les deux se sont rencontrés à l’initiative de Sophia, mais leur relation semble
+sincère. Essen a l’air d’apprécier l’expérience et la sagesse d’Émine et il n’est pas rare de les voir
+discuter de sujets obscurs en Elysium. 
+              </dd>
+          </dl>
+
+                    <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon"> Zaya Borte</dt>
+              <dd>
+Les deux femmes ont gardé une alliance solide malgré la mort de Shahar et la
+fin du trio. 
+              </dd>
+          </dl>
+
+                    <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Atam</dt>
+              <dd>
+ Les deux se voient souvent aux archives. Ils ont l’air de partager une idée commune
+du souvenir et de l’importance de la mémoire. 
+              </dd>
+          </dl>
+
+                    <dl>
+              <dt><img src="../../../img/wiki/icon/no-icon.png" class="icon">Sophia</dt>
+              <dd>
+Elles se sont rapprochées pendant la chasse d’Artémis. Émine a aidé Sophia, et
+elles ont gardé un lien depuis.
+              </dd>
+          </dl>
+
+          </section>
+
+
+          <section id="trivia">
+          <h3 class="green">trivia</h3>
+          <ul>
+              <li>Elle est la gardienne de « l’âme des Brujah »</li>
+              <li>Elle a tellement de connaissances qu’actuellement, seulement 40 % sont posées sur papier.</li>
+              <li>Elle est la gardienne de « l’âme des Brujah »</li>
+              <li>Elle est membre des archives de Smyrne à titre honorifique depuis 200 ans.</li>
+              <li>Elle collectionne les poteries diverses. </li>
+              <li>Elle est une des rares descendantes non tremere a avoir été dans la chantry.</li>
+            </ul>
+          </section>
+
+        
     </div>
-  </aside>
-  </div>
+            
 
-  <p><a class="lien-doc" href="/WIKI/fiche/">Tous les personnages</a></p>
-
-</div>
-</main>
-
-</body>
+          <hr>
+          
+          
+      </main>
+      <footer>© 2026 [Izmir by Night] <a href="../../../index.html">[Izmir by Night]</a> · <a href="../../fiche/index.html">Retour au wiki</a></footer>
+    
+  </body>
 </html>
+
+
+
+
