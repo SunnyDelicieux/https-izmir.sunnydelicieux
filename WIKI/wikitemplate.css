@@ -878,3 +878,121 @@ a.lien-doc:hover {
     color: var(--wiki-accent-hover);
     border-color: var(--wiki-accent);
 }
+
+/* ── Fiches de personnage (WIKI/clan/pnj/) ──
+   <h1 class="fiche-nom"><img class="fiche-icone">Nom</h1>, la fiche (portrait + tableau) dans aside.cote > .fiche-bio,
+   les relations dans <dl class="fiche-relations"><dt><img class="icone">Nom</dt><dd>…</dd></dl> */
+#container h1.fiche-nom {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.fiche-nom .fiche-icone {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border: 1px solid var(--wiki-line);
+    border-radius: 50%;
+}
+
+.fiche .citation {
+    margin-top: 0;
+}
+
+.fiche-bio {
+    padding: 8px;
+    background: var(--wiki-box);
+    border: 1px solid var(--wiki-line);
+    border-radius: var(--iz-radius);
+}
+
+.fiche-bio img {
+    display: block;
+    width: 100%;
+    border-radius: var(--iz-radius);
+}
+
+.fiche-bio table {
+    width: 100%;
+    margin: 8px 0 0;
+    background: none;
+    border: none;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.fiche-bio td {
+    padding: 4px 6px;
+    border: none;
+    border-bottom: 1px dotted var(--wiki-line);
+    background: none;
+    vertical-align: top;
+}
+
+.fiche-bio tr:last-child td {
+    border-bottom: none;
+}
+
+.fiche-bio td:nth-child(even) {
+    font-weight: normal;
+}
+
+.fiche-bio td:first-child {
+    width: 38%;
+    font-weight: normal;
+    text-align: left;
+    color: var(--wiki-accent);
+    font: italic 13px var(--iz-font-title);
+}
+
+dl.fiche-relations {
+    margin: 0.6em 0 1.2em;
+}
+
+.fiche .avec-cote > * {
+    min-width: 0;
+}
+
+.fiche-bio td {
+    overflow-wrap: anywhere;
+}
+
+dl.fiche-relations dt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    color: var(--wiki-accent);
+    font-weight: bold;
+}
+
+dl.fiche-relations dt .icone {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border: 1px solid var(--wiki-line);
+    border-radius: 50%;
+}
+
+dl.fiche-relations dd {
+    margin: 4px 0 0 46px;
+}
+
+/* téléphone : la fiche (portrait) passe avant le texte, plus petite */
+@media only screen and (max-width: 760px) {
+    .fiche .avec-cote > .cote {
+        order: -1;
+    }
+
+    .fiche-bio {
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+    }
+
+    .fiche-bio table {
+        margin: 0;
+    }
+}

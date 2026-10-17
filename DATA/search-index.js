@@ -42,8 +42,8 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/SITE/CREATION/clan.html",
   "headings": [
    "Clan",
-   "FEUILLE DE CREATION",
-   "La CULTURE DE CLAN",
+   "Feuille de création",
+   "La culture de clan",
    "Politique",
    "Vie quotidienne"
   ]
@@ -68,9 +68,11 @@ window.IZMIR_SEARCH_INDEX = [
   "headings": [
    "Créer son personnage",
    "1 Choisir son clan",
-   "5 Concept de personnage",
-   "6 Créer sa fiche",
-   "7 Les PNJ"
+   "2 Choisir son role",
+   "3 Ses objectifs",
+   "4 Concept de personnage",
+   "5 Créer sa fiche",
+   "6 Les PNJ"
   ]
  },
  {
@@ -80,9 +82,11 @@ window.IZMIR_SEARCH_INDEX = [
   "headings": [
    "Les groupes",
    "La vie des primogènes",
-   "Fiche de personnage",
+   "Fiche des primogènes",
    "Le combat des limiers",
-   "La survie des ghoules"
+   "Fiche des limiers",
+   "La survie des ghoules",
+   "Fiche des ghoules"
   ]
  },
  {
@@ -104,10 +108,11 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/SITE/CREATION/pnj.html",
   "headings": [
    "Les relations sociales entre Pj",
-   "Les Attaches",
+   "Les liens entre PJ",
+   "Les attaches",
    "Les PNJ de la camarilla",
    "Les autres PNJ",
-   "template PNJ"
+   "Template PNJ"
   ]
  },
  {
@@ -115,7 +120,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/faq.html",
   "headings": [
-   "questions fréquentes"
+   "Questions fréquentes",
+   "Organisation des séances",
+   "Personnages & clans",
+   "Mécanique de jeu",
+   "Sécurité et consentement"
   ]
  },
  {
@@ -123,9 +132,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/lignes_et_voiles.html",
   "headings": [
-   "lignes & voiles — c'est quoi ?",
+   "Lignes & voiles — c'est quoi ?",
+   "Lignes et voiles de la campagne",
    "Trigger de la campagne",
-   "la consent sheet individuelle"
+   "La consent sheet individuelle"
   ]
  },
  {
@@ -134,8 +144,8 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/SITE/ORGANISATION/roadmap.html",
   "headings": [
    "Roadmap",
-   "Roadmap -",
-   "Note en tas -"
+   "Avancement",
+   "Note en tas"
   ]
  },
  {
@@ -144,7 +154,8 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/SITE/OUTILS/alchemy.html",
   "headings": [
    "Alchemy",
-   "Guide utilisation alchemy"
+   "Guide utilisation alchemy",
+   "La game de test"
   ]
  },
  {
@@ -193,14 +204,11 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/SITE/SYSTEME/ressource.html",
   "headings": [
    "Ressources",
-   "exemple de ressource",
+   "Exemple de ressource",
    "Les ressources du clan",
    "Engager une ressource",
-   "Ressources engagées et ressources disponibles",
    "Le stress",
-   "Générer du stress",
-   "Seuil critique",
-   "Réduire le Stress",
+   "Réduire le stress",
    "Récapitulatif"
   ]
  },
@@ -258,8 +266,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/atam.html",
   "headings": [
-   "Izmir Character build",
-   "Atam"
+   "Atam",
+   "Information connue",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -267,8 +277,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/camil.html",
   "headings": [
-   "Izmir Character build",
-   "Camil"
+   "Camil",
+   "Information connue",
+   "Relations",
+   "Trivia",
+   "Galerie"
   ]
  },
  {
@@ -276,8 +289,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/idia.html",
   "headings": [
-   "Izmir Character build",
-   "Idia Akaba"
+   "Idia Akaba",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia",
+   "Galerie"
   ]
  },
  {
@@ -285,8 +302,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/inga.html",
   "headings": [
-   "Izmir Character build",
-   "Inga"
+   "Inga",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -294,8 +314,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/kushi.html",
   "headings": [
-   "Izmir Character build",
-   "Kushi"
+   "Kushi",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -303,8 +326,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/meryem.html",
   "headings": [
-   "Izmir Character build",
-   "Meryem Asli"
+   "Meryem Asli",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -312,8 +338,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/nebetta.html",
   "headings": [
-   "Izmir Character build",
-   "Nebetta"
+   "Nebetta",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Rumeurs"
   ]
  },
  {
@@ -321,8 +350,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/nour.html",
   "headings": [
-   "Izmir Character build",
-   "Nour"
+   "Nour",
+   "Informations connues",
+   "Histoire",
+   "L'occultisme",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -331,7 +364,8 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/WIKI/autre/rules.html",
   "headings": [
    "Le titre de la page",
-   "Titre majeur"
+   "Titre majeur",
+   "Second titre majeur"
   ]
  },
  {
@@ -340,7 +374,10 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/WIKI/brujah/",
   "headings": [
    "Le clan Brujah",
-   "Le sacre ou le sépulcre"
+   "Mythologie",
+   "Antiquité",
+   "La longue révolte",
+   "Modern Nights"
   ]
  },
  {
@@ -348,7 +385,6 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/aaron.html",
   "headings": [
-   "Izmir Character build",
    "Aaron"
   ]
  },
@@ -357,8 +393,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/ahmet.html",
   "headings": [
-   "Izmir Character build",
-   "Ahmet oğlu Mustafa"
+   "Ahmet oğlu Mustafa",
+   "Le premier combat",
+   "Le voyage",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -366,8 +405,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/anna-petrova.html",
   "headings": [
-   "Izmir Character build",
-   "Anna Petrova"
+   "Anna Petrova",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -375,8 +417,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/baran.html",
   "headings": [
-   "Izmir Character build",
-   "Baran Serra"
+   "Baran Serra",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -384,8 +429,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/emine.html",
   "headings": [
-   "Izmir Character build",
-   "Emine Zeyneb"
+   "Emine Zeyneb",
+   "Information connue",
+   "Histoire",
+   "La mémoire du clan",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -393,8 +442,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/essil.html",
   "headings": [
-   "Izmir Character build",
-   "Essil"
+   "Essil",
+   "Information connue",
+   "Histoire",
+   "Relations"
   ]
  },
  {
@@ -402,8 +453,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/gabriel.html",
   "headings": [
-   "Izmir Character build",
-   "Gabriel"
+   "Gabriel",
+   "Hériter d'un combat",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -411,8 +465,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/henri.html",
   "headings": [
-   "Izmir Character build",
-   "Enrico Alessandro Pisani, dit Enry"
+   "Enrico Alessandro Pisani, dit Enry",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -420,8 +477,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/brujah/pnj",
   "url": "/WIKI/brujah/pnj/kaadir.html",
   "headings": [
-   "Izmir Character build",
-   "Kaadir"
+   "Kaadir",
+   "Information connue",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -439,8 +498,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI",
   "url": "/WIKI/fiche/",
   "headings": [
-   "Izmir Character Build",
-   "Liste des personnages"
+   "Liste des personnages",
+   "Dans la Camarilla",
+   "Humains",
+   "Factions ennemies",
+   "Absents"
   ]
  },
  {
@@ -489,8 +551,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/alejandro.html",
   "headings": [
-   "Izmir Character build",
-   "Alejandro"
+   "Alejandro",
+   "Informations connues",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -498,8 +563,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/angelos.html",
   "headings": [
-   "Izmir Character build",
-   "Angelos"
+   "Angelos",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -507,8 +575,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/aylin.html",
   "headings": [
-   "Izmir Character build",
-   "Aylin Belgin"
+   "Aylin Belgin",
+   "Information connue",
+   "Relations",
+   "Filmographie"
   ]
  },
  {
@@ -516,8 +586,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/calliope.html",
   "headings": [
-   "Izmir Character Build",
-   "Calliope"
+   "Calliope",
+   "Information connue",
+   "Histoire",
+   "Ouvrages",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -525,8 +599,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/ines.html",
   "headings": [
-   "Izmir Character build",
-   "Ines"
+   "Ines",
+   "Information connue",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -534,8 +610,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/kejal.html",
   "headings": [
-   "Izmir Character build",
-   "Kejal Erdem"
+   "Kejal Erdem",
+   "Information connue",
+   "Le Jardin",
+   "Un curieux parcours",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -543,8 +623,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/maliha.html",
   "headings": [
-   "Izmir Character build",
-   "Maliha"
+   "Maliha",
+   "Histoire",
+   "Rejoindre le monde de la nuit",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -552,8 +635,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/max.html",
   "headings": [
-   "Izmir Character build",
-   "Max (Maximilienne)"
+   "Max (Maximilienne)",
+   "Information connue",
+   "Relations",
+   "Trivia",
+   "Galerie"
   ]
  },
  {
@@ -561,8 +647,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/toreador/pnj",
   "url": "/WIKI/toreador/pnj/nafissa.html",
   "headings": [
-   "Izmir Character build",
-   "Nafissa"
+   "Nafissa",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia",
+   "Galerie"
   ]
  },
  {
@@ -581,8 +671,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/dimitrios.html",
   "headings": [
-   "Izmir Character build",
-   "Dimitrios Levantis"
+   "Dimitrios Levantis",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -590,8 +682,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/eleni-paschalia.html",
   "headings": [
-   "Izmir Character build",
-   "Eleni Paschalia"
+   "Eleni Paschalia",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -599,8 +694,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/esen.html",
   "headings": [
-   "Izmir Character build",
-   "Esen Onder"
+   "Esen Onder",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -608,8 +706,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/eylem.html",
   "headings": [
-   "Izmir Character build",
-   "Eylem Dukas"
+   "Eylem Dukas",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -617,8 +718,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/ismini.html",
   "headings": [
-   "Izmir Character build",
-   "Ismini Zervoti"
+   "Ismini Zervoti",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -626,8 +730,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/mariko.html",
   "headings": [
-   "Izmir Character build",
-   "Mariko Ishizaki"
+   "Mariko Ishizaki",
+   "Histoire",
+   "Wayfarer Clinic",
+   "Relations",
+   "Galerie",
+   "Trivia"
   ]
  },
  {
@@ -635,8 +743,10 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/sophia.html",
   "headings": [
-   "Izmir Character build",
-   "Sophia Evangelatos"
+   "Sophia Evangelatos",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -644,8 +754,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/tarik.html",
   "headings": [
-   "Izmir Character build",
-   "Tarik"
+   "Tarik",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Galerie",
+   "Trivia"
   ]
  },
  {
@@ -653,8 +767,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/tremere/pnj",
   "url": "/WIKI/tremere/pnj/zacharias.html",
   "headings": [
-   "Izmir Character build",
-   "Zacharias Stargios"
+   "Zacharias Stargios",
+   "Information connue",
+   "Histoire",
+   "Maintenant",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -678,8 +796,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/alita.html",
   "headings": [
-   "Izmir Character build",
-   "Alita"
+   "Alita",
+   "Informations connues",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -687,7 +808,6 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/cem.html",
   "headings": [
-   "Izmir Character build",
    "Aaron"
   ]
  },
@@ -696,7 +816,6 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/chae.html",
   "headings": [
-   "Izmir Character build",
    "Aaron"
   ]
  },
@@ -705,8 +824,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/dimitri.html",
   "headings": [
-   "Izmir Character build",
-   "Dimitri Gattegno"
+   "Dimitri Gattegno",
+   "Informations connues",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -714,8 +836,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/kerem.html",
   "headings": [
-   "Izmir Character build",
-   "Arslan"
+   "Arslan",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -723,8 +848,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/louisa.html",
   "headings": [
-   "Izmir Character build",
-   "Louiza"
+   "Louiza",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -732,8 +860,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/raffi.html",
   "headings": [
-   "Izmir Character build",
-   "Raffi Arsacid"
+   "Raffi Arsacid",
+   "Informations connues",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -741,8 +872,11 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/thouros.html",
   "headings": [
-   "Izmir Character build",
-   "Thouros"
+   "Thouros",
+   "Information connue",
+   "Histoire",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -750,8 +884,12 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/ventrue/pnj",
   "url": "/WIKI/ventrue/pnj/zaya.html",
   "headings": [
-   "Izmir Character build",
-   "Zaya Borte"
+   "Zaya Borte",
+   "Une infante",
+   "Histoire",
+   "L'age moderne",
+   "Relations",
+   "Trivia"
   ]
  },
  {
@@ -760,7 +898,8 @@ window.IZMIR_SEARCH_INDEX = [
   "url": "/accueil.html",
   "headings": [
    "İzmir by Night",
-   "une campagne à 9 joueurs ?"
+   "Une campagne à 9 joueurs ?",
+   "La ville d'İzmir"
   ]
  },
  {
