@@ -81,6 +81,8 @@ body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background:
 .izb-theme:hover { color: #d4aa72; }
 
 /* le menu en boutons du bandeau et le bouton jour/nuit de la colonne : remplacés par la barre */
+/* bandeau « İzmir by Night / un projet de Sunny » : seulement sur l'accueil du site */
+body.avec-barre:not(.page-accueil) #site-header { display: none; }
 body.avec-barre #site-header .navi,
 body.avec-barre .sidebar #theme-toggle,
 body.avec-barre > header:has(h1),
@@ -116,6 +118,8 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
   style.textContent = CSS;
   document.head.appendChild(style);
   document.body.classList.add("avec-barre");
+  // Cloudflare sert /accueil.html à l'adresse /accueil
+  if (/^\/accueil(\.html)?$/.test(location.pathname)) document.body.classList.add("page-accueil");
 
   const barre = document.createElement("nav");
   barre.id = "iz-barre";
