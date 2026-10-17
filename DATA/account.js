@@ -217,6 +217,14 @@ body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-pan
 }
 
 /* ── Dans la barre du wiki (WIKI/nav.js) : à côté du bouton jour/nuit ── */
+/* dans la barre de navigation (DATA/barre.js) : un lien texte, comme le menu */
+.iza-box--barre .iza-btn {
+  min-width: 0; max-width: 140px; padding: 4px 6px; background: none; border: none;
+  color: #c09050; font: italic 14px Georgia, serif; letter-spacing: 0.5px;
+}
+.iza-box--barre:hover .iza-btn, .iza-box--barre.iza-open .iza-btn { color: #d4aa72; border: none; }
+.iza-box--barre .iza-panel { margin-top: 4px; border-style: dashed; }
+body.light .iza-box--barre .iza-btn { background: none; color: #8b4a18; }
 .iza-box--wiki { margin-left: -20px; align-self: center; } /* la barre du wiki espace ses éléments de 28px : on se colle au bouton jour/nuit */
 .iza-box--wiki .iza-btn {
   height: 28px; box-sizing: border-box; padding: 0 12px; min-width: 0; max-width: 150px;
@@ -259,6 +267,13 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
     const host = siteHeader || wikiHeader;
 
     const tryPlace = () => {
+      // barre de navigation unique (DATA/barre.js) : le compte va au bout de la barre
+      const barre = document.getElementById("iz-barre-compte");
+      if (barre) {
+        box.className = box.className.replace(/iza-box--\w+/g, "") + " iza-box--barre";
+        barre.appendChild(box);
+        return true;
+      }
       const navi = siteHeader?.querySelector(".navi");
       const wikinav = wikiHeader?.querySelector(".wikinav");
       if (navi) {
@@ -277,6 +292,7 @@ body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); backgroun
       return true;
     };
 
+    if (document.getElementById("iz-barre-compte") && tryPlace()) return;
     if (host && tryPlace()) return;
     if (host) {
       // le menu arrive un peu après (chargé à part) : en attendant, on n'affiche rien
