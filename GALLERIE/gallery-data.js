@@ -1,6 +1,13 @@
 const galleryData=[
 
    {
+src:"dessin/sun/MOON.png",
+alt:"Moon.",
+tags:["sunny","canon","eylem","tremere"],
+  desc:"Moon."
+},
+
+   {
 src:"dessin/sun/strenght.png",
 alt:"Strenght.",
 tags:["sunny","canon","tarik","tremere"],
