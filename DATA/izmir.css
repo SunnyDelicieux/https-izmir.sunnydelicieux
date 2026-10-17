@@ -987,3 +987,30 @@ body.light .calendar-title button {
 body.light .calendar-title button:hover {
   background: #cfaa88;
 }
+/* ── Index du site (SITE/index.html, DATA/index-site.js) ── */
+.index-filtre {
+  width: 100%;
+  padding: 5px 8px;
+  color: var(--iz-text);
+  background: var(--iz-bg);
+  border: 1px solid var(--iz-border-strong);
+  outline: none;
+  font: 12px Arial, Tahoma, Verdana, sans-serif;
+}
+.index-filtre:focus { border-color: var(--iz-accent); }
+.index-compte { margin-top: 6px; color: var(--iz-muted); }
+#index-sommaire a { display: block; color: var(--iz-text); text-decoration: none; }
+#index-sommaire a:hover { color: var(--iz-accent-hover); }
+#index-site { display: flex; flex-direction: column; gap: 18px; }
+.index-liste {
+  columns: 3 160px;
+  column-gap: 22px;
+  list-style: none;
+}
+.index-liste li { break-inside: avoid; padding: 2px 0; }
+.index-liste a { color: var(--iz-text); text-decoration: none; font: italic 13px georgia, serif; }
+.index-liste a:hover { color: var(--iz-accent-hover); }
+.index-liste small { color: var(--iz-muted); }
+body.light .index-filtre { background: #fbf3e8; color: #2a1a0e; border-color: #c8906a; }
+body.light .index-liste a, body.light #index-sommaire a { color: #2a1a0e; }
+body.light .index-liste a:hover, body.light #index-sommaire a:hover { color: #8b4a18; }

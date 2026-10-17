@@ -108,21 +108,9 @@ window.IZMIR_SEARCH_INDEX = [
   ]
  },
  {
-  "name": "faq",
-  "folder": "SITE/ORGANISATION",
-  "url": "/SITE/ORGANISATION/faq.html",
-  "headings": []
- },
- {
   "name": "lignes_et_voiles",
   "folder": "SITE/ORGANISATION",
   "url": "/SITE/ORGANISATION/lignes_et_voiles.html",
-  "headings": []
- },
- {
-  "name": "roadmap",
-  "folder": "SITE/ORGANISATION",
-  "url": "/SITE/ORGANISATION/roadmap.html",
   "headings": []
  },
  {
@@ -174,6 +162,12 @@ window.IZMIR_SEARCH_INDEX = [
    "Réduire le Stress",
    "Récapitulatif"
   ]
+ },
+ {
+  "name": "SITE",
+  "folder": "",
+  "url": "/SITE/",
+  "headings": []
  },
  {
   "name": "WAYFARER",
