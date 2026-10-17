@@ -164,12 +164,6 @@ window.IZMIR_SEARCH_INDEX = [
   ]
  },
  {
-  "name": "SITE",
-  "folder": "",
-  "url": "/SITE/",
-  "headings": []
- },
- {
   "name": "WAYFARER",
   "folder": "WIKI",
   "url": "/WIKI/WAYFARER/",
