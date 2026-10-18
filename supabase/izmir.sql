@@ -464,17 +464,18 @@ on public.handouts for delete
 to authenticated
 using (author = auth.uid());
 
--- fichier d'un handout : lisible aussi par son auteur
+-- fichier d'un handout : lisible aussi par son auteur, et par l'admin (tous les fichiers)
 create or replace function public.izmir_can_read_handout(object_path text)
 returns boolean
 language sql stable security definer
 set search_path = public
 as $$
-  select exists (
-    select 1 from public.handouts h
-    where h.path = object_path
-      and public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(h.tags)), h.author, auth.uid())
-  )
+  select public.izmir_is_admin()
+      or exists (
+        select 1 from public.handouts h
+        where h.path = object_path
+          and public.izmir_handout_visible_to(public.izmir_as_tags(to_jsonb(h.tags)), h.author, auth.uid())
+      )
 $$;
 
 -- fichiers des joueurs : chacun dans joueurs/<son id>/
