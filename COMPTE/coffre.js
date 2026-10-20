@@ -299,6 +299,7 @@
         : /size|too large|exceeded/i.test(m) ? "Fichier trop lourd (10 Mo maximum)."
         : /mime|type/i.test(m) ? "Type de fichier refusé (images ou PDF seulement)."
         : "L'enregistrement a échoué, réessaie.";
+      hMsg.textContent += ` (Supabase : ${m})`;
       return;
     }
     hForm.hidden = true;

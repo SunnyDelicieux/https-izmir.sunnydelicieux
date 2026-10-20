@@ -389,9 +389,11 @@
       : await account.client.from("Calendar").insert(row);
     if (error) {
       console.error(error);
-      formMsg.textContent = /row-level security|violates/i.test(error.message || "")
+      const m = error.message || "";
+      formMsg.textContent = (/row-level security/i.test(m)
         ? "Refusé : tu ne peux utiliser que tes propres tags ou des pseudos de joueurs."
-        : "L'enregistrement a échoué, réessaie.";
+        : "L'enregistrement a échoué, réessaie.")
+        + ` (Supabase : ${m}${error.details ? " — " + error.details : ""})`;
       return;
     }
     form.hidden = true;
