@@ -70,6 +70,19 @@ html body.light .izs-input::placeholder {
     color: var(--iz-muted);
 }
 
+/* bouton de compte (DATA/account.js) : sombre comme la recherche, sur le bandeau du wiki */
+html body.light .iza-btn {
+    background: var(--iz-box);
+    color: var(--iz-accent);
+    border-color: var(--iz-border-strong);
+}
+
+html body.light .iza-box:hover .iza-btn,
+html body.light .iza-box.iza-open .iza-btn {
+    color: var(--iz-accent-hover);
+    border-color: var(--iz-accent);
+}
+
 #header {
     display: none;
 }

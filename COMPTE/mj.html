@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace MJ</title>
+<link rel="icon" type="image/png" href="/img/wiki/icon/logo-128.png">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<link rel="stylesheet" href="/COMPTE/compte.css">
+<script src="/DATA/izmir.js"></script>
+<script src="/DATA/account.js"></script>
+  <script src="/DATA/search.js" defer></script>
+</head>
+
+<body>
+<script src="/DATA/barre.js"></script>
+
+<div class="page-wrap">
+
+  <!-- colonne de gauche : son contenu change avec l'onglet -->
+  <div class="sidebar">
+    <button id="theme-toggle">☾ nuit</button>
+
+    <div data-tab="handouts">
+      <div class="box">
+        <div class="title">handouts</div>
+        <div class="side-hint">Dépose un PDF : chaque page devient une lettre, que tu tagues.
+          Pour partager une lettre à d'autres plus tard, change ses tags dans la liste.</div>
+      </div>
+      <div class="box">
+        <div class="title">chercher</div>
+        <input class="input" id="ho-filter" type="search" placeholder="titre, tag, pdf…" aria-label="Filtrer les lettres">
+        <div class="muted" id="ho-count" style="margin-top:6px"></div>
+      </div>
+    </div>
+
+    <div data-tab="vue" hidden>
+      <div class="box">
+        <div class="title">joueur</div>
+        <select class="input" id="player" aria-label="Joueur"></select>
+        <input class="input" id="vj-filter" type="search" placeholder="filtrer…" aria-label="Filtrer" style="margin-top:6px">
+        <div class="side-hint">Exactement ce que Supabase envoie à ce joueur, calculé avec les mêmes règles que la sécurité.
+          À vérifier avant chaque révélation.</div>
+      </div>
+    </div>
+
+    <div data-tab="signalements" hidden>
+      <div class="box">
+        <div class="title">signalements</div>
+        <div class="side-hint">Écris ta réponse, puis choisis le statut : le joueur la voit dans son espace.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="site-header"></div>
+
+    <nav class="tabs" aria-label="Espace MJ">
+      <a href="#handouts">handouts</a>
+      <a href="#vue">vue joueur</a>
+      <a href="#signalements">signalements</a>
+    </nav>
+
+    <!-- ── handouts ── -->
+    <section data-tab="handouts">
+      <div class="note account-gate" id="ho-gate">chargement…</div>
+      <div id="ho-content" hidden>
+        <div class="note">
+          <div class="title">découper un pdf</div>
+          <label class="drop" id="drop">
+            <input type="file" id="file" accept="application/pdf,.pdf" hidden>
+            <span id="drop-text">clique ou glisse un PDF ici</span>
+          </label>
+
+          <div id="split" hidden>
+            <div class="bulk">
+              <span class="muted">tags pour toutes les pages :</span>
+              <div class="tags" id="bulk-tags"></div>
+            </div>
+            <div class="pages-grid" id="pages"></div>
+            <div class="toolbar" style="margin-top:12px">
+              <button class="btn" type="button" id="send">envoyer</button>
+              <button class="btn" type="button" id="cancel">annuler</button>
+              <span class="form-msg" id="send-msg" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vault-heading" style="margin-top:18px">tous les handouts</div>
+        <div id="sent" class="sent-list"></div>
+      </div>
+    </section>
+
+    <!-- ── vue joueur ── -->
+    <section data-tab="vue" hidden>
+      <div class="note account-gate" id="vj-gate">chargement…</div>
+      <div id="vj-content" hidden>
+        <div class="note" id="summary"></div>
+        <div id="result" style="display:flex;flex-direction:column;gap:14px;margin-top:14px"></div>
+      </div>
+    </section>
+
+    <!-- ── signalements ── -->
+    <section data-tab="signalements" hidden>
+      <div class="note account-gate" id="si-gate">chargement…</div>
+      <div id="si-content" hidden>
+        <div id="tickets" data-scope="all" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script src="/COMPTE/lecteur.js"></script>
+<script src="/COMPTE/partage.js"></script>
+<script src="/COMPTE/onglets.js"></script>
+<script src="/COMPTE/handouts.js"></script>
+<script src="/COMPTE/vue-joueur.js"></script>
+<script src="/COMPTE/signaler.js"></script>
+</body>
+</html>

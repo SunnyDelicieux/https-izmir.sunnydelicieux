@@ -23,6 +23,7 @@ EXCLUDE = [
     "WIKI/template.html",
     "INGA/inga.html",
     "INGA/inga2.html",
+    "COMPTE/",
 ]
 
 SCRIPT_TAG = '<script src="/DATA/search.js" defer></script>'

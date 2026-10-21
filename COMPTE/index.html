@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace joueur</title>
+<link rel="icon" type="image/png" href="/img/wiki/icon/logo-128.png">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<link rel="stylesheet" href="/COMPTE/compte.css">
+<script src="/DATA/izmir.js"></script>
+<script src="/DATA/account.js"></script>
+  <script src="/DATA/search.js" defer></script>
+</head>
+
+<body>
+<script src="/DATA/barre.js"></script>
+
+<div class="page-wrap">
+
+  <!-- colonne de gauche : son contenu change avec l'onglet -->
+  <div class="sidebar">
+    <button id="theme-toggle">☾ nuit</button>
+
+    <div data-tab="calendrier">
+      <div class="box">
+        <div class="title">calendrier</div>
+        <button class="btn side-btn" id="ev-new" type="button" hidden>+ nouvel événement</button>
+        <div class="side-hint">Clique sur un jour de la grille, ou sur un événement de la liste pour le déplier.</div>
+      </div>
+      <div class="box">
+        <div class="title">années</div>
+        <div class="year-links" id="year-links"></div>
+      </div>
+      <div class="box">
+        <div class="title">tags</div>
+        <div class="tags" id="tag-links"></div>
+      </div>
+    </div>
+
+    <div data-tab="coffre" hidden>
+      <div class="box">
+        <div class="title">coffre-fort</div>
+        <button class="btn side-btn" type="button" id="new-letter" hidden>+ écrire une lettre</button>
+        <button class="btn side-btn" type="button" id="new-file" hidden>+ envoyer un fichier</button>
+        <div class="side-hint">Ctrl+clic sur un document pour l'ouvrir dans un nouvel onglet.</div>
+      </div>
+      <div class="box">
+        <div class="title">afficher</div>
+        <div class="tags">
+          <button class="tag active" type="button" data-who="tout">tout</button>
+          <button class="tag" type="button" data-who="recus">reçus</button>
+          <button class="tag" type="button" data-who="envoyes">envoyés par moi</button>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab="signaler" hidden>
+      <div class="box">
+        <div class="title">signaler</div>
+        <div class="side-hint">Une faute, un bug visuel, une info fausse, un truc à changer : ça m'arrive directement, et ma réponse s'affiche ici.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="site-header"></div>
+
+    <nav class="tabs" aria-label="Espace joueur">
+      <a href="#calendrier">calendrier</a>
+      <a href="#coffre">coffre-fort</a>
+      <a href="#signaler">signaler une erreur</a>
+    </nav>
+
+    <!-- ── calendrier ── -->
+    <section data-tab="calendrier">
+      <div class="note account-gate" id="ev-status" hidden></div>
+      <div class="toolbar">
+        <input class="input" id="ev-filter" type="search" placeholder="filtrer : titre, description, tag…" aria-label="Filtrer les événements">
+        <button class="btn" type="button" data-view="grille">grille</button>
+        <button class="btn" type="button" data-view="liste">liste</button>
+        <button class="btn" id="ev-sort" type="button">↓ plus récent d'abord</button>
+      </div>
+      <div class="muted" id="ev-count" style="margin-top:6px"></div>
+      <div id="ev-grid"></div>
+      <div id="ev-day" class="ev-day"></div>
+      <div id="ev-list" class="timeline"></div>
+
+      <form class="note modal-form" id="event-form" hidden>
+        <div class="title" id="form-title">nouvel événement</div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ev-titre">titre</label>
+            <input id="ev-titre" name="titre" type="text" maxlength="200" required>
+          </div>
+          <div class="field">
+            <label for="ev-date">date</label>
+            <input id="ev-date" name="date" type="date" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ev-desc">description</label>
+          <textarea id="ev-desc" name="desc" maxlength="5000" placeholder="ce qui se passe… (**gras**, *italique*)"></textarea>
+        </div>
+        <div class="field">
+          <label>qui peut le voir</label>
+          <div id="ev-tags"></div>
+        </div>
+        <div class="row-btns">
+          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn" type="button" id="ev-cancel">annuler</button>
+        </div>
+        <div class="form-msg" id="ev-msg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- ── coffre-fort ── -->
+    <section data-tab="coffre" hidden>
+      <div class="note account-gate" id="co-gate">chargement…</div>
+      <div id="co-content" hidden>
+        <div id="vault" class="vault"></div>
+      </div>
+
+      <form class="note modal-form" id="h-form" hidden>
+        <div class="title" id="h-form-title">écrire une lettre</div>
+        <div class="field">
+          <label for="h-titre">titre</label>
+          <input id="h-titre" name="titre" type="text" maxlength="200" required>
+        </div>
+        <div class="field" id="h-text-field">
+          <label for="h-contenu">texte</label>
+          <textarea id="h-contenu" name="contenu" maxlength="20000" style="min-height:200px" placeholder="Cher…  (**gras**, *italique*)"></textarea>
+        </div>
+        <div class="field" id="h-file-field">
+          <label for="h-file">fichier (image ou PDF, 10 Mo max)</label>
+          <input id="h-file" name="file" type="file" accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
+        </div>
+        <div class="field">
+          <label>qui peut le voir</label>
+          <div id="h-tags"></div>
+        </div>
+        <div class="row-btns">
+          <button class="btn" type="submit">enregistrer</button>
+          <button class="btn" type="button" id="h-cancel">annuler</button>
+        </div>
+        <div class="form-msg" id="h-msg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- ── signaler une erreur ── -->
+    <section data-tab="signaler" hidden>
+      <div class="note account-gate" id="si-gate">chargement…</div>
+      <div id="si-content" hidden>
+        <form class="note" id="ticket-form">
+          <div class="field-row">
+            <div class="field">
+              <label for="page">page concernée</label>
+              <input id="page" name="page" type="text" placeholder="/WIKI/…" maxlength="300">
+            </div>
+            <div class="field">
+              <label for="categorie">type</label>
+              <select id="categorie" name="categorie">
+                <option value="faute">faute</option>
+                <option value="bug visuel">bug visuel</option>
+                <option value="erreur de contenu">erreur de contenu / lore</option>
+                <option value="suggestion">suggestion</option>
+                <option value="autre">autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">message</label>
+            <textarea id="message" name="message" maxlength="4000" required placeholder="qu'est-ce qui ne va pas ?"></textarea>
+          </div>
+          <button class="btn" type="submit">envoyer</button>
+          <div class="form-msg" id="form-msg" aria-live="polite"></div>
+        </form>
+
+        <div class="vault-heading" style="margin-top:18px" id="tickets-title">mes signalements</div>
+        <div id="tickets" data-scope="mine" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script src="/COMPTE/lecteur.js"></script>
+<script src="/COMPTE/partage.js"></script>
+<script src="/COMPTE/onglets.js"></script>
+<script src="/COMPTE/evenements.js"></script>
+<script src="/COMPTE/coffre.js"></script>
+<script src="/COMPTE/signaler.js"></script>
+</body>
+</html>
