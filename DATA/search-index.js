@@ -403,6 +403,18 @@ window.IZMIR_SEARCH_INDEX = [
   ]
  },
  {
+  "name": "istanbul",
+  "folder": "WIKI/fiche",
+  "url": "/WIKI/fiche/istanbul.html",
+  "headings": [
+   "Constantinople et Smyrne",
+   "I. Le don de Smyrne",
+   "II. Theodora",
+   "III. L'arrivée des Primogènes",
+   "IV. Une entente"
+  ]
+ },
+ {
   "name": "WIKI",
   "folder": "",
   "url": "/WIKI/",
