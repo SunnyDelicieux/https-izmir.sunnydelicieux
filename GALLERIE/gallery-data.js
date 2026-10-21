@@ -1,6 +1,20 @@
 const galleryData=[
 
    {
+src:"dessin/sun/highpriestess.png",
+alt:"High Priestess.",
+tags:["sunny","canon","Ismini","tremere"],
+  desc:"High Priestess."
+},
+
+   {
+src:"dessin/sun/EMPRESS.png",
+alt:"Empress.",
+tags:["sunny","canon","sophia","tremere"],
+  desc:"Empress."
+},
+
+   {
 src:"dessin/sun/strenght.png",
 alt:"Strenght.",
 tags:["sunny","canon","tarik","tremere"],
