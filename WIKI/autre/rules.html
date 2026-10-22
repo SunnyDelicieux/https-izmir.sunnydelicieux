@@ -81,10 +81,10 @@ mark { background: var(--wiki-line); color: var(--wiki-text); padding: 0 2px; bo
 <div class="lois-officiers">
 <strong>Qui fait appliquer le Code</strong>
 <ul>
-<li><span class="off-charge">Prince</span> <a href="/WIKI/autre/pnj/kushi.html">Kushi</a><small class="off-role">Souverain de la ville, il accorde les droits d'Étreinte et tranche en dernier recours.</small></li>
+<li><span class="off-charge">Prince</span> <a href="/WIKI/autre/pnj/kushi.html">Kushi</a><small class="off-role">Dirigeant de la ville, il accorde les droits d'Étreinte et sa décision fait loi.</small></li>
 <li><span class="off-charge">Sénéchale</span> <a href="/WIKI/ventrue/pnj/zaya.html">Zaya Borte</a><small class="off-role">Porte la voix du Prince en son absence et administre la cour.</small></li>
 <li><span class="off-charge">Sheriff</span> <a href="/WIKI/brujah/pnj/baran.html">Baran</a><small class="off-role">Fait respecter les traditions sur le terrain, avec ses limiers.</small></li>
-<li><span class="off-charge">Fléau</span> <a href="/WIKI/toreador/pnj/aylin.html">Aylin Belgin</a><small class="off-role">Traque les indésirables : Caitiffs, Sang-clairs et intrus.</small></li>
+<li><span class="off-charge">Fléau</span> <a href="/WIKI/toreador/pnj/aylin.html">Aylin Belgin</a><small class="off-role">Traque les indésirables : Caitiffs et Sang-clairs.</small></li>
 <li><span class="off-charge">Héraut</span> <a href="/WIKI/tremere/pnj/sophia.html">Sophia Evangelatos</a><small class="off-role">Annonce les décisions de la cour et reçoit les visiteurs.</small></li>
 <li><span class="off-charge">Harpie</span> <a href="/WIKI/ventrue/pnj/louisa.html">Louiza</a><small class="off-role">Tient le compte des dettes et des réputations.</small></li>
 <li><span class="off-charge">Gardienne d'Élysium</span> <a href="/WIKI/autre/pnj/nebetta.html">Nebetta</a><small class="off-role">Veille sur l'Élysium et sur le respect de ses règles.</small></li>
@@ -263,8 +263,6 @@ window.onload = function () {
 </script>
 
 <script>
-// Recherche dans les articles, sans tenir compte des accents ni des majuscules.
-// Le sommaire réécrit #contents au chargement : on retrouve donc les éléments à chaque frappe.
 (function () {
   function normal(t) {
     return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
