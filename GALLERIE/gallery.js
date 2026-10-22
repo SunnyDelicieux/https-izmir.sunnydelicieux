@@ -13,6 +13,12 @@ let currentPage=1;
 
 const clean=t=>String(t||"").trim().toLowerCase();
 const isVideo=src=>/\.(mp4|webm)$/i.test(src||"");
+// versions légères générées par DATA/galerie-legere.py (seulement pour dessin/, hors vidéos et .gif)
+const leger=src=>!/^dessin\//.test(src||"")||isVideo(src)||/\.gif$/i.test(src||"");
+const thumbOf=src=>leger(src)?src:"thumbs/"+src.replace(/\.\w+$/,".webp");
+const webOf=src=>leger(src)?src:"web/"+src.replace(/\.\w+$/,".webp");
+// si la version légère manque (script pas relancé), on retombe sur l'original
+const fallback=(el,src)=>{el.onerror=()=>{el.onerror=null;el.src=src;};};
 
 function pages(item){
     return item.pages?.length
@@ -41,7 +47,15 @@ function renderGallery(){
 
             card.className="gallery-card";
 
-            thumb.src=video?p[0].src+"#t=0.1":p[0].src;
+            if(video){
+                thumb.src=p[0].src+"#t=0.1";
+                thumb.preload="metadata";
+            }else{
+                fallback(thumb,p[0].src);
+                thumb.src=thumbOf(p[0].src);
+                thumb.loading="lazy";
+                thumb.decoding="async";
+            }
             thumb.alt=p[0].alt||"";
 
             if((item.tags||[]).map(clean).includes("spice"))
@@ -270,7 +284,8 @@ zoomTags=document.getElementById("zoom-tags"),
 zoomDesc=document.getElementById("zoom-desc"),
 zoomCounter=document.getElementById("zoom-counter"),
 zoomPrev=document.getElementById("zoom-prev"),
-zoomNext=document.getElementById("zoom-next");
+zoomNext=document.getElementById("zoom-next"),
+zoomOriginal=document.getElementById("zoom-original");
 
 let zoomItem=null,
     zoomThumb=null,
@@ -284,7 +299,14 @@ function renderZoom(){
     zoomVideo.pause();
     zoomImg.hidden=video;
     zoomVideo.hidden=!video;
-    (video?zoomVideo:zoomImg).src=page.src;
+    if(video){
+        zoomVideo.src=page.src;
+    }else{
+        fallback(zoomImg,page.src);
+        zoomImg.src=webOf(page.src);
+    }
+    zoomOriginal.href=page.src;
+    zoomOriginal.hidden=video;
     zoomImg.alt=page.alt||"";
 
     zoomDesc.textContent=page.desc||"";

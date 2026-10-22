@@ -25,6 +25,8 @@
 #zoom-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .zoom-tag{padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.12);color:white;font-size:.75rem}
 #zoom-desc{color:white;max-width:700px;margin:auto}
+#zoom-original{display:block;margin:6px auto 0;color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:underline}
+#zoom-original[hidden]{display:none}
 body.light .gallery-pagination{background:#ead8c0;border-color:#c8906a}
 body.light .gallery-pagination button{background:#dfc0a0;color:#2a1a0e}
 body.light .gallery-pagination button:hover{color:#150d05;background:#cfaa88}
