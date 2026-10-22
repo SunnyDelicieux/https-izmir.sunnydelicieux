@@ -1,6 +1,35 @@
 const galleryData=[
 
    {
+src:"dessin/sun/gabee.png",
+alt:"Tamperance.",
+tags:["sunny","canon","Gabriel","Brujah"],
+  desc:"Devil in suit concept."
+},
+
+
+   {
+src:"dessin/sun/death.png",
+alt:"Tamperance.",
+tags:["sunny","canon","Zaya","ventrue"],
+  desc:"Death concept."
+},
+
+   {
+src:"dessin/sun/angel.png",
+alt:"Tamperance.",
+tags:["sunny","canon","Arslan","ventrue"],
+  desc:"Angel icon."
+},
+
+   {
+src:"dessin/sun/temperance.png",
+alt:"Tamperance.",
+tags:["sunny","canon","Eleni","tremere"],
+  desc:"Tamperance."
+},
+
+   {
 src:"dessin/sun/highpriestess.png",
 alt:"High Priestess.",
 tags:["sunny","canon","Ismini","tremere"],
