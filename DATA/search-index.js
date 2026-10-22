@@ -69,9 +69,9 @@ window.IZMIR_SEARCH_INDEX = [
    "1 Choisir son clan",
    "2 Choisir son role",
    "3 Ses objectifs",
-   "5 Concept de personnage",
-   "6 Créer sa fiche",
-   "7 Les PNJ"
+   "4 Concept de personnage",
+   "5 Créer sa fiche",
+   "6 Les PNJ"
   ]
  },
  {
@@ -289,8 +289,20 @@ window.IZMIR_SEARCH_INDEX = [
   "folder": "WIKI/autre",
   "url": "/WIKI/autre/rules.html",
   "headings": [
-   "Le titre de la page",
-   "Titre majeur"
+   ") */ #toc ol { list-style: none; padding-left: 0; } /* les chiffres romains suffisent, pas de puce */ .lois-officiers { display: flow-root; margin: 0 0 1em; padding: 8px 14px; background: var(--wiki-box); border: 1px solid var(--wiki-line); border-radius: var(--iz-radius); font-size: 14px; line-height: 1.45; } .lois-officiers strong { display: block; margin-bottom: 4px; } .lois-officiers ul { list-style: none; margin: 0; padding: 0; columns: 2 220px; column-gap: 20px; } .lois-officiers li { padding: 0 0 6px; break-inside: avoid; } .off-charge { font-weight: bold; } .off-role { display: block; font-size: 13px; line-height: 1.35; color: var(--wiki-muted); } .lois-filtre { display: flex; align-items: center; gap: 10px; margin: 0 0 .4em; } .lois-filtre input { flex: 1; min-width: 0; padding: 5px 10px; font: inherit; font-size: 14px; color: var(--wiki-text); background: var(--wiki-box); border: 1px solid var(--wiki-line); border-radius: var(--iz-radius); } .lois-filtre input:focus { outline: 1px solid var(--wiki-accent); } .lois-compte { color: var(--wiki-muted); font-size: 13px; white-space: nowrap; } .lois-chapitre { clear: both; } .lois-chapitre h2 { margin: 1.1em 0 .3em; } .loi { display: grid; grid-template-columns: 3.4em 1fr; margin: 0; padding: 3px 6px; line-height: 1.5; } .loi.sous { grid-template-columns: 3.4em 3.4em 1fr; font-size: 15px; } .loi.sous .loi-num { grid-column: 2; color: var(--wiki-muted); } .loi.sous .loi-txt { grid-column: 3; } .loi-num { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--wiki-accent); padding-top: 1px; } .loi[hidden], .lois-chapitre[hidden] { display: none; } .lois-avenir, .lois-aucun { color: var(--wiki-muted); font-style: italic; } mark { background: var(--wiki-line); color: var(--wiki-text); padding: 0 2px; border-radius: 2px; } @media only screen and (max-width: 700px) { .loi { grid-template-columns: 3em 1fr; } .loi.sous { grid-template-columns: 1.2em 3em 1fr; } } Le Code de Smyrne Les lois de la cour d'Izmir, que tout descendant de la ville est tenu de connaître. Qui fait appliquer le Code Prince Kushi Souverain de la ville, il accorde les droits d'Étreinte et tranche en dernier recours. Sénéchale Zaya Borte Porte la voix du Prince en son absence et administre la cour. Sheriff Baran Fait respecter les traditions sur le terrain, avec ses limiers. Fléau Aylin Belgin Traque les indésirables : Caitiffs, Sang-clairs et intrus. Héraut Sophia Evangelatos Annonce les décisions de la cour et reçoit les visiteurs. Harpie Louiza Tient le compte des dettes et des réputations. Gardienne d'Élysium Nebetta Veille sur l'Élysium et sur le respect de ses règles. Archiviste Atam Garde les registres de la cour. Huissier Essil Khaled Dans le cadre d'un non respect de dette. Aucun article ne correspond. I. De l'Étreinte",
+   "II. De l'Élysium",
+   "III. Des Domaines",
+   "IV. De la Chasse",
+   "V. De l'administration",
+   "VI. De la Justice",
+   "VII. Du Commerce et des Finances",
+   "VIII. De l'Urbanisme et des Infrastructures",
+   "IX. Des Armes et de la Guerre",
+   "X. De la Mascarade",
+   "XI. Des Relations Extérieures",
+   "XII. Des Parias",
+   "XIII. De la Révision du Code",
+   "XIV. Des Relations"
   ]
  },
  {
