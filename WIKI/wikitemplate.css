@@ -212,6 +212,11 @@ hr {
     text-decoration: underline;
 }
 
+/* les titres visés par le sommaire ne passent pas sous la barre du haut */
+#contents [id] {
+    scroll-margin-top: 70px;
+}
+
 ol {
     padding-left: 2em;
 }

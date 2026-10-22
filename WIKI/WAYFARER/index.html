@@ -67,7 +67,7 @@ window.onload = function () {
 
     document.getElementById("contents").innerHTML =
         document.getElementById("contents").innerHTML.replace(
-            /<h([/d])>([/s/S]*?)<//h/1>/gi,
+            /<h([\d])>([\s\S]*?)<\/h\1>/gi,
             function (str, openLevel, innerHtml) {
                 openLevel = parseInt(openLevel);
 
@@ -84,12 +84,12 @@ window.onload = function () {
                 var plainText = tempDiv.textContent || tempDiv.innerText || "";
 
                 var anchor = plainText.trim()
-                    .replace(//s+/g, "_")
-                    .replace(/[^/w/-]/g, "");
+                    .replace(/\s+/g, "_")
+                    .replace(/[^\w\-]/g, "");
 
-                toc += "<li><a href=/"#" + anchor + "/">" + plainText + "</a></li>";
+                toc += "<li><a href=\"#" + anchor + "\">" + plainText + "</a></li>";
 
-                return "<h" + openLevel + " id=/"" + anchor + "/">" + innerHtml + "</h" + openLevel + ">";
+                return "<h" + openLevel + " id=\"" + anchor + "\">" + innerHtml + "</h" + openLevel + ">";
             }
         );
 

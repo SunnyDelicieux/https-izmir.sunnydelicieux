@@ -749,63 +749,43 @@ zone d’influence.
 <script>
 
 window.onload = function () {
-
     var toc = "";
-
     var level = 0;
 
     document.getElementById("contents").innerHTML =
-
         document.getElementById("contents").innerHTML.replace(
-
-            /<h([/d])>([/s/S]*?)<//h/1>/gi,
-
+            /<h([\d])>([\s\S]*?)<\/h\1>/gi,
             function (str, openLevel, innerHtml) {
-
                 openLevel = parseInt(openLevel);
 
                 if (openLevel > level) {
-
                     toc += (new Array(openLevel - level + 1)).join("<ol>");
-
                 } else if (openLevel < level) {
-
                     toc += (new Array(level - openLevel + 1)).join("</ol>");
-
                 }
 
                 level = openLevel;
 
                 var tempDiv = document.createElement("div");
-
                 tempDiv.innerHTML = innerHtml;
-
                 var plainText = tempDiv.textContent || tempDiv.innerText || "";
 
                 var anchor = plainText.trim()
+                    .replace(/\s+/g, "_")
+                    .replace(/[^\w\-]/g, "");
 
-                    .replace(//s+/g, "_")
+                toc += "<li><a href=\"#" + anchor + "\">" + plainText + "</a></li>";
 
-                    .replace(/[^/w/-]/g, "");
-
-                toc += "<li><a href=/"#" + anchor + "/">" + plainText + "</a></li>";
-
-                return "<h" + openLevel + " id=/"" + anchor + "/">" + innerHtml + "</h" + openLevel + ">";
-
+                return "<h" + openLevel + " id=\"" + anchor + "\">" + innerHtml + "</h" + openLevel + ">";
             }
-
         );
 
     if (level) {
-
         toc += (new Array(level + 1)).join("</ol>");
-
     }
 
     document.getElementById("toc").innerHTML += toc;
-
 };
-
 </script>
 
 </html>

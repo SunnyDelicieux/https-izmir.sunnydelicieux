@@ -1,17 +1,67 @@
-
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Character Wiki Template</title>
+  <title>Le Code de Smyrne</title>
   <link rel="stylesheet" href="../wikitemplate.css">
-  <meta name="Description de la page" content="contenu dans la page :3">
+  <meta name="description" content="Les lois de la cour d'Izmir : Étreinte, domaines, chasse, commerce, armes, parias.">
   <link rel="icon" type="image/png" href="/img/wiki/icon/logo-128.png">
   <script src="../nav.js" type="text/javascript" defer></script>
   <script src="/DATA/search.js" defer></script>
+
+<style>
+/* ── Le Code de Smyrne ── (le sommaire est celui du wiki, généré depuis les <h2>) */
+.lois-officiers {
+    display: flow-root;
+    margin: 0 0 1em;
+    padding: 8px 14px;
+    background: var(--wiki-box);
+    border: 1px solid var(--wiki-line);
+    border-radius: var(--iz-radius);
+    font-size: 14px;
+    line-height: 1.45;
+}
+.lois-officiers strong { display: block; margin-bottom: 4px; }
+.lois-officiers ul { list-style: none; margin: 0; padding: 0; columns: 2 220px; column-gap: 20px; }
+.lois-officiers li { padding: 0 0 6px; break-inside: avoid; }
+.off-charge { font-weight: bold; }
+.off-role { display: block; font-size: 13px; line-height: 1.35; color: var(--wiki-muted); }
+
+.lois-filtre { display: flex; align-items: center; gap: 10px; margin: 0 0 .4em; }
+.lois-filtre input {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 10px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--wiki-text);
+    background: var(--wiki-box);
+    border: 1px solid var(--wiki-line);
+    border-radius: var(--iz-radius);
+}
+.lois-filtre input:focus { outline: 1px solid var(--wiki-accent); }
+.lois-compte { color: var(--wiki-muted); font-size: 13px; white-space: nowrap; }
+
+.lois-chapitre { clear: both; }
+.lois-chapitre h2 { margin: 1.1em 0 .3em; }
+.loi { display: grid; grid-template-columns: 3.4em 1fr; margin: 0; padding: 3px 6px; line-height: 1.5; }
+.loi.sous { grid-template-columns: 3.4em 3.4em 1fr; font-size: 15px; }
+.loi.sous .loi-num { grid-column: 2; color: var(--wiki-muted); }
+.loi.sous .loi-txt { grid-column: 3; }
+.loi-num { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--wiki-accent); padding-top: 1px; }
+.loi[hidden], .lois-chapitre[hidden] { display: none; }
+.lois-avenir, .lois-aucun { color: var(--wiki-muted); font-style: italic; }
+mark { background: var(--wiki-line); color: var(--wiki-text); padding: 0 2px; border-radius: 2px; }
+
+@media only screen and (max-width: 700px) {
+    .loi { grid-template-columns: 3em 1fr; }
+    .loi.sous { grid-template-columns: 1.2em 3em 1fr; }
+}
+</style>
 </head>
+
 <body>
 <header-component></header-component>
 
@@ -19,44 +69,154 @@
 <main>
         <div id="container"><main>
 
+        <h1>Le Code de Smyrne</h1>
 
-
-<!--LE TITRE PRINCIPAL DE LA PAGE-->
-        <h1>Le titre de la page</h1>
-
-<!--LE BLOC POUR LA NAVIGATION, AUTOMATIQUEMENT LES GRAND TITRE SE METTENT DEDANS, PAS BESOIN D'Y TOUCHER-->
-
+<!--LE SOMMAIRE : AUTOMATIQUEMENT REMPLI AVEC LES <h2> DE LA PAGE, PAS BESOIN D'Y TOUCHER-->
 <div id="toc"></div>
-<div id="contents">     
+<div id="contents">
 
+<p>Les lois de la cour d'Izmir, que tout descendant de la ville est tenu de connaître.</p>
 
-    <!--LE PREMIER TITRE DE LA PAGE, QUI APPARAIT DANS LA NAVIGATION-->
+<div class="lois-officiers">
+<strong>Qui fait appliquer le Code</strong>
+<ul>
+<li><span class="off-charge">Prince</span> <a href="/WIKI/autre/pnj/kushi.html">Kushi</a><small class="off-role">Souverain de la ville, il accorde les droits d'Étreinte et tranche en dernier recours.</small></li>
+<li><span class="off-charge">Sénéchale</span> <a href="/WIKI/ventrue/pnj/zaya.html">Zaya Borte</a><small class="off-role">Porte la voix du Prince en son absence et administre la cour.</small></li>
+<li><span class="off-charge">Sheriff</span> <a href="/WIKI/brujah/pnj/baran.html">Baran</a><small class="off-role">Fait respecter les traditions sur le terrain, avec ses limiers.</small></li>
+<li><span class="off-charge">Fléau</span> <a href="/WIKI/toreador/pnj/aylin.html">Aylin Belgin</a><small class="off-role">Traque les indésirables : Caitiffs, Sang-clairs et intrus.</small></li>
+<li><span class="off-charge">Héraut</span> <a href="/WIKI/tremere/pnj/sophia.html">Sophia Evangelatos</a><small class="off-role">Annonce les décisions de la cour et reçoit les visiteurs.</small></li>
+<li><span class="off-charge">Harpie</span> <a href="/WIKI/ventrue/pnj/louisa.html">Louiza</a><small class="off-role">Tient le compte des dettes et des réputations.</small></li>
+<li><span class="off-charge">Gardienne d'Élysium</span> <a href="/WIKI/autre/pnj/nebetta.html">Nebetta</a><small class="off-role">Veille sur l'Élysium et sur le respect de ses règles.</small></li>
+<li><span class="off-charge">Archiviste</span> <a href="/WIKI/autre/pnj/atam.html">Atam</a><small class="off-role">Garde les registres de la cour.</small></li>
+<li><span class="off-charge">Huissier</span> <a href="/WIKI/brujah/pnj/essil.html">Essil Khaled</a><small class="off-role">Dans le cadre d'un non respect de dette.</small></li>
+</ul>
+</div>
 
-<h2>Titre majeur</h2>
+<div class="lois-filtre">
+<input type="search" id="lois-recherche" placeholder="Chercher un article…" aria-label="Chercher dans le Code">
+<span class="lois-compte" id="lois-compte"></span>
+</div>
+<p class="lois-aucun" id="lois-aucun" hidden>Aucun article ne correspond.</p>
 
-<p>
-    C'est toujours mieux de mettre les textes entre deux tags "p" qui définissent un paragraphe. 
-</p>
-<p>
-    On utilise un second si on veut changer de paragraphe sous le meme titre.
-</p>
+<section class="lois-chapitre">
+<h2>I. De l'Étreinte</h2>
+<p class="loi"><span class="loi-num">1.1</span><span class="loi-txt"><b>Le Sang Stable.</b> Toute nouvelle Étreinte doit remplacer une perte.</span></p>
+<p class="loi sous"><span class="loi-num">1.1.2</span><span class="loi-txt"><b>Présentation du candidat.</b> Un candidat doit avoir été présenté à toute la cour politique avant son Étreinte.</span></p>
+<p class="loi"><span class="loi-num">1.2</span><span class="loi-txt"><b>Droit d'Étreinte.</b> Le Prince donne le droit d'Étreinte à un primogène, qui peut le donner à un membre de son clan.</span></p>
+<p class="loi sous"><span class="loi-num">1.2.2</span><span class="loi-txt"><b>Équilibre des clans.</b> Même lorsqu'un droit d'Étreinte a été donné à un clan, il n'est possible d'étreindre que si tous les clans en possèdent un.</span></p>
+<p class="loi"><span class="loi-num">1.3</span><span class="loi-txt"><b>Formation des nouveau-nés.</b> Si le clan ne peut pas prouver une possibilité d'apprentissage suffisante pour un nouveau-né, celui-ci doit obligatoirement être placé dans une coterie.</span></p>
+<p class="loi"><span class="loi-num">1.4</span><span class="loi-txt"><b>Langue commune.</b> Il est obligatoire qu'un candidat à l'Étreinte montre sa capacité à communiquer oralement avec la cour de Smyrne avant son Étreinte.</span></p>
+</section>
 
+<section class="lois-chapitre">
+<h2>II. De l'Élysium</h2>
+<p class="lois-avenir">Chapitre à venir.</p>
+</section>
 
-<h3>Un sous titre</h3>
-<p>
-Un autre paragraphe
-</p>
+<section class="lois-chapitre">
+<h2>III. Des Domaines</h2>
+<p class="loi"><span class="loi-num">3.1</span><span class="loi-txt"><b>Héritage.</b> À la mort d'un descendant, tout domaine qu'il possédait est donné à son infant ou à son sire.</span></p>
+<p class="loi sous"><span class="loi-num">3.1.1</span><span class="loi-txt"><b>Absence d'héritier.</b> Si personne n'est disponible ou présent, il est donné à son clan, puis au Prince s'il était le seul représentant de son clan.</span></p>
+<p class="loi sous"><span class="loi-num">3.1.2</span><span class="loi-txt"><b>Abandon d'un domaine.</b> Un Domaine abandonné plus d'une année revient au Prince.</span></p>
+<p class="loi"><span class="loi-num">3.2</span><span class="loi-txt"><b>Concernant les souterrains.</b> Toute galerie souterraine découverte appartient de droit au Domaine du Prince jusqu'à décision contraire.</span></p>
+<p class="loi"><span class="loi-num">3.3</span><span class="loi-txt"><b>Actes terroristes.</b> Les incendies volontaires sont considérés comme une atteinte au Domaine.</span></p>
+<p class="loi"><span class="loi-num">3.4</span><span class="loi-txt"><b>Enclaves.</b> Un clan ne peut acquérir un Domaine enclavé au sein du Domaine d'un autre clan.</span></p>
+<p class="loi"><span class="loi-num">3.5</span><span class="loi-txt"><b>Déclaration.</b> Tout domaine doit être déclaré ouvert, restreint ou fermé à la chasse.</span></p>
+</section>
 
-<h2>Titre majeur</h2>
-<p>
-Un autre paragraphe
-</p>
+<section class="lois-chapitre">
+<h2>IV. De la Chasse</h2>
+<p class="loi"><span class="loi-num">4.1</span><span class="loi-txt"><b>Protectorat.</b> Il est interdit de se nourrir d'un mortel placé sous la protection d'un autre descendant.</span></p>
+<p class="loi"><span class="loi-num">4.2</span><span class="loi-txt"><b>Chasse multiple.</b> Pas plus de trois descendants ne peuvent se nourrir sur la même proie.</span></p>
+<p class="loi"><span class="loi-num">4.3</span><span class="loi-txt"><b>Petite main.</b> Une goule ne peut chasser pour son maître sur le Domaine d'autrui sans autorisation.</span></p>
+<p class="loi"><span class="loi-num">4.4</span><span class="loi-txt"><b>Contrôle aviaire.</b> Les pigeons appartenant au Prince ne peuvent être chassés volontairement.</span></p>
+<p class="loi"><span class="loi-num">4.5</span><span class="loi-txt"><b>Principe de chasse.</b> Il est interdit de posséder un troupeau destiné à la chasse composé de plus de 64 % d'animaux.</span></p>
+</section>
 
+<section class="lois-chapitre">
+<h2>V. De l'administration</h2>
+<p class="loi"><span class="loi-num">5.1</span><span class="loi-txt"><b>Remplacement.</b> Toute charge politique laissée vacante doit être pourvue dans les trois lunes.</span></p>
+<p class="loi"><span class="loi-num">5.2</span><span class="loi-txt"><b>Déplacements officiels.</b> Un clan ne peut refuser l'entrée d'un Émissaire du Prince.</span></p>
+<p class="loi"><span class="loi-num">5.3</span><span class="loi-txt"><b>Transmission de dettes.</b> Une dette reconnue par la Harpie est transmissible aux descendants.</span></p>
+</section>
 
-<!-- LES TRUCS QUI FERMENT LA PAGE/-->
+<section class="lois-chapitre">
+<h2>VI. De la Justice</h2>
+<p class="lois-avenir">Chapitre à venir.</p>
+</section>
+
+<section class="lois-chapitre">
+<h2>VII. Du Commerce et des Finances</h2>
+<p class="loi"><span class="loi-num">7.1</span><span class="loi-txt">Une entreprise tenue par un descendant ne doit pas écraser un secteur historique.</span></p>
+<p class="loi"><span class="loi-num">7.2</span><span class="loi-txt">Il est interdit à un descendant de créer une nouvelle banque.</span></p>
+<p class="loi sous"><span class="loi-num">7.2.1</span><span class="loi-txt">Un descendant peut prendre le contrôle d'une banque déjà existante.</span></p>
+<p class="loi"><span class="loi-num">7.3</span><span class="loi-txt">Toute faillite volontaire est considérée comme une destruction de ressources de la cité.</span></p>
+<p class="loi"><span class="loi-num">7.4</span><span class="loi-txt">Les entreprises détenues par plusieurs clans ne peuvent être dissoutes sans l'accord de chacun.</span></p>
+<p class="loi"><span class="loi-num">7.5</span><span class="loi-txt">Toute fusion entre deux entreprises tenues par des descendants doit être déclarée au Sénéchal.</span></p>
+<p class="loi"><span class="loi-num">7.6</span><span class="loi-txt"><b>Paiement en nature.</b> Toute dette monétaire peut être acquittée par le don de ressources de luxe ou de bétail dont la valeur est reconnue par la cité.</span></p>
+<p class="loi sous"><span class="loi-num">7.6.1</span><span class="loi-txt"><b>Mise à jour des prix.</b> Le Sénéchal met à jour le Barème des valeurs chaque année calendaire.</span></p>
+<p class="loi sous"><span class="loi-num">7.6.2</span><span class="loi-txt"><b>Disponibilité de l'information.</b> Le cahier des équivalents devra être conservé dans l'Élysium.</span></p>
+<p class="loi sous"><span class="loi-num">7.6.3</span><span class="loi-txt"><b>Refus de biens.</b> Un descendant peut refuser un tel échange s'il le juge déraisonnable.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>VIII. De l'Urbanisme et des Infrastructures</h2>
+<p class="loi"><span class="loi-num">8.1</span><span class="loi-txt">Un descendant ne doit pas provoquer une transformation massive d'un quartier.</span></p>
+<p class="loi"><span class="loi-num">8.2</span><span class="loi-txt">Aucun descendant ne peut détourner le cours d'une rivière traversant un Domaine.</span></p>
+<p class="loi"><span class="loi-num">8.3</span><span class="loi-txt">Il est interdit d'assécher une zone humide sans autorisation.</span></p>
+<p class="loi"><span class="loi-num">8.4</span><span class="loi-txt">Aucun bâtiment historique ne peut être détruit par un descendant.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>IX. Des Armes et de la Guerre</h2>
+<p class="loi"><span class="loi-num">9.1</span><span class="loi-txt"><b>Contrôle des trébuchets.</b> Les trébuchets ne peuvent pas être détenus au sein des domaines personnels.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.1</span><span class="loi-txt"><b>Armes massives.</b> Il est interdit de posséder des missiles sol-air.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.2</span><span class="loi-txt"><b>Des drones.</b> Les drones armés sont considérés comme des armes lourdes.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.3</span><span class="loi-txt"><b>Régulation des cadavres.</b> Les cadavres ne peuvent pas être utilisés en tant qu'armes.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.4</span><span class="loi-txt"><b>Définition d'un cadavre.</b> Les cadavres sont des mortels morts depuis moins de 48 h.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.5</span><span class="loi-txt"><b>Régulation des armes biologiques.</b> Les armes bactériologiques sont considérées comme des cadavres.</span></p>
+<p class="loi sous"><span class="loi-num">9.1.6</span><span class="loi-txt"><b>Maladies de synthèse.</b> Les maladies de synthèse sont illégales contre la ville.</span></p>
+<p class="loi"><span class="loi-num">9.2</span><span class="loi-txt"><b>Destruction massive.</b> Toute attaque envers un descendant, un humain ou une infrastructure pouvant causer des dégâts importants à la ville doit être déclarée au Prince ou au Sénéchal 48 h à l'avance.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>X. De la Mascarade</h2>
+<p class="lois-avenir">Chapitre à venir.</p>
+</section>
+
+<section class="lois-chapitre">
+<h2>XI. Des Relations Extérieures</h2>
+<p class="loi"><span class="loi-num">11.1</span><span class="loi-txt"><b>Commerce autorisé.</b> Il est interdit de commercer avec l'Angleterre, le Mexique et toute ville déclarée sabbatique.</span></p>
+<p class="loi sous"><span class="loi-num">11.1.1</span><span class="loi-txt"><b>Du statut sabbatique.</b> Une ville est déclarée sabbatique quand elle ne possède pas d'autorité reconnue par la Camarilla.</span></p>
+<p class="loi sous"><span class="loi-num">11.1.2</span><span class="loi-txt"><b>Du cas des Tzimisce.</b> Toute ville dirigée par un Tzimisce est considérée comme sabbatique.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>XII. Des Parias</h2>
+<p class="loi"><span class="loi-num">12.1</span><span class="loi-txt"><b>La pureté du sang.</b> Les Caitiffs doivent être enregistrés auprès du Sénéchal et du Fléau.</span></p>
+<p class="loi sous"><span class="loi-num">12.1.1</span><span class="loi-txt"><b>Domaine.</b> Ils n'ont pas de Domaine propre, ni de droits.</span></p>
+<p class="loi sous"><span class="loi-num">12.1.2</span><span class="loi-txt"><b>Tutelle.</b> Ils doivent servir un autre descendant.</span></p>
+<p class="loi"><span class="loi-num">12.2</span><span class="loi-txt"><b>Autorité du Fléau.</b> Il est donné au Fléau le droit automatique de donner la mort finale à un Sang-clair.</span></p>
+<p class="loi sous"><span class="loi-num">12.2.1</span><span class="loi-txt"><b>L'aube rouge.</b> Les Sang-clairs sont automatiquement détruits à l'Étreinte.</span></p>
+<p class="loi sous"><span class="loi-num">12.2.2</span><span class="loi-txt"><b>Responsabilité du sire.</b> Un descendant ayant produit un Sang-clair perd son droit d'Étreinte dans la ville.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>XIII. De la Révision du Code</h2>
+<p class="loi"><span class="loi-num">13.1</span><span class="loi-txt">Tout changement à une règle existante doit avoir l'unanimité de la cour des primogènes, ainsi que l'accord du Prince et du Sénéchal.</span></p>
+<p class="loi sous"><span class="loi-num">13.1.2</span><span class="loi-txt">Lorsqu'une nouvelle loi est adoptée, elle doit modifier le moins possible les lois existantes.</span></p>
+<p class="loi sous"><span class="loi-num">13.1.3</span><span class="loi-txt">En cas de contradiction entre deux lois, l'interprétation retenue est celle qui modifie le moins l'ordre établi.</span></p>
+</section>
+
+<section class="lois-chapitre">
+<h2>XIV. Des Relations</h2>
+<p class="lois-avenir">Chapitre à venir.</p>
+</section>
 
 </div>
+</main></div>
 </main>
+<footer id="footer"></footer>
 </body>
 
 <!-- PAS TOUCHE, CA FONCTIONNE GRACE A : https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page </-->
@@ -67,7 +227,7 @@ window.onload = function () {
 
     document.getElementById("contents").innerHTML =
         document.getElementById("contents").innerHTML.replace(
-            /<h([/d])>([/s/S]*?)<//h/1>/gi,
+            /<h([\d])>([\s\S]*?)<\/h\1>/gi,
             function (str, openLevel, innerHtml) {
                 openLevel = parseInt(openLevel);
 
@@ -84,12 +244,12 @@ window.onload = function () {
                 var plainText = tempDiv.textContent || tempDiv.innerText || "";
 
                 var anchor = plainText.trim()
-                    .replace(//s+/g, "_")
-                    .replace(/[^/w/-]/g, "");
+                    .replace(/\s+/g, "_")
+                    .replace(/[^\w\-]/g, "");
 
-                toc += "<li><a href=/"#" + anchor + "/">" + plainText + "</a></li>";
+                toc += "<li><a href=\"#" + anchor + "\">" + plainText + "</a></li>";
 
-                return "<h" + openLevel + " id=/"" + anchor + "/">" + innerHtml + "</h" + openLevel + ">";
+                return "<h" + openLevel + " id=\"" + anchor + "\">" + innerHtml + "</h" + openLevel + ">";
             }
         );
 
@@ -100,6 +260,59 @@ window.onload = function () {
     document.getElementById("toc").innerHTML += toc;
 };
 </script>
+
+<script>
+// Recherche dans les articles, sans tenir compte des accents ni des majuscules.
+// Le sommaire réécrit #contents au chargement : on retrouve donc les éléments à chaque frappe.
+(function () {
+  function normal(t) {
+    return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  // retire les surlignages précédents
+  function nettoie(el) {
+    el.querySelectorAll("mark").forEach(function (m) { m.replaceWith(m.textContent); });
+    el.normalize();
+  }
+
+  // surligne q dans les textes de el (q déjà normalisé)
+  function surligne(el, q) {
+    var marcheur = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), noeuds = [];
+    while (marcheur.nextNode()) noeuds.push(marcheur.currentNode);
+    noeuds.forEach(function (n) {
+      var t = n.nodeValue, i = normal(t).indexOf(q);
+      if (i === -1 || normal(t).length !== t.length) return;
+      var m = document.createElement("mark");
+      var milieu = n.splitText(i);
+      milieu.splitText(q.length);
+      m.textContent = milieu.nodeValue;
+      milieu.replaceWith(m);
+    });
+  }
+
+  function filtre() {
+    var q = normal(document.getElementById("lois-recherche").value.trim());
+    var lois = document.querySelectorAll(".loi"), vus = 0;
+    lois.forEach(function (p) {
+      var txt = p.querySelector(".loi-txt");
+      nettoie(txt);
+      var ok = !q || normal(p.textContent).indexOf(q) !== -1;
+      p.hidden = !ok;
+      if (ok) vus++;
+      if (ok && q.length > 1) surligne(txt, q);
+    });
+    document.querySelectorAll(".lois-chapitre").forEach(function (s) {
+      s.hidden = !!q && !s.querySelector(".loi:not([hidden])");
+    });
+    document.getElementById("lois-compte").textContent =
+      (q ? vus + " / " : "") + lois.length + " articles";
+    document.getElementById("lois-aucun").hidden = vus !== 0;
+  }
+
+  document.addEventListener("input", function (e) {
+    if (e.target.id === "lois-recherche") filtre();
+  });
+  filtre();
+})();
+</script>
 </html>
-
-
