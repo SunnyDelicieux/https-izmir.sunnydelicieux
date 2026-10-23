@@ -126,7 +126,7 @@
     applique();
   }
   function applique() {
-    const rouge = !document.body.classList.contains("light");
+    const rouge = document.body.classList.contains("halloween") && !document.body.classList.contains("light");
     inline.forEach(([el, p, v, nv, prio]) => el.style.setProperty(p, rouge ? nv : v, prio));
   }
 

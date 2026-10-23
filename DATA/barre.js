@@ -81,6 +81,12 @@ body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background:
   background: none; border: none; font: inherit; font-style: normal;
 }
 .izb-theme:hover { color: #d4aa72; }
+.izb-citrouille {
+  flex: none; padding: 4px 2px; cursor: pointer; background: none; border: none;
+  font: inherit; font-style: normal; line-height: 1;
+  filter: grayscale(1); opacity: 0.45; transition: opacity .15s, filter .15s;
+}
+.izb-citrouille:hover, body.halloween:not(.light) .izb-citrouille { filter: none; opacity: 1; }
 
 /* le menu en boutons du bandeau et le bouton jour/nuit de la colonne : remplacés par la barre */
 /* bandeau « İzmir by Night / un projet de Sunny » : seulement sur l'accueil du site */
@@ -136,6 +142,7 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
       <div class="izb-outils">
         <div id="iz-topbar"></div>
         <button class="izb-theme" type="button" aria-label="Changer de thème"></button>
+        <button class="izb-citrouille" type="button" aria-label="Thème Halloween">🎃</button>
         <span id="iz-barre-compte"></span>
       </div>
     </div>`;
@@ -170,17 +177,30 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
     theme.title = light ? "passer en mode nuit" : "passer en mode jour";
   };
   try { if (localStorage.getItem("izmir-theme") === "light") document.body.classList.add("light"); } catch (e) {}
-  // thème Halloween (essai) : ?halloween pour l'activer, ?halloween=0 pour l'enlever
-  try {
-    const h = new URLSearchParams(location.search).get("halloween");
-    if (h !== null) localStorage.setItem("izmir-halloween", h === "0" ? "0" : "1");
-    document.body.classList.toggle("halloween", localStorage.getItem("izmir-halloween") === "1");
-    if (document.body.classList.contains("halloween")) {
+  // thème Halloween (essai) : bouton 🎃, ou ?halloween / ?halloween=0 dans l'adresse
+  const citrouille = barre.querySelector(".izb-citrouille");
+  const halloween = (actif) => {
+    document.body.classList.toggle("halloween", actif);
+    try { localStorage.setItem("izmir-halloween", actif ? "1" : "0"); } catch (e) {}
+    if (actif && !document.querySelector('script[src="/DATA/halloween.js"]')) {
       const hw = document.createElement("script");
       hw.src = "/DATA/halloween.js";
       document.head.appendChild(hw);
     }
-  } catch (e) {}
+    citrouille.title = actif ? "quitter le thème Halloween" : "passer en thème Halloween";
+  };
+  try {
+    const h = new URLSearchParams(location.search).get("halloween");
+    if (h !== null) localStorage.setItem("izmir-halloween", h === "0" ? "0" : "1");
+    halloween(localStorage.getItem("izmir-halloween") === "1");
+  } catch (e) { halloween(false); }
+  citrouille.addEventListener("click", () => {
+    const light = document.body.classList.contains("light");
+    const actif = document.body.classList.contains("halloween") && !light;
+    halloween(!actif);
+    // Halloween est un thème de nuit : depuis le mode jour, la citrouille repasse en nuit
+    if (!actif && light) theme.click();
+  });
   label();
   theme.addEventListener("click", () => {
     const light = document.body.classList.toggle("light");
