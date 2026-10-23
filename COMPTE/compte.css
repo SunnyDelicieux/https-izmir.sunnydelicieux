@@ -613,10 +613,8 @@ body.light .cal-title { background: #dfc0a0; }
 .badge-img { display: block; width: 150px; height: 20px; image-rendering: pixelated; }
 
 /* ── Ressources du clan (COMPTE/ressources.js) ── */
-.re-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; align-items: start; grid-auto-flow: row dense; }
+.re-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; align-items: start; }
 .re-card { padding: 10px 12px; }
-.re-card.re-open { grid-column: 1 / -1; }
-.re-card.re-open .re-src-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); column-gap: 18px; align-items: start; }
 .re-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .re-name { margin-bottom: 6px; }
 .re-etat { color: var(--iz-muted); font-size: 10px; text-transform: lowercase; white-space: nowrap; }
@@ -632,10 +630,16 @@ body.light .cal-title { background: #dfc0a0; }
 .re-stat.critique .re-pips i { border-color: #c0503a; }
 .re-stat.critique .re-pips i.on { background: #c0503a; }
 .re-stat.critique .re-num { color: #e07a5f; }
+.re-card.re-actif { border-color: var(--iz-accent); border-style: solid; }
+.re-src-btn { margin-top: 8px; padding: 0; background: none; border: 0; cursor: pointer; color: var(--iz-accent); font: italic 12px georgia, serif; }
+.re-src-btn:hover { color: var(--iz-accent-hover); text-decoration: underline; }
+.re-card.re-actif .re-src-btn { color: var(--iz-accent-hover); }
+.re-detail { margin-top: 10px; padding: 10px 14px; }
+.re-detail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.re-detail-head .title { margin-bottom: 4px; }
+.re-detail-head .re-src-btn { margin-top: 0; }
+.re-src-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); column-gap: 18px; align-items: start; }
 .re-notes { margin-top: 6px; color: var(--iz-text-soft); font-size: 11px; line-height: 1.45; }
-.re-sources { margin-top: 8px; border-top: 1px dashed var(--iz-border-strong); padding-top: 6px; }
-.re-sources summary { cursor: pointer; color: var(--iz-accent); font: italic 12px georgia, serif; }
-.re-sources summary:hover { color: var(--iz-accent-hover); }
 .re-source { display: grid; grid-template-columns: 26px 1fr; gap: 6px; margin-top: 6px; font-size: 11px; line-height: 1.45; }
 .re-val { color: var(--iz-accent-hover); font-weight: bold; text-align: right; font-variant-numeric: tabular-nums; }
 .re-val.neg { color: #e07a5f; }
@@ -644,12 +648,12 @@ body.light .cal-title { background: #dfc0a0; }
 body.light .re-etat, body.light .re-label { color: #7a5a3e; }
 body.light .re-num, body.light .re-notes, body.light .re-src-desc { color: #4a3420; }
 body.light .re-src-txt b { color: #2a1a0e; }
+body.light .re-card.re-actif { border-color: #8b4a18; }
 body.light .re-pips i { border-color: #8b4a18; }
 body.light .re-pips i.on { background: #8b4a18; }
 body.light .re-pips.stress i { border-color: #b88a60; }
 body.light .re-pips.stress i.on { background: #b88a60; }
-body.light .re-sources { border-top-color: #c8906a; }
-body.light .re-sources summary, body.light .re-val { color: #8b4a18; }
+body.light .re-src-btn, body.light .re-val { color: #8b4a18; }
 body.light .re-val.neg, body.light .re-stat.critique .re-num { color: #b03a20; }
 body.light .re-stat.critique .re-pips i { border-color: #b03a20; }
 body.light .re-stat.critique .re-pips i.on { background: #b03a20; }

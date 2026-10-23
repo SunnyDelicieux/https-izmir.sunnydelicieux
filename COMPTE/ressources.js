@@ -15,7 +15,8 @@
   const clanTitle = document.getElementById("re-clan");
   const clanLinks = document.getElementById("re-clans");
   const clanSide = document.getElementById("re-clans-box");
-  if (!gate || !content || !listBox || !window.izmirAccount) return;
+  const detail = document.getElementById("re-detail");
+  if (!gate || !content || !listBox || !detail || !window.izmirAccount) return;
 
   let rows = [];
   let sources = [];
@@ -66,26 +67,58 @@
     if (stats.childNodes.length) card.appendChild(stats);
     if (r.notes) card.appendChild(el("div", "re-notes", r.notes));
 
-    const src = sources.filter((s) => norm(s.clan) === norm(r.clan) && norm(s.ressource) === norm(r.ressource));
+    // provenance : un bouton dans la carte, les détails s'affichent sous la grille
+    const src = sourcesDe(r);
     if (src.length) {
-      const det = el("details", "re-sources");
-      det.appendChild(el("summary", null, `provenance (${src.length})`));
-      const liste = el("div", "re-src-list");
-      det.appendChild(liste);
-      for (const s of src) {
-        const li = el("div", "re-source");
-        li.appendChild(el("span", "re-val" + ((s.valeur || 0) < 0 ? " neg" : ""), signe(s.valeur)));
-        const txt = el("div", "re-src-txt");
-        txt.appendChild(el("b", null, s.source));
-        if (s.description) txt.appendChild(el("div", "re-src-desc", s.description));
-        li.appendChild(txt);
-        liste.appendChild(li);
-      }
-      // dépliée, la carte prend toute la largeur : pas de trou à côté d'elle
-      det.addEventListener("toggle", () => card.classList.toggle("re-open", det.open));
-      card.appendChild(det);
+      const btn = el("button", "re-src-btn", `provenance (${src.length})`);
+      btn.type = "button";
+      btn.setAttribute("aria-expanded", "false");
+      btn.addEventListener("click", () => montrer(ouverte === r.ressource ? null : r.ressource));
+      card.appendChild(btn);
+      card.dataset.ressource = r.ressource;
     }
     return card;
+  }
+
+  let ouverte = null; // ressource dont la provenance est affichée
+
+  function sourcesDe(r) {
+    return sources.filter((s) => norm(s.clan) === norm(r.clan) && norm(s.ressource) === norm(r.ressource));
+  }
+
+  // affiche (ou referme) la provenance d'une ressource sous la grille ; les cartes ne bougent pas
+  function montrer(nom) {
+    ouverte = nom;
+    for (const c of listBox.querySelectorAll(".re-card")) {
+      const actif = !!nom && c.dataset.ressource === nom;
+      c.classList.toggle("re-actif", actif);
+      c.querySelector(".re-src-btn")?.setAttribute("aria-expanded", String(actif));
+    }
+    detail.innerHTML = "";
+    const r = nom && rows.find((x) => norm(x.clan) === clanActif && x.ressource === nom);
+    detail.hidden = !r;
+    if (!r) return;
+    const head = el("div", "re-detail-head");
+    head.appendChild(el("div", "title", `provenance · ${r.ressource}`));
+    const fermer = el("button", "re-src-btn", "fermer");
+    fermer.type = "button";
+    fermer.addEventListener("click", () => montrer(null));
+    head.appendChild(fermer);
+    detail.appendChild(head);
+    const liste = el("div", "re-src-list");
+    for (const s of sourcesDe(r)) {
+      const li = el("div", "re-source");
+      li.appendChild(el("span", "re-val" + ((s.valeur || 0) < 0 ? " neg" : ""), signe(s.valeur)));
+      const txt = el("div", "re-src-txt");
+      txt.appendChild(el("b", null, s.source));
+      if (s.description) txt.appendChild(el("div", "re-src-desc", s.description));
+      li.appendChild(txt);
+      liste.appendChild(li);
+    }
+    detail.appendChild(liste);
+    // sur téléphone l'encadré est loin sous les cartes : on le fait apparaître à l'écran
+    const b = detail.getBoundingClientRect();
+    if (b.top > innerHeight || b.bottom < 0) detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   function render() {
@@ -103,6 +136,9 @@
     }
 
     listBox.innerHTML = "";
+    ouverte = null;
+    detail.hidden = true;
+    detail.innerHTML = "";
     clanTitle.textContent = clanActif ? `ressources ${clanActif}` : "";
     const mine = rows.filter((r) => norm(r.clan) === clanActif);
     if (!mine.length) {
