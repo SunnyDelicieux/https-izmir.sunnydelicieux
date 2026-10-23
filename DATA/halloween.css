@@ -1,4 +1,4 @@
-/* Thème Halloween (essai) : noir et rouge, avec Gabriel dans le coin et un fond animé.
+/* Thème Halloween (essai) : noir et rouge, avec Gabriel dans le coin et un fond de chair.
    S'active avec la citrouille de la barre du haut (DATA/barre.js), en mode nuit seulement.
    Comme le mode jour, il ne fait que redéfinir les couleurs de DATA/theme.css. */
 
@@ -39,11 +39,11 @@
   --iz-drop-shadow: rgba(0, 0, 0, 0.5);
 
   --iz-coin: url('/img/gab.webp');
-  --iz-coin-opacity: 1;                    /* opaque : le fond animé ne doit pas transparaître */
+  --iz-coin-opacity: 1;                    /* opaque : le fond ne doit pas transparaître */
 }
 
-/* fond animé en mosaïque, sur la page et sur <html> (le fond des fiches est posé sur <html>) */
+/* texture en mosaïque, sur la page et sur <html> (le fond des fiches est posé sur <html>) */
 :root:has(> body.halloween:not(.light)),
 body.halloween:not(.light) {
-  background: var(--iz-bg) url('/img/halloween-fond.gif') repeat;
+  background: var(--iz-bg) url('/img/halloween-fond.webp') repeat;
 }
