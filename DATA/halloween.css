@@ -1,67 +1,49 @@
-/* Thème Halloween (essai) : variante noir et rouge du mode nuit, avec Gabriel dans le coin.
-   S'active avec ?halloween dans l'adresse (?halloween=0 pour revenir), voir DATA/barre.js.
-   Le mode jour n'est pas touché. */
+/* Thème Halloween (essai) : noir et rouge, avec Gabriel dans le coin et un fond animé.
+   S'active avec la citrouille de la barre du haut (DATA/barre.js), en mode nuit seulement.
+   Comme le mode jour, il ne fait que redéfinir les couleurs de DATA/theme.css. */
 
-body.halloween:not(.light) {
+:root:has(> body.halloween:not(.light)) {
+  --iz-deep: #070606;
   --iz-bg: #0b0909;
-  --iz-panel: #0e0b0b;
+  --iz-bar: rgba(10, 8, 8, 0.97);
+  --iz-menu: #0d0a0a;
+  --iz-panel: rgba(14, 11, 11, 0.96);
+  --iz-sheet: #0e0b0b;
+  --iz-field: #0b0909;
+  --iz-sunken: #141010;
   --iz-box: #141010;
   --iz-box-soft: #1a1313;
   --iz-button: #1a1212;
-  --iz-deep: #070606;
+  --iz-button-hover: #0d0a0a;
+  --iz-button-active: #0d0a0a;
+  --iz-overlay: rgba(0, 0, 0, 0.7);
 
   --iz-border: #3a1414;
   --iz-border-strong: #5c1a1a;
+  --iz-border-hover: #5c1a1a;
 
+  --iz-title: #f0eaea;
   --iz-text: #ece6e4;
   --iz-text-soft: #c4b8b6;
+  --iz-button-text: #ece6e4;
+  --iz-button-text-hover: #ff6b6b;
   --iz-muted: #c06464;
+  --iz-placeholder: #8a7a78;
+  --iz-quote: #e88a8a;
 
   --iz-accent: #e44444;
   --iz-accent-hover: #ff6b6b;
   --iz-accent-dim: #7a1a1a;
 
-  background: var(--iz-bg) url('/img/halloween-fond.gif') repeat;   /* fond animé en mosaïque */
+  --iz-shadow: rgba(0, 0, 0, 0.35);
+  --iz-drop-shadow: rgba(0, 0, 0, 0.5);
+
+  --iz-coin: url('/img/gab.webp');
+  --iz-coin-opacity: 1;                    /* opaque : le fond animé ne doit pas transparaître */
 }
 
-body.halloween:not(.light)::before {
-  background: url('/img/gab.webp') no-repeat right bottom;
-  background-size: auto 100%;
-  opacity: 1;                       /* opaque : le fond animé ne doit pas transparaître */
+/* fond animé en mosaïque, sur la page et sur <html> (le fond des fiches est posé sur <html>) */
+:root:has(> body.halloween:not(.light)),
+body.halloween:not(.light) {
+  background: var(--iz-bg) url('/img/halloween-fond.gif') repeat;
 }
-
-/* couleurs écrites en dur dans izmir.css */
-body.halloween:not(.light) .container {
-  background: rgba(14, 11, 11, 0.96);
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
-}
-body.halloween:not(.light) .header { border-color: #3a1414; }
-body.halloween:not(.light) .header::after {
-  background: none;
-}
-body.halloween:not(.light) .site-name { color: #f0eaea; }
-body.halloween:not(.light) .quote { color: #e88a8a; background: #141010; }
-body.halloween:not(.light) .footer { background: #141010; }
-body.halloween:not(.light) .scrollable { scrollbar-color: var(--iz-accent) #0d0a0a; }
-body.halloween:not(.light) .scrollable::-webkit-scrollbar-track { background: #0d0a0a; }
-
-/* barre du haut (DATA/barre.js) */
-body.halloween:not(.light) #iz-barre { background: rgba(10, 8, 8, 0.97); border-bottom-color: #5c1a1a; }
-body.halloween:not(.light) .izb-titre:hover,
-body.halloween:not(.light) .izb-theme { color: #e44444; }
-body.halloween:not(.light) .izb-menu > a,
-body.halloween:not(.light) .izb-menu .navi-parent,
-body.halloween:not(.light) .izb-menu .navi-sub a { color: #c4b8b6; }
-body.halloween:not(.light) .izb-menu > a:hover,
-body.halloween:not(.light) .izb-menu .navi-group:hover .navi-parent,
-body.halloween:not(.light) .izb-menu .navi-sub a:hover { color: #ff6b6b; }
-body.halloween:not(.light) .izb-menu > a.active,
-body.halloween:not(.light) .izb-menu .navi-group.izb-ici .navi-parent { color: #e44444; text-decoration-color: #7a1a1a; }
-body.halloween:not(.light) .izb-menu .navi-sub { background: #0d0a0a; border-color: #3a1414; }
-body.halloween:not(.light) .izb-menu .navi-sub a:hover { background: #1a1212; }
-body.halloween:not(.light) .izb-menu .navi-titre { color: #e44444; border-color: #3a1414; }
-body.halloween:not(.light) .izb-menu > * + *::before { color: #5c1a1a; }
-
-/* bouton connexion (DATA/account.js) */
-body.halloween:not(.light) .iza-box--barre .iza-btn { color: #e44444; }
-body.halloween:not(.light) .iza-panel { background: rgba(13, 10, 10, 0.97); border-color: #3a1414; }

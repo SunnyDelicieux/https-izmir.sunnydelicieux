@@ -1,43 +1,103 @@
-/* Thème commun d'Izmir by Night : couleurs et polices partagées.
+/* Thème commun d'Izmir by Night : toutes les couleurs du site, du wiki et des fiches.
    Importé en tête de DATA/izmir.css, WIKI/wikitemplate.css et WIKI/fiche/style.css.
-   Changer une valeur ici la change partout. */
 
+   Les pages n'écrivent jamais une couleur en dur : elles utilisent ces variables.
+   Un thème (jour, Halloween…) ne fait donc que redéfinir cette liste.
+   Les thèmes sont posés sur <html> avec :has(), pour que les variables qui en dérivent
+   (--wiki-*, couleurs des fiches) suivent aussi. */
+
+@import url('/DATA/halloween.css');
+
+/* ── Nuit (thème par défaut) ── */
 :root {
   /* fonds, du plus sombre au plus clair */
-  --iz-bg: #1e1408;            /* fond de page */
-  --iz-panel: #1c1208;         /* grand cadre de contenu */
-  --iz-box: #261a0c;           /* encadrés */
-  --iz-box-soft: #301e10;      /* encadrés secondaires, lignes paires */
-  --iz-button: #2e1e0e;        /* boutons, bandeaux de titres */
-  --iz-deep: #161008;          /* bandeaux haut/bas */
+  --iz-deep: #161008;              /* fond du wiki, bandeaux des fiches */
+  --iz-bg: #1e1408;                /* fond de page */
+  --iz-bar: rgba(20, 12, 4, 0.97); /* barre du haut */
+  --iz-menu: #1a1006;              /* menus déroulants */
+  --iz-panel: rgba(28, 18, 8, 0.97); /* grand cadre de contenu, panneaux */
+  --iz-sheet: #1c1208;             /* feuille de lecture du wiki */
+  --iz-field: #1e1408;             /* champs de saisie */
+  --iz-sunken: #221608;            /* bandeaux en creux : citation, pied de page, filtres */
+  --iz-box: #261a0c;               /* encadrés */
+  --iz-box-soft: #301e10;          /* encadrés secondaires, lignes paires */
+  --iz-button: #2e1e0e;            /* boutons, bandeaux de titres */
+  --iz-button-hover: #1e1208;      /* bouton survolé */
+  --iz-button-active: #1e1208;     /* bouton de la page en cours, filtre choisi */
+  --iz-overlay: rgba(10, 6, 2, 0.7); /* fond derrière une fenêtre */
 
   /* bordures */
   --iz-border: #3a2810;
   --iz-border-strong: #4a3018;
+  --iz-border-hover: #4a3018;      /* bordure d'un bouton survolé */
 
   /* textes */
+  --iz-title: #e8dfc8;             /* titre du site */
   --iz-text: #e8dcc0;
-  --iz-text-soft: #c8b898;
+  --iz-text-soft: #c8b898;         /* liens de menu */
+  --iz-button-text: #ecdfc8;
+  --iz-button-text-hover: #d4aa72;
   --iz-muted: #a07840;
+  --iz-placeholder: #a08a68;
+  --iz-quote: #d4b87c;
 
-  /* accent or */
+  /* accent */
   --iz-accent: #c09050;
   --iz-accent-hover: #d4aa72;
   --iz-accent-dim: #7a5028;
 
-  /* version papier (mode jour du site, pages du wiki) */
-  --iz-paper-bg: #e8d4bc;      /* fond autour de la feuille */
-  --iz-paper: #fbf5ec;         /* la feuille de lecture */
-  --iz-paper-box: #f0e0cc;     /* encadrés */
-  --iz-paper-line: #c8906a;    /* filets et bordures */
-  --iz-paper-text: #2a1a0e;
-  --iz-paper-muted: #7a5a3e;
-  --iz-paper-accent: #8b4a18;  /* liens et titres */
-  --iz-paper-accent-hover: #b86030;
+  /* ombres */
+  --iz-shadow: rgba(0, 0, 0, 0.35);      /* liseré autour du grand cadre */
+  --iz-drop-shadow: rgba(0, 0, 0, 0.45); /* sous les menus déroulants */
+
+  /* personnage dans le coin de la page */
+  --iz-coin: url('/img/gab.webp');
+  --iz-coin-opacity: 0.69;
 
   /* polices */
   --iz-font: Arial, Tahoma, Verdana, sans-serif;
   --iz-font-title: Georgia, "Times New Roman", serif;
 
   --iz-radius: 4px;
+}
+
+/* ── Jour ── */
+:root:has(> body.light) {
+  --iz-deep: #e8d4bc;
+  --iz-bg: #e8d4bc;
+  --iz-bar: rgba(245, 232, 215, 0.97);
+  --iz-menu: #f3e5d2;
+  --iz-panel: rgba(245, 232, 215, 0.99);
+  --iz-sheet: #fbf5ec;
+  --iz-field: #fbf5ec;
+  --iz-sunken: #ead8c0;
+  --iz-box: #f0e0cc;
+  --iz-box-soft: #e8d0b4;
+  --iz-button: #dfc0a0;
+  --iz-button-hover: #cfaa88;
+  --iz-button-active: #ead8c0;
+  --iz-overlay: rgba(60, 30, 10, 0.4);
+
+  --iz-border: #c8906a;
+  --iz-border-strong: #c8906a;
+  --iz-border-hover: #a86840;
+
+  --iz-title: #2a1a0e;
+  --iz-text: #2a1a0e;
+  --iz-text-soft: #3a2010;
+  --iz-button-text: #2a1a0e;
+  --iz-button-text-hover: #150d05;
+  --iz-muted: #7a5a3e;
+  --iz-placeholder: #8b6a4a;
+  --iz-quote: #5a2e10;
+
+  --iz-accent: #8b4a18;
+  --iz-accent-hover: #b86030;
+  --iz-accent-dim: #c8906a;
+
+  --iz-shadow: rgba(180, 110, 60, 0.12);
+  --iz-drop-shadow: rgba(90, 45, 15, 0.18);
+
+  --iz-coin: url('/img/coin-jour.webp');
+  --iz-coin-opacity: 0.75;
 }

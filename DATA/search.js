@@ -1,6 +1,15 @@
 // Barre de recherche : cherche dans le nom des pages du site et dans leurs titres h1/h2
 // (liste dans search-index.js, générée par build-search-index.py)
 (function () {
+  // les couleurs viennent de DATA/theme.css : les pages d'ambiance (hub, Journal, Élysium…)
+  // ne le chargent pas, on l'ajoute pour elles (il ne contient que des variables)
+  if (!getComputedStyle(document.documentElement).getPropertyValue("--iz-accent")) {
+    const theme = document.createElement("link");
+    theme.rel = "stylesheet";
+    theme.href = "/DATA/theme.css";
+    document.head.appendChild(theme);
+  }
+
   const MAX_RESULTS = 10;
 
   // minuscules, sans accents, "ı" turc -> "i", tirets/underscores -> espaces
@@ -79,38 +88,31 @@
 }
 .izs-input {
   width: 100%; box-sizing: border-box; padding: 6px 9px;
-  background: rgba(28, 18, 8, 0.95); color: #e8dcc0;
-  border: 1px solid #3a2810; border-radius: 0; outline: none;
+  background: var(--iz-field); color: var(--iz-text);
+  border: 1px solid var(--iz-border); border-radius: 0; outline: none;
   font: inherit;
 }
-.izs-input::placeholder { color: #a08a68; }
-.izs-input:focus { border-color: #c09050; }
+.izs-input::placeholder { color: var(--iz-placeholder); }
+.izs-input:focus { border-color: var(--iz-accent); }
 .izs-results {
   margin: 2px 0 0; padding: 0; list-style: none;
-  background: rgba(28, 18, 8, 0.97); border: 1px solid #3a2810;
+  background: var(--iz-panel); border: 1px solid var(--iz-border);
   max-height: 60vh; overflow-y: auto;
 }
 .izs-results:empty { display: none; }
 .izs-results a {
   display: block; padding: 6px 9px; text-decoration: none;
-  color: #e8dcc0; border-bottom: 1px solid #2a1b0c;
+  color: var(--iz-text); border-bottom: 1px solid var(--iz-box);
 }
 .izs-results li:last-child a { border-bottom: none; }
-.izs-results a.izs-active, .izs-results a:hover { background: #3a2810; color: #d4aa72; }
+.izs-results a.izs-active, .izs-results a:hover { background: var(--iz-button); color: var(--iz-accent-hover); }
 .izs-folder { display: block; font-size: 10px; opacity: 0.6; }
-.izs-none { padding: 6px 9px; color: #a08a68; }
+.izs-none { padding: 6px 9px; color: var(--iz-placeholder); }
 
 @media (max-width: 520px) {
   .izs-box { flex-basis: 150px; }
   .iza-btn { min-width: 0; max-width: 100px; }
 }
-
-body.light .izs-input, body.light .izs-results { background: rgba(245, 232, 215, 0.98); color: #2a1a0e; border-color: #c8906a; }
-body.light .izs-input::placeholder { color: #8b6a4a; }
-body.light .izs-input:focus { border-color: #8b4a18; }
-body.light .izs-results a { color: #2a1a0e; border-bottom-color: #e0c8a8; }
-body.light .izs-results a.izs-active, body.light .izs-results a:hover { background: #ead8c0; color: #8b4a18; }
-body.light .izs-none { color: #8b6a4a; }
 `;
 
   function init() {

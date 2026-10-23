@@ -2,25 +2,15 @@
 @import url('/DATA/theme.css');
 
 :root {
+    /* couleurs du wiki : celles du thème commun (DATA/theme.css), qui gère aussi le jour */
     --wiki-bg: var(--iz-deep);
-    --wiki-sheet: var(--iz-panel);
+    --wiki-sheet: var(--iz-sheet);
     --wiki-box: var(--iz-box);
     --wiki-line: var(--iz-border-strong);
     --wiki-text: var(--iz-text);
     --wiki-muted: var(--iz-muted);
     --wiki-accent: var(--iz-accent);
     --wiki-accent-hover: var(--iz-accent-hover);
-}
-
-body.light {
-    --wiki-bg: var(--iz-paper-bg);
-    --wiki-sheet: var(--iz-paper);
-    --wiki-box: var(--iz-paper-box);
-    --wiki-line: var(--iz-paper-line);
-    --wiki-text: var(--iz-paper-text);
-    --wiki-muted: var(--iz-paper-muted);
-    --wiki-accent: var(--iz-paper-accent);
-    --wiki-accent-hover: var(--iz-paper-accent-hover);
 }
 
 html, body {margin: 0}
@@ -58,29 +48,6 @@ a:hover {
 h1 a, h2 a, h3 a, h4 a, h5 a {
     color: inherit;
     text-decoration: none;
-}
-
-html body.light .izs-input {
-    background: var(--iz-box);
-    color: var(--iz-text);
-    border-color: var(--iz-border-strong);
-}
-
-html body.light .izs-input::placeholder {
-    color: var(--iz-muted);
-}
-
-/* bouton de compte (DATA/account.js) : sombre comme la recherche, sur le bandeau du wiki */
-html body.light .iza-btn {
-    background: var(--iz-box);
-    color: var(--iz-accent);
-    border-color: var(--iz-border-strong);
-}
-
-html body.light .iza-box:hover .iza-btn,
-html body.light .iza-box.iza-open .iza-btn {
-    color: var(--iz-accent-hover);
-    border-color: var(--iz-accent);
 }
 
 #header {

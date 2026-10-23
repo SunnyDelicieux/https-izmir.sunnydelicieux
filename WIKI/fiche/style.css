@@ -3,7 +3,7 @@
 /* Fiches PNJ : les couleurs viennent du thème commun (DATA/theme.css) */
 :root {
   --text-color: var(--iz-text);
-  --main-bg-color: var(--iz-panel);
+  --main-bg-color: var(--iz-sheet);
 
   /*background for the top header and page footer*/
   --banner-color: var(--iz-deep);
@@ -45,10 +45,9 @@
   --pink: var(--iz-button);
 }
 
-/* fond de page commun (prend le pas sur le petit <style> en tête de chaque fiche) */
+/* fond de page commun à toutes les fiches */
 html:root {
-  background: var(--iz-bg);
-  background: linear-gradient(180deg, #1e1408 0%, #2e1e0e 100%);
+  background: linear-gradient(180deg, var(--iz-bg) 0%, var(--iz-button) 100%);
   background-attachment: fixed;
 }
 
@@ -105,7 +104,7 @@ main {
   background: var(--main-bg-color);
   border: 1px solid var(--border-color);
   border-radius: var(--iz-radius);
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 4px var(--iz-shadow);
   margin: 20px auto;
   padding: 12px 48px;
 }
