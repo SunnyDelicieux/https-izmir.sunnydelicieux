@@ -613,8 +613,10 @@ body.light .cal-title { background: #dfc0a0; }
 .badge-img { display: block; width: 150px; height: 20px; image-rendering: pixelated; }
 
 /* ── Ressources du clan (COMPTE/ressources.js) ── */
-.re-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; align-items: start; }
+.re-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; align-items: start; grid-auto-flow: row dense; }
 .re-card { padding: 10px 12px; }
+.re-card.re-open { grid-column: 1 / -1; }
+.re-card.re-open .re-src-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); column-gap: 18px; align-items: start; }
 .re-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .re-name { margin-bottom: 6px; }
 .re-etat { color: var(--iz-muted); font-size: 10px; text-transform: lowercase; white-space: nowrap; }

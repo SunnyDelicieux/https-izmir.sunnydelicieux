@@ -70,6 +70,8 @@
     if (src.length) {
       const det = el("details", "re-sources");
       det.appendChild(el("summary", null, `provenance (${src.length})`));
+      const liste = el("div", "re-src-list");
+      det.appendChild(liste);
       for (const s of src) {
         const li = el("div", "re-source");
         li.appendChild(el("span", "re-val" + ((s.valeur || 0) < 0 ? " neg" : ""), signe(s.valeur)));
@@ -77,8 +79,10 @@
         txt.appendChild(el("b", null, s.source));
         if (s.description) txt.appendChild(el("div", "re-src-desc", s.description));
         li.appendChild(txt);
-        det.appendChild(li);
+        liste.appendChild(li);
       }
+      // dépliée, la carte prend toute la largeur : pas de trou à côté d'elle
+      det.addEventListener("toggle", () => card.classList.toggle("re-open", det.open));
       card.appendChild(det);
     }
     return card;
