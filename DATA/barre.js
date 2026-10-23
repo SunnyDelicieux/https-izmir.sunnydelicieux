@@ -170,6 +170,12 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
     theme.title = light ? "passer en mode nuit" : "passer en mode jour";
   };
   try { if (localStorage.getItem("izmir-theme") === "light") document.body.classList.add("light"); } catch (e) {}
+  // thème Halloween (essai) : ?halloween pour l'activer, ?halloween=0 pour l'enlever
+  try {
+    const h = new URLSearchParams(location.search).get("halloween");
+    if (h !== null) localStorage.setItem("izmir-halloween", h === "0" ? "0" : "1");
+    document.body.classList.toggle("halloween", localStorage.getItem("izmir-halloween") === "1");
+  } catch (e) {}
   label();
   theme.addEventListener("click", () => {
     const light = document.body.classList.toggle("light");
