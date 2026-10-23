@@ -793,5 +793,11 @@ window.IZMIR_SEARCH_INDEX = [
   "headings": [
    "idk man"
   ]
+ },
+ {
+  "name": "tarot",
+  "folder": "",
+  "url": "/tarot.html",
+  "headings": []
  }
 ];
