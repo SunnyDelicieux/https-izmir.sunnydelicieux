@@ -12,8 +12,9 @@
 --    5. coffre-fort : dossier privé "handouts" dans Storage
 --
 --  Tags : un joueur a les tags  public + son identifiant + son clan + son rôle + extra_tags.
---  Un événement (colonne permissions) est visible si : permissions vide, ou contient "public",
---  ou partage au moins un tag avec le joueur. Un admin (profiles.is_admin) voit tout.
+--  Un événement (colonne permissions) est visible s'il contient "public", ou partage au moins
+--  un tag avec le joueur. Sans tag, seul l'admin le voit. Un admin (profiles.is_admin) voit tout.
+--  Un joueur ne peut connaître que ses propres tags (l'admin, ceux de tout le monde).
 -- ═══════════════════════════════════════════════════════════════════════════
 
 
@@ -32,19 +33,32 @@ as $$
   ) x
 $$;
 
+-- l'utilisateur connecté est-il admin ? (avant izmir_tags_for, qui s'en sert)
+create or replace function public.izmir_is_admin()
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce((select p.is_admin from public.profiles p where p.user_id = auth.uid() limit 1), false)
+$$;
+
 -- tags d'un compte ("security definer" : lit profiles sans passer par ses règles)
+-- on ne peut lire que SES propres tags ; l'admin peut lire ceux de tout le monde (vue joueur)
 create or replace function public.izmir_tags_for(uid uuid)
 returns text[]
 language sql stable security definer
 set search_path = public
 as $$
-  select array['public'] || coalesce((
-    select array_remove(array[lower(p.username), lower(p.clan), lower(p.role)], null)
-           || public.izmir_as_tags(to_jsonb(p.extra_tags))
-    from public.profiles p
-    where p.user_id = uid
-    limit 1
-  ), '{}')
+  select array['public'] || case
+    when uid = auth.uid() or public.izmir_is_admin() then coalesce((
+      select array_remove(array[lower(p.username), lower(p.clan), lower(p.role)], null)
+             || public.izmir_as_tags(to_jsonb(p.extra_tags))
+      from public.profiles p
+      where p.user_id = uid
+      limit 1
+    ), '{}')
+    else '{}'::text[]
+  end
 $$;
 
 -- tags du joueur connecté
@@ -63,9 +77,9 @@ returns boolean
 language sql stable security definer
 set search_path = public
 as $$
-  select coalesce(cardinality(perms), 0) = 0
-      or 'public' = any(perms)
-      or perms && public.izmir_tags_for(uid)
+  -- sans tag = invisible (sauf pour l'admin, via les règles de sécurité)
+  select 'public' = any(coalesce(perms, '{}'))
+      or coalesce(perms, '{}') && public.izmir_tags_for(uid)
       or (uid is not null and author = uid)
 $$;
 
@@ -76,14 +90,6 @@ set search_path = public
 as $$
   select coalesce(tags && public.izmir_tags_for(uid), false)
       or (uid is not null and author = uid)
-$$;
-
-create or replace function public.izmir_is_admin()
-returns boolean
-language sql stable security definer
-set search_path = public
-as $$
-  select coalesce((select p.is_admin from public.profiles p where p.user_id = auth.uid() limit 1), false)
 $$;
 
 create or replace function public.izmir_username()
