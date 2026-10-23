@@ -43,7 +43,7 @@
     { nom: "La Force",      image: "/GALLERIE/thumbs/dessin/sun/strenght.webp" },
     { nom: "Tempérance",    image: "/GALLERIE/thumbs/dessin/sun/temperance.webp" },
     { nom: "La Lune",       image: "/GALLERIE/thumbs/dessin/sun/MOON.webp" },
-    { nom: "Le Jugement",   image: "/GALLERIE/dessin/sun/JUGE.png" },
+    { nom: "Le Jugement",   image: "/GALLERIE/thumbs/dessin/sun/juge.webp" },
   ];
 
   function tirer(nombre) {
@@ -64,7 +64,13 @@
     }
 
     document.getElementById("tirage").innerHTML = html;
-    document.getElementById("question").textContent = document.getElementById("coeur").value;
+
+    // badge « paranoid much ? » au 10e tirage (le compteur est gardé dans le navigateur)
+    let tirages = 0;
+    try { tirages = Number(localStorage.getItem("izmir-tarot")) || 0; } catch (e) {}
+    tirages = tirages + 1;
+    try { localStorage.setItem("izmir-tarot", tirages); } catch (e) {}
+    if (tirages >= 10 && window.izmirAccount) izmirAccount.gagnerBadge("paranoid");
   }
 </script>
 </body>

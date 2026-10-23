@@ -158,13 +158,14 @@ alter table public.profiles add column if not exists badges text[] not null defa
 --   pyramide : ouvrir la chute de la Pyramide dans le calendrier (COMPTE/evenements.js)
 --   pigeon   : chercher « pigeon » dans le Code de Smyrne (WIKI/autre/rules.html)
 --   noshame  : ouvrir une image spice de la galerie (GALLERIE/gallery.js)
+--   paranoid : tirer les cartes de tarot dix fois (tarot.html)
 create or replace function public.izmir_gagner_badge(badge text)
 returns boolean
 language plpgsql security definer
 set search_path = public
 as $$
 begin
-  if auth.uid() is null or badge not in ('pyramide', 'pigeon', 'noshame') then
+  if auth.uid() is null or badge not in ('pyramide', 'pigeon', 'noshame', 'paranoid') then
     return false;
   end if;
   update public.profiles

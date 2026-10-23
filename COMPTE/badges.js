@@ -17,6 +17,8 @@
       desc: "A cherché « pigeon » dans le Code de Smyrne.", main: true },
     { id: "noshame", image: "/img/blinkies/badges/noshame.gif", nom: "incognito mode",
       desc: "A ouvert une image spice de la galerie.", main: true },
+    { id: "paranoid", image: "/img/blinkies/badges/paranoid.gif", nom: "paranoid much ?",
+      desc: "A tiré les cartes de tarot dix fois.", main: true },
   ];
 
   const box = document.getElementById("badges");
