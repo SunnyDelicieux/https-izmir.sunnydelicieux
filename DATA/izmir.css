@@ -466,7 +466,7 @@ body.light::before {
   height: 60vh;
   opacity: 0.75;
 
-  background: url('https://i.postimg.cc/TYXBgcKW/TORE.png') no-repeat right bottom;
+  background: url('/img/coin-jour.webp') no-repeat right bottom;
   background-size: auto 100%;
 }
 
