@@ -6,18 +6,32 @@
 //   1. mettre le blinkie (150 × 20 px) dans /img/blinkies/badges/
 //   2. ajouter une ligne dans la liste BADGES ci-dessous
 //
-// Deux sortes de badges :
+// Trois sortes de badges :
 //   - automatique : { compte: "lettres" | "evenements" | "signalements", min: nombre }
 //       lettres       = lettres écrites dans le coffre-fort (pas les fichiers envoyés)
 //       evenements    = événements ajoutés au calendrier
 //       signalements  = erreurs signalées
-//   - donné à la main : { main: true }
+//   - dans la fiche du joueur : { main: true }
 //       à donner dans Supabase → Table Editor → profiles → colonne « badges » du joueur,
-//       en ajoutant l'identifiant du badge, ex : {pigeon}  ou  {pigeon,frenesie}
+//       en ajoutant l'identifiant du badge, ex : {pigeon}  ou  {pigeon,nebetta}
+//   - badge secret gagné en cliquant quelque part : { main: true } aussi, puis
+//       1. ajouter son identifiant à la liste de izmir_gagner_badge (supabase/izmir.sql)
+//       2. sur la page, entourer le texte à cliquer : <span data-badge="identifiant">…</span>
+//          et charger /DATA/badges-secrets.js (voir WIKI/tremere/index.html)
 (function () {
   const BADGES = [
     { id: "writer", image: "/img/blinkies/badges/writer.gif", nom: "writer",
       desc: "A écrit une lettre dans le coffre-fort.", compte: "lettres", min: 1 },
+    { id: "database", image: "/img/blinkies/badges/database.gif", nom: "i love my database",
+      desc: "A posté une date sur le calendrier.", compte: "evenements", min: 1 },
+    { id: "actually", image: "/img/blinkies/badges/actually.gif", nom: "actually…",
+      desc: "A envoyé un signalement sur le site.", compte: "signalements", min: 1 },
+    { id: "pyramide", image: "/img/blinkies/badges/pyramide.gif", nom: "remember 2008",
+      desc: "A cliqué sur la chute de la Pyramide.", main: true },
+    { id: "nebetta", image: "/img/blinkies/badges/nebetta.gif", nom: "Nebetta's darling",
+      desc: "A écrit une rumeur de Nebetta.", main: true },
+    { id: "inga", image: "/img/blinkies/badges/inga.gif", nom: "cyber genius",
+      desc: "A fini le jeu d'Inga.", main: true },
     { id: "pigeon", image: "/img/blinkies/badges/pigeon.gif", nom: "protect the pigeon",
       desc: "Badge donné par la MJ.", main: true },
   ];

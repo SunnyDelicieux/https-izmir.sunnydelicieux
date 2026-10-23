@@ -153,6 +153,26 @@ using (user_id = auth.uid() or public.izmir_is_admin());
 -- se donner un badge lui-même.
 alter table public.profiles add column if not exists badges text[] not null default '{}';
 
+-- badges secrets gagnés en cliquant sur le site (DATA/badges-secrets.js) : un joueur ne peut
+-- se donner QUE les badges de cette liste, et seulement à lui-même.
+create or replace function public.izmir_gagner_badge(badge text)
+returns boolean
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if auth.uid() is null or badge not in ('pyramide') then
+    return false;
+  end if;
+  update public.profiles
+  set badges = array_append(coalesce(badges, '{}'), badge)
+  where user_id = auth.uid() and not (badge = any(coalesce(badges, '{}')));
+  return true;
+end;
+$$;
+revoke execute on function public.izmir_gagner_badge(text) from public, anon;
+grant execute on function public.izmir_gagner_badge(text) to authenticated;
+
 
 -- ── 3. Profil créé automatiquement avec le compte ──────────────────────────
 -- ⚠ À faire aussi dans le tableau de bord : Authentication → Sign In / Providers →
