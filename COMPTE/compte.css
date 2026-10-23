@@ -607,3 +607,7 @@ body.light .cal-title { background: #dfc0a0; }
 /* encadrés d'un même onglet, dans la colonne de gauche : même espacement que la colonne */
 .sidebar > [data-tab] { display: flex; flex-direction: column; gap: 14px; }
 .sidebar > [data-tab][hidden] { display: none; }
+
+/* ── Badges (COMPTE/badges.js) ── */
+.badges-list { display: flex; flex-wrap: wrap; gap: 4px; }
+.badge-img { display: block; width: 150px; height: 20px; image-rendering: pixelated; }
