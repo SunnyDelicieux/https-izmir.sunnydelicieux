@@ -148,6 +148,11 @@ to authenticated
 using (user_id = auth.uid() or public.izmir_is_admin());
 -- Pas de règle update : un joueur ne peut pas se mettre is_admin = true ou changer de clan.
 
+-- badges donnés à la main par la MJ (identifiants, ex : {pigeon}). Les badges automatiques
+-- sont calculés par la page (COMPTE/badges.js). Pas de règle update : un joueur ne peut pas
+-- se donner un badge lui-même.
+alter table public.profiles add column if not exists badges text[] not null default '{}';
+
 
 -- ── 3. Profil créé automatiquement avec le compte ──────────────────────────
 -- ⚠ À faire aussi dans le tableau de bord : Authentication → Sign In / Providers →
