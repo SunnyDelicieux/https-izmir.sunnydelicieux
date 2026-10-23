@@ -86,15 +86,19 @@
     return sources.filter((s) => norm(s.clan) === norm(r.clan) && norm(s.ressource) === norm(r.ressource));
   }
 
-  // affiche (ou referme) la provenance d'une ressource sous la grille ; les cartes ne bougent pas
+  // affiche (ou referme) la provenance d'une ressource, juste sous la ligne de cartes qui la contient
   function montrer(nom) {
     ouverte = nom;
+    // position à l'écran de la carte cliquée, pour qu'elle ne saute pas sous la souris
+    const cible = nom && listBox.querySelector(`.re-card[data-ressource="${CSS.escape(nom)}"]`);
+    const avant = cible ? cible.getBoundingClientRect().top : null;
     for (const c of listBox.querySelectorAll(".re-card")) {
       const actif = !!nom && c.dataset.ressource === nom;
       c.classList.toggle("re-actif", actif);
       c.querySelector(".re-src-btn")?.setAttribute("aria-expanded", String(actif));
     }
     detail.innerHTML = "";
+    detail.remove(); // retiré de la grille avant de mesurer les lignes
     const r = nom && rows.find((x) => norm(x.clan) === clanActif && x.ressource === nom);
     detail.hidden = !r;
     if (!r) return;
@@ -116,10 +120,29 @@
       liste.appendChild(li);
     }
     detail.appendChild(liste);
-    // sur téléphone l'encadré est loin sous les cartes : on le fait apparaître à l'écran
+
+    // dernière carte de la ligne où se trouve la ressource ouverte : l'encadré se place après elle
+    const cartes = [...listBox.querySelectorAll(".re-card")];
+    const active = cartes.find((c) => c.dataset.ressource === nom);
+    const ligne = cartes.filter((c) => Math.abs(c.offsetTop - active.offsetTop) < 2);
+    ligne[ligne.length - 1].after(detail);
+    // l'ancien encadré était au-dessus : la carte est remontée, on compense le défilement
+    if (avant != null) {
+      const ecart = active.getBoundingClientRect().top - avant;
+      if (Math.abs(ecart) > 1) scrollBy(0, ecart);
+    }
+
+    // si l'encadré sort de l'écran, on le fait apparaître
     const b = detail.getBoundingClientRect();
     if (b.top > innerHeight || b.bottom < 0) detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
+
+  // la largeur change (fenêtre, téléphone tourné) : les lignes aussi, on replace l'encadré
+  let attente = null;
+  addEventListener("resize", () => {
+    clearTimeout(attente);
+    attente = setTimeout(() => { if (ouverte) montrer(ouverte); }, 150);
+  });
 
   function render() {
     const clans = [...new Set(rows.map((r) => norm(r.clan)))].sort();

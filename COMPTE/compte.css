@@ -613,7 +613,10 @@ body.light .cal-title { background: #dfc0a0; }
 .badge-img { display: block; width: 150px; height: 20px; image-rendering: pixelated; }
 
 /* ── Ressources du clan (COMPTE/ressources.js) ── */
-.re-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; align-items: start; }
+/* écran étroit : le cadre du contenu prend toute la largeur (sinon il suit la taille de son contenu,
+   et la grille change de nombre de colonnes quand on ouvre la provenance) */
+@media (max-width: 768px) { .container { align-self: stretch; } }
+.re-list { display: grid; min-width: 0; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 10px; align-items: start; }
 .re-card { padding: 10px 12px; }
 .re-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .re-name { margin-bottom: 6px; }
@@ -634,11 +637,11 @@ body.light .cal-title { background: #dfc0a0; }
 .re-src-btn { margin-top: 8px; padding: 0; background: none; border: 0; cursor: pointer; color: var(--iz-accent); font: italic 12px georgia, serif; }
 .re-src-btn:hover { color: var(--iz-accent-hover); text-decoration: underline; }
 .re-card.re-actif .re-src-btn { color: var(--iz-accent-hover); }
-.re-detail { margin-top: 10px; padding: 10px 14px; }
+.re-detail { grid-column: 1 / -1; min-width: 0; padding: 10px 14px; }
 .re-detail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .re-detail-head .title { margin-bottom: 4px; }
 .re-detail-head .re-src-btn { margin-top: 0; }
-.re-src-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); column-gap: 18px; align-items: start; }
+.re-src-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); column-gap: 18px; align-items: start; }
 .re-notes { margin-top: 6px; color: var(--iz-text-soft); font-size: 11px; line-height: 1.45; }
 .re-source { display: grid; grid-template-columns: 26px 1fr; gap: 6px; margin-top: 6px; font-size: 11px; line-height: 1.45; }
 .re-val { color: var(--iz-accent-hover); font-weight: bold; text-align: right; font-variant-numeric: tabular-nums; }
