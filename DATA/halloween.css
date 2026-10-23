@@ -21,29 +21,25 @@ body.halloween:not(.light) {
   --iz-accent-hover: #ff8e5e;
   --iz-accent-dim: #7a2a1c;
 
-  background:
-    radial-gradient(ellipse at 85% 100%, rgba(200, 60, 20, 0.14), transparent 60%),
-    var(--iz-bg);
-  background-attachment: fixed;
+  background: var(--iz-bg);
 }
 
 body.halloween:not(.light)::before {
   background: url('/img/gab.webp') no-repeat right bottom;
   background-size: auto 100%;
   opacity: 0.72;
-  filter: drop-shadow(0 0 18px rgba(230, 80, 30, 0.22));
 }
 
 /* couleurs écrites en dur dans izmir.css */
 body.halloween:not(.light) .container {
   background: rgba(20, 10, 8, 0.96);
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.4), 0 0 24px rgba(200, 60, 20, 0.08);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
 }
 body.halloween:not(.light) .header { border-color: #3a1812; }
 body.halloween:not(.light) .header::after {
-  background: radial-gradient(circle at center, rgba(230, 90, 30, 0.08), transparent 70%);
+  background: none;
 }
-body.halloween:not(.light) .site-name { color: #f2e4dc; text-shadow: 0 0 8px rgba(230, 90, 30, 0.45); }
+body.halloween:not(.light) .site-name { color: #f2e4dc; }
 body.halloween:not(.light) .quote { color: #e8a088; background: #1d0e0b; }
 body.halloween:not(.light) .footer { background: #1d0e0b; }
 body.halloween:not(.light) .scrollable { scrollbar-color: var(--iz-accent) #120907; }
