@@ -1,7 +1,4 @@
-// Gérer les handouts (admin) : découpe un PDF en une lettre par page, tague chaque lettre,
-// l'envoie dans Supabase (bucket "handouts", dossier lettres/ + table "handouts"),
-// et permet de changer plus tard les tags d'une lettre pour la partager à d'autres.
-// Règles de sécurité : supabase/izmir.sql, section 6.
+
 (function () {
   const PDFLIB = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js";
   const BUCKET = "handouts";

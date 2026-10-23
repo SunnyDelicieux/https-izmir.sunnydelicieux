@@ -1,19 +1,40 @@
 const galleryData=[
 
-   {
-src:"dessin/sun/gabee.png",
-alt:"Tamperance.",
-tags:["sunny","canon","Gabriel","Brujah"],
-  desc:"Devil in suit concept."
+  
+
+{
+type:"comic",
+title:"Zaya, death rider",
+alt:"Zaya, death rider",
+tags:["sunny","canon","ventrue","Zaya"],
+  desc:"Zaya, death rider.",
+pages:[
+{src:"dessin/sun/DEATH2.png"},
+{src:"dessin/sun/death.png"},
+]
+},
+
+
+{
+type:"comic",
+title:"Diable",
+alt:"Diable",
+tags:["sunny","canon","brujah","gabriel"],
+  desc:"WIP du projet d'animation pour Nour.",
+pages:[
+{src:"dessin/sun/diable.png"},
+{src:"dessin/sun/gabee.png"},
+]
 },
 
 
    {
-src:"dessin/sun/death.png",
-alt:"Tamperance.",
-tags:["sunny","canon","Zaya","ventrue"],
-  desc:"Death concept."
+src:"dessin/sun/dimitri.png",
+alt:"Dimitri.",
+tags:["sunny","canon","Dimitri","ventrue"],
+  desc:"Dimitri icon hermes."
 },
+
 
    {
 src:"dessin/sun/angel.png",

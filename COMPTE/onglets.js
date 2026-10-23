@@ -1,7 +1,4 @@
-// Onglets des espaces joueur et MJ.
-// Les liens <nav class="tabs"><a href="#nom"> montrent les blocs data-tab="nom"
-// (dans la page ET dans la colonne de gauche) et cachent les autres.
-// L'onglet est dans l'adresse (#calendrier, #coffre…) : on peut y faire un lien direct.
+
 (function () {
   const links = [...document.querySelectorAll(".tabs a[href^='#']")];
   const names = links.map((a) => a.getAttribute("href").slice(1));

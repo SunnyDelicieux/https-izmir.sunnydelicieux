@@ -1,7 +1,4 @@
-// Signalements (table "tickets", supabase/izmir.sql). Le mail est envoyé par Supabase (supabase/functions/ticket-mail).
-// Deux usages, selon data-scope sur #tickets :
-//   "mine" (espace joueur) : formulaire + ses propres signalements et les réponses
-//   "all"  (espace MJ)     : tous les signalements, avec réponse et statut (admin seulement)
+
 (function () {
   const gate = document.getElementById("si-gate");
   const content = document.getElementById("si-content");

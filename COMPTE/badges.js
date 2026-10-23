@@ -1,22 +1,4 @@
-// Badges de l'espace joueur : une rangée de blinkies dans la colonne de gauche.
-//
-// Chaque joueur ne voit que SES badges (rien n'est montré aux autres).
-//
-// Pour ajouter un badge :
-//   1. mettre le blinkie (150 × 20 px) dans /img/blinkies/badges/
-//   2. ajouter une ligne dans la liste BADGES ci-dessous
-//
-// Trois sortes de badges :
-//   - automatique : { compte: "lettres" | "evenements" | "signalements", min: nombre }
-//       lettres       = lettres écrites dans le coffre-fort (pas les fichiers envoyés)
-//       evenements    = événements ajoutés au calendrier
-//       signalements  = erreurs signalées
-//   - dans la fiche du joueur : { main: true }
-//       à donner dans Supabase → Table Editor → profiles → colonne « badges » du joueur,
-//       en ajoutant l'identifiant du badge, ex : {pigeon}  ou  {pigeon,nebetta}
-//   - badge secret gagné en ouvrant un événement du calendrier : { main: true } aussi, puis
-//       1. ajouter son identifiant à la liste de izmir_gagner_badge (supabase/izmir.sql)
-//       2. ajouter l'événement dans BADGES_EVENEMENTS, en haut de COMPTE/evenements.js
+
 (function () {
   const BADGES = [
     { id: "writer", image: "/img/blinkies/badges/writer.gif", nom: "writer",

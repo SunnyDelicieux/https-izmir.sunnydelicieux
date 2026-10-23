@@ -1,5 +1,3 @@
-/* Pages du compte joueur (événements, signalement, coffre-fort).
-   Le gros du style vient de DATA/izmir.css ; ici seulement ce qui est propre à ces pages. */
 
 .page-title {
   color: var(--iz-accent-hover);

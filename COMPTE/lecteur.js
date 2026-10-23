@@ -1,11 +1,4 @@
-// Lecteur de handouts (coffre-fort) : affiche un PDF ou une image par-dessus la page,
-// aux couleurs du site. Les PDF sont dessinés par PDF.js : le texte reste sélectionnable
-// et les liens restent cliquables, contrairement à une conversion en image.
-//
-//   izmirLecteur.open({ title, url, kind: "pdf" | "image", download })
-//   izmirLecteur.open({ title, kind: "texte", html, author })   -> lettre écrite sur le site
-//   izmirLecteur.cover(url, canvas)  -> dessine la 1re page du PDF dans un <canvas> (vignette)
-//   izmirLecteur.thumb(doc, n, canvas) -> idem pour la page n d'un PDF déjà chargé avec pdfjs()
+
 (function () {
   const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
   const PDFJS_WORKER = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";

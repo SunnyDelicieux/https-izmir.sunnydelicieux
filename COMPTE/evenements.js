@@ -1,6 +1,4 @@
-// Onglet « calendrier » de l'espace joueur : tous les événements visibles, en grille (mois) ou en liste (frise).
-// Le tri "qui voit quoi" est fait par Supabase (supabase/izmir.sql) : on n'affiche que ce qu'il renvoie.
-// Les visiteurs non connectés voient les événements publics.
+
 (function () {
   const status = document.getElementById("ev-status");
   const list = document.getElementById("ev-list");

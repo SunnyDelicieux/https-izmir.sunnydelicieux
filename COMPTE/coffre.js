@@ -1,6 +1,4 @@
-// Coffre-fort : les handouts du joueur (table "handouts" + fichiers du bucket privé "handouts").
-// Supabase ne renvoie que ceux que le joueur a le droit de voir (supabase/izmir.sql) ;
-// les liens vers les fichiers expirent au bout d'une heure.
+
 (function () {
   const gate = document.getElementById("co-gate");
   const content = document.getElementById("co-content");

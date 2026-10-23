@@ -1,16 +1,10 @@
-// Outils communs pour ce que les joueurs créent (événements, lettres, fichiers) :
-//   izmirPartage.tags(acc)                 -> { mine: [...], players: [...] } tags que ce compte peut utiliser
-//   izmirPartage.editor(selected, groups)  -> rangées de tags cliquables (selected : un Set)
-//   izmirPartage.format(text)              -> HTML sûr : texte échappé, **gras**, *italique*, retours à la ligne
-// Les règles qui comptent vraiment sont dans Supabase (supabase/izmir.sql, section 7) :
-// ce fichier ne fait que proposer les bons choix.
+
 (function () {
   const norm = (s) => (s || "").toString().toLowerCase().trim();
 
   let usernamesPromise = null;
   let knownPlayers = new Set();
 
-  // classe de couleur d'un tag : public (or), pseudo d'un joueur, ou groupe (clan, rôle…)
   function tagClass(t) {
     t = norm(t);
     if (t === "public") return "tag tag--public";
@@ -18,7 +12,6 @@
     return "tag tag--groupe";
   }
 
-  // petite rangée de tags colorés (affichage seul)
   function chips(tags) {
     const box = document.createElement("div");
     box.className = "tags";
@@ -31,7 +24,7 @@
     return box;
   }
 
-  // ses propres tags + le pseudo de chaque joueur (pour écrire à quelqu'un en particulier)
+
   async function tags(acc) {
     if (!usernamesPromise) {
       usernamesPromise = acc.client.rpc("izmir_usernames").then(({ data }) => (data || []).map((r) =>
@@ -60,7 +53,6 @@
     return n;
   }
 
-  // groups : [{ label, tags: [...] }]
   function editor(selected, groups, onChange) {
     const box = el("div", "share-editor");
     const draw = () => {
@@ -92,17 +84,12 @@
     return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
-  // jamais de HTML venant d'un joueur : on échappe tout, puis on remet seulement gras / italique
   function format(text) {
     return escape(text)
       .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
       .replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<i>$2</i>")
       .replace(/\n/g, "<br>");
   }
-
-  // ── Formulaires en fenêtre (class="modal-form") ───────────────────────────
-  // Les pages ouvrent / ferment le formulaire avec form.hidden ; ici on ajoute le fond sombre,
-  // la fermeture par Échap ou par un clic à côté, et on bloque le défilement de la page.
   function setupModals() {
     const forms = [...document.querySelectorAll(".modal-form")];
     if (!forms.length) return;

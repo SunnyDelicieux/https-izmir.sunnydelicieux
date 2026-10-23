@@ -1,6 +1,4 @@
-// Vue joueur (admin) : tout ce qu'un joueur choisi peut voir.
-// La liste vient de la fonction Supabase izmir_vue_joueur (supabase/izmir.sql, section 8),
-// qui utilise les mêmes règles que la sécurité du site.
+
 (function () {
   const gate = document.getElementById("vj-gate");
   const content = document.getElementById("vj-content");
@@ -28,7 +26,7 @@
     return n;
   }
 
-  // tags du joueur, comme les calcule Supabase (public + pseudo + clan + rôle + extra_tags)
+
   function tagsOf(p) {
     return ["public", p.username, p.clan, p.role, ...(Array.isArray(p.extra_tags) ? p.extra_tags : [])]
       .map(norm).filter(Boolean);
