@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tirage de tarot</title>
+<link rel="icon" type="image/png" href="/img/wiki/icon/logo-128.png">
+<link rel="stylesheet" href="/DATA/izmir.css">
+<script src="/DATA/search.js" defer></script>
+
+<style>
+  #tirage { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 16px; }
+  .carte { width: 160px; text-align: center; }
+  .carte img { width: 100%; border-radius: 6px; }
+  .renversee img { transform: rotate(180deg); }
+  #question { margin-top: 16px; text-align: center; font: italic 16px georgia, serif; }
+</style>
+</head>
+
+<body>
+<script src="/DATA/barre.js"></script>
+<script src="/DATA/izmir.js"></script>
+
+<div class="page-wrap">
+<div class="container">
+  <div id="site-header"></div>
+
+  <div class="box">
+
+    <button onclick="tirer(1)">tirer une carte</button>
+    <button onclick="tirer(3)">tirer trois cartes</button>
+    <div id="question"></div>
+    <div id="tirage"></div>
+  </div>
+</div>
+</div>
+
+<script>
+  const cartes = [
+    { nom: "Le Magicien",   image: "/GALLERIE/thumbs/dessin/sun/magician.webp" },
+    { nom: "La Papesse",    image: "/GALLERIE/thumbs/dessin/sun/highpriestess.webp" },
+    { nom: "L'Impératrice", image: "/GALLERIE/thumbs/dessin/sun/EMPRESS.webp" },
+    { nom: "La Force",      image: "/GALLERIE/thumbs/dessin/sun/strenght.webp" },
+    { nom: "Tempérance",    image: "/GALLERIE/thumbs/dessin/sun/temperance.webp" },
+    { nom: "La Lune",       image: "/GALLERIE/thumbs/dessin/sun/MOON.webp" },
+    { nom: "Le Jugement",   image: "/GALLERIE/dessin/sun/JUGE.png" },
+  ];
+
+  function tirer(nombre) {
+    const paquet = cartes.slice();  
+    let html = "";
+
+    for (let i = 0; i < nombre; i++) {
+      const carte = paquet.splice(Math.floor(Math.random() * paquet.length), 1)[0];
+
+      const renversee = Math.random() < 0.5;
+
+      html += `
+        <div class="carte ${renversee ? "renversee" : ""}">
+          <img src="${carte.image}" alt="${carte.nom}">
+          <div>${carte.nom}</div>
+          <small>${renversee ? "renversée" : "à l'endroit"}</small>
+        </div>`;
+    }
+
+    document.getElementById("tirage").innerHTML = html;
+    document.getElementById("question").textContent = document.getElementById("coeur").value;
+  }
+</script>
+</body>
+</html>
