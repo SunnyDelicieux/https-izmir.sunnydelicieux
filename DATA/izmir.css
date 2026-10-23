@@ -1,6 +1,7 @@
 /* Feuille commune des pages du site.
    Toutes les couleurs viennent de DATA/theme.css (nuit, jour) : ne pas en écrire en dur ici. */
 @import url('/DATA/theme.css');
+@import url('/DATA/coin.css');
 
 /* ── Reset ── */
 * {
@@ -19,19 +20,6 @@ body {
   letter-spacing: 1px;
   line-height: 1.2;
   position: relative;
-}
-
-/* personnage dans le coin : image et opacité réglées par le thème */
-body::before {
-  content: "";
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 60vh;
-  opacity: var(--iz-coin-opacity);
-  background: var(--iz-coin) no-repeat right bottom;
-  background-size: auto 100%;
 }
 
 a { color: var(--iz-accent); text-decoration: none; }

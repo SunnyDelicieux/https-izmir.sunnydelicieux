@@ -1,5 +1,6 @@
 
 @import url('/DATA/theme.css');
+@import url('/DATA/coin.css');
 
 :root {
     /* couleurs du wiki : celles du thème commun (DATA/theme.css), qui gère aussi le jour */
@@ -59,6 +60,7 @@ main {
 }
 
 #container {
+    position: relative;   /* passe devant le personnage du coin (DATA/coin.css) */
     max-width: 960px;
     margin: 0 auto;
     padding: 24px 48px 40px;
