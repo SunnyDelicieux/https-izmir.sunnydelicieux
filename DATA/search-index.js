@@ -213,24 +213,6 @@ window.IZMIR_SEARCH_INDEX = [
   ]
  },
  {
-  "name": "loi",
-  "folder": "WIKI/autre",
-  "url": "/WIKI/autre/loi.html",
-  "headings": [
-   "Le Code de Smyrne",
-   "I. De l'Étreinte",
-   "III. Des Domaines",
-   "IV. De la Chasse",
-   "V. De l'administration",
-   "VII. Du Commerce et des Finances",
-   "VIII. De l'Urbanisme et des Infrastructures",
-   "IX. Des Armes et de la Guerre",
-   "XI. Des Relations Extérieures",
-   "XII. Des Parias",
-   "XIII. De la Révision du Code"
-  ]
- },
- {
   "name": "atam",
   "folder": "WIKI/autre/pnj",
   "url": "/WIKI/autre/pnj/atam.html",
