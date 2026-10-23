@@ -21,13 +21,13 @@ body.halloween:not(.light) {
   --iz-accent-hover: #ff6b6b;
   --iz-accent-dim: #7a1a1a;
 
-  background: var(--iz-bg);
+  background: var(--iz-bg) url('/img/halloween-fond.gif') repeat;   /* fond animé en mosaïque */
 }
 
 body.halloween:not(.light)::before {
   background: url('/img/gab.webp') no-repeat right bottom;
   background-size: auto 100%;
-  opacity: 0.72;
+  opacity: 1;                       /* opaque : le fond animé ne doit pas transparaître */
 }
 
 /* couleurs écrites en dur dans izmir.css */
