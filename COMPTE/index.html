@@ -60,6 +60,17 @@
       </div>
     </div>
 
+    <div data-tab="ressources" hidden>
+      <div class="box">
+        <div class="title">ressources</div>
+        <div class="side-hint">L'état des ressources de ton clan. Seuls les membres du clan les voient. Clique sur « provenance » pour voir d'où vient chaque point.</div>
+      </div>
+      <div class="box" id="re-clans-box" hidden>
+        <div class="title">clans</div>
+        <div class="tags" id="re-clans"></div>
+      </div>
+    </div>
+
     <div data-tab="signaler" hidden>
       <div class="box">
         <div class="title">signaler</div>
@@ -74,6 +85,7 @@
     <nav class="tabs" aria-label="Espace joueur">
       <a href="#calendrier">calendrier</a>
       <a href="#coffre">coffre-fort</a>
+      <a href="#ressources">ressources</a>
       <a href="#signaler">signaler une erreur</a>
     </nav>
 
@@ -152,6 +164,15 @@
       </form>
     </section>
 
+    <!-- ── ressources du clan (COMPTE/ressources.js) ── -->
+    <section data-tab="ressources" hidden>
+      <div class="note account-gate" id="re-gate">chargement…</div>
+      <div id="re-content" hidden>
+        <div class="vault-heading" id="re-clan"></div>
+        <div class="re-list" id="re-list"></div>
+      </div>
+    </section>
+
     <!-- ── signaler une erreur ── -->
     <section data-tab="signaler" hidden>
       <div class="note account-gate" id="si-gate">chargement…</div>
@@ -194,6 +215,7 @@
 <script src="/COMPTE/onglets.js"></script>
 <script src="/COMPTE/evenements.js"></script>
 <script src="/COMPTE/coffre.js"></script>
+<script src="/COMPTE/ressources.js"></script>
 <script src="/COMPTE/signaler.js"></script>
 <script src="/COMPTE/badges.js"></script>
 </body>

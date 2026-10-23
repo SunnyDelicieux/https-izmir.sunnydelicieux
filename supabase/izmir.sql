@@ -553,3 +553,73 @@ as $$
 $$;
 revoke execute on function public.izmir_vue_joueur(uuid) from public, anon;
 grant execute on function public.izmir_vue_joueur(uuid) to authenticated;
+
+
+
+-- ── 9. Ressources des clans (onglet « ressources » de l'espace joueur) ────────
+-- Une ligne par ressource et par clan (Domaine, Trésorerie…), et une ligne par source
+-- (d'où vient chaque point). Qui les lit : les joueurs dont le clan (profiles.clan)
+-- correspond, et l'admin. Qui les modifie : l'admin seulement (Table Editor).
+-- Aucune donnée de clan n'est écrite dans ce fichier : le dépôt est public.
+
+create table if not exists public.ressources (
+  id          bigint generated always as identity primary key,
+  clan        text not null,                 -- ex : ventrue (comme profiles.clan)
+  ordre       int  not null default 0,       -- ordre d'affichage
+  ressource   text not null,                 -- ex : Domaine
+  etat        text,                          -- ex : Complet
+  valeur_max  int,
+  disponible  int,
+  stress      int  not null default 0,
+  seuil       int,                           -- seuil critique
+  notes       text,
+  unique (clan, ressource)
+);
+
+create table if not exists public.ressources_sources (
+  id           bigint generated always as identity primary key,
+  clan         text not null,
+  ordre        int  not null default 0,
+  ressource    text not null,                -- doit correspondre à ressources.ressource
+  valeur       int,                          -- ex : 2, ou -1 pour un défaut
+  source       text not null,                -- ex : un garage, des caméras…
+  description  text
+);
+
+-- clan du joueur connecté (seulement profiles.clan, pas les autres tags)
+create or replace function public.izmir_mon_clan()
+returns text
+language sql stable security definer
+set search_path = public
+as $$
+  select lower(p.clan) from public.profiles p where p.user_id = auth.uid() limit 1
+$$;
+
+alter table public.ressources enable row level security;
+alter table public.ressources_sources enable row level security;
+
+drop policy if exists "izmir: lire les ressources de son clan" on public.ressources;
+create policy "izmir: lire les ressources de son clan"
+on public.ressources for select
+to authenticated
+using (lower(clan) = public.izmir_mon_clan() or public.izmir_is_admin());
+
+drop policy if exists "izmir: admin gere les ressources" on public.ressources;
+create policy "izmir: admin gere les ressources"
+on public.ressources for all
+to authenticated
+using (public.izmir_is_admin())
+with check (public.izmir_is_admin());
+
+drop policy if exists "izmir: lire les sources de son clan" on public.ressources_sources;
+create policy "izmir: lire les sources de son clan"
+on public.ressources_sources for select
+to authenticated
+using (lower(clan) = public.izmir_mon_clan() or public.izmir_is_admin());
+
+drop policy if exists "izmir: admin gere les sources" on public.ressources_sources;
+create policy "izmir: admin gere les sources"
+on public.ressources_sources for all
+to authenticated
+using (public.izmir_is_admin())
+with check (public.izmir_is_admin());
