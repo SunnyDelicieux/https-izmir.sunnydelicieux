@@ -25,6 +25,19 @@
   let view = "grille";
   let month = null;       // { y, m } affiché dans la grille
   let selectedDay = null; // "2014-03-02"
+
+  // Badges secrets : ouvrir un de ces événements (ou cliquer sur son jour) donne le badge.
+  // titre = début du titre (sans majuscules ni accents), annee = année de l'événement.
+  const BADGES_EVENEMENTS = [
+    { badge: "pyramide", titre: "la seconde in", annee: "2008" },
+  ];
+  const sansAccent = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  function badgeSecret(e) {
+    const titre = sansAccent(e.titre);
+    for (const r of BADGES_EVENEMENTS) {
+      if (titre.startsWith(r.titre) && String(e.date || "").startsWith(r.annee)) window.izmirBadges?.gagner(r.badge);
+    }
+  }
   const opened = new Set(); // fiches dépliées, gardées quand on filtre
 
   try { view = localStorage.getItem(VIEW_KEY) === "liste" ? "liste" : "grille"; } catch (e) {}
@@ -130,6 +143,7 @@
     const toggle = () => {
       const open = box.classList.toggle("open");
       open ? opened.add(key) : opened.delete(key);
+      if (open) badgeSecret(e);
       more.textContent = open ? "replier" : "lire la suite";
     };
     more.addEventListener("click", (ev) => { ev.stopPropagation(); toggle(); });
@@ -290,6 +304,7 @@
       }
       cell.addEventListener("click", () => {
         selectedDay = selectedDay === k ? null : k;
+        if (selectedDay) evs.forEach(badgeSecret);
         render();
       });
       grid.appendChild(cell);

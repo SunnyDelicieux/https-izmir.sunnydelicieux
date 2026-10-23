@@ -14,10 +14,9 @@
 //   - dans la fiche du joueur : { main: true }
 //       à donner dans Supabase → Table Editor → profiles → colonne « badges » du joueur,
 //       en ajoutant l'identifiant du badge, ex : {pigeon}  ou  {pigeon,nebetta}
-//   - badge secret gagné en cliquant quelque part : { main: true } aussi, puis
+//   - badge secret gagné en ouvrant un événement du calendrier : { main: true } aussi, puis
 //       1. ajouter son identifiant à la liste de izmir_gagner_badge (supabase/izmir.sql)
-//       2. sur la page, entourer le texte à cliquer : <span data-badge="identifiant">…</span>
-//          et charger /DATA/badges-secrets.js (voir WIKI/tremere/index.html)
+//       2. ajouter l'événement dans BADGES_EVENEMENTS, en haut de COMPTE/evenements.js
 (function () {
   const BADGES = [
     { id: "writer", image: "/img/blinkies/badges/writer.gif", nom: "writer",
@@ -27,7 +26,7 @@
     { id: "actually", image: "/img/blinkies/badges/actually.gif", nom: "actually…",
       desc: "A envoyé un signalement sur le site.", compte: "signalements", min: 1 },
     { id: "pyramide", image: "/img/blinkies/badges/pyramide.gif", nom: "remember 2008",
-      desc: "A cliqué sur la chute de la Pyramide.", main: true },
+      desc: "A ouvert la chute de la Pyramide dans le calendrier.", main: true },
     { id: "nebetta", image: "/img/blinkies/badges/nebetta.gif", nom: "Nebetta's darling",
       desc: "A écrit une rumeur de Nebetta.", main: true },
     { id: "inga", image: "/img/blinkies/badges/inga.gif", nom: "cyber genius",
@@ -73,11 +72,31 @@
     }
   }
 
+  let compte = null;      // client et utilisateur connectés
+  let totaux = {};
+  let donnes = [];        // badges de la fiche du joueur (colonne profiles.badges)
+
+  function rafraichir() {
+    afficher(BADGES.filter((b) => (b.main ? donnes.includes(b.id) : (totaux[b.compte] || 0) >= b.min)));
+  }
+
+  // badge secret (ex : ouvrir un événement) : enregistré par Supabase, affiché tout de suite
+  function gagner(badge) {
+    if (!compte || donnes.includes(badge)) return;
+    donnes.push(badge);
+    compte.client.rpc("izmir_gagner_badge", { badge }).then(({ data, error }) => {
+      if (error || data !== true) donnes = donnes.filter((b) => b !== badge);
+      rafraichir();
+    });
+  }
+  window.izmirBadges = { gagner };
+
   izmirAccount.onChange(async ({ client, user, profile }) => {
     box.hidden = !user;
+    compte = user ? { client, user } : null;
     if (!user) return;
-    const totaux = await compter(client, user.id);
-    const donnes = (Array.isArray(profile?.badges) ? profile.badges : []).map((t) => String(t).toLowerCase().trim());
-    afficher(BADGES.filter((b) => (b.main ? donnes.includes(b.id) : (totaux[b.compte] || 0) >= b.min)));
+    donnes = (Array.isArray(profile?.badges) ? profile.badges : []).map((t) => String(t).toLowerCase().trim());
+    totaux = await compter(client, user.id);
+    rafraichir();
   });
 })();
