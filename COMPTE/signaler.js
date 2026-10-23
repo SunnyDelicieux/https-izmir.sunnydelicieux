@@ -124,6 +124,7 @@
       return;
     }
     msg.textContent = "Merci, c'est envoyé ✔";
+    window.izmirBadges?.recompter();
     form.message.value = "";
     loadTickets();
   });

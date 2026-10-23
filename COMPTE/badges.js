@@ -73,7 +73,14 @@
       rafraichir();
     });
   }
-  window.izmirBadges = { gagner };
+  // recompte les badges automatiques (appelé après une lettre, un événement ou un signalement)
+  async function recompter() {
+    if (!compte) return;
+    totaux = await compter(compte.client, compte.user.id);
+    rafraichir();
+  }
+
+  window.izmirBadges = { gagner, recompter };
 
   izmirAccount.onChange(async ({ client, user, profile }) => {
     box.hidden = !user;

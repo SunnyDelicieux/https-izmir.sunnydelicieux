@@ -409,6 +409,7 @@
     }
     form.hidden = true;
     load();
+    window.izmirBadges?.recompter();
   });
 
   document.getElementById("ev-cancel").addEventListener("click", () => (form.hidden = true));
