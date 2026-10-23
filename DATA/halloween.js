@@ -23,7 +23,7 @@
     return null;
   }
 
-  // brun / or / orangé -> rouge, en gardant la luminosité
+  // brun / or -> braise, en gardant la luminosité
   function rougit(t) {
     const c = enRgb(t);
     if (!c) return t;
@@ -34,8 +34,8 @@
     let h = max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
     h = (h * 60 + 360) % 360;
     if (h < 12 || h > 62) return t;                           // déjà rouge, ou vert/bleu : on laisse
-    h = (h - 38 + 360) % 360;
-    s = Math.min(1, s * 1.15);
+    h = (h - 30 + 360) % 360;                                 // or -> braise, brun -> rouge sombre
+    s *= l > 0.6 ? 0.45 : 0.9;                                // textes clairs presque neutres : lisibles
     const k = n => (n + h / 30) % 12, f = n => l - s * Math.min(l, 1 - l) * Math.max(-1, Math.min(k(n) - 3, 9 - k(n), 1));
     const [R, G, B] = [f(0), f(8), f(4)].map(v => Math.round(v * 255));
     return a < 1 ? `rgba(${R}, ${G}, ${B}, ${+a.toFixed(3)})` : `rgb(${R}, ${G}, ${B})`;
