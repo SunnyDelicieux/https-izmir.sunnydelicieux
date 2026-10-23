@@ -2,6 +2,12 @@
 // Les données sont dans Supabase (tables ressources et ressources_sources, supabase/izmir.sql,
 // section 9) : chaque joueur ne reçoit que celles de son clan, l'admin reçoit tout.
 // Elles se modifient dans Supabase → Table Editor, jamais dans ce fichier (le dépôt est public).
+//
+// Mode test (pour essayer l'affichage sans Supabase) : ouvrir /COMPTE/?test#ressources.
+// La page lit alors les données écrites à la main dans COMPTE/ressources-test.js :
+//   window.RESSOURCES_TEST = { ressources: [ {clan, ressource, etat, valeur_max, disponible,
+//     stress, seuil, notes}, … ], sources: [ {clan, ressource, valeur, source, description}, … ] };
+// Ce fichier reste sur ton ordi : il est dans .gitignore et n'est jamais envoyé sur GitHub.
 (function () {
   const gate = document.getElementById("re-gate");
   const content = document.getElementById("re-content");
@@ -121,6 +127,26 @@
     gate.hidden = true;
     content.hidden = false;
     render();
+  }
+
+  // mode test : données écrites à la main, pas de Supabase ni de connexion
+  if (new URLSearchParams(location.search).has("test")) {
+    const script = document.createElement("script");
+    script.src = "/COMPTE/ressources-test.js";
+    script.onload = () => {
+      const d = window.RESSOURCES_TEST || {};
+      rows = d.ressources || [];
+      sources = d.sources || [];
+      gate.hidden = true;
+      content.hidden = false;
+      render();
+    };
+    script.onerror = () => {
+      gate.hidden = false;
+      gate.textContent = "Mode test : le fichier COMPTE/ressources-test.js est introuvable.";
+    };
+    document.head.appendChild(script);
+    return;
   }
 
   izmirAccount.onChange((acc) => {
