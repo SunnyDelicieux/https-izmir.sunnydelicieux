@@ -175,6 +175,11 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
     const h = new URLSearchParams(location.search).get("halloween");
     if (h !== null) localStorage.setItem("izmir-halloween", h === "0" ? "0" : "1");
     document.body.classList.toggle("halloween", localStorage.getItem("izmir-halloween") === "1");
+    if (document.body.classList.contains("halloween")) {
+      const hw = document.createElement("script");
+      hw.src = "/DATA/halloween.js";
+      document.head.appendChild(hw);
+    }
   } catch (e) {}
   label();
   theme.addEventListener("click", () => {
