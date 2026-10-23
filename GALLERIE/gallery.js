@@ -324,6 +324,10 @@ function renderZoom(){
 }
 
 function openZoom(card,item){
+    // badge secret « incognito mode » : ouvrir une image spice
+    if((item.tags||[]).map(clean).includes("spice") && window.izmirAccount)
+        izmirAccount.gagnerBadge("noshame");
+
     zoomThumb=card.firstElementChild;
     zoomThumb.classList.remove("spice-blur");
 

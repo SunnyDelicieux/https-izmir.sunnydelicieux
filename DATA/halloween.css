@@ -1,0 +1,50 @@
+/* Thème Halloween (essai) : chair et sang, avec Gabriel dans le coin et un fond de chair.
+   S'active avec la citrouille de la barre du haut (DATA/barre.js), en mode nuit seulement.
+   Comme le mode jour, il ne fait que redéfinir les couleurs de DATA/theme.css. */
+
+:root:has(> body.halloween:not(.light)) {
+  /* chair : bordeaux sombre, rose viande, blanc os (tirés de la texture de fond) */
+  --iz-deep: #160909;
+  --iz-bg: #1e0d0e;
+  --iz-bar: rgba(24, 10, 11, 0.97);
+  --iz-menu: #1c0b0c;
+  --iz-panel: rgba(30, 13, 14, 0.96);
+  --iz-sheet: #1f0e0f;
+  --iz-field: #180a0b;
+  --iz-sunken: #2a1214;
+  --iz-box: #2a1214;
+  --iz-box-soft: #341719;
+  --iz-button: #3a1a1d;
+  --iz-button-hover: #241011;
+  --iz-button-active: #241011;
+  --iz-overlay: rgba(20, 5, 6, 0.75);
+
+  --iz-border: #4e2226;
+  --iz-border-strong: #6e2e34;
+  --iz-border-hover: #8a3c43;
+
+  --iz-title: #f6e4e0;
+  --iz-text: #efdcd7;
+  --iz-text-soft: #d4b2ad;
+  --iz-button-text: #efdcd7;
+  --iz-button-text-hover: #f4a6a4;
+  --iz-muted: #c48a87;
+  --iz-placeholder: #9a6e6c;
+  --iz-quote: #e9b2ac;
+
+  --iz-accent: #e07d7d;
+  --iz-accent-hover: #f4a6a4;
+  --iz-accent-dim: #8a3c43;
+
+  --iz-shadow: rgba(0, 0, 0, 0.4);
+  --iz-drop-shadow: rgba(20, 0, 2, 0.5);
+
+  --iz-coin: url('/img/gab.webp');
+  --iz-coin-opacity: 1;                    /* opaque : le fond ne doit pas transparaître */
+}
+
+/* texture en mosaïque, sur la page et sur <html> (le fond des fiches est posé sur <html>) */
+:root:has(> body.halloween:not(.light)),
+body.halloween:not(.light) {
+  background: var(--iz-bg) url('/img/halloween-fond.webp') repeat;
+}

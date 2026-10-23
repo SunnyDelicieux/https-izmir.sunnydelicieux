@@ -13,7 +13,7 @@
 
 <style>
 
-#toc ol { list-style: none; padding-left: 0; }  
+#toc ol, #toc ol ol { list-style: none; padding-left: 0; }   /* pas de puce : les chiffres romains suffisent */
 .lois-officiers {
     display: flow-root;
     margin: 0 0 1em;
@@ -306,6 +306,8 @@ window.onload = function () {
     document.getElementById("lois-compte").textContent =
       (q ? vus + " / " : "") + lois.length + " articles";
     document.getElementById("lois-aucun").hidden = vus !== 0;
+    // badge secret « protect the pigeon » (article 4.4)
+    if (/\bpigeons?\b/.test(q) && window.izmirAccount) izmirAccount.gagnerBadge("pigeon");
   }
 
   document.addEventListener("input", function (e) {

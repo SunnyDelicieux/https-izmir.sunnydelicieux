@@ -3,12 +3,21 @@
 // À charger juste après <body> : <script src="/DATA/barre.js"></script>
 (function () {
   if (document.getElementById("iz-barre")) return;
+  // les couleurs viennent de DATA/theme.css : les pages d'ambiance (hub, Journal, Élysium…)
+  // ne le chargent pas, on l'ajoute pour elles (il ne contient que des variables)
+  if (!getComputedStyle(document.documentElement).getPropertyValue("--iz-accent")) {
+    const theme = document.createElement("link");
+    theme.rel = "stylesheet";
+    theme.href = "/DATA/theme.css";
+    document.head.appendChild(theme);
+  }
+
   const CSS = `
 #iz-barre {
   position: sticky; top: 0; z-index: 9000;
   margin: 0 0 24px;
-  background: rgba(20, 12, 4, 0.97);
-  border-bottom: 1px dashed #4a3018;
+  background: var(--iz-bar);
+  border-bottom: 1px dashed var(--iz-border-strong);
   font: italic 14px Georgia, serif; letter-spacing: 0.5px;
 }
 .izb-ligne {
@@ -16,21 +25,21 @@
   display: flex; align-items: center; gap: 14px;
 }
 .izb-titre {
-  flex: none; color: #e8dfc8; text-decoration: none; letter-spacing: 1.5px; font-size: 15px;
+  flex: none; color: var(--iz-title); text-decoration: none; letter-spacing: 1.5px; font-size: 15px;
 }
-.izb-titre:hover { color: #d4aa72; }
+.izb-titre:hover { color: var(--iz-accent-hover); }
 .izb-titre { display: flex; align-items: center; gap: 8px; }
 .izb-logo { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; flex: none; }
 .izb-menu { display: flex; align-items: center; flex-wrap: wrap; gap: 0; flex: 1; min-width: 0; }
 .izb-menu > a, .izb-menu .navi-parent {
-  display: block; padding: 12px 9px; color: #c8b898; text-decoration: none; cursor: pointer;
+  display: block; padding: 12px 9px; color: var(--iz-text-soft); text-decoration: none; cursor: pointer;
   text-transform: lowercase; white-space: nowrap;
   background: none; border: none; font: inherit; letter-spacing: inherit;
 }
 .izb-menu > .navi-group { position: static; display: flex; align-items: center; }
 .izb-menu > a { display: flex; align-items: center; }
 .izb-menu > * + *::before {
-  content: "·"; display: inline-block; margin: 0 2px 0 -2px; color: #5a3c1c; font-style: normal; pointer-events: none;
+  content: "·"; display: inline-block; margin: 0 2px 0 -2px; color: var(--iz-accent-dim); opacity: 0.7; font-style: normal; pointer-events: none;
 }
 #iz-barre, #iz-barre * { font-family: Georgia, serif; }
 #iz-barre .izb-menu > a, #iz-barre .izb-menu .navi-parent, #iz-barre .iza-btn { font-size: 14px; line-height: 1.4; }
@@ -38,7 +47,6 @@
 #iz-barre .izb-menu .navi-titre { font-family: Arial, Tahoma, sans-serif; font-size: 10.5px; line-height: 1.4; }
 #iz-barre .izb-titre { font-size: 15px; line-height: 1.4; }
 #iz-barre .izs-input { font-size: 12px; line-height: 1.3; height: auto; }
-body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background: #fbf3e8; color: #2a1a0e; border-color: #c8906a; }
 /* annule le style « bouton » du menu du bandeau (DATA/izmir.css) */
 #iz-barre .izb-menu > a, #iz-barre .izb-menu .navi-parent,
 #iz-barre .izb-menu .navi-group:hover .navi-parent, #iz-barre .izb-menu .navi-group:has(.active) .navi-parent {
@@ -47,29 +55,29 @@ body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background:
 #iz-barre .izs-input, #iz-barre .izs-results { font-family: Arial, Tahoma, Verdana, sans-serif; font-style: normal; }
 .izb-menu .navi-parent::after {
   content: "▾"; display: inline-block; margin-left: 4px; font-size: 9px; font-style: normal;
-  line-height: 1; vertical-align: middle; color: #7a5028;
+  line-height: 1; vertical-align: middle; color: var(--iz-accent-dim);
 }
-.izb-menu > a:hover, .izb-menu .navi-group:hover .navi-parent, .izb-menu .navi-group.izb-ouvert .navi-parent { color: #d4aa72; }
-.izb-menu > a.active, .izb-menu .navi-group.izb-ici .navi-parent { color: #c09050; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #7a5028; }
+.izb-menu > a:hover, .izb-menu .navi-group:hover .navi-parent, .izb-menu .navi-group.izb-ouvert .navi-parent { color: var(--iz-accent-hover); }
+.izb-menu > a.active, .izb-menu .navi-group.izb-ici .navi-parent { color: var(--iz-accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--iz-accent-dim); }
 /* méga-menu : au survol d'une rubrique, un panneau sur toute la largeur, en colonnes */
 .izb-menu .navi-sub {
   display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 9100;
   padding: 18px 0 20px;
-  background: #1a1006; border: none; border-radius: 0; border-bottom: 1px dashed #4a3018; box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+  background: var(--iz-menu); border: none; border-radius: 0; border-bottom: 1px dashed var(--iz-border-strong); box-shadow: 0 10px 18px var(--iz-drop-shadow);
 }
 .izb-menu .navi-group:hover .navi-sub, .izb-menu .navi-group.izb-ouvert .navi-sub {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 210px)); justify-content: center; gap: 10px 34px;
 }
 .izb-menu .navi-col { display: flex; flex-direction: column; gap: 1px; }
 .izb-menu .navi-titre {
-  margin: 0 0 6px; padding: 0 0 5px 8px; color: #c09050; border-bottom: 1px dotted #4a3018;
+  margin: 0 0 6px; padding: 0 0 5px 8px; color: var(--iz-accent); border-bottom: 1px dotted var(--iz-border-strong);
   font-size: 12px; font-style: normal; letter-spacing: 2px; text-transform: uppercase;
 }
 .izb-menu .navi-sub a {
-  display: block; padding: 3px 8px; color: #c8b898; text-decoration: none; text-transform: none; white-space: nowrap;
+  display: block; padding: 3px 8px; color: var(--iz-text-soft); text-decoration: none; text-transform: none; white-space: nowrap;
 }
-.izb-menu .navi-sub a:hover { color: #d4aa72; background: #2e1e0e; }
-.izb-menu .navi-sub a.active { color: #c09050; text-decoration: underline; text-underline-offset: 4px; }
+.izb-menu .navi-sub a:hover { color: var(--iz-accent-hover); background: var(--iz-button); }
+.izb-menu .navi-sub a.active { color: var(--iz-accent); text-decoration: underline; text-underline-offset: 4px; }
 .izb-outils { flex: none; display: flex; align-items: center; gap: 4px; }
 #iz-barre #iz-topbar { position: static; max-width: none; }
 #iz-barre .izs-box { width: 150px; flex-basis: 150px; }
@@ -77,10 +85,16 @@ body.light #iz-barre .izs-input, body.light #iz-barre .izs-results { background:
 #iz-barre .izs-results { position: absolute; width: 260px; right: 0; }
 #iz-barre .izs-box { position: relative; }
 .izb-theme {
-  flex: none; padding: 4px 6px; cursor: pointer; color: #c09050;
+  flex: none; padding: 4px 6px; cursor: pointer; color: var(--iz-accent);
   background: none; border: none; font: inherit; font-style: normal;
 }
-.izb-theme:hover { color: #d4aa72; }
+.izb-theme:hover { color: var(--iz-accent-hover); }
+.izb-citrouille {
+  flex: none; padding: 4px 2px; cursor: pointer; background: none; border: none;
+  font: inherit; font-style: normal; line-height: 1;
+  filter: grayscale(1); opacity: 0.45; transition: opacity .15s, filter .15s;
+}
+.izb-citrouille:hover, body.halloween:not(.light) .izb-citrouille { filter: none; opacity: 1; }
 
 /* le menu en boutons du bandeau et le bouton jour/nuit de la colonne : remplacés par la barre */
 /* bandeau « İzmir by Night / un projet de Sunny » : seulement sur l'accueil du site */
@@ -89,16 +103,6 @@ body.avec-barre #site-header .navi,
 body.avec-barre .sidebar #theme-toggle,
 body.avec-barre > header:has(h1),
 body.avec-barre > footer:has(a[href*="fiche/index"]) { display: none; }
-
-body.light #iz-barre { background: rgba(245, 232, 215, 0.97); border-bottom-color: #c8906a; }
-body.light .izb-titre { color: #2a1a0e; }
-body.light .izb-menu > a, body.light .izb-menu .navi-parent, body.light .izb-menu .navi-sub a { color: #3a2010; }
-body.light .izb-menu > a:hover, body.light .izb-menu .navi-group:hover .navi-parent,
-body.light .izb-menu .navi-sub a:hover, body.light .izb-theme:hover { color: #8b4a18; }
-body.light .izb-menu > a.active, body.light .izb-menu .navi-group.izb-ici .navi-parent, body.light .izb-theme { color: #8b4a18; }
-body.light .izb-menu .navi-sub { background: #f3e5d2; border-color: #c8906a; box-shadow: 0 10px 18px rgba(90, 45, 15, 0.18); }
-body.light .izb-menu .navi-titre { color: #8b4a18; border-color: #c8906a; }
-body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
 
 @media (max-width: 860px) {
   #iz-barre { padding: 0 12px; }
@@ -136,6 +140,7 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
       <div class="izb-outils">
         <div id="iz-topbar"></div>
         <button class="izb-theme" type="button" aria-label="Changer de thème"></button>
+        <button class="izb-citrouille" type="button" aria-label="Thème Halloween">🎃</button>
         <span id="iz-barre-compte"></span>
       </div>
     </div>`;
@@ -170,6 +175,25 @@ body.light .izb-menu .navi-sub a:hover { background: #dfc0a0; }
     theme.title = light ? "passer en mode nuit" : "passer en mode jour";
   };
   try { if (localStorage.getItem("izmir-theme") === "light") document.body.classList.add("light"); } catch (e) {}
+  // thème Halloween (essai) : bouton 🎃, ou ?halloween / ?halloween=0 dans l'adresse
+  const citrouille = barre.querySelector(".izb-citrouille");
+  const halloween = (actif) => {
+    document.body.classList.toggle("halloween", actif);
+    try { localStorage.setItem("izmir-halloween", actif ? "1" : "0"); } catch (e) {}
+    citrouille.title = actif ? "quitter le thème Halloween" : "passer en thème Halloween";
+  };
+  try {
+    const h = new URLSearchParams(location.search).get("halloween");
+    if (h !== null) localStorage.setItem("izmir-halloween", h === "0" ? "0" : "1");
+    halloween(localStorage.getItem("izmir-halloween") === "1");
+  } catch (e) { halloween(false); }
+  citrouille.addEventListener("click", () => {
+    const light = document.body.classList.contains("light");
+    const actif = document.body.classList.contains("halloween") && !light;
+    halloween(!actif);
+    // Halloween est un thème de nuit : depuis le mode jour, la citrouille repasse en nuit
+    if (!actif && light) theme.click();
+  });
   label();
   theme.addEventListener("click", () => {
     const light = document.body.classList.toggle("light");

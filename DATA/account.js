@@ -4,6 +4,7 @@
 // Les pages s'en servent via window.izmirAccount :
 //   izmirAccount.onChange(fn)  -> fn({ client, user, profile, tags, isAdmin }) à chaque connexion / déconnexion
 //   izmirAccount.load()        -> Promise du client Supabase (déjà connecté si une session existe)
+//   izmirAccount.gagnerBadge(id) -> donne un badge secret au joueur connecté (liste autorisée dans supabase/izmir.sql)
 //
 // Les comptes sont créés à la main dans Supabase (identifiant@izmir.local) : ici on ne fait que se connecter.
 // La sécurité (qui voit quoi) est faite côté Supabase par les règles RLS : supabase/izmir.sql
@@ -116,7 +117,24 @@
     await client.auth.signOut();
   }
 
-  window.izmirAccount = { load, onChange, signIn, signOut, get state() { return state; } };
+  // badge secret gagné sur une page (chercher « pigeon » dans le Code, ouvrir une image spice…).
+  // Rien n'est téléchargé si personne n'est connecté sur ce navigateur, et une seule demande par badge.
+  const badgesDemandes = new Set();
+  async function gagnerBadge(badge) {
+    if (badgesDemandes.has(badge) || !hasStoredSession()) return false;
+    badgesDemandes.add(badge);
+    try {
+      const client = await load();
+      const deja = state.profile?.badges;
+      if (Array.isArray(deja) && deja.map(norm).includes(badge)) return true;
+      const { data, error } = await client.rpc("izmir_gagner_badge", { badge });
+      return !error && data === true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  window.izmirAccount = { load, onChange, signIn, signOut, gagnerBadge, get state() { return state; } };
 
   // ── Widget ────────────────────────────────────────────────────────────────
 
@@ -132,17 +150,17 @@
 }
 .iza-btn {
   display: block; padding: 6px 10px; min-width: 96px; cursor: pointer;
-  background: rgba(28, 18, 8, 0.95); color: #c09050;
-  border: 1px solid #3a2810; border-radius: 0;
+  background: var(--iz-panel); color: var(--iz-accent);
+  border: 1px solid var(--iz-border); border-radius: 0;
   font: italic 12px Georgia, serif; letter-spacing: 0.5px; text-align: left;
   white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;
 }
-.iza-btn::after { content: "▾"; display: inline-block; margin-left: 5px; font-size: 9px; font-style: normal; line-height: 1; vertical-align: middle; color: #7a5028; }
-.iza-box:hover .iza-btn, .iza-box.iza-open .iza-btn, .iza-btn:focus-visible { border-color: #c09050; color: #d4aa72; outline: none; }
+.iza-btn::after { content: "▾"; display: inline-block; margin-left: 5px; font-size: 9px; font-style: normal; line-height: 1; vertical-align: middle; color: var(--iz-accent-dim); }
+.iza-box:hover .iza-btn, .iza-box.iza-open .iza-btn, .iza-btn:focus-visible { border-color: var(--iz-accent); color: var(--iz-accent-hover); outline: none; }
 .iza-panel {
   display: none; position: absolute; top: 100%; right: 0; margin-top: 2px;
   min-width: 170px; padding: 6px 4px 4px;
-  background: rgba(28, 18, 8, 0.97); border: 1px solid #3a2810;
+  background: var(--iz-panel); border: 1px solid var(--iz-border);
 }
 .iza-box.iza-open .iza-panel,
 .iza-box.iza-logged:hover .iza-panel,
@@ -151,67 +169,50 @@
 .iza-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 4px; }
 .iza-panel a, .iza-panel button.iza-item {
   display: block; width: 100%; padding: 5px 8px; text-align: left;
-  color: #c8b898; background: none; border: none; cursor: pointer;
+  color: var(--iz-text-soft); background: none; border: none; cursor: pointer;
   font: italic 12px Georgia, serif; letter-spacing: 0.5px; text-transform: lowercase;
   text-decoration: none; white-space: nowrap;
 }
 .iza-panel a:hover, .iza-panel button.iza-item:hover,
-.iza-panel a:focus-visible, .iza-panel button.iza-item:focus-visible { color: #d4aa72; background: #2e1e0e; outline: none; }
-.iza-sep { border-top: 1px dotted #4a3018; margin: 4px 6px; }
-.iza-who { padding: 2px 8px 6px; font-size: 10px; color: #a07840; }
+.iza-panel a:focus-visible, .iza-panel button.iza-item:focus-visible { color: var(--iz-accent-hover); background: var(--iz-button); outline: none; }
+.iza-sep { border-top: 1px dotted var(--iz-border-strong); margin: 4px 6px; }
+.iza-who { padding: 2px 8px 6px; font-size: 10px; color: var(--iz-muted); }
 .iza-who:empty { display: none; }
 .iza-form { display: flex; flex-direction: column; gap: 4px; padding: 2px 4px 4px; }
 .iza-form input {
   width: 100%; box-sizing: border-box; padding: 6px 8px;
-  background: #1e1408; color: #e8dcc0; border: 1px solid #3a2810; outline: none; font: inherit;
+  background: var(--iz-field); color: var(--iz-text); border: 1px solid var(--iz-border); outline: none; font: inherit;
 }
-.iza-form input::placeholder { color: #a08a68; }
-.iza-form input:focus { border-color: #c09050; }
+.iza-form input::placeholder { color: var(--iz-placeholder); }
+.iza-form input:focus { border-color: var(--iz-accent); }
 .iza-form button {
   padding: 5px 8px; cursor: pointer;
-  background: #2e1e0e; color: #c09050; border: 1px solid #4a3018;
+  background: var(--iz-button); color: var(--iz-accent); border: 1px solid var(--iz-border-strong);
   font: italic 12px Georgia, serif;
 }
-.iza-form button:hover { color: #d4aa72; border-color: #c09050; }
-.iza-msg { min-height: 1em; font-size: 10px; color: #a07840; }
+.iza-form button:hover { color: var(--iz-accent-hover); border-color: var(--iz-accent); }
+.iza-msg { min-height: 1em; font-size: 10px; color: var(--iz-muted); }
 
-body.light .iza-btn, body.light .iza-panel { background: rgba(245, 232, 215, 0.98); border-color: #c8906a; color: #8b4a18; }
-body.light .iza-btn::after { color: #c8906a; }
-body.light .iza-box:hover .iza-btn, body.light .iza-box.iza-open .iza-btn { border-color: #8b4a18; color: #b86030; }
-body.light .iza-panel a, body.light .iza-panel button.iza-item { color: #2a1a0e; }
-body.light .iza-panel a:hover, body.light .iza-panel button.iza-item:hover { color: #8b4a18; background: #ead8c0; }
-body.light .iza-sep { border-top-color: #c8906a; }
-body.light .iza-who, body.light .iza-msg { color: #7a5a3e; }
-body.light .iza-form input { background: #fbf5ec; color: #2a1a0e; border-color: #c8906a; }
-body.light .iza-form input::placeholder { color: #8b6a4a; }
-body.light .iza-form input:focus { border-color: #8b4a18; }
-body.light .iza-form button { background: #dfc0a0; color: #2a1a0e; border-color: #c8906a; }
-body.light .iza-form button:hover { background: #cfaa88; border-color: #8b4a18; }
 
 /* ── Coin haut-droit du bandeau du site (header.html) : même allure que les onglets du menu ── */
 .iza-box--navi { position: absolute; top: 8px; right: 8px; z-index: 50; font-family: Arial, Tahoma, Verdana, sans-serif; }
 .iza-box--navi .iza-btn {
   padding: 5px 12px; min-width: 0; max-width: 200px; text-align: center;
-  color: #ecdfc8; background: var(--iz-button, #2e1e0e);
-  border: 1px solid var(--iz-border-strong, #4a3018); border-radius: 4px;
+  color: var(--iz-button-text); background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong); border-radius: 4px;
   font: italic 14px georgia, serif; text-transform: lowercase; letter-spacing: 1px;
   transition: 0.2s ease;
 }
-.iza-box--navi .iza-btn::after { color: var(--iz-accent-dim, #7a5028); }
-.iza-box--navi:hover .iza-btn, .iza-box--navi.iza-open .iza-btn { color: #d4aa72; background: #1e1208; border-color: var(--iz-border-strong, #4a3018); }
+.iza-box--navi .iza-btn::after { color: var(--iz-accent-dim); }
+.iza-box--navi:hover .iza-btn, .iza-box--navi.iza-open .iza-btn { color: var(--iz-button-text-hover); background: var(--iz-button-hover); border-color: var(--iz-border-hover); }
 /* comme les autres onglets : s'ouvre au survol, et reste ouvert pendant qu'on tape */
 .iza-box--navi:hover .iza-panel, .iza-box--navi:focus-within .iza-panel { display: block; }
 .iza-box--navi .iza-panel {
   z-index: 100; margin-top: 0; padding: 6px 4px 4px; min-width: 180px;
-  background: #1e1208; border: 1px solid var(--iz-border-strong, #4a3018); border-radius: 4px;
+  background: var(--iz-menu); border: 1px solid var(--iz-border-strong); border-radius: 4px;
 }
 .iza-box--navi .iza-panel a, .iza-box--navi .iza-panel button.iza-item { border-radius: 3px; padding: 4px 8px; }
-.iza-box--navi .iza-panel a:hover, .iza-box--navi .iza-panel button.iza-item:hover { background: var(--iz-button, #2e1e0e); }
-body.light .iza-box--navi .iza-btn { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
-body.light .iza-box--navi:hover .iza-btn, body.light .iza-box--navi.iza-open .iza-btn { color: #150d05; background: #cfaa88; border-color: #a86840; }
-body.light .iza-box--navi .iza-panel { background: #f0e0cc; border-color: #c8906a; }
-body.light .iza-box--navi .iza-panel a, body.light .iza-box--navi .iza-panel button.iza-item { color: #3a2010; }
-body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-panel button.iza-item:hover { background: #dfc0a0; color: #150d05; }
+.iza-box--navi .iza-panel a:hover, .iza-box--navi .iza-panel button.iza-item:hover { background: var(--iz-button); }
 @media (max-width: 768px) {
   .iza-box--navi .iza-btn { max-width: 120px; padding: 4px 10px; font-size: 13px; }
 }
@@ -220,23 +221,20 @@ body.light .iza-box--navi .iza-panel a:hover, body.light .iza-box--navi .iza-pan
 /* dans la barre de navigation (DATA/barre.js) : un lien texte, comme le menu */
 .iza-box--barre .iza-btn {
   min-width: 0; max-width: 140px; padding: 4px 6px; background: none; border: none;
-  color: #c09050; font: italic 14px Georgia, serif; letter-spacing: 0.5px;
+  color: var(--iz-accent); font: italic 14px Georgia, serif; letter-spacing: 0.5px;
 }
-.iza-box--barre:hover .iza-btn, .iza-box--barre.iza-open .iza-btn { color: #d4aa72; border: none; }
+.iza-box--barre:hover .iza-btn, .iza-box--barre.iza-open .iza-btn { color: var(--iz-accent-hover); border: none; }
 .iza-box--barre .iza-panel { margin-top: 4px; border-style: dashed; }
-body.light .iza-box--barre .iza-btn { background: none; color: #8b4a18; }
 .iza-box--wiki { margin-left: -20px; align-self: center; } /* la barre du wiki espace ses éléments de 28px : on se colle au bouton jour/nuit */
 .iza-box--wiki .iza-btn {
   height: 28px; box-sizing: border-box; padding: 0 12px; min-width: 0; max-width: 150px;
   font: 13px/26px Arial, Tahoma, Verdana, sans-serif; letter-spacing: 0;
-  color: var(--iz-accent, #c09050); background: var(--iz-button, #2e1e0e);
-  border: 1px solid var(--iz-border-strong, #4a3018); border-radius: var(--iz-radius, 4px);
+  color: var(--iz-accent); background: var(--iz-button);
+  border: 1px solid var(--iz-border-strong); border-radius: var(--iz-radius);
 }
-.iza-box--wiki:hover .iza-btn, .iza-box--wiki.iza-open .iza-btn { color: var(--iz-accent-hover, #d4aa72); border-color: var(--iz-accent, #c09050); }
-.iza-box--wiki .iza-panel { margin-top: 6px; border-radius: var(--iz-radius, 4px); }
+.iza-box--wiki:hover .iza-btn, .iza-box--wiki.iza-open .iza-btn { color: var(--iz-accent-hover); border-color: var(--iz-accent); }
+.iza-box--wiki .iza-panel { margin-top: 6px; border-radius: var(--iz-radius); }
 .iza-box--wiki .iza-panel::before { top: -8px; height: 8px; }
-/* la barre du wiki reste sombre en mode jour : le bouton aussi */
-body.light .iza-box--wiki .iza-btn { color: var(--iz-accent, #c09050); background: var(--iz-button, #2e1e0e); border-color: var(--iz-border-strong, #4a3018); }
 @media screen and (max-width: 700px) {
   .iza-box--wiki { position: absolute; top: 12px; left: 128px; margin: 0; }
   .iza-box--wiki .iza-btn { max-width: 80px; padding: 0 8px; }

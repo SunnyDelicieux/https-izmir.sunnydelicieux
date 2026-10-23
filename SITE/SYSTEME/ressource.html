@@ -17,32 +17,32 @@
 .res-table th {
   padding: 5px 10px;
   text-align: left;
-  color: #a07840;
+  color: var(--iz-muted);
   font: italic 11px georgia, serif;
   letter-spacing: 1px;
-  border-bottom: 1px solid #4a3018;
+  border-bottom: 1px solid var(--iz-border-strong);
   font-weight: normal;
 }
 .res-table td {
   padding: 5px 10px;
-  border-bottom: 1px dotted #3a2810;
-  color: #e8dcc0;
+  border-bottom: 1px dotted var(--iz-border);
+  color: var(--iz-text);
   vertical-align: top;
   line-height: 1.4;
 }
 .res-table tr:last-child td { border-bottom: none; }
-.res-table td:first-child { color: #c09050; font: italic 12px georgia, serif; white-space: nowrap; }
-.res-table td.num  { text-align: center; color: #d4aa72; font: italic 13px georgia, serif; }
-.res-table td.stress { text-align: center; color: #c04030; font: italic 13px georgia, serif; }
+.res-table td:first-child { color: var(--iz-accent); font: italic 12px georgia, serif; white-space: nowrap; }
+.res-table td.num  { text-align: center; color: var(--iz-accent-hover); font: italic 13px georgia, serif; }
+.res-table td.stress { text-align: center; color: #c04030; /* rouge du stress : fixe */ font: italic 13px georgia, serif; }
 
 /* ── Ressource collapsible ── */
 details.res-item {
-  background: #261a0c;
-  border: 1px dashed #4a3018;
+  background: var(--iz-box);
+  border: 1px dashed var(--iz-border-strong);
   border-radius: 4px;
   overflow: hidden;
 }
-details.res-item[open] { border-color: #7a5028; }
+details.res-item[open] { border-color: var(--iz-accent-dim); }
 details.res-item summary {
   display: flex;
   align-items: baseline;
@@ -51,7 +51,7 @@ details.res-item summary {
   cursor: pointer;
   list-style: none;
   user-select: none;
-  color: #c09050;
+  color: var(--iz-accent);
   font: italic 13px georgia, serif;
   letter-spacing: 0.5px;
 }
@@ -59,33 +59,21 @@ details.res-item summary::-webkit-details-marker { display: none; }
 details.res-item summary::before {
   content: "\25b8";
   font-size: 9px;
-  color: #7a5028;
+  color: var(--iz-accent-dim);
   transition: transform 0.2s, color 0.2s;
   flex-shrink: 0;
   line-height: 1.6;
 }
-details.res-item[open] summary::before { transform: rotate(90deg); color: #c09050; }
-details.res-item summary:hover { color: #d4aa72; }
+details.res-item[open] summary::before { transform: rotate(90deg); color: var(--iz-accent); }
+details.res-item summary:hover { color: var(--iz-accent-hover); }
 .res-body {
   padding: 0 14px 12px 28px;
-  border-top: 1px dotted #3a2810;
-  color: #c8b898;
+  border-top: 1px dotted var(--iz-border);
+  color: var(--iz-text-soft);
   line-height: 1.5;
 }
 .res-desc { margin: 8px 0; font-size: 11px; }
 
-/* light theme */
-body.light .res-table th { color: #8b4a18; border-bottom-color: #c8906a; }
-body.light .res-table td { color: #2a1a0e; border-bottom-color: #c8906a; }
-body.light .res-table td:first-child { color: #8b4a18; }
-body.light .res-table td.num { color: #7a3e14; }
-body.light .res-table td.stress { color: #c04030; }
-body.light details.res-item { background: #f0e0cc; border-color: #c8906a; }
-body.light details.res-item[open] { border-color: #a86840; }
-body.light details.res-item summary { color: #8b4a18; }
-body.light details.res-item summary::before { color: #c8906a; }
-body.light details.res-item[open] summary::before { color: #8b4a18; }
-body.light .res-body { color: #3a2010; border-top-color: #c8906a; }
 </style>
   <script src="/DATA/search.js" defer></script>
 </head>

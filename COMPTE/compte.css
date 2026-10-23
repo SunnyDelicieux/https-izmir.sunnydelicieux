@@ -20,7 +20,7 @@
 .field textarea {
   width: 100%;
   padding: 6px 8px;
-  background: var(--iz-bg);
+  background: var(--iz-field);
   color: var(--iz-text);
   border: 1px solid var(--iz-border);
   border-radius: 0;
@@ -70,7 +70,7 @@
   z-index: 2;
   padding: 6px 0 4px;
   border-bottom: 1px solid var(--iz-border-strong);
-  background: rgba(28, 18, 8, 0.97);
+  background: var(--iz-panel);
   color: var(--iz-accent);
   font: italic 18px georgia, serif;
   scroll-margin-top: 50px;
@@ -229,6 +229,7 @@ button.tag:hover { color: var(--iz-accent-hover); border-color: var(--iz-accent-
 .vault-item .file-icon { height: 100%; display: flex; align-items: center; justify-content: center; font: italic 22px georgia, serif; color: var(--iz-accent); text-transform: uppercase; }
 .vault-name { font: italic 12px georgia, serif; letter-spacing: 0.5px; }
 .vault-tools { display: flex; gap: 10px; margin-top: 2px; }
+/* aperçu d'une lettre : papier crème, le même dans tous les thèmes */
 .letter-thumb {
   position: relative;
   height: 100%;
@@ -253,7 +254,8 @@ button.tag:hover { color: var(--iz-accent-hover); border-color: var(--iz-accent-
 .field [hidden], .field[hidden] { display: none; }
 .vault-meta { font-size: 9px; color: var(--iz-muted); text-transform: uppercase; letter-spacing: 1px; }
 
-/* ── Lecteur de handouts (COMPTE/lecteur.js) ── */
+/* ── Lecteur de handouts (COMPTE/lecteur.js) ──
+   fond noir et lettres sur papier crème : les mêmes dans tous les thèmes, pour bien lire */
 html.lx-lock, html.lx-lock body { overflow: hidden; }
 .lx {
   position: fixed;
@@ -304,7 +306,7 @@ html.lx-lock, html.lx-lock body { overflow: hidden; }
 .lx-image { max-width: 100%; max-height: calc(100vh - 120px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6); }
 .lx-loading { margin-top: 40px; color: var(--iz-text-soft); font: italic 14px georgia, serif; }
 
-/* lettre écrite par un joueur : une feuille de papier */
+/* lettre écrite par un joueur : une feuille de papier (couleurs fixes) */
 .lx-letter {
   width: min(680px, 100%);
   padding: 48px 56px 60px;
@@ -337,9 +339,9 @@ html.lx-lock, html.lx-lock body { overflow: hidden; }
   cursor: text;
   transform-origin: 0% 0%;
 }
-.lx-text ::selection { background: rgba(192, 144, 80, 0.4); }
+.lx-text ::selection { background: color-mix(in srgb, var(--iz-accent) 40%, transparent); }
 .lx-link { position: absolute; z-index: 2; cursor: pointer; }
-.lx-link:hover { background: rgba(192, 144, 80, 0.18); outline: 1px solid rgba(192, 144, 80, 0.6); }
+.lx-link:hover { background: color-mix(in srgb, var(--iz-accent) 18%, transparent); outline: 1px solid color-mix(in srgb, var(--iz-accent) 60%, transparent); }
 
 @media (max-width: 520px) {
   .vault-grid { grid-template-columns: repeat(2, 1fr); }
@@ -415,68 +417,9 @@ html.lx-lock, html.lx-lock body { overflow: hidden; }
 .vj-why { white-space: nowrap; }
 @media (max-width: 520px) { .vj-row { grid-template-columns: 1fr; gap: 2px; } }
 
-/* ── Jour ── */
-body.light .page-title,
-body.light .ev-year,
-body.light .ev-date { color: #8b4a18; }
-body.light .muted,
-body.light .field label,
-body.light .form-msg,
-body.light .ev-month,
-body.light .ev-date small,
-body.light .ticket .meta { color: #7a5a3e; }
-body.light .ev-year { border-bottom-color: #c8906a; }
-
-body.light .input,
-body.light .field input,
-body.light .field select,
-body.light .field textarea { background: #fbf5ec; color: #2a1a0e; border-color: #c8906a; }
-body.light .input:focus,
-body.light .field input:focus,
-body.light .field select:focus,
-body.light .field textarea:focus { border-color: #8b4a18; }
-
-body.light .btn { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
-body.light .btn:hover { background: #cfaa88; border-color: #8b4a18; }
-
-body.light .year-links a,
-body.light .tag { border-color: #c8906a; }
-body.light .tag { background: #e8d0b4; color: #2a1a0e; }
-body.light .ev-year { background: rgba(245, 232, 215, 0.99); }
-body.light .tl-item::before { border-left-color: #c8906a; }
-body.light .tl-item::after { background: #8b4a18; }
-body.light .tl-date b { color: #8b4a18; }
-body.light .tl-date span { color: #5a2e10; }
-body.light .tl-date small { color: #7a5a3e; }
-body.light .tl-card:hover { border-color: #a86840; }
-body.light .tl-card.open:hover { border-color: #c8906a; }
-body.light .tl-thumb, body.light .tl-image { border-color: #c8906a; }
-body.light .tl-more { color: #8b4a18; }
-body.light .tl-more:hover { color: #b86030; }
-body.light button.tag:hover { color: #8b4a18; border-color: #a86840; }
-body.light .tag.active { color: #8b4a18; border-color: #8b4a18; background: #f0e0cc; }
-body.light .ticket .reply { border-left-color: #8b4a18; }
-body.light .statut-nouveau { color: #8b4a18; border-color: #8b4a18; }
-
-body.light .vault-item { background: #e8d0b4; border-color: #c8906a; color: #2a1a0e; }
-body.light .vault-item:hover { border-color: #8b4a18; color: #8b4a18; }
-body.light .vault-item .file-icon { color: #8b4a18; }
-body.light .vault-thumb { border-color: #c8906a; background: #f0e0cc; }
-body.light .vault-meta { color: #7a5a3e; }
-body.light .drop { border-color: #c8906a; color: #5a2e10; }
-body.light .drop:hover, body.light .drop.over { border-color: #8b4a18; color: #8b4a18; background: #e8d0b4; }
-body.light .page-card { background: #e8d0b4; border-color: #c8906a; }
-body.light .page-keep { color: #7a5a3e; }
-body.light .sent-thumb { background: #f0e0cc; border-color: #c8906a; }
-body.light .share-label, body.light .ev-author { color: #7a5a3e; }
-body.light .vj-row { border-bottom-color: #c8906a; }
-body.light .vj-title { color: #2a1a0e; }
-body.light .vj-date { color: #7a5a3e; }
-
-
 /* ── Formulaires en fenêtre (COMPTE/partage.js) : même style que les encadrés du site ── */
 html.modal-lock, html.modal-lock body { overflow: hidden; }
-.modal-backdrop { position: fixed; inset: 0; z-index: 10002; background: rgba(10, 6, 2, 0.7); }
+.modal-backdrop { position: fixed; inset: 0; z-index: 10002; background: var(--iz-overlay); }
 .modal-backdrop[hidden] { display: none; }
 .modal-form:not([hidden]) {
   position: fixed;
@@ -506,7 +449,7 @@ html.modal-lock, html.modal-lock body { overflow: hidden; }
 @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; gap: 0; } }
 
 /* tags : seule la couleur du texte change selon le type (joueur, public) */
-.tag--joueur { color: #d8a090; }
+.tag--joueur { color: #d8a090; }                       /* rose : pas une couleur du thème */
 .tag--public { color: var(--iz-accent-hover); }
 .share-editor .tag { cursor: pointer; padding: 2px 8px; font-size: 10px; }
 
@@ -519,18 +462,13 @@ html.modal-lock, html.modal-lock body { overflow: hidden; }
 .vault-heading { margin-bottom: 8px; color: var(--iz-accent); font: italic 14px georgia, serif; text-transform: lowercase; }
 .vault-tools { display: flex; gap: 10px; margin-top: 4px; }
 
-body.light .modal-form:not([hidden]) { background: #f0e0cc; }
-body.light .modal-backdrop { background: rgba(60, 30, 10, 0.4); }
 body.light .tag--joueur { color: #8a3a26; }
-body.light .tag--public { color: #8b4a18; }
-body.light .empty { color: #7a5a3e; }
-body.light .vault-heading { color: #8b4a18; }
 
 /* ── Onglets des espaces (même allure que le menu du site) ── */
 .tabs { display: flex; gap: 5px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px dashed var(--iz-border-strong); }
 .tabs a {
   padding: 5px 12px;
-  color: #ecdfc8;
+  color: var(--iz-button-text);
   background: var(--iz-button);
   border: 1px solid var(--iz-border-strong);
   border-radius: 4px;
@@ -538,23 +476,17 @@ body.light .vault-heading { color: #8b4a18; }
   text-transform: lowercase;
   transition: 0.2s ease;
 }
-.tabs a:hover { color: var(--iz-accent-hover); background: #1e1208; }
-.tabs a.active { color: var(--iz-accent); border-color: var(--iz-accent); background: #1e1208; }
-body.light .tabs { border-bottom-color: #c8906a; }
-body.light .tabs a { color: #2a1a0e; background: #dfc0a0; border-color: #c8906a; }
-body.light .tabs a:hover { color: #150d05; background: #cfaa88; border-color: #a86840; }
-body.light .tabs a.active { color: #8b4a18; background: #dfc0a0; border-color: #8b4a18; }
+.tabs a:hover { color: var(--iz-button-text-hover); background: var(--iz-button-hover); border-color: var(--iz-border-hover); }
+.tabs a.active { color: var(--iz-accent); border-color: var(--iz-accent); background: var(--iz-button-active); }
 
 /* ── Colonne de gauche ── */
 .side-btn { display: block; width: 100%; margin-bottom: 6px; text-align: left; }
 .side-hint { margin-top: 4px; color: var(--iz-muted); font-size: 10px; line-height: 1.4; }
 .sidebar .input { width: 100%; }
 .sidebar .tags { margin-top: 0; }
-body.light .side-hint { color: #7a5a3e; }
 
 /* boutons grille / liste */
 .toolbar .btn.active { color: var(--iz-accent); border-color: var(--iz-accent); }
-body.light .toolbar .btn.active { color: #8b4a18; border-color: #8b4a18; }
 
 /* ── Grille du calendrier ── */
 .cal-nav { display: flex; align-items: center; gap: 10px; margin: 12px 0 8px; }
@@ -571,11 +503,11 @@ body.light .toolbar .btn.active { color: #8b4a18; border-color: #8b4a18; }
   cursor: pointer;
   text-align: left;
   color: var(--iz-text);
-  background: rgba(20, 12, 6, 0.6);
+  background: color-mix(in srgb, var(--iz-deep) 60%, transparent);
   border: 1px solid var(--iz-border);
   font: 11px var(--iz-font);
 }
-.cal-day:hover { background: rgba(40, 25, 10, 0.6); }
+.cal-day:hover { background: color-mix(in srgb, var(--iz-box-soft) 60%, transparent); }
 .cal-day.empty { visibility: hidden; cursor: default; }
 .cal-day.selected { border-color: var(--iz-accent); }
 .cal-day.has .cal-num { color: var(--iz-accent-hover); font-weight: bold; }
@@ -596,12 +528,6 @@ body.light .toolbar .btn.active { color: #8b4a18; border-color: #8b4a18; }
   .cal-title { display: none; }
   .cal-day.has::after { content: "•"; color: var(--iz-accent); }
 }
-body.light .cal-month { color: #8b4a18; }
-body.light .cal-day { background: rgba(245, 232, 215, 0.82); border-color: #c8906a; color: #2a1a0e; }
-body.light .cal-day:hover { background: #ead8c0; }
-body.light .cal-day.selected { border-color: #8b4a18; }
-body.light .cal-day.has .cal-num { color: #8b4a18; }
-body.light .cal-title { background: #dfc0a0; }
 /* encadrés d'un même onglet, dans la colonne de gauche : même espacement que la colonne */
 .sidebar > [data-tab] { display: flex; flex-direction: column; gap: 14px; }
 .sidebar > [data-tab][hidden] { display: none; }
