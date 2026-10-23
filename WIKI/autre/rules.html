@@ -306,6 +306,8 @@ window.onload = function () {
     document.getElementById("lois-compte").textContent =
       (q ? vus + " / " : "") + lois.length + " articles";
     document.getElementById("lois-aucun").hidden = vus !== 0;
+    // badge secret « protect the pigeon » (article 4.4)
+    if (/\bpigeons?\b/.test(q) && window.izmirAccount) izmirAccount.gagnerBadge("pigeon");
   }
 
   document.addEventListener("input", function (e) {

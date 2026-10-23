@@ -153,15 +153,18 @@ using (user_id = auth.uid() or public.izmir_is_admin());
 -- se donner un badge lui-même.
 alter table public.profiles add column if not exists badges text[] not null default '{}';
 
--- badges secrets gagnés en ouvrant un événement du calendrier (COMPTE/evenements.js) : un joueur ne peut
--- se donner QUE les badges de cette liste, et seulement à lui-même.
+-- badges secrets gagnés sur le site : un joueur ne peut se donner QUE les badges de cette liste,
+-- et seulement à lui-même.
+--   pyramide : ouvrir la chute de la Pyramide dans le calendrier (COMPTE/evenements.js)
+--   pigeon   : chercher « pigeon » dans le Code de Smyrne (WIKI/autre/rules.html)
+--   noshame  : ouvrir une image spice de la galerie (GALLERIE/gallery.js)
 create or replace function public.izmir_gagner_badge(badge text)
 returns boolean
 language plpgsql security definer
 set search_path = public
 as $$
 begin
-  if auth.uid() is null or badge not in ('pyramide') then
+  if auth.uid() is null or badge not in ('pyramide', 'pigeon', 'noshame') then
     return false;
   end if;
   update public.profiles

@@ -14,7 +14,9 @@
     { id: "inga", image: "/img/blinkies/badges/inga.gif", nom: "cyber genius",
       desc: "A fini le jeu d'Inga.", main: true },
     { id: "pigeon", image: "/img/blinkies/badges/pigeon.gif", nom: "protect the pigeon",
-      desc: "Badge donné par la MJ.", main: true },
+      desc: "A cherché « pigeon » dans le Code de Smyrne.", main: true },
+    { id: "noshame", image: "/img/blinkies/badges/noshame.gif", nom: "incognito mode",
+      desc: "A ouvert une image spice de la galerie.", main: true },
   ];
 
   const box = document.getElementById("badges");

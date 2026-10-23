@@ -4,6 +4,7 @@
 // Les pages s'en servent via window.izmirAccount :
 //   izmirAccount.onChange(fn)  -> fn({ client, user, profile, tags, isAdmin }) à chaque connexion / déconnexion
 //   izmirAccount.load()        -> Promise du client Supabase (déjà connecté si une session existe)
+//   izmirAccount.gagnerBadge(id) -> donne un badge secret au joueur connecté (liste autorisée dans supabase/izmir.sql)
 //
 // Les comptes sont créés à la main dans Supabase (identifiant@izmir.local) : ici on ne fait que se connecter.
 // La sécurité (qui voit quoi) est faite côté Supabase par les règles RLS : supabase/izmir.sql
@@ -116,7 +117,24 @@
     await client.auth.signOut();
   }
 
-  window.izmirAccount = { load, onChange, signIn, signOut, get state() { return state; } };
+  // badge secret gagné sur une page (chercher « pigeon » dans le Code, ouvrir une image spice…).
+  // Rien n'est téléchargé si personne n'est connecté sur ce navigateur, et une seule demande par badge.
+  const badgesDemandes = new Set();
+  async function gagnerBadge(badge) {
+    if (badgesDemandes.has(badge) || !hasStoredSession()) return false;
+    badgesDemandes.add(badge);
+    try {
+      const client = await load();
+      const deja = state.profile?.badges;
+      if (Array.isArray(deja) && deja.map(norm).includes(badge)) return true;
+      const { data, error } = await client.rpc("izmir_gagner_badge", { badge });
+      return !error && data === true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  window.izmirAccount = { load, onChange, signIn, signOut, gagnerBadge, get state() { return state; } };
 
   // ── Widget ────────────────────────────────────────────────────────────────
 
