@@ -1,25 +1,25 @@
-/* Thème Halloween (essai) : variante braise du mode nuit, avec Gabriel dans le coin.
+/* Thème Halloween (essai) : variante noir et rouge du mode nuit, avec Gabriel dans le coin.
    S'active avec ?halloween dans l'adresse (?halloween=0 pour revenir), voir DATA/barre.js.
    Le mode jour n'est pas touché. */
 
 body.halloween:not(.light) {
-  --iz-bg: #100807;
-  --iz-panel: #140a08;
-  --iz-box: #1b0d0b;
-  --iz-box-soft: #22100d;
-  --iz-button: #24110d;
-  --iz-deep: #0b0605;
+  --iz-bg: #0b0909;
+  --iz-panel: #0e0b0b;
+  --iz-box: #141010;
+  --iz-box-soft: #1a1313;
+  --iz-button: #1a1212;
+  --iz-deep: #070606;
 
-  --iz-border: #3a1812;
-  --iz-border-strong: #552018;
+  --iz-border: #3a1414;
+  --iz-border-strong: #5c1a1a;
 
-  --iz-text: #ece2dc;
-  --iz-text-soft: #cdb8b0;
-  --iz-muted: #b87a68;
+  --iz-text: #ece6e4;
+  --iz-text-soft: #c4b8b6;
+  --iz-muted: #c06464;
 
-  --iz-accent: #e2643c;
-  --iz-accent-hover: #ff8e5e;
-  --iz-accent-dim: #7a2a1c;
+  --iz-accent: #e44444;
+  --iz-accent-hover: #ff6b6b;
+  --iz-accent-dim: #7a1a1a;
 
   background: var(--iz-bg);
 }
@@ -32,36 +32,36 @@ body.halloween:not(.light)::before {
 
 /* couleurs écrites en dur dans izmir.css */
 body.halloween:not(.light) .container {
-  background: rgba(20, 10, 8, 0.96);
+  background: rgba(14, 11, 11, 0.96);
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
 }
-body.halloween:not(.light) .header { border-color: #3a1812; }
+body.halloween:not(.light) .header { border-color: #3a1414; }
 body.halloween:not(.light) .header::after {
   background: none;
 }
-body.halloween:not(.light) .site-name { color: #f2e4dc; }
-body.halloween:not(.light) .quote { color: #e8a088; background: #1d0e0b; }
-body.halloween:not(.light) .footer { background: #1d0e0b; }
-body.halloween:not(.light) .scrollable { scrollbar-color: var(--iz-accent) #120907; }
-body.halloween:not(.light) .scrollable::-webkit-scrollbar-track { background: #120907; }
+body.halloween:not(.light) .site-name { color: #f0eaea; }
+body.halloween:not(.light) .quote { color: #e88a8a; background: #141010; }
+body.halloween:not(.light) .footer { background: #141010; }
+body.halloween:not(.light) .scrollable { scrollbar-color: var(--iz-accent) #0d0a0a; }
+body.halloween:not(.light) .scrollable::-webkit-scrollbar-track { background: #0d0a0a; }
 
 /* barre du haut (DATA/barre.js) */
-body.halloween:not(.light) #iz-barre { background: rgba(14, 7, 6, 0.97); border-bottom-color: #552018; }
+body.halloween:not(.light) #iz-barre { background: rgba(10, 8, 8, 0.97); border-bottom-color: #5c1a1a; }
 body.halloween:not(.light) .izb-titre:hover,
-body.halloween:not(.light) .izb-theme { color: #e2643c; }
+body.halloween:not(.light) .izb-theme { color: #e44444; }
 body.halloween:not(.light) .izb-menu > a,
 body.halloween:not(.light) .izb-menu .navi-parent,
-body.halloween:not(.light) .izb-menu .navi-sub a { color: #cdb8b0; }
+body.halloween:not(.light) .izb-menu .navi-sub a { color: #c4b8b6; }
 body.halloween:not(.light) .izb-menu > a:hover,
 body.halloween:not(.light) .izb-menu .navi-group:hover .navi-parent,
-body.halloween:not(.light) .izb-menu .navi-sub a:hover { color: #ff8e5e; }
+body.halloween:not(.light) .izb-menu .navi-sub a:hover { color: #ff6b6b; }
 body.halloween:not(.light) .izb-menu > a.active,
-body.halloween:not(.light) .izb-menu .navi-group.izb-ici .navi-parent { color: #e2643c; text-decoration-color: #7a2a1c; }
-body.halloween:not(.light) .izb-menu .navi-sub { background: #120907; border-color: #3a1812; }
-body.halloween:not(.light) .izb-menu .navi-sub a:hover { background: #24110d; }
-body.halloween:not(.light) .izb-menu .navi-titre { color: #e2643c; border-color: #3a1812; }
-body.halloween:not(.light) .izb-menu > * + *::before { color: #552018; }
+body.halloween:not(.light) .izb-menu .navi-group.izb-ici .navi-parent { color: #e44444; text-decoration-color: #7a1a1a; }
+body.halloween:not(.light) .izb-menu .navi-sub { background: #0d0a0a; border-color: #3a1414; }
+body.halloween:not(.light) .izb-menu .navi-sub a:hover { background: #1a1212; }
+body.halloween:not(.light) .izb-menu .navi-titre { color: #e44444; border-color: #3a1414; }
+body.halloween:not(.light) .izb-menu > * + *::before { color: #5c1a1a; }
 
 /* bouton connexion (DATA/account.js) */
-body.halloween:not(.light) .iza-box--barre .iza-btn { color: #e2643c; }
-body.halloween:not(.light) .iza-panel { background: rgba(18, 9, 7, 0.97); border-color: #3a1812; }
+body.halloween:not(.light) .iza-box--barre .iza-btn { color: #e44444; }
+body.halloween:not(.light) .iza-panel { background: rgba(13, 10, 10, 0.97); border-color: #3a1414; }
